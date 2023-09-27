@@ -5,11 +5,13 @@ import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -50,16 +52,23 @@ public class ScanActivity extends AppCompatActivity {
     @BindView(R.id.scan_results)
     RecyclerView recyclerView;
     private RxBleClient rxBleClient;
+    BluetoothManager btManager;
+
     private Disposable scanDisposable;
     private ScanResultsAdapter resultsAdapter;
     private boolean hasClickedScan;
     private AnimatorSet animatorSet;
     private ImageView imgloading;
+    BluetoothLeScanner btScanner;
+
     TextView scan1;
     TextView scan2;
     BluetoothAdapter bluetoothAdapter;
+    BluetoothAdapter btAdapter;
+    private final static int REQUEST_ENABLE_BT = 1;
 
     boolean a;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,9 +79,9 @@ public class ScanActivity extends AppCompatActivity {
         configureResultList();
 //===================== progress bar ================================
 
-        imgloading=findViewById(R.id.imgloading);
+        imgloading = findViewById(R.id.imgloading);
 
-        animatorSet= (AnimatorSet) AnimatorInflater.loadAnimator(ScanActivity.this, R.animator.loadinganime);
+        animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(ScanActivity.this, R.animator.loadinganime);
         animatorSet.setTarget(imgloading);
         animatorSet.start();
 
@@ -98,8 +107,26 @@ public class ScanActivity extends AppCompatActivity {
 
 //==========================================================
 
+//================================= turn the bluetooth on ===============================================
+       
+        btManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        btAdapter = btManager.getAdapter();
 
-
+        if (btAdapter != null && !btAdapter.isEnabled()) {
+            Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
+        }
+//======================================================================================================
     }
 
    /* @OnClick(R.id.background_scan_btn)
