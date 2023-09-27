@@ -1,0 +1,73 @@
+apply plugin: 'com.android.library'
+apply plugin: 'groovyx.android'
+apply plugin: 'com.vanniktech.maven.publish'
+apply from: rootProject.file('gradle/gradle-mvn-config.gradle')
+
+android {
+    namespace 'com.polidea.rxandroidble3'
+
+    compileSdkVersion 32
+
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 32
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.targetCompatibilityVersion
+        targetCompatibility rootProject.ext.targetCompatibilityVersion
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+        unitTests.all {
+            testLogging {
+                events "passed", "skipped", "failed", "standardOut", "standardError"
+                outputs.upToDateWhen { false }
+                showStandardStreams = true
+            }
+        }
+    }
+
+    lint {
+        abortOnError false
+    }
+
+    preBuild.dependsOn 'checkstyle'
+}
+
+apply from: rootProject.file('gradle/src-gen-rxjava3-from-rxjava2.gradle')
+
+androidGroovy {
+    skipJavaC = true
+}
+
+afterEvaluate { project ->
+    // add explicit dependencies to compile groovy when testing
+    testDebugUnitTest.dependsOn 'compileDebugUnitTestGroovyWithGroovyc'
+    testReleaseUnitTest.dependsOn 'compileReleaseUnitTestGroovyWithGroovyc'
+}
+
+dependencies {
+    api rootProject.ext.libs.rxjava3
+    api rootProject.ext.libs.annotations
+    implementation rootProject.ext.libs.rxrelay3
+    implementation project(path: ':dagger-library-shadow', transitive: false, configuration: 'shadow')
+    annotationProcessor project(path: ':dagger-compiler-shadow', transitive: false, configuration: 'shadow')
+
+    compileOnly files(tasks.getByPath(':dagger-library-shadow:shadowJar').archiveFile)
+
+    // Test dependencies
+    testImplementation files(tasks.getByPath(':dagger-library-shadow:shadowJar').archiveFile)
+    testImplementation rootProject.ext.libs.junit
+    testImplementation rootProject.ext.libs.groovy
+    testImplementation rootProject.ext.libs.spock
+}

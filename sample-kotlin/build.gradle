@@ -1,0 +1,70 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
+
+android {
+    namespace 'com.polidea.rxandroidble2.samplekotlin'
+
+    compileSdkVersion 32
+
+    defaultConfig {
+        applicationId "com.polidea.rxandroidble.sample"
+        minSdkVersion 18
+        targetSdkVersion 32
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = rootProject.ext.sourceCompatibilityVersion
+        targetCompatibility = rootProject.ext.targetCompatibilityVersion
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+        test.java.srcDirs = [
+                'src/test/kotlin',
+                '../rxandroidble/src/test/java' // this produces a warning about duplicate content roots, but it is still required
+        ]
+    }
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}
+
+dependencies {
+    // RxAndroidBle
+    implementation project(path: ':rxandroidble')
+
+    // Kotlin stdlib
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+
+    // AndroidX
+    implementation rootProject.ext.libs.appcompat
+    implementation rootProject.ext.libs.material_design
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation rootProject.ext.libs.annotations
+
+    // RxBinding
+    implementation rootProject.ext.libs.rxjava_binding
+
+    // RxJava
+    implementation rootProject.ext.libs.rxjava2
+    implementation rootProject.ext.libs.rxandroid
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.4.0'
+
+    // Replaying share
+    implementation rootProject.ext.libs.rxjava_replayingshare
+
+    // Test
+    testImplementation project(':mockrxandroidble')
+    testImplementation rootProject.ext.libs.junit
+}
