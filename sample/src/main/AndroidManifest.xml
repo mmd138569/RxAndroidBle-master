@@ -22,9 +22,6 @@
             android:label="@string/title_example1">
         </activity>
         <activity
-            android:name="com.polidea.rxandroidble2.sample.example2_connection.ConnectionExampleActivity"
-            android:label="@string/title_example2"/>
-        <activity
             android:name="com.polidea.rxandroidble2.sample.example3_discovery.ServiceDiscoveryExampleActivity"
             android:label="@string/title_example3"/>
         <activity

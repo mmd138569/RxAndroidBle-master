@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.polidea.rxandroidble2.sample.example2_connection.ConnectionExampleActivity;
 import com.polidea.rxandroidble2.sample.example3_discovery.ServiceDiscoveryExampleActivity;
 
 import butterknife.ButterKnife;
@@ -15,12 +14,12 @@ public class DeviceActivity extends AppCompatActivity {
     public static final String EXTRA_MAC_ADDRESS = "extra_mac_address";
     private String macAddress;
 
-    @OnClick(R.id.connect)
+  /*  @OnClick(R.id.connect)
     public void onConnectClick() {
-        final Intent intent = new Intent(this, ConnectionExampleActivity.class);
+      /*  final Intent intent = new Intent(this, ConnectionExampleActivity.class);
         intent.putExtra(EXTRA_MAC_ADDRESS, macAddress);
         startActivity(intent);
-    }
+    }*/
 
     @OnClick(R.id.discovery)
     public void onDiscoveryClick() {
