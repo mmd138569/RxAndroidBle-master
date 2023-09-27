@@ -10,8 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.polidea.rxandroidble2.RxBleClient;
 import com.polidea.rxandroidble2.exceptions.BleScanException;
@@ -43,10 +45,13 @@ public class ScanActivity extends AppCompatActivity {
     private boolean hasClickedScan;
     private AnimatorSet animatorSet;
     private ImageView imgloading;
-
+    TextView scan1;
+    TextView scan2;
+    boolean a;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_example1);
         ButterKnife.bind(this);
         rxBleClient = SampleApplication.getRxBleClient(this);
@@ -69,9 +74,11 @@ public class ScanActivity extends AppCompatActivity {
 */
     @OnClick(R.id.scan_toggle_btn)
     public void onScanToggleClick() {
-
+         scan1 = findViewById(R.id.Scan1);
+         scan2 = findViewById(R.id.Scan2);
         if (isScanning()) {
             scanDisposable.dispose();
+            a=true;
         } else {
             if (rxBleClient.isScanRuntimePermissionGranted()) {
                 scanBleDevices();
@@ -79,10 +86,20 @@ public class ScanActivity extends AppCompatActivity {
                 hasClickedScan = true;
                 ScanPermission.requestScanPermission(this, rxBleClient);
             }
+            a=false;
         }
 
         updateButtonUIState();
+        if(a==false){
+            scan1.setVisibility(View.INVISIBLE);
+            scan2.setVisibility(View.VISIBLE);
+        }
+        else if(a==true){
+            scan1.setVisibility(View.VISIBLE);
+            scan2.setVisibility(View.INVISIBLE);
+        }
     }
+
 
     private void scanBleDevices() {
         scanDisposable = rxBleClient.scanBleDevices(

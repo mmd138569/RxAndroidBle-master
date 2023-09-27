@@ -13,8 +13,8 @@
     <string name="connecting">Connecting</string>
 
     <!-- here                                                  -->
-    <string name="Scaning">Scaning</string>
-    <string name="Scan">Scanned</string>
+    <string name="Scan">press the button to start scaning</string>
+    <string name="Scaning">Scanned</string>
 
     <string name="read">Read</string>
     <string name="write">Write</string>

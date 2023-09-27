@@ -10,23 +10,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="#ffff"
     >
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    >
     <TextView
+        android:layout_marginTop="20dp"
         android:textStyle="bold"
+        android:id="@+id/Scan1"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Scaning"/>
-  <!--
-   make it more beautiful but its nee toimpliment the method in the java calss
+        android:text="@string/Scan"/>
+
 
    <TextView
         android:textStyle="bold"
-        android:layout_gravity="center"
+       android:id="@+id/Scan2"
+       android:layout_marginTop="20dp"
+       android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/connect"/>
--->
+        android:text="@string/Scaning"
+       android:visibility="invisible"
+       />
+</RelativeLayout>
     <!---
     tempreraley i have no idea what's this
 
