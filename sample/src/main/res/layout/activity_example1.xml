@@ -24,6 +24,17 @@ tempreraley i have no idea what's this
         android:layout_gravity="center"
         />
 -->
+    <ImageView
+        android:id="@+id/imgloading"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/custumprogresbar"
+        android:layout_marginTop="60dp"
+        android:layout_centerInParent="true"
+        android:progress="70"
+        android:rotation="180"
+        android:layout_gravity="center"
+        />
     <Button
         android:id="@+id/scan_toggle_btn"
         android:layout_width="wrap_content"

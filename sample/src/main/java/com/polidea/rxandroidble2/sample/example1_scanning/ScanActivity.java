@@ -1,5 +1,7 @@
 package com.polidea.rxandroidble2.sample.example1_scanning;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.polidea.rxandroidble2.RxBleClient;
 import com.polidea.rxandroidble2.exceptions.BleScanException;
@@ -38,6 +41,8 @@ public class ScanActivity extends AppCompatActivity {
     private Disposable scanDisposable;
     private ScanResultsAdapter resultsAdapter;
     private boolean hasClickedScan;
+    private AnimatorSet animatorSet;
+    private ImageView imgloading;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,6 +51,11 @@ public class ScanActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         rxBleClient = SampleApplication.getRxBleClient(this);
         configureResultList();
+        imgloading=findViewById(R.id.imgloading);
+
+        animatorSet= (AnimatorSet) AnimatorInflater.loadAnimator(ScanActivity.this, R.animator.loadinganime);
+        animatorSet.setTarget(imgloading);
+        animatorSet.start();
     }
 
    /* @OnClick(R.id.background_scan_btn)
