@@ -21,6 +21,8 @@ import com.polidea.rxandroidble2.sample.DeviceActivity;
 import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
 //import com.polidea.rxandroidble2.sample.example1a_background_scanning.BackgroundScanActivity;
+import com.polidea.rxandroidble2.sample.example3_discovery.ServiceDiscoveryExampleActivity;
+import com.polidea.rxandroidble2.sample.example4_characteristic.advanced.AdvancedCharacteristicOperationExampleActivity;
 import com.polidea.rxandroidble2.sample.util.ScanExceptionHandler;
 import com.polidea.rxandroidble2.sample.util.ScanPermission;
 import com.polidea.rxandroidble2.scan.ScanFilter;
@@ -162,7 +164,7 @@ public class ScanActivity extends AppCompatActivity {
 
     private void onAdapterItemClick(ScanResult scanResults) {
         final String macAddress = scanResults.getBleDevice().getMacAddress();
-        final Intent intent = new Intent(this, DeviceActivity.class);
+        final Intent intent = new Intent(this, ServiceDiscoveryExampleActivity.class);
         intent.putExtra(DeviceActivity.EXTRA_MAC_ADDRESS, macAddress);
         startActivity(intent);
     }

@@ -23,6 +23,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 public class ServiceDiscoveryExampleActivity extends AppCompatActivity {
+    public static final String EXTRA_MAC_ADDRESS = "extra_mac_address";
 
     @BindView(R.id.connect)
     Button connectButton;
@@ -43,7 +44,7 @@ public class ServiceDiscoveryExampleActivity extends AppCompatActivity {
                 .subscribe(adapter::swapScanResult, this::onConnectionFailure);
         servicesDisposable.add(disposable);
 
-        updateUI();
+
     }
 
     @Override
