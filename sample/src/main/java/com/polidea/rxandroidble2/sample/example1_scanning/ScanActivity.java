@@ -108,7 +108,7 @@ public class ScanActivity extends AppCompatActivity {
 //==========================================================
 
 //================================= turn the bluetooth on ===============================================
-       
+
         btManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         btAdapter = btManager.getAdapter();
 
