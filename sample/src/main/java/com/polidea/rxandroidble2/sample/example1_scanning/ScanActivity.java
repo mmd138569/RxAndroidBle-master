@@ -90,6 +90,8 @@ public class ScanActivity extends AppCompatActivity {
         }
 
         updateButtonUIState();
+//==================== no big deal just change the text view================
+
         if(a==false){
             scan1.setVisibility(View.INVISIBLE);
             scan2.setVisibility(View.VISIBLE);
@@ -100,6 +102,7 @@ public class ScanActivity extends AppCompatActivity {
         }
     }
 
+//===========================================================================
 
     private void scanBleDevices() {
         scanDisposable = rxBleClient.scanBleDevices(
