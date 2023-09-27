@@ -51,11 +51,15 @@ public class ScanActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         rxBleClient = SampleApplication.getRxBleClient(this);
         configureResultList();
+//===================== progress bar ================================
+
         imgloading=findViewById(R.id.imgloading);
 
         animatorSet= (AnimatorSet) AnimatorInflater.loadAnimator(ScanActivity.this, R.animator.loadinganime);
         animatorSet.setTarget(imgloading);
         animatorSet.start();
+
+//===================================================================
     }
 
    /* @OnClick(R.id.background_scan_btn)
