@@ -90,7 +90,7 @@ public class ScanActivity extends AppCompatActivity {
         }
 
         updateButtonUIState();
-//==================== no big deal just change the text view================
+//==================== no big deal just change the text view ================
 
         if(a==false){
             scan1.setVisibility(View.INVISIBLE);
