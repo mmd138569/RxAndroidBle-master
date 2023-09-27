@@ -11,6 +11,11 @@
     <string name="disconnect">Disconnect</string>
     <string name="connect">Connect</string>
     <string name="connecting">Connecting</string>
+
+    <!-- here                                                  -->
+    <string name="Scaning">Scaning</string>
+    <string name="Scan">Scanned</string>
+
     <string name="read">Read</string>
     <string name="write">Write</string>
     <string name="setup_notification">Register notifications</string>

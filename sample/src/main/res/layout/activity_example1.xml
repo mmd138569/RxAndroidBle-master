@@ -10,26 +10,38 @@
     android:paddingTop="@dimen/activity_vertical_margin">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello Bluetooth World!"/>
-<!---
-tempreraley i have no idea what's this
-
-    <Button
-        android:id="@+id/background_scan_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/scan_in_background"
+        android:textStyle="bold"
         android:layout_gravity="center"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Scaning"/>
+  <!--
+   make it more beautiful but its nee toimpliment the method in the java calss
+
+   <TextView
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/connect"/>
 -->
+    <!---
+    tempreraley i have no idea what's this
+
+        <Button
+            android:id="@+id/background_scan_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scan_in_background"
+            android:layout_gravity="center"
+            />
+    -->
     <ImageView
         android:id="@+id/imgloading"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:src="@drawable/custumprogresbar"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_centerInParent="true"
         android:progress="70"
         android:rotation="180"
