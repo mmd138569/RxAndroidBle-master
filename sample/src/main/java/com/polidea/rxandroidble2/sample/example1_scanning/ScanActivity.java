@@ -106,7 +106,23 @@ public class ScanActivity extends AppCompatActivity {
         }*/
 
 //==========================================================
-
+        if (ContextCompat.checkSelfPermission(ScanActivity.this, android.Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_DENIED) {
+            if (Build.VERSION.SDK_INT > 31) {
+                ActivityCompat.requestPermissions(ScanActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
+                return;
+            }
+        }
+        BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+        if (Build.VERSION.SDK_INT >= 31) {
+            bluetoothAdapter = bluetoothManager.getAdapter();
+        } else {
+            bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        }
+        if (bluetoothAdapter.isEnabled()) {
+            bluetoothAdapter.disable();
+        } else {
+            bluetoothAdapter.isEnabled();
+        }
 //================================= turn the bluetooth on ===============================================
 
         btManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
