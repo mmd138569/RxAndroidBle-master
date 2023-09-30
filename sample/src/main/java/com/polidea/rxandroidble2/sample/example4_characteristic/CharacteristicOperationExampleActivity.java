@@ -78,7 +78,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 .takeUntil(disconnectTriggerSubject)
                 .compose(ReplayingShare.instance());
     }
-
+//=============================== connect buttom ==========================
     @OnClick(R.id.connect)
     public void onConnectToggleClick() {
 
