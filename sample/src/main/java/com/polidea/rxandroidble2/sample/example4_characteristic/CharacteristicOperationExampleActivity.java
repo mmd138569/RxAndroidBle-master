@@ -102,7 +102,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             compositeDisposable.add(connectionDisposable);
         }
     }
-
+//==========================================================================
     @OnClick(R.id.read)
     public void onReadClick() {
 
