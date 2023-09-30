@@ -103,6 +103,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         }
     }
 //==========================================================================
+//literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second tho
+
     @OnClick(R.id.read)
     public void onReadClick() {
 
