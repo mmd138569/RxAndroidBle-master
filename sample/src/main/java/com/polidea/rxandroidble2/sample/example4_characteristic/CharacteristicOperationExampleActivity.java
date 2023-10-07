@@ -132,13 +132,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                         writeInput.setText(HexString.bytesToHex(bytes));
 //=======================================
 
-                        try {
+                    /*  try {
                             FileOutputStream fos = openFileOutput("myfile.txt", Context.MODE_PRIVATE);
                             fos.write(HexString.bytesToHex(bytes).getBytes());
                             fos.close();
                         } catch (IOException e) {
                             e.printStackTrace();
-                        }
+                        }*/
                     }, this::onReadFailure);
 
             compositeDisposable.add(disposable);
