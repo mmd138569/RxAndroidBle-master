@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
+
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +20,8 @@ import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
 import com.polidea.rxandroidble2.sample.util.HexString;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -79,6 +83,15 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 .compose(ReplayingShare.instance());
     }
 //=============================== connect buttom ==========================
+
+   /* Handler h = new Handler();
+    Runnable r = new Runnable() {
+        @Override
+        public void run() {
+        }
+    };
+            h.postDelayed(r, 1500);*/
+
     @OnClick(R.id.connect)
     public void onConnectToggleClick() {
 
@@ -117,9 +130,20 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                         readOutputView.setText(new String(bytes));
                         readHexOutputView.setText(HexString.bytesToHex(bytes));
                         writeInput.setText(HexString.bytesToHex(bytes));
+//=======================================
+
+                        try {
+                            FileOutputStream fos = openFileOutput("myfile.txt", Context.MODE_PRIVATE);
+                            fos.write(HexString.bytesToHex(bytes).getBytes());
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }, this::onReadFailure);
 
             compositeDisposable.add(disposable);
+
+//=========================================
         }
     }
 
