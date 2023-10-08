@@ -53,8 +53,8 @@ public class AdvancedCharacteristicOperationExampleActivity extends AppCompatAct
     Button connectButton;
     @BindView(R.id.read_output)
     TextView readOutputView;
-    @BindView(R.id.read_hex_output)
-    TextView readHexOutputView;
+    /*@BindView(R.id.read_hex_output)
+    TextView readHexOutputView;*/
     @BindView(R.id.write_input)
     TextView writeInput;
     @BindView(R.id.compat_only_warning)
@@ -214,7 +214,7 @@ public class AdvancedCharacteristicOperationExampleActivity extends AppCompatAct
                     final String stringValue = new String(updateReadValue);
                     readOutputView.setText(stringValue);
                     final String hexValueText = HexString.bytesToHex(updateReadValue);
-                    readHexOutputView.setText(hexValueText);
+                    //readHexOutputView.setText(hexValueText);
                     writeInput.setText(hexValueText);
                     break;
                 case WRITE:

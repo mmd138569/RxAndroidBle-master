@@ -9,8 +9,12 @@ import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jakewharton.rx.ReplayingShare;
 import com.polidea.rxandroidble2.RxBleConnection;
@@ -22,6 +26,7 @@ import com.polidea.rxandroidble2.sample.util.HexString;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -40,8 +45,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     Button connectButton;
     @BindView(R.id.read_output)
     TextView readOutputView;
-    @BindView(R.id.read_hex_output)
-    TextView readHexOutputView;
+/*    @BindView(R.id.read_hex_output)
+    TextView readHexOutputView;*/
     @BindView(R.id.write_input)
     TextView writeInput;
     @BindView(R.id.read)
@@ -55,7 +60,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private Observable<RxBleConnection> connectionObservable;
     private RxBleDevice bleDevice;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-
+    Button save, refresh;
+    //TextView name;
+    private ListView listView;
     public static Intent startActivityIntent(Context context, String peripheralMacAddress, UUID characteristicUuid) {
         Intent intent = new Intent(context, CharacteristicOperationExampleActivity.class);
         intent.putExtra(DeviceActivity.EXTRA_MAC_ADDRESS, peripheralMacAddress);
@@ -74,6 +81,45 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         connectionObservable = prepareConnectionObservable();
         //noinspection ConstantConditions
         getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
+
+        findViewById(R.id.refresh).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//====================== save ===================
+
+                final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
+                final ArrayList array_list = helper.getAllCotacts();
+                //name = findViewById(R.id.name);
+                readOutputView = findViewById(R.id.read_output);
+                listView = findViewById(R.id.listView);
+                final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
+                        android.R.layout.simple_list_item_1, array_list);
+                listView.setAdapter(arrayAdapter);
+                if ( !readOutputView.getText().toString().isEmpty()) {
+                    if (helper.insert(/*name.getText().toString(),*/ readOutputView.getText().toString())) {
+                        Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    // name.setError("Enter NAME");
+                    readOutputView.setError("Enter Salary");
+
+//================================================
+
+//========================= refresh ==============
+
+                    array_list.clear();
+                    array_list.addAll(helper.getAllCotacts());
+                    arrayAdapter.notifyDataSetChanged();
+                    listView.invalidateViews();
+                    listView.refreshDrawableState();
+                }
+            }
+        });
+
+//==================================================
     }
 
     private Observable<RxBleConnection> prepareConnectionObservable() {
@@ -128,7 +174,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(bytes -> {
                         readOutputView.setText(new String(bytes));
-                        readHexOutputView.setText(HexString.bytesToHex(bytes));
+                      //  readHexOutputView.setText(HexString.bytesToHex(bytes));
                         writeInput.setText(HexString.bytesToHex(bytes));
 //=======================================
 

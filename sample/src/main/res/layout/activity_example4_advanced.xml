@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
+     <!--   <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/prefix_hex"
@@ -39,7 +39,7 @@
             android:id="@+id/read_hex_output"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"/>
+            android:textSize="14sp"/>-->
     </LinearLayout>
 
     <TextView
