@@ -48,7 +48,13 @@ class DatabaseHelper extends SQLiteOpenHelper {
         Cursor res = db.rawQuery( "select (id ||' : ' || salary || ' : '|| datetime) AS fullname from "+CONTACTS_TABLE_NAME, null );
         res.moveToFirst();
         while(res.isAfterLast() == false){
-            array_list.add(res.getString(res.getColumnIndex("fullname")));
+//========================================================
+
+            if(res.getColumnIndex("fullname")!=-1) {
+                array_list.add(res.getString(res.getColumnIndex("fullname")));
+            }
+            
+//=========================================================
             res.moveToNext();
         }
         return array_list;
