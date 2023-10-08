@@ -53,7 +53,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
             if(res.getColumnIndex("fullname")!=-1) {
                 array_list.add(res.getString(res.getColumnIndex("fullname")));
             }
-            
+
 //=========================================================
             res.moveToNext();
         }
