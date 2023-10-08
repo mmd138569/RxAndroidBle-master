@@ -86,6 +86,8 @@
         android:enabled="false"
         android:text="@string/setup_notification"/>
     <ListView
+        android:elevation="20dp"
+        android:layout_marginTop="10dp"
         android:background="@android:color/system_accent2_200"
         android:id = "@+id/listView"
 
