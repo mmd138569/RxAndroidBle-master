@@ -90,9 +90,10 @@
         android:layout_height="wrap_content">
 -->
     <ListView
+
         android:elevation="20dp"
         android:layout_marginTop="10dp"
-        android:background="@android:color/system_accent2_200"
+        android:background="@drawable/custom_list_view"
         android:id = "@+id/listView"
 
         android:layout_width = "match_parent"
