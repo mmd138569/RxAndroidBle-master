@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "653189275441",
+    "project_id": "rxandroidble-parent",
+    "storage_bucket": "rxandroidble-parent.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653189275441:android:0f968202ecf444c3715a10",
+        "android_client_info": {
+          "package_name": "com.polidea.rxandroidble.sample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKmqnzqarv4cXwbC9fwgHQqbuvQHNCUFI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
