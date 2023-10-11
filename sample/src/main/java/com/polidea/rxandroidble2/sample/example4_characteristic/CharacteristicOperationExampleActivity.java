@@ -105,17 +105,16 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 } else {
                     // name.setError("Enter NAME");
                     readOutputView.setError("Enter Salary");
-
+                }
 //================================================
 
 //========================= refresh ==============
-
-                    array_list.clear();
-                    array_list.addAll(helper.getAllCotacts());
-                    arrayAdapter.notifyDataSetChanged();
-                    listView.invalidateViews();
-                    listView.refreshDrawableState();
-                }
+                
+                array_list.clear();
+                array_list.addAll(helper.getAllCotacts());
+                arrayAdapter.notifyDataSetChanged();
+                listView.invalidateViews();
+                listView.refreshDrawableState();
             }
         });
 
