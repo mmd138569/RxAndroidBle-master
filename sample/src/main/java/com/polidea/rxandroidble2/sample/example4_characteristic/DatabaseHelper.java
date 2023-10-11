@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 class DatabaseHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "salaryDatabase5";
+    public static final String DATABASE_NAME = "database.db";
     public static final String CONTACTS_TABLE_NAME = "SalaryDetails";
     public DatabaseHelper(Context context) {
         super(context,DATABASE_NAME,null,1);
@@ -20,7 +20,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            db.execSQL("create table "+ CONTACTS_TABLE_NAME +"(id INTEGER PRIMARY KEY, name text,salary DECIMAL(4,2),datetime default current_timestamp )");
+            db.execSQL("CREATE TABLE "+ CONTACTS_TABLE_NAME +"(id INTEGER PRIMARY KEY, name text,salary DECIMAL(4,2),datetime default current_timestamp )");
         } catch (SQLiteException e) {
             try {
                 throw new IOException(e);
@@ -39,7 +39,8 @@ class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         //contentValues.put("name", s);
         contentValues.put("salary", s1);
-        db.replace(CONTACTS_TABLE_NAME, null, contentValues);
+        //db.replace(CONTACTS_TABLE_NAME, null, contentValues);
+        db.insert(CONTACTS_TABLE_NAME, null, contentValues);
         return true;
     }
     public ArrayList getAllCotacts() {
