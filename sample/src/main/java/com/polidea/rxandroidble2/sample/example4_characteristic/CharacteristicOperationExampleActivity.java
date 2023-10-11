@@ -108,8 +108,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 }
 //================================================
 
-//========================= refresh ==============
-                
+//========================= refresh ===============
+
                 array_list.clear();
                 array_list.addAll(helper.getAllCotacts());
                 arrayAdapter.notifyDataSetChanged();
