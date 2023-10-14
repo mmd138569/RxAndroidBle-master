@@ -88,13 +88,14 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             @Override
             public void run() {
 
+                //connect
                 onConnectToggleClick();
 
 
                 //test it before add the onReadClick();
                 onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
-                //we write our stuff that want to run here this service is already run at the back ground
+                
                 handler.postDelayed(this, 10000);
             }
         },10000);
