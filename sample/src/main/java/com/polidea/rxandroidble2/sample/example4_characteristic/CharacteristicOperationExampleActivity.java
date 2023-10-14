@@ -82,6 +82,22 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         //noinspection ConstantConditions
         getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
 
+        Handler handler=new Handler();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onConnectToggleClick();
+                //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
+                //we write our stuff that want to run here this service is already run at the back ground
+                handler.postDelayed(this, 10000);
+            }
+        },10000);
+
+
+
+
+
         findViewById(R.id.refresh).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
