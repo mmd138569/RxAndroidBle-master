@@ -95,7 +95,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //test it before add the onReadClick();
                 onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
-                
+
                 handler.postDelayed(this, 10000);
             }
         },10000);
