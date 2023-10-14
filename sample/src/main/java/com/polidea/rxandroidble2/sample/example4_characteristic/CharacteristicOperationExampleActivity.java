@@ -83,7 +83,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
 
         Handler handler=new Handler();
-
+        Handler hand=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -91,15 +91,30 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //connect
                 onConnectToggleClick();
 
-
+                //refreshing();
                 //test it before add the onReadClick();
-                onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
 
-                handler.postDelayed(this, 10000);
-            }
-        },10000);
+                handler.postDelayed(this, 4000);
 
+            }
+        },4000);
+        hand.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                onReadClick();
+                handler.postDelayed(this, 4500);
+
+            }
+        },4500);
+        hand.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                refreshing();
+                handler.postDelayed(this, 5000);
+
+            }
+        },5000);
 
 
 
@@ -109,7 +124,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 //====================== save ===================
-
                 final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
                 final ArrayList array_list = helper.getAllCotacts();
                 //name = findViewById(R.id.name);
@@ -213,7 +227,37 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //=========================================
         }
     }
+    @OnClick(R.id.refresh)
+    public void refreshing() {
 
+        final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
+        final ArrayList array_list = helper.getAllCotacts();
+        //name = findViewById(R.id.name);
+        readOutputView = findViewById(R.id.read_output);
+        listView = findViewById(R.id.listView);
+        final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
+                android.R.layout.simple_list_item_1, array_list);
+        listView.setAdapter(arrayAdapter);
+        if ( !readOutputView.getText().toString().isEmpty()) {
+            if (helper.insert(/*name.getText().toString(),*/ readOutputView.getText().toString())) {
+                Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            // name.setError("Enter NAME");
+            readOutputView.setError("Enter Salary");
+        }
+//================================================
+
+//========================= refresh ===============
+
+        array_list.clear();
+        array_list.addAll(helper.getAllCotacts());
+        arrayAdapter.notifyDataSetChanged();
+        listView.invalidateViews();
+        listView.refreshDrawableState();
+    }
     @OnClick(R.id.write)
     public void onWriteClick() {
 
