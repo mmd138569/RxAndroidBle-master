@@ -42,7 +42,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
     @BindView(R.id.connect)
-    Button connectButton;
+    TextView connectButton;
     @BindView(R.id.read_output)
     TextView readOutputView;
 /*    @BindView(R.id.read_hex_output)
@@ -50,7 +50,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @BindView(R.id.write_input)
     TextView writeInput;
     @BindView(R.id.read)
-    Button readButton;
+    TextView readButton;
     @BindView(R.id.write)
     Button writeButton;
     @BindView(R.id.notify)
@@ -60,7 +60,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private Observable<RxBleConnection> connectionObservable;
     private RxBleDevice bleDevice;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
-    Button save, refresh;
+    //TextView save, refresh;
     //TextView name;
     private ListView listView;
     public static Intent startActivityIntent(Context context, String peripheralMacAddress, UUID characteristicUuid) {
