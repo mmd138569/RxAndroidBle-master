@@ -197,12 +197,12 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public void refreshing() {
 
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
-        final ArrayList array_list = helper.getAllCotacts();
+        final ArrayList dataset = helper.getAllCotacts();
         //name = findViewById(R.id.name);
         readOutputView = findViewById(R.id.read_output);
         listView = findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
-                android.R.layout.simple_list_item_1, array_list);
+                android.R.layout.simple_list_item_1, dataset);
         listView.setAdapter(arrayAdapter);
         if ( !readOutputView.getText().toString().isEmpty()) {
             if (helper.insert(/*name.getText().toString(),*/ readOutputView.getText().toString())) {
@@ -218,8 +218,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
 //========================= refresh ===============
 
-        array_list.clear();
-        array_list.addAll(helper.getAllCotacts());
+        dataset.clear();
+        dataset.addAll(helper.getAllCotacts());
         arrayAdapter.notifyDataSetChanged();
         listView.invalidateViews();
         listView.refreshDrawableState();

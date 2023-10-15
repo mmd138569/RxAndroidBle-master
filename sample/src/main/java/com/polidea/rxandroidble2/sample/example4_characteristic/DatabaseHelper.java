@@ -3,6 +3,7 @@ package com.polidea.rxandroidble2.sample.example4_characteristic;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Entity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
