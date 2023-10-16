@@ -21,7 +21,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            db.execSQL("CREATE TABLE "+ CONTACTS_TABLE_NAME +"(id INTEGER PRIMARY KEY, name text,salary DECIMAL(4,2),datetime default current_timestamp )");
+            db.execSQL("CREATE TABLE "+ CONTACTS_TABLE_NAME +"(id INTEGER PRIMARY KEY,salary DECIMAL(4,2),datetime default current_timestamp )");
         } catch (SQLiteException e) {
             try {
                 throw new IOException(e);
