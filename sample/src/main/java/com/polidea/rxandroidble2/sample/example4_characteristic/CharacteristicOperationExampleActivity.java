@@ -246,6 +246,17 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         LineData lineData=new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
+        //lineChart.setBackgroundColor(Color.G);
+        float rangeHigh = 6.5f;
+        float rangeLow = -1f;
+        float rangeLow2=7f;
+        float rangeHigh2=58f;
+        float rangeLow3=58.5f;
+        float rangeHigh3=61f;
+        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
+        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#dfdfdf"),rangeLow2,rangeHigh2,""));
+        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#fef5e6"),rangeLow3,rangeHigh3,""));
+
         lineChart.setNoDataText("No Data Insert");
         lineDataSet.setColor(GRAY);
         lineDataSet.setCircleColors(Color.BLACK);
@@ -278,14 +289,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         leftAxis.setDrawAxisLine(false);
         leftAxis.setDrawGridLines(false);
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-
-
-        // LineData lineData = new LineData(line3);
-       // lineChart.setData(lineData);
-        // lineChart.invalidate();
-       // lineData.setDrawValues(false);
-        //lineChart.getDescription().setEnabled(false);
-
 
     }
     ArrayList<Entry>linechart(float yval){
