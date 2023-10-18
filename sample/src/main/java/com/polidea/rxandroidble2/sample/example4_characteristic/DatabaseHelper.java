@@ -35,10 +35,10 @@ class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS "+CONTACTS_TABLE_NAME);
         onCreate(db);
     }
-    public boolean insert(/*String s,*/ String s1) {
+    public boolean insert(float s1) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        //contentValues.put("name", s);
+        //contentValues.put("id", s);
         contentValues.put("salary", s1);
         //db.replace(CONTACTS_TABLE_NAME, null, contentValues);
         db.insert(CONTACTS_TABLE_NAME, null, contentValues);

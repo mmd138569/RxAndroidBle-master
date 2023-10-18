@@ -1,10 +1,20 @@
 package com.polidea.rxandroidble2.sample.example4_characteristic;
 
+import static android.graphics.Color.GRAY;
+
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Handler;
@@ -63,6 +73,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     //TextView save, refresh;
     //TextView name;
     private ListView listView;
+    CustomLineChart lineChart;
     public static Intent startActivityIntent(Context context, String peripheralMacAddress, UUID characteristicUuid) {
         Intent intent = new Intent(context, CharacteristicOperationExampleActivity.class);
         intent.putExtra(DeviceActivity.EXTRA_MAC_ADDRESS, peripheralMacAddress);
@@ -74,6 +85,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example4);
+        lineChart = findViewById(R.id.chart);
+
         ButterKnife.bind(this);
         String macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
         characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
@@ -195,7 +208,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     }
     @OnClick(R.id.refresh)
     public void refreshing() {
-
+        float yval = 0;
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
         final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
@@ -205,7 +218,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, array_list);
         listView.setAdapter(arrayAdapter);
         if ( !readOutputView.getText().toString().isEmpty()) {
-            if (helper.insert(/*name.getText().toString(),*/ readOutputView.getText().toString())) {
+            yval =Float.parseFloat(String.valueOf(readOutputView.getText()));
+            
+            if (helper.insert(/*name.getText()*/ yval)) {
+              
                 Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
@@ -223,6 +239,61 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         arrayAdapter.notifyDataSetChanged();
         listView.invalidateViews();
         listView.refreshDrawableState();
+
+        LineDataSet lineDataSet = new LineDataSet(linechart(yval), "lable");
+        ArrayList<ILineDataSet>iLineDataSets=new ArrayList<>();
+        iLineDataSets.add(lineDataSet);
+        LineData lineData=new LineData(iLineDataSets);
+        lineChart.setData(lineData);
+        lineChart.invalidate();
+        lineChart.setNoDataText("No Data Insert");
+        lineDataSet.setColor(GRAY);
+        lineDataSet.setCircleColors(Color.BLACK);
+        lineDataSet.setDrawCircles(true);
+        lineDataSet.setDrawCircleHole(true);
+        lineDataSet.setLineWidth((float) 0.3);
+        lineDataSet.setCircleRadius(2);
+        lineDataSet.setCircleHoleRadius(10);
+        lineDataSet.setValueTextColor(Color.GRAY);
+        lineDataSet.setDrawValues(false);
+        lineChart.getDescription().setEnabled(false);
+        //lineChart.setDrawGridBackground(true);
+        //lineChart.setDrawBorders(true);
+        //xAxis.isEnabled();
+
+        YAxis left = lineChart.getAxisLeft();
+        left.setDrawGridLines(false);
+        left.setDrawAxisLine(false); // no axis line
+        left.setDrawGridLines(false); // no grid lines
+        left.setDrawZeroLine(true);
+
+        YAxis leftAxis = lineChart.getAxisLeft();
+
+        lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
+        lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
+        lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal
+
+        leftAxis.setTextSize(0f);//put it bottom
+        leftAxis.setTextColor(Color.TRANSPARENT);
+        leftAxis.setDrawAxisLine(false);
+        leftAxis.setDrawGridLines(false);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+
+
+        // LineData lineData = new LineData(line3);
+       // lineChart.setData(lineData);
+        // lineChart.invalidate();
+       // lineData.setDrawValues(false);
+        //lineChart.getDescription().setEnabled(false);
+
+
+    }
+    ArrayList<Entry>linechart(float yval){
+        ArrayList<Entry> dataset=new ArrayList<Entry>();
+        for(int j=0;j<12;j++) {
+            dataset.add(new Entry(yval, j));
+        }
+        return dataset;
     }
    /* @OnClick(R.id.write)
     public void onWriteClick() {
