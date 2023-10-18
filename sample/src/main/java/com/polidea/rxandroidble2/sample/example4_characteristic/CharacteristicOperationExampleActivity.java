@@ -47,14 +47,16 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView readOutputView;
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;*/
-    @BindView(R.id.write_input)
+    /*@BindView(R.id.write_input)
     TextView writeInput;
+     */
     @BindView(R.id.read)
     TextView readButton;
-    @BindView(R.id.write)
-    Button writeButton;
-    @BindView(R.id.notify)
-    Button notifyButton;
+   /* @BindView(R.id.write)
+    Button writeButton;*/
+  /*  @BindView(R.id.notify)
+    Button notifyButton;*/
+
     private UUID characteristicUuid;
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
     private Observable<RxBleConnection> connectionObservable;
@@ -176,7 +178,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                     .subscribe(bytes -> {
                         readOutputView.setText(new String(bytes));
                       //  readHexOutputView.setText(HexString.bytesToHex(bytes));
-                        writeInput.setText(HexString.bytesToHex(bytes));
+                     //   writeInput.setText(HexString.bytesToHex(bytes));
 //=======================================
 
                     /*  try {
@@ -224,7 +226,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         listView.invalidateViews();
         listView.refreshDrawableState();
     }
-    @OnClick(R.id.write)
+   /* @OnClick(R.id.write)
     public void onWriteClick() {
 
         if (isConnected()) {
@@ -240,8 +242,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             compositeDisposable.add(disposable);
         }
     }
-
-    @OnClick(R.id.notify)
+*/
+  /*  @OnClick(R.id.notify)
     public void onNotifyClick() {
 
         if (isConnected()) {
@@ -254,7 +256,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
             compositeDisposable.add(disposable);
         }
-    }
+    }*/
 
     private boolean isConnected() {
         return bleDevice.getConnectionState() == RxBleConnection.RxBleConnectionState.CONNECTED;
@@ -312,18 +314,18 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private void updateUI(BluetoothGattCharacteristic characteristic) {
         connectButton.setText(characteristic != null ? R.string.disconnect : R.string.connect);
         readButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_READ));
-        writeButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_WRITE));
-        notifyButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_NOTIFY));
+        //writeButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_WRITE));
+        //notifyButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_NOTIFY));
     }
 
     private boolean hasProperty(BluetoothGattCharacteristic characteristic, int property) {
         return characteristic != null && (characteristic.getProperties() & property) > 0;
     }
 
-    private byte[] getInputBytes() {
+   /* private byte[] getInputBytes() {
         return HexString.hexToBytes(writeInput.getText().toString());
     }
-
+    */
     @Override
     protected void onPause() {
         super.onPause();
