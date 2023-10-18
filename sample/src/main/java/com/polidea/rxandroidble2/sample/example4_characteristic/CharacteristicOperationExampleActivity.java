@@ -247,10 +247,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.setData(lineData);
         lineChart.invalidate();
         //lineChart.setBackgroundColor(Color.G);
-        float rangeHigh = 6.5f;
+        float rangeHigh = 6.8f;
         float rangeLow = -1f;
         float rangeLow2=7f;
-        float rangeHigh2=58f;
+        float rangeHigh2=58.3f;
         float rangeLow3=58.5f;
         float rangeHigh3=61f;
         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
