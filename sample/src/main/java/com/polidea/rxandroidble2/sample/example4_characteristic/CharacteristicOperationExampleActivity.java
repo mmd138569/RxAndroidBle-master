@@ -47,11 +47,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView readOutputView;
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;*/
-    /*@BindView(R.id.write_input)
+   /* @BindView(R.id.write_input)
     TextView writeInput;*/
     @BindView(R.id.read)
     TextView readButton;
- /*   @BindView(R.id.write)
+  /*  @BindView(R.id.write)
     Button writeButton;
     @BindView(R.id.notify)
     Button notifyButton;*/
@@ -312,15 +312,15 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private void updateUI(BluetoothGattCharacteristic characteristic) {
         connectButton.setText(characteristic != null ? R.string.disconnect : R.string.connect);
         readButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_READ));
-       // writeButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_WRITE));
-        // notifyButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_NOTIFY));
+        //writeButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_WRITE));
+        //notifyButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_NOTIFY));
     }
 
     private boolean hasProperty(BluetoothGattCharacteristic characteristic, int property) {
         return characteristic != null && (characteristic.getProperties() & property) > 0;
     }
 
-   /* private byte[] getInputBytes() {
+    /*private byte[] getInputBytes() {
         return HexString.hexToBytes(writeInput.getText().toString());
     }*/
 
