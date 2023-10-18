@@ -246,13 +246,17 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         LineData lineData=new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
+//need to fix the scale and the color of the chart         
+        lineChart.getXAxis().setAxisMaximum(24f);
+        lineChart.getAxisLeft().setAxisMaximum(350f);
+        lineChart.getAxisRight().setAxisMaximum(350f);
         //lineChart.setBackgroundColor(Color.G);
-        float rangeHigh = 6.8f;
+        float rangeHigh = 106.8f;
         float rangeLow = -1f;
-        float rangeLow2=7f;
-        float rangeHigh2=58.3f;
-        float rangeLow3=58.5f;
-        float rangeHigh3=61f;
+        float rangeLow2=107f;
+        float rangeHigh2=178.3f;
+        float rangeLow3=178.5f;
+        float rangeHigh3=341f;
         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#dfdfdf"),rangeLow2,rangeHigh2,""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#fef5e6"),rangeLow3,rangeHigh3,""));
@@ -294,7 +298,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     ArrayList<Entry>linechart(float yval){
         ArrayList<Entry> dataset=new ArrayList<Entry>();
         for(int j=0;j<12;j++) {
-            dataset.add(new Entry(yval, j));
+            dataset.add(new Entry(j,yval));
         }
         return dataset;
     }
