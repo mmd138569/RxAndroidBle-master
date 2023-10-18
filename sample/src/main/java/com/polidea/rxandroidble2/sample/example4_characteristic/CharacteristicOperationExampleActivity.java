@@ -48,15 +48,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;*/
     /*@BindView(R.id.write_input)
-    TextView writeInput;
-     */
+    TextView writeInput;*/
     @BindView(R.id.read)
     TextView readButton;
-   /* @BindView(R.id.write)
-    Button writeButton;*/
-  /*  @BindView(R.id.notify)
+ /*   @BindView(R.id.write)
+    Button writeButton;
+    @BindView(R.id.notify)
     Button notifyButton;*/
-
     private UUID characteristicUuid;
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
     private Observable<RxBleConnection> connectionObservable;
@@ -178,7 +176,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                     .subscribe(bytes -> {
                         readOutputView.setText(new String(bytes));
                       //  readHexOutputView.setText(HexString.bytesToHex(bytes));
-                     //   writeInput.setText(HexString.bytesToHex(bytes));
+                       // writeInput.setText(HexString.bytesToHex(bytes));
 //=======================================
 
                     /*  try {
@@ -241,8 +239,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
             compositeDisposable.add(disposable);
         }
-    }
-*/
+    }*/
+
   /*  @OnClick(R.id.notify)
     public void onNotifyClick() {
 
@@ -314,8 +312,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private void updateUI(BluetoothGattCharacteristic characteristic) {
         connectButton.setText(characteristic != null ? R.string.disconnect : R.string.connect);
         readButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_READ));
-        //writeButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_WRITE));
-        //notifyButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_NOTIFY));
+       // writeButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_WRITE));
+        // notifyButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_NOTIFY));
     }
 
     private boolean hasProperty(BluetoothGattCharacteristic characteristic, int property) {
@@ -324,8 +322,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
    /* private byte[] getInputBytes() {
         return HexString.hexToBytes(writeInput.getText().toString());
-    }
-    */
+    }*/
+
     @Override
     protected void onPause() {
         super.onPause();
