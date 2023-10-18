@@ -246,10 +246,15 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         LineData lineData=new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
-//need to fix the scale and the color of the chart         
+//need to fix the scale and the color of the chart
+
         lineChart.getXAxis().setAxisMaximum(24f);
         lineChart.getAxisLeft().setAxisMaximum(350f);
         lineChart.getAxisRight().setAxisMaximum(350f);
+
+ //==================
+
+
         //lineChart.setBackgroundColor(Color.G);
         float rangeHigh = 106.8f;
         float rangeLow = -1f;
