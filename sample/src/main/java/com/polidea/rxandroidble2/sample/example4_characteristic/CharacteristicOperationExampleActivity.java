@@ -306,9 +306,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     }
     ArrayList<Entry>linechart(float yval){
         ArrayList<Entry> dataset=new ArrayList<Entry>();
-        for(int j=0;j<12;j++) {
+      //  for(int j=0;j<12;j++) {
+        int j=0;
             dataset.add(new Entry(j,yval));
-        }
+        //}
+        j++;
         return dataset;
     }
    /* @OnClick(R.id.write)
