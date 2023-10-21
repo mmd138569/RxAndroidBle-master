@@ -247,10 +247,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.setData(lineData);
         lineChart.invalidate();
 //need to fix the scale and the color of the chart
-
+        lineChart.setScaleEnabled(false);
         lineChart.getXAxis().setAxisMaximum(24f);
-        lineChart.getAxisLeft().setAxisMaximum(350f);
-        lineChart.getAxisRight().setAxisMaximum(350f);
+        lineChart.getAxisLeft().setAxisMaximum(341f);
+        lineChart.getAxisRight().setAxisMaximum(341f);
 
  //==================
 
