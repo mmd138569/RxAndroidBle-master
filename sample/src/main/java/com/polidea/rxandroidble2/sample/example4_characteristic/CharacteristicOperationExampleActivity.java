@@ -248,8 +248,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //need to fix the scale and the color of the chart
         lineChart.setScaleEnabled(false);
         lineChart.getXAxis().setAxisMaximum(24f);
-        lineChart.getAxisLeft().setAxisMaximum(341f);
-        lineChart.getAxisRight().setAxisMaximum(341f);
+        lineChart.getAxisLeft().setAxisMaximum(400f);
+        lineChart.getAxisRight().setAxisMaximum(400f);
 
  //==================
 
@@ -260,10 +260,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         float rangeLow2=107f;
         float rangeHigh2=178.3f;
         float rangeLow3=178.5f;
-        float rangeHigh3=341f;
+        float rangeHigh3=400f;
         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#dfdfdf"),rangeLow2,rangeHigh2,""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#fef5e6"),rangeLow3,rangeHigh3,""));
+        lineChart.getLegend().setEnabled(false);
 
         lineChart.setNoDataText("No Data Insert");
         lineDataSet.setColor(GRAY);
