@@ -106,7 +106,7 @@ public class ScanActivity extends AppCompatActivity {
 
 //==========================================================
         if (ContextCompat.checkSelfPermission(ScanActivity.this, android.Manifest.permission.BLUETOOTH_CONNECT) == PackageManager.PERMISSION_DENIED) {
-            if (Build.VERSION.SDK_INT > 31) {
+            if (Build.VERSION.SDK_INT >= 31) {
                 ActivityCompat.requestPermissions(ScanActivity.this, new String[]{Manifest.permission.BLUETOOTH_CONNECT}, 100);
                 return;
             }
