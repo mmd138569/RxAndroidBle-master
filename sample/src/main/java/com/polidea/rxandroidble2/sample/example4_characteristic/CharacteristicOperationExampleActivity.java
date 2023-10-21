@@ -288,6 +288,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         left.setDrawZeroLine(true);
 
         YAxis leftAxis = lineChart.getAxisLeft();
+        left.setDrawGridLines(false);
+        left.setDrawAxisLine(false); // no axis line
+        left.setDrawGridLines(false); // no grid lines
+        left.setDrawZeroLine(true);
 
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
