@@ -232,6 +232,18 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //================================================
 
 //========================= refresh ===============
+        float rangeHigh = 100f;
+        float rangeLow = -7f;
+        float rangeLow2=103f;
+        float rangeHigh2=250f;
+        float rangeLow3=253f;
+        float rangeHigh3=270f;
+        lineChart.setTouchEnabled(true);
+        lineChart.setScaleEnabled(false);
+        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
+        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#dfdfdf"),rangeLow2,rangeHigh2,""));
+        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#fef5e6"),rangeLow3,rangeHigh3,""));
+
 
         array_list.clear();
         array_list.addAll(helper.getAllCotacts());
@@ -252,57 +264,40 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.getAxisRight().setAxisMaximum(400f);
 
  //==================
+        lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
+        lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
+        lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
+        YAxis RightAxis = lineChart.getAxisRight();
+        RightAxis.setTextSize(0f);//put it bottom
+        RightAxis.setTextColor(Color.TRANSPARENT);
+        RightAxis.setDrawAxisLine(false);
+        RightAxis.setDrawGridLines(false);
 
 
-        //lineChart.setBackgroundColor(Color.G);
-        float rangeHigh = 106.8f;
-        float rangeLow = -1f;
-        float rangeLow2=107f;
-        float rangeHigh2=178.3f;
-        float rangeLow3=178.5f;
-        float rangeHigh3=400f;
-        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
-        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#dfdfdf"),rangeLow2,rangeHigh2,""));
-        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#fef5e6"),rangeLow3,rangeHigh3,""));
-        lineChart.getLegend().setEnabled(false);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
 
-        lineChart.setNoDataText("No Data Insert");
+
+
         lineDataSet.setColor(GRAY);
-        lineDataSet.setCircleColors(Color.BLACK);
+        lineDataSet.setCircleColor(Color.BLACK);
         lineDataSet.setDrawCircles(true);
+        lineChart.getLegend().setEnabled(false);
+        //---------
+        //  lineChart.highlightValue(30,20);
+        lineChart.invalidate();
+
         lineDataSet.setDrawCircleHole(true);
         lineDataSet.setLineWidth((float) 0.3);
         lineDataSet.setCircleRadius(2);
         lineDataSet.setCircleHoleRadius(10);
         lineDataSet.setValueTextColor(Color.GRAY);
-        lineDataSet.setDrawValues(false);
+        lineChart.setData(lineData);
+        lineChart.invalidate();
+
+        lineData.setDrawValues(false);
 
         lineChart.getDescription().setEnabled(false);
-        //lineChart.setDrawGridBackground(true);
-        //lineChart.setDrawBorders(true);
-        //xAxis.isEnabled();
-        lineChart.setScaleEnabled(false);
-        YAxis left = lineChart.getAxisLeft();
-        left.setDrawGridLines(false);
-        left.setDrawAxisLine(false); // no axis line
-        left.setDrawGridLines(false); // no grid lines
-        left.setDrawZeroLine(true);
-
-        YAxis leftAxis = lineChart.getAxisLeft();
-        left.setDrawGridLines(false);
-        left.setDrawAxisLine(false); // no axis line
-        left.setDrawGridLines(false); // no grid lines
-        left.setDrawZeroLine(true);
-
-        lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
-        lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
-        lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal
-
-        leftAxis.setTextSize(0f);//put it bottom
-        leftAxis.setTextColor(Color.TRANSPARENT);
-        leftAxis.setDrawAxisLine(false);
-        leftAxis.setDrawGridLines(false);
-        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getXAxis().setAxisMaximum(24f);
 
     }
     ArrayList<Entry>linechart(float yval){
