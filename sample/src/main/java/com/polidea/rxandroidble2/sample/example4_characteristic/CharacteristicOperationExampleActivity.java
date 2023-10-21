@@ -281,7 +281,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         //lineChart.setDrawGridBackground(true);
         //lineChart.setDrawBorders(true);
         //xAxis.isEnabled();
-
+        lineChart.setScaleEnabled(false);
         YAxis left = lineChart.getAxisLeft();
         left.setDrawGridLines(false);
         left.setDrawAxisLine(false); // no axis line
