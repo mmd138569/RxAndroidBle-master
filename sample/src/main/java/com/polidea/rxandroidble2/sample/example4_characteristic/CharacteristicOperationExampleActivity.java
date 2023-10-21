@@ -276,6 +276,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineDataSet.setCircleHoleRadius(10);
         lineDataSet.setValueTextColor(Color.GRAY);
         lineDataSet.setDrawValues(false);
+
         lineChart.getDescription().setEnabled(false);
         //lineChart.setDrawGridBackground(true);
         //lineChart.setDrawBorders(true);
