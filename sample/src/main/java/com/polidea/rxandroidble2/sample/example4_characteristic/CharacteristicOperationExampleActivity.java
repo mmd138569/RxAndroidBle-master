@@ -235,9 +235,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         float rangeHigh = 100f;
         float rangeLow = -7f;
         float rangeLow2=103f;
-        float rangeHigh2=250f;
-        float rangeLow3=253f;
-        float rangeHigh3=270f;
+        float rangeHigh2=350f;
+        float rangeLow3=353f;
+        float rangeHigh3=400f;
         lineChart.setTouchEnabled(true);
         lineChart.setScaleEnabled(false);
         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
@@ -303,7 +303,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     ArrayList<Entry>linechart(float yval){
         ArrayList<Entry> dataset=new ArrayList<Entry>();
       //  for(int j=0;j<12;j++) {
-        int j=0;
+        int j=1;
+        dataset.add(new Entry(0,0));
             dataset.add(new Entry(j,yval));
         //}
         j++;
