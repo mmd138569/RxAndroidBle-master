@@ -71,7 +71,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @BindView(R.id.notify)
     Button notifyButton;*/
     private UUID characteristicUuid;
-
+    String  str="20";
     int i=1,x=0;
     private PieChart pieChart;
 
@@ -232,7 +232,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
         if (!readOutputView.getText().toString().isEmpty()) {
             yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
-           // String  str = readOutputView.getText().toString();
+              str = readOutputView.getText().toString();
 
             if (helper.insert(/*name.getText()*/ yval[i - 1])) {
 
@@ -314,7 +314,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.getDescription().setEnabled(false);
         lineChart.getXAxis().setAxisMaximum(24f);
         setupPieChart(str);
-        loadPieChartData(str);/**/
+        loadPieChartData(str);
     }
 
         ArrayList<Entry>linechart(float yval[],int i){
