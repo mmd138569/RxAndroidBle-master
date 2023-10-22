@@ -95,10 +95,12 @@
 
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pichart"
-        android:layout_width="293dp"
-        android:layout_height="148dp"
+        android:layout_width="335dp"
+        android:layout_height="167dp"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp" />
+        android:layout_marginTop="25dp"
+        android:background="@drawable/roundedchart"
+        android:elevation="8px" />
 
     <com.polidea.rxandroidble2.sample.example4_characteristic.CustomLineChart
         android:id="@+id/chart"
