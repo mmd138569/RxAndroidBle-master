@@ -229,11 +229,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
                 android.R.layout.simple_list_item_1, array_list);
         listView.setAdapter(arrayAdapter);
+
         if (!readOutputView.getText().toString().isEmpty()) {
-            yval[i-1] =Float.parseFloat(String.valueOf(readOutputView.getText()));
-            
-            if (helper.insert(/*name.getText()*/ yval[i-1])) {
-              
+            yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+           // String  str = readOutputView.getText().toString();
+
+            if (helper.insert(/*name.getText()*/ yval[i - 1])) {
+
                 Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
@@ -247,15 +249,15 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //========================= refresh ===============
         float rangeHigh = 100f;
         float rangeLow = -7f;
-        float rangeLow2=103f;
-        float rangeHigh2=350f;
-        float rangeLow3=353f;
-        float rangeHigh3=400f;
+        float rangeLow2 = 103f;
+        float rangeHigh2 = 350f;
+        float rangeLow3 = 353f;
+        float rangeHigh3 = 400f;
         lineChart.setTouchEnabled(true);
         lineChart.setScaleEnabled(false);
-        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
-        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#dfdfdf"),rangeLow2,rangeHigh2,""));
-        lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#fef5e6"),rangeLow3,rangeHigh3,""));
+        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
 
 
         array_list.clear();
@@ -264,11 +266,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         listView.invalidateViews();
         listView.refreshDrawableState();
 
-        LineDataSet lineDataSet = new LineDataSet(linechart(yval,i), "lable");
+        LineDataSet lineDataSet = new LineDataSet(linechart(yval, i), "lable");
         i++;
-        ArrayList<ILineDataSet>iLineDataSets=new ArrayList<>();
+        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(lineDataSet);
-        LineData lineData=new LineData(iLineDataSets);
+        LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
 //need to fix the scale and the color of the chart
@@ -277,7 +279,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.getAxisLeft().setAxisMaximum(400f);
         lineChart.getAxisRight().setAxisMaximum(400f);
 
- //==================
+        //==================
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
         lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
@@ -289,7 +291,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
 
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-
 
 
         lineDataSet.setColor(GRAY);
@@ -312,8 +313,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
         lineChart.getDescription().setEnabled(false);
         lineChart.getXAxis().setAxisMaximum(24f);
-       setupPieChart(/*readOutputView.getText().toString()*/"80");
-       loadPieChartData(/*readOutputView.getText().toString()*/"80");/**/
+        setupPieChart(str);
+        loadPieChartData(str);/**/
     }
 
         ArrayList<Entry>linechart(float yval[],int i){
