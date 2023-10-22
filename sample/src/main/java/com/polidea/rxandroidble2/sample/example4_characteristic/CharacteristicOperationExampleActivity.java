@@ -19,9 +19,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +32,6 @@ import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
 import com.polidea.rxandroidble2.sample.util.HexString;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -66,6 +62,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @BindView(R.id.notify)
     Button notifyButton;*/
     private UUID characteristicUuid;
+
+    int i=1;
+    int x=0;
+    float a[] = new float[1000];
+
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
     private Observable<RxBleConnection> connectionObservable;
     private RxBleDevice bleDevice;
@@ -207,7 +208,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     }
     @OnClick(R.id.refresh)
     public void refreshing() {
-        float yval = 0;
+        float yval[] = new float[1000];
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
         final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
@@ -216,10 +217,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
                 android.R.layout.simple_list_item_1, array_list);
         listView.setAdapter(arrayAdapter);
-        if ( !readOutputView.getText().toString().isEmpty()) {
-            yval =Float.parseFloat(String.valueOf(readOutputView.getText()));
+        if (!readOutputView.getText().toString().isEmpty()) {
+            yval[i-1] =Float.parseFloat(String.valueOf(readOutputView.getText()));
             
-            if (helper.insert(/*name.getText()*/ yval)) {
+            if (helper.insert(/*name.getText()*/ yval[i-1])) {
               
                 Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
             } else {
@@ -251,7 +252,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         listView.invalidateViews();
         listView.refreshDrawableState();
 
-        LineDataSet lineDataSet = new LineDataSet(linechart(yval), "lable");
+        LineDataSet lineDataSet = new LineDataSet(linechart(yval,i), "lable");
+        i++;
         ArrayList<ILineDataSet>iLineDataSets=new ArrayList<>();
         iLineDataSets.add(lineDataSet);
         LineData lineData=new LineData(iLineDataSets);
@@ -300,14 +302,19 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.getXAxis().setAxisMaximum(24f);
 
     }
-    ArrayList<Entry>linechart(float yval){
+    ArrayList<Entry>linechart(float yval[],int i){
         ArrayList<Entry> dataset=new ArrayList<Entry>();
-      //  for(int j=0;j<12;j++) {
-        int j=1;
         dataset.add(new Entry(0,0));
-            dataset.add(new Entry(j,yval));
-        //}
-        j++;
+
+        for(int j=0;j<i;j++) {
+            if(yval[j]!=0){
+                a[x]=yval[j];
+                x++;
+            }
+        }
+        for(int z=0;z<i;z++) {
+            dataset.add(new Entry(z, a[z]));
+        }
         return dataset;
     }
    /* @OnClick(R.id.write)
