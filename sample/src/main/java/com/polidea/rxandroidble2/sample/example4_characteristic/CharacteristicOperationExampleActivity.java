@@ -1,6 +1,8 @@
 package com.polidea.rxandroidble2.sample.example4_characteristic;
 
 import static android.graphics.Color.GRAY;
+import static android.graphics.Color.GREEN;
+import static android.graphics.Color.RED;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
@@ -9,11 +11,18 @@ import android.graphics.Color;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -63,8 +72,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     Button notifyButton;*/
     private UUID characteristicUuid;
 
-    int i=1;
-    int x=0;
+    int i=1,x=0;
+    private PieChart pieChart;
+
     float a[] = new float[1000];
 
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
@@ -86,6 +96,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example4);
+
+        pieChart = findViewById(R.id.pichart);
         lineChart = findViewById(R.id.chart);
         ButterKnife.bind(this);
         String macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
@@ -300,20 +312,22 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
         lineChart.getDescription().setEnabled(false);
         lineChart.getXAxis().setAxisMaximum(24f);
-
+       setupPieChart(/*readOutputView.getText().toString()*/"80");
+       loadPieChartData(/*readOutputView.getText().toString()*/"80");/**/
     }
-    ArrayList<Entry>linechart(float yval[],int i){
-        ArrayList<Entry> dataset=new ArrayList<Entry>();
-        dataset.add(new Entry(0,0));
 
-        for(int j=0;j<i;j++) {
-            if(yval[j]!=0){
-                a[x]=yval[j];
-                x++;
+        ArrayList<Entry>linechart(float yval[],int i){
+        ArrayList<Entry> dataset=new ArrayList<Entry>();
+            int j=0;
+            dataset.add(new Entry(0,0));
+            for(j=0;j<i;j++) {
+                if(yval[j]!=0) {
+                    a[x] = yval[j];
+                    x++;
+                }
             }
-        }
         for(int z=0;z<i;z++) {
-            dataset.add(new Entry(z, a[z]));
+            dataset.add(new Entry((float) (z), a[z]));
         }
         return dataset;
     }
@@ -348,7 +362,96 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             compositeDisposable.add(disposable);
         }
     }*/
+  private void setupPieChart(String s) {
+      pieChart.setDrawHoleEnabled(true);
+      pieChart.setUsePercentValues(true);
+      pieChart.setEntryLabelTextSize(40);
+      pieChart.setEntryLabelColor(Color.BLACK);
+      pieChart.setCenterText(s);
+      pieChart.setCenterTextSize(40);
+      pieChart.getDescription().setEnabled(false);
 
+      Legend l = pieChart.getLegend();
+      l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+      l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
+      l.setOrientation(Legend.LegendOrientation.VERTICAL);
+      l.setDrawInside(false);
+      l.setEnabled(true);
+  }
+
+    private void loadPieChartData(String s) {
+        ArrayList<PieEntry> entries = new ArrayList<>();
+        entries.add(new PieEntry(0.2f, ""));
+
+
+    /*    ArrayList<Integer> colors = new ArrayList<>();
+        for (int color: ColorTemplate.MATERIAL_COLORS) {
+            colors.add(color);
+        }
+
+        for (int color: ColorTemplate.VORDIPLOM_COLORS) {
+            colors.add(color);
+        }*/
+
+
+        if(Integer.valueOf(s)<=120) {
+            PieDataSet dataSet = new PieDataSet(entries, "");
+            dataSet.setColors(GREEN);
+            int a=Integer.valueOf(s);
+            PieData data = new PieData(dataSet);
+            data.setDrawValues(false);
+            data.setValueFormatter(new PercentFormatter(pieChart));
+            pieChart.setData(data);
+            pieChart.invalidate();
+            pieChart.setHoleColor(Color.TRANSPARENT);//---
+            pieChart.setTouchEnabled(false);
+            pieChart.setMaxAngle(a*1f);
+            // pieChart.setRotation(-135);
+            pieChart.setHoleRadius(75f);
+            pieChart.setTransparentCircleRadius(60f);
+            pieChart.getLegend().setEnabled(false);
+            pieChart.setDrawRoundedSlices(true);
+            pieChart.animateY(1400, Easing.EaseInOutQuad);
+        }
+        else if ((Integer.valueOf(s)>120) &&(Integer.valueOf(s)<180) ){
+            PieDataSet dataSet = new PieDataSet(entries, "");
+            int a=Integer.valueOf(s);
+            dataSet.setColors(Color.rgb(255, 165, 0));
+            PieData data = new PieData(dataSet);
+            data.setDrawValues(false);
+            data.setValueFormatter(new PercentFormatter(pieChart));
+            pieChart.setData(data);
+            pieChart.invalidate();
+            pieChart.setHoleColor(Color.TRANSPARENT);//---
+            pieChart.setTouchEnabled(false);
+            pieChart.setMaxAngle(a*1.1f);
+            // pieChart.setRotation(-135);
+            pieChart.setHoleRadius(75f);
+            pieChart.setTransparentCircleRadius(60f);
+            pieChart.getLegend().setEnabled(false);
+            pieChart.setDrawRoundedSlices(true);
+            pieChart.animateY(1400, Easing.EaseInOutQuad);
+        }
+        else if(Integer.valueOf(s)>180){
+            PieDataSet dataSet = new PieDataSet(entries, "");
+            int a=Integer.valueOf(s);
+            dataSet.setColors(RED);
+            PieData data = new PieData(dataSet);
+            data.setDrawValues(false);
+            data.setValueFormatter(new PercentFormatter(pieChart));
+            pieChart.setData(data);
+            pieChart.invalidate();
+            pieChart.setHoleColor(Color.TRANSPARENT);//---
+            pieChart.setTouchEnabled(false);
+            pieChart.setMaxAngle(a*1f);
+            // pieChart.setRotation(-135);
+            pieChart.setHoleRadius(75f);
+            pieChart.setTransparentCircleRadius(60f);
+            pieChart.getLegend().setEnabled(false);
+            pieChart.setDrawRoundedSlices(true);
+            pieChart.animateY(1400, Easing.EaseInOutQuad);
+        }
+    }
     private boolean isConnected() {
         return bleDevice.getConnectionState() == RxBleConnection.RxBleConnectionState.CONNECTED;
     }
