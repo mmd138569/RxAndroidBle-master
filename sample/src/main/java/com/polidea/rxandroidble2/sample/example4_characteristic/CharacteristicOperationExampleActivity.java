@@ -28,7 +28,9 @@ import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Handler;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,11 +57,14 @@ import io.reactivex.subjects.PublishSubject;
 
 public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
+    ImageView top,butt,twotop,twobutt,left;
+
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
     @BindView(R.id.connect)
     TextView connectButton;
     @BindView(R.id.read_output)
     TextView readOutputView;
+
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;*/
    /* @BindView(R.id.write_input)
@@ -220,6 +225,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     }
     @OnClick(R.id.refresh)
     public void refreshing() {
+
+        twotop=findViewById(R.id.twotop);
+        left=findViewById(R.id.leFt);
+        butt=findViewById(R.id.butt);
+        twobutt=findViewById(R.id.twobutt);
+        top=findViewById(R.id.top);
+
         float yval[] = new float[1000];
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
         final ArrayList array_list = helper.getAllCotacts();
@@ -244,6 +256,41 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             // name.setError("Enter NAME");
             readOutputView.setError("Enter Salary");
         }
+     /*   if(yval[i-1]-yval[i-2]<5){
+            left.setVisibility(View.VISIBLE);
+            twobutt.setVisibility(View.INVISIBLE);
+            twotop.setVisibility(View.INVISIBLE);
+            top.setVisibility(View.INVISIBLE);
+            butt.setVisibility(View.INVISIBLE);
+        }
+        else if((yval[i-1]-yval[i-2]<15)&&(yval[i-1]-yval[i-2]>=10)){
+            left.setVisibility(View.INVISIBLE);
+            twobutt.setVisibility(View.INVISIBLE);
+            twotop.setVisibility(View.INVISIBLE);
+            top.setVisibility(View.VISIBLE);
+            butt.setVisibility(View.INVISIBLE);
+        }
+        else if((yval[i-2]-yval[i-1]<15)&&(yval[i-2]-yval[i-1]>=10)){
+            left.setVisibility(View.INVISIBLE);
+            twobutt.setVisibility(View.INVISIBLE);
+            twotop.setVisibility(View.INVISIBLE);
+            top.setVisibility(View.INVISIBLE);
+            butt.setVisibility(View.VISIBLE);
+        }
+        else if(yval[i-2]-yval[i-1]>=15){
+            left.setVisibility(View.INVISIBLE);
+            twobutt.setVisibility(View.VISIBLE);
+            twotop.setVisibility(View.INVISIBLE);
+            top.setVisibility(View.INVISIBLE);
+            butt.setVisibility(View.INVISIBLE);
+        }
+        else if(yval[i-1]-yval[i-2]>=15){
+            left.setVisibility(View.INVISIBLE);
+            twobutt.setVisibility(View.INVISIBLE);
+            twotop.setVisibility(View.VISIBLE);
+            top.setVisibility(View.INVISIBLE);
+            butt.setVisibility(View.INVISIBLE);
+        }*/
 //================================================
 
 //========================= refresh ===============
