@@ -256,35 +256,35 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             // name.setError("Enter NAME");
             readOutputView.setError("Enter Salary");
         }
-        if(yval[i-1]-yval[i-2]<5){
+        if((yval[i-1]-yval[i-2])<50){
             left.setVisibility(View.VISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.INVISIBLE);
         }
-        else if((yval[i-1]-yval[i-2]<15)&&(yval[i-1]-yval[i-2]>=10)){
+        else if(((yval[i-1]-yval[i-2])<150)&&((yval[i-1]-yval[i-2])>=100)){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.VISIBLE);
             butt.setVisibility(View.INVISIBLE);
         }
-        else if((yval[i-2]-yval[i-1]<15)&&(yval[i-2]-yval[i-1]>=10)){
+        else if(((yval[i-2]-yval[i-1])<150)&&((yval[i-2]-yval[i-1])>=100)){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.VISIBLE);
         }
-        else if(yval[i-2]-yval[i-1]>=15){
+        else if((yval[i-2]-yval[i-1])>=150){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.VISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.INVISIBLE);
         }
-        else if(yval[i-1]-yval[i-2]>=15){
+        else if((yval[i-1]-yval[i-2])>=150){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.VISIBLE);
