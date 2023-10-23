@@ -77,7 +77,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     Button notifyButton;*/
     private UUID characteristicUuid;
     String  str="0";
-    int i=1,x=0;
+    int i=2,x=0;
     private PieChart pieChart;
 
     float a[] = new float[1000];
@@ -256,7 +256,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             // name.setError("Enter NAME");
             readOutputView.setError("Enter Salary");
         }
-     /*   if(yval[i-1]-yval[i-2]<5){
+        if(yval[i-1]-yval[i-2]<5){
             left.setVisibility(View.VISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
@@ -290,7 +290,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             twotop.setVisibility(View.VISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.INVISIBLE);
-        }*/
+        }
 //================================================
 
 //========================= refresh ===============
