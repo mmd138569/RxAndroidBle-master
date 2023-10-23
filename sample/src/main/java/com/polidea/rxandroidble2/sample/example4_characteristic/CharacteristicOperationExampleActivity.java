@@ -71,7 +71,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @BindView(R.id.notify)
     Button notifyButton;*/
     private UUID characteristicUuid;
-    String  str="20";
+    String  str="0";
     int i=1,x=0;
     private PieChart pieChart;
 
@@ -328,7 +328,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 }
             }
         for(int z=0;z<i;z++) {
-            dataset.add(new Entry((float) (z), a[z]));
+            dataset.add(new Entry((float) (z*0.0833333), a[z]));
         }
         return dataset;
     }
@@ -406,7 +406,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             pieChart.invalidate();
             pieChart.setHoleColor(Color.TRANSPARENT);//---
             pieChart.setTouchEnabled(false);
-            pieChart.setMaxAngle(a*1f);
+            pieChart.setMaxAngle(360f);
             // pieChart.setRotation(-135);
             pieChart.setHoleRadius(75f);
             pieChart.setTransparentCircleRadius(60f);
@@ -425,7 +425,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             pieChart.invalidate();
             pieChart.setHoleColor(Color.TRANSPARENT);//---
             pieChart.setTouchEnabled(false);
-            pieChart.setMaxAngle(a*1.1f);
+            pieChart.setMaxAngle(360f);
             // pieChart.setRotation(-135);
             pieChart.setHoleRadius(75f);
             pieChart.setTransparentCircleRadius(60f);
@@ -444,7 +444,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             pieChart.invalidate();
             pieChart.setHoleColor(Color.TRANSPARENT);//---
             pieChart.setTouchEnabled(false);
-            pieChart.setMaxAngle(a*1f);
+            pieChart.setMaxAngle(360f);
             // pieChart.setRotation(-135);
             pieChart.setHoleRadius(75f);
             pieChart.setTransparentCircleRadius(60f);
