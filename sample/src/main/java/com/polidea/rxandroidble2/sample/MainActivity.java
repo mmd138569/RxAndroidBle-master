@@ -12,6 +12,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
+
 public class MainActivity extends AppCompatActivity {
     TextView textView;
     ImageView img;
@@ -20,23 +22,24 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_main);
 
         setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
-        bottom_animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.animation);
+        bottom_animation = AnimationUtils.loadAnimation(MainActivity.this, R.animator.animation);
         img = findViewById(R.id.imglogo);
         img.setAnimation(bottom_animation);
-        top_animation = AnimationUtils.loadAnimation(MainActivity.this, R.anim.textanimation);
+        top_animation = AnimationUtils.loadAnimation(MainActivity.this, R.animator.textanimation);
         textView = findViewById(R.id.txt);
         textView.setAnimation(top_animation);
         Handler h = new Handler();
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                Intent in = new Intent(MainActivity.this, warning.class);
+                Intent in = new Intent(MainActivity.this, ScanActivity.class);
                 startActivity(in);
                 finish();
             }
