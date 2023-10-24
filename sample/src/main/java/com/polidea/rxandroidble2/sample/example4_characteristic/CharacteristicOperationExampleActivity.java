@@ -64,7 +64,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView connectButton;
     @BindView(R.id.read_output)
     TextView readOutputView;
-
+    float yval[] = new float[1000];
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;*/
    /* @BindView(R.id.write_input)
@@ -232,7 +232,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         twobutt=findViewById(R.id.twobutt);
         top=findViewById(R.id.top);
 
-        float yval[] = new float[1000];
+
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
         final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
@@ -256,35 +256,47 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             // name.setError("Enter NAME");
             readOutputView.setError("Enter Salary");
         }
-        if((yval[i-1]-yval[i-2])<50){
+
+
+        float x=yval[i-1]-yval[i-2];
+        float y=yval[i-2]-yval[i-1];
+        Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
+
+        left.setVisibility(View.INVISIBLE);
+        twobutt.setVisibility(View.INVISIBLE);
+        twotop.setVisibility(View.INVISIBLE);
+        top.setVisibility(View.INVISIBLE);
+        butt.setVisibility(View.INVISIBLE);
+
+        if(((x<50)&&(x>=0))||(y<50)&&(y>=0)){
             left.setVisibility(View.VISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.INVISIBLE);
         }
-        else if(((yval[i-1]-yval[i-2])<150)&&((yval[i-1]-yval[i-2])>=100)){
+        else if((x<150)&&(x>=50)){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.VISIBLE);
             butt.setVisibility(View.INVISIBLE);
         }
-        else if(((yval[i-2]-yval[i-1])<150)&&((yval[i-2]-yval[i-1])>=100)){
+        else if((y<150)&&(y>=50)){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.VISIBLE);
         }
-        else if((yval[i-2]-yval[i-1])>=150){
+        else if(y>=150){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.VISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.INVISIBLE);
         }
-        else if((yval[i-1]-yval[i-2])>=150){
+        else if(x>=150){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.VISIBLE);
