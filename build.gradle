@@ -15,7 +15,6 @@ buildscript {
         classpath 'com.github.ben-manes:gradle-versions-plugin:0.21.0'
         classpath 'com.vanniktech:gradle-maven-publish-plugin:0.19.0'
         classpath 'gradle.plugin.org.codehaus.groovy:groovy-android-gradle-plugin:3.0.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath 'gradle.plugin.org.jetbrains.gradle.plugin.idea-ext:gradle-idea-ext:1.1.4'
     }
 }

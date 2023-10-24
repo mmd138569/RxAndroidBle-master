@@ -27,7 +27,7 @@ public class start extends AppCompatActivity {
         starting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(start.this, ScanActivity.class);
+                Intent in = new Intent(start.this, mainlogin.class);
                 startActivity(in);
                 finish();
             }

@@ -40,12 +40,16 @@ configurations.all {
 }
 
 dependencies {
+
     implementation project(path: ':rxandroidble')
     implementation rootProject.ext.libs.appcompat
     implementation rootProject.ext.libs.material_design
     implementation 'com.jakewharton:butterknife:10.2.3'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    //implementation 'androidx.appcompat:appcompat:1.6.1'
+
+   // testImplementation 'junit:junit:4.13.2'
+   // androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     implementation rootProject.ext.libs.rxandroid

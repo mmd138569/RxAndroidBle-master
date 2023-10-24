@@ -20,6 +20,9 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".mainlogin"
+            android:exported="false" />
+        <activity
             android:name=".start"
             android:exported="false" />
         <activity
