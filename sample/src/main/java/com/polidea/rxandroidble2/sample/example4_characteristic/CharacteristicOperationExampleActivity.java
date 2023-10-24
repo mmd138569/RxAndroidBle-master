@@ -57,7 +57,7 @@ import io.reactivex.subjects.PublishSubject;
 
 public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
-    ImageView top,butt,twotop,twobutt,left;
+    ImageView top,butt,twotop,twobutt,left,x2,x1;
 
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
     @BindView(R.id.connect)
@@ -231,7 +231,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         butt=findViewById(R.id.butt);
         twobutt=findViewById(R.id.twobutt);
         top=findViewById(R.id.top);
-
+        x1=findViewById(R.id.topmid);
+        x2=findViewById(R.id.buttmid);
 
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
         final ArrayList array_list = helper.getAllCotacts();
@@ -267,6 +268,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         twotop.setVisibility(View.INVISIBLE);
         top.setVisibility(View.INVISIBLE);
         butt.setVisibility(View.INVISIBLE);
+        x1.setVisibility(View.INVISIBLE);
+        x2.setVisibility(View.INVISIBLE);
 
         if(((x<50)&&(x>=0))||(y<50)&&(y>=0)){
             left.setVisibility(View.VISIBLE);
@@ -274,20 +277,46 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.INVISIBLE);
+            x1.setVisibility(View.INVISIBLE);
+            x2.setVisibility(View.INVISIBLE);
+
         }
-        else if((x<150)&&(x>=50)){
+        else if ((x<100)&&(x>=50)) {
+            left.setVisibility(View.INVISIBLE);
+            twobutt.setVisibility(View.INVISIBLE);
+            twotop.setVisibility(View.INVISIBLE);
+            top.setVisibility(View.INVISIBLE);
+            butt.setVisibility(View.INVISIBLE);
+            x1.setVisibility(View.VISIBLE);
+            x2.setVisibility(View.INVISIBLE);
+
+        }
+        else if ((y<100)&&(y>=50)) {
+            left.setVisibility(View.INVISIBLE);
+            twobutt.setVisibility(View.INVISIBLE);
+            twotop.setVisibility(View.INVISIBLE);
+            top.setVisibility(View.INVISIBLE);
+            butt.setVisibility(View.INVISIBLE);
+            x1.setVisibility(View.INVISIBLE);
+            x2.setVisibility(View.VISIBLE);
+        }
+        else if((x<150)&&(x>=100)){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.VISIBLE);
             butt.setVisibility(View.INVISIBLE);
+            x1.setVisibility(View.INVISIBLE);
+            x2.setVisibility(View.INVISIBLE);
         }
-        else if((y<150)&&(y>=50)){
+        else if((y<150)&&(y>=100)){
             left.setVisibility(View.INVISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.VISIBLE);
+            x1.setVisibility(View.INVISIBLE);
+            x2.setVisibility(View.INVISIBLE);
         }
         else if(y>=150){
             left.setVisibility(View.INVISIBLE);
@@ -295,6 +324,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             twotop.setVisibility(View.INVISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.INVISIBLE);
+            x1.setVisibility(View.INVISIBLE);
+            x2.setVisibility(View.INVISIBLE);
         }
         else if(x>=150){
             left.setVisibility(View.INVISIBLE);
@@ -302,6 +333,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             twotop.setVisibility(View.VISIBLE);
             top.setVisibility(View.INVISIBLE);
             butt.setVisibility(View.INVISIBLE);
+            x1.setVisibility(View.INVISIBLE);
+            x2.setVisibility(View.INVISIBLE);
         }
 //================================================
 

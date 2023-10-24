@@ -119,6 +119,18 @@
                 android:src="@drawable/l"
                 android:visibility="invisible" />
             <ImageView
+                android:id="@+id/topmid"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/x"
+                android:visibility="invisible" />
+            <ImageView
+                android:id="@+id/buttmid"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/x1"
+                android:visibility="invisible" />
+            <ImageView
                 android:id="@+id/leFt"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
