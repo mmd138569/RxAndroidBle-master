@@ -28,7 +28,7 @@ public class warning extends AppCompatActivity {
 
         setContentView(R.layout.activity_warning);
         Button buttonEnableBluetooth = findViewById(R.id.warningsection);
-        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.O_MR1){
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.TIRAMISU){
             if(ContextCompat.checkSelfPermission(warning.this, Manifest.permission.POST_NOTIFICATIONS)!= PackageManager.PERMISSION_GRANTED){
                 ActivityCompat.requestPermissions(warning.this,new String[]{Manifest.permission.POST_NOTIFICATIONS},101);
             }
