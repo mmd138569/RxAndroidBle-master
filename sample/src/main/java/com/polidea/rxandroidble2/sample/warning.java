@@ -37,7 +37,7 @@ public class warning extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent in = new Intent(warning.this, ScanActivity.class);
+                Intent in = new Intent(warning.this, start.class);
                 startActivity(in);
                 finish();
             }
