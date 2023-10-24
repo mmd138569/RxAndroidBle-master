@@ -121,7 +121,6 @@ public class ScanActivity extends AppCompatActivity {
 //============= some thing went wrong i can feel it ============
 
         if (bluetoothAdapter.isEnabled()) {
-            bluetoothAdapter.disable();
         } else {
             bluetoothAdapter.isEnabled();
         }
