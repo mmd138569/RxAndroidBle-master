@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.snackbar.Snackbar;
+
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.polidea.rxandroidble2.RxBleConnection;
@@ -50,6 +53,10 @@ public class ServiceDiscoveryExampleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+*/
         setContentView(R.layout.activity_example3);
         ButterKnife.bind(this);
         macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);

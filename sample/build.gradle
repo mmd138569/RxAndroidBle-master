@@ -14,12 +14,12 @@ repositories {
 android {
     namespace 'com.polidea.rxandroidble2.sample'
 
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.polidea.rxandroidble.sample"
         minSdkVersion 18
-        targetSdkVersion 31
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }

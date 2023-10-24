@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                Intent in = new Intent(MainActivity.this, ScanActivity.class);
+                Intent in = new Intent(MainActivity.this, warning.class);
                 startActivity(in);
                 finish();
             }
