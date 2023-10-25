@@ -10,23 +10,21 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
-
-public class importingSetting2 extends AppCompatActivity {
+public class whatsNew extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_importing_setting2);
-        Button bluetoothbtn =findViewById(R.id.bluetoothbtn);
-        bluetoothbtn.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_whats_new);
+        Button warningsection =findViewById(R.id.warningsection);
+        warningsection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(importingSetting2.this, whatsNew.class);
+                Intent in = new Intent(whatsNew.this, allertSound.class);
                 startActivity(in);
                 finish();
             }
@@ -35,7 +33,7 @@ public class importingSetting2 extends AppCompatActivity {
         txt_action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(importingSetting2.this, imoprtSetting1.class);
+                Intent in = new Intent(whatsNew.this, importingSetting2.class);
                 startActivity(in);
                 finish();
             }

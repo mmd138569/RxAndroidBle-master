@@ -20,6 +20,15 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".doNotDisturb"
+            android:exported="false" />
+        <activity
+            android:name=".allertSound"
+            android:exported="false" />
+        <activity
+            android:name=".whatsNew"
+            android:exported="false" />
+        <activity
             android:name=".importingSetting2"
             android:exported="false" />
         <activity
