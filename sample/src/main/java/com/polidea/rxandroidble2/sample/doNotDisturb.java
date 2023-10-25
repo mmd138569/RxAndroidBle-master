@@ -33,7 +33,7 @@ public class doNotDisturb extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (notificationManager.isNotificationPolicyAccessGranted()) {
                         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY);
-                        Intent intent=new Intent(doNotDisturb.this, ScanActivity.class);
+                        Intent intent=new Intent(doNotDisturb.this, allowAppAlways.class);
                         startActivity(intent);
                         finish();
                     } else {
