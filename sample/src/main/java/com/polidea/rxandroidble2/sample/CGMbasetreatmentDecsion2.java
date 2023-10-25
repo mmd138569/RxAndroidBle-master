@@ -1,0 +1,68 @@
+package com.polidea.rxandroidble2.sample;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
+
+public class CGMbasetreatmentDecsion2 extends AppCompatActivity {
+    Button CgmBtn;
+    float x1,x2,y1,y2;
+    TextView txt_action;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        setContentView(R.layout.activity_cgmbasetreatment_decsion2);
+        CgmBtn = findViewById(R.id.CgmBtn);
+        CgmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in =new Intent(CGMbasetreatmentDecsion2.this, ScanActivity.class);
+                startActivity(in);
+                finish();
+            }
+        });
+        txt_action = findViewById(R.id.txt_action);
+        txt_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in =new Intent(CGMbasetreatmentDecsion2.this,CGMbasetreatmentDecision.class);
+                startActivity(in);
+                finish();
+            }
+        });
+    }
+    public boolean onTouchEvent(MotionEvent Touchevent){
+        switch(Touchevent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                x1=Touchevent.getX();
+                y1=Touchevent.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2=Touchevent.getX();
+                y2=Touchevent.getY();
+                if(x1<x2){
+                    Intent in = new Intent(CGMbasetreatmentDecsion2.this,CGMbasetreatmentDecision.class);
+                    startActivity(in);
+                    finish();
+                }
+                else if(x1>x2){
+
+                }
+                break;
+        }
+        return false;
+    }
+}

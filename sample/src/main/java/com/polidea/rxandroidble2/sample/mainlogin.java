@@ -39,7 +39,7 @@ public class mainlogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(username.getText().length()!=0 && password.getText().length()!=0 ) {
-                    Intent in = new Intent(mainlogin.this, ScanActivity.class);
+                    Intent in = new Intent(mainlogin.this, CGMbasetreatmentDecision.class);
                     startActivity(in);
                     finishAffinity();
                     // if(username.getText()== && password.getText()==) {
