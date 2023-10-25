@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".imoprtSetting1"
+    android:background="#ffff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/darker_gray">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp"
+                android:textColor="#040303"
+                android:id="@+id/txt_action"
+                android:layout_width="200dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="Import Setting"
+                android:textAllCaps="false" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="15dp"
+            android:text="Your G6 app import your current settings."
+            android:textColor="#040303"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:text="Go to Settings and make sure they're correct."
+            android:textColor="#040303"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/bordernum"
+        android:text="Import settings"
+        android:textColor="#068FFF"
+        android:textAllCaps="true"
+
+        android:id="@+id/Importsettingsbtn"
+        />
+</RelativeLayout>

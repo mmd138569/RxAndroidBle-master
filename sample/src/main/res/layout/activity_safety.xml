@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".safety"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/darker_gray"
+            >
+            <TextView
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp"
+                android:textColor="#040303"
+                android:id="@+id/txt_action"
+                android:layout_width="105dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="Safety"
+                android:textAllCaps="false"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+
+                android:text="if you using Bluetooth headphones, speakers,etc. check where you hear your alarm/alerts - the smart device or the Bluetooth connected devices(such as headphones and speaker). "
+                android:textColor="#040303"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:text="Don't bring any portion of dexcom CGM into a roomwith MRI , CT, or diathermy medical equipment."
+                android:textColor="#040303"
+                android:textSize="18dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:text="Dexcom tests the compatibilty with your smart device operating system to make sure it works."
+                android:textColor="#040303"
+                android:textSize="18dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="15dp"
+                android:text="Always check the app compatibility page on dexcon.com before updateing your smart device oprating system"
+                android:textColor="#040303"
+                android:textSize="18dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/safetybtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bordernum"
+                android:text="continue to app"
+                android:textAllCaps="false"
+                android:textColor="@android:color/holo_blue_dark" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="More information"
+                android:textColor="#068FFF"
+                android:padding="5dp"
+                android:id="@+id/MoreInfo"
+                />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

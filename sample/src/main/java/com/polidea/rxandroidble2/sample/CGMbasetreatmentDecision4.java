@@ -47,7 +47,7 @@ public class CGMbasetreatmentDecision4 extends AppCompatActivity {
         understandbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in =new Intent(CGMbasetreatmentDecision4.this, ScanActivity.class);
+                Intent in =new Intent(CGMbasetreatmentDecision4.this, safety.class);
                 startActivity(in);
                 finish();
             }
