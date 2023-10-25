@@ -20,6 +20,18 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".bluetooth"
+            android:exported="false" />
+        <activity
+            android:name=".bluetoothTransmitter"
+            android:exported="false" />
+        <activity
+            android:name=".Transmitter"
+            android:exported="false" />
+        <activity
+            android:name=".AllowAppAlwaysRun2"
+            android:exported="false" />
+        <activity
             android:name=".allowAppAlways"
             android:exported="false" />
         <activity

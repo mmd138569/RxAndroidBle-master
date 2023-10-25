@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AllowAppAlwaysRun2">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/darker_gray">
+
+            <TextView
+                android:id="@+id/txt_action"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp"
+                android:textColor="#040303"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="App Is Always Run"
+                android:textAllCaps="false" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
+        <TextView
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:text="Battrey optimizing is set up correctly for the app"
+            android:textColor="#040303"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:text="keep battrey optimizing offf for the app, so it can runin the background."
+            android:textColor="#040303"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:text="Your alerts, and information sent to Follower, won't be delayed."
+            android:textColor="#040303"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/bordernum"
+        android:text="NEXT"
+        android:textColor="#068FFF"
+        android:textAllCaps="true"
+        android:id="@+id/NextBtn"
+        />
+</RelativeLayout>

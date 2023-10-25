@@ -47,7 +47,7 @@ public class allowAppAlways extends AppCompatActivity {
                     startService(new Intent(getApplicationContext(), MyService.class));
                 }*/
 
-                Intent in=new Intent(allowAppAlways.this, ScanActivity.class);
+                Intent in=new Intent(allowAppAlways.this, AllowAppAlwaysRun2.class);
                 startActivity(in);
                 finish();
             }
