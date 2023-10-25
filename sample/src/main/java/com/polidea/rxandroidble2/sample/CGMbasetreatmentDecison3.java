@@ -11,9 +11,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class CGMbasetreatmentDecsion2 extends AppCompatActivity {
+public class CGMbasetreatmentDecison3 extends AppCompatActivity {
     Button CgmBtn;
     float x1,x2,y1,y2;
+
     TextView txt_action;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,12 @@ public class CGMbasetreatmentDecsion2 extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_cgmbasetreatment_decsion2);
-        CgmBtn = findViewById(R.id.CgmBtn);
+        setContentView(R.layout.activity_cgmbasetreatment_decison3);
+        CgmBtn = findViewById(R.id.iundrestandBtn);
         CgmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in =new Intent(CGMbasetreatmentDecsion2.this,CGMbasetreatmentDecison3.class);
+                Intent in =new Intent(CGMbasetreatmentDecison3.this,CGMbasetreatmentDecision4.class);
                 startActivity(in);
                 finish();
             }
@@ -36,7 +37,7 @@ public class CGMbasetreatmentDecsion2 extends AppCompatActivity {
         txt_action.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in =new Intent(CGMbasetreatmentDecsion2.this,CGMbasetreatmentDecision.class);
+                Intent in =new Intent(CGMbasetreatmentDecison3.this,CGMbasetreatmentDecsion2.class);
                 startActivity(in);
                 finish();
             }
@@ -52,7 +53,7 @@ public class CGMbasetreatmentDecsion2 extends AppCompatActivity {
                 x2=Touchevent.getX();
                 y2=Touchevent.getY();
                 if(x1<x2){
-                    Intent in = new Intent(CGMbasetreatmentDecsion2.this,CGMbasetreatmentDecision.class);
+                    Intent in = new Intent(CGMbasetreatmentDecison3.this,CGMbasetreatmentDecsion2.class);
                     startActivity(in);
                     finish();
                 }

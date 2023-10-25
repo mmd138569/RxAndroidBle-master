@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CGMbasetreatmentDecison3"
+    android:background="#ffff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/darker_gray">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp"
+                android:textColor="#040303"
+                android:id="@+id/txt_action"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="CGM-Baseed Treatment Decisions"
+                android:textAllCaps="false" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="8dp"
+            android:text="Varify all these things are working in your smart device to get reading and alarm /alert:"
+            android:textColor="#040303"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="5dp"
+            android:text="Battery is charged"
+            android:textColor="#040303"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="5dp"
+            android:text="Bluetooth is on"
+            android:textColor="#040303"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="5dp"
+            android:text="Speaker and screen work"
+            android:textColor="#040303"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="18dp"
+            android:text="Smart device operating system is Dexcom app compatible "
+            android:textColor="#040303"
+            android:textSize="18dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="10dp"
+            android:text="Don't rely on Dexcom app until you understand hw to use it and your smart device's Bluetooth."
+            android:textColor="#040303"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/bordernum"
+        android:text="I UNDERSTANDT"
+        android:textColor="#068FFF"
+        android:textAllCaps="false"
+
+        android:id="@+id/iundrestandBtn"
+        />
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FULL SAFETY STATEMENT"
+        android:textColor="#068FFF"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:id="@+id/FullSaftyState" />
+</RelativeLayout>
