@@ -58,18 +58,12 @@
         android:rotation="180"
         android:layout_gravity="center"
         />
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/scan_toggle_btn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/start_scan"
         android:layout_gravity="center"
-        android:background="@drawable/bordernum"
         />
 
     <androidx.recyclerview.widget.RecyclerView
