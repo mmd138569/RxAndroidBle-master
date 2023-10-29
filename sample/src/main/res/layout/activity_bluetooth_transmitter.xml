@@ -76,7 +76,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="learn more"
-        android:background="@drawable/borderless"
         android:padding="5dp"
         android:textAllCaps="true"
         android:layout_marginBottom="15dp"
