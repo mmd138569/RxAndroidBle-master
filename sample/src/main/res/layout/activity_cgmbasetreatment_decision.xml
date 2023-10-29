@@ -80,8 +80,7 @@
         android:text="I UNDERSTANDT"
         android:textColor="#068FFF"
         android:textAllCaps="false"
-        android:id="@+id/Iundrstand"
-        />
+        android:id="@+id/Iundrstand" />
     <TextView
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -92,6 +91,5 @@
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
         android:padding="5dp"
-        android:id="@+id/FullSaftyState"
-        />
+        android:id="@+id/FullSaftyState" />
 </RelativeLayout>
