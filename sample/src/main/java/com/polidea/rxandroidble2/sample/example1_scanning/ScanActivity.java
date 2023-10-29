@@ -244,6 +244,8 @@ public class ScanActivity extends AppCompatActivity {
         return scanDisposable != null;
     }
 
+//============================================================================
+
     private void onAdapterItemClick(ScanResult scanResults) {
         final String macAddress = scanResults.getBleDevice().getMacAddress();
         final Intent intent = new Intent(this, ServiceDiscoveryExampleActivity.class);
@@ -253,6 +255,8 @@ public class ScanActivity extends AppCompatActivity {
                 ActivityOptions.makeCustomAnimation(ScanActivity.this, R.anim.animationint, R.anim.anim);
         ScanActivity.this.startActivity(intent, options.toBundle());*/
     }
+
+//==============================================================================
 
     private void onScanFailure(Throwable throwable) {
         if (throwable instanceof BleScanException) {
