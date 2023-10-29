@@ -80,7 +80,7 @@ public class ServiceDiscoveryExampleActivity extends AppCompatActivity {
     }
 
     private void onAdapterItemClick(DiscoveryResultsAdapter.AdapterItem item) {
-        
+
 //=================================== intnent the service to ===========================
 
         if (item.type == DiscoveryResultsAdapter.AdapterItem.CHARACTERISTIC) {
