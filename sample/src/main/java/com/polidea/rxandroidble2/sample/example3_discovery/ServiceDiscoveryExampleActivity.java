@@ -80,6 +80,8 @@ public class ServiceDiscoveryExampleActivity extends AppCompatActivity {
     }
 
     private void onAdapterItemClick(DiscoveryResultsAdapter.AdapterItem item) {
+        
+//=================================== intnent the service to ===========================
 
         if (item.type == DiscoveryResultsAdapter.AdapterItem.CHARACTERISTIC) {
             final Intent intent = CharacteristicOperationExampleActivity.startActivityIntent(this, macAddress, item.uuid);
@@ -92,6 +94,7 @@ public class ServiceDiscoveryExampleActivity extends AppCompatActivity {
         }
     }
 
+//========================================================================================
     private boolean isConnected() {
         return bleDevice.getConnectionState() == RxBleConnection.RxBleConnectionState.CONNECTED;
     }
