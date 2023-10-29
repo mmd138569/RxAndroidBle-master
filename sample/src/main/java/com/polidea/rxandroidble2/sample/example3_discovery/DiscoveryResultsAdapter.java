@@ -95,7 +95,9 @@ class DiscoveryResultsAdapter extends RecyclerView.Adapter<DiscoveryResultsAdapt
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        final int layout = viewType == AdapterItem.SERVICE ? R.layout.item_discovery_service : R.layout.item_discovery_characteristic;
+       final int layout = viewType == AdapterItem.SERVICE ? R.layout.item_discovery_service : R.layout.item_discovery_characteristic;
+        //   final int layout = viewType == AdapterItem.SERVICE ? R.layout.item_discovery_characteristic : R.layout.item_discovery_characteristic;
+
         final View itemView = LayoutInflater.from(parent.getContext()).inflate(layout, parent, false);
         itemView.setOnClickListener(onClickListener);
         return new ViewHolder(itemView);
