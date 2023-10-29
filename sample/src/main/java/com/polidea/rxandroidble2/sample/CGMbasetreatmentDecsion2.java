@@ -2,6 +2,7 @@ package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -28,8 +29,9 @@ public class CGMbasetreatmentDecsion2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in =new Intent(CGMbasetreatmentDecsion2.this,CGMbasetreatmentDecison3.class);
-                startActivity(in);
-                finish();
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(CGMbasetreatmentDecsion2.this, R.anim.animationint, R.anim.anim);
+                CGMbasetreatmentDecsion2.this.startActivity(in, options.toBundle());
             }
         });
         txt_action = findViewById(R.id.txt_action);

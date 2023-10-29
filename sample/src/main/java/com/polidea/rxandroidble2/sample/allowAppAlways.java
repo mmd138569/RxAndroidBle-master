@@ -3,6 +3,7 @@ package com.polidea.rxandroidble2.sample;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityManager;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -49,8 +50,9 @@ public class allowAppAlways extends AppCompatActivity {
                 }*/
 
                 Intent in=new Intent(allowAppAlways.this, AllowAppAlwaysRun2.class);
-                startActivity(in);
-                finish();
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(allowAppAlways.this, R.anim.animationint, R.anim.anim);
+                allowAppAlways.this.startActivity(in, options.toBundle());
             }
         });
 

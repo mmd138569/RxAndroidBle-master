@@ -2,6 +2,7 @@ package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -40,8 +41,9 @@ public class mainlogin extends AppCompatActivity {
             public void onClick(View v) {
                 if(username.getText().length()!=0 && password.getText().length()!=0 ) {
                     Intent in = new Intent(mainlogin.this, CGMbasetreatmentDecision.class);
-                    startActivity(in);
-                    finishAffinity();
+                    ActivityOptions options =
+                            ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
+                    mainlogin.this.startActivity(in, options.toBundle());
                     // if(username.getText()== && password.getText()==) {
                     // Intent in = new Intent(mainLogin.this, );
                     //}
@@ -72,8 +74,9 @@ public class mainlogin extends AppCompatActivity {
                 y2=Touchevent.getY();
                 if(x1<x2){
                     Intent in = new Intent(mainlogin.this,start.class);
-                    startActivity(in);
-                    finish();
+                    ActivityOptions options =
+                            ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
+                    mainlogin.this.startActivity(in, options.toBundle());
                 }
                 else if(x1>x2){
 

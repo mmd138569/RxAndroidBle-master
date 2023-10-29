@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import android.Manifest;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -38,8 +39,10 @@ public class warning extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent in = new Intent(warning.this, start.class);
-                startActivity(in);
-                finish();
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(warning.this, R.anim.animationint, R.anim.anim);
+                warning.this.startActivity(in, options.toBundle());
+
             }
         });
     }

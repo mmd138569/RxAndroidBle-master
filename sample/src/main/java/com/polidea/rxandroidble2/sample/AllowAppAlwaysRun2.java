@@ -2,6 +2,7 @@ package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,8 +28,9 @@ public class AllowAppAlwaysRun2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in =new Intent(AllowAppAlwaysRun2.this,Transmitter.class);
-                startActivity(in);
-                finish();
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(AllowAppAlwaysRun2.this, R.anim.animationint, R.anim.anim);
+                AllowAppAlwaysRun2.this.startActivity(in, options.toBundle());
             }
         });
         txt_action = findViewById(R.id.txt_action);

@@ -2,6 +2,7 @@ package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,8 +27,9 @@ public class safety extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(safety.this, imoprtSetting1.class);
-                startActivity(in);
-                finish();
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(safety.this, R.anim.animationint, R.anim.anim);
+                safety.this.startActivity(in, options.toBundle());
             }
         });
         TextView txt_action =findViewById(R.id.txt_action);

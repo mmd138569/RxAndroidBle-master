@@ -2,6 +2,7 @@ package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
@@ -34,8 +35,9 @@ public class doNotDisturb extends AppCompatActivity {
                     if (notificationManager.isNotificationPolicyAccessGranted()) {
                         notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY);
                         Intent intent=new Intent(doNotDisturb.this, allowAppAlways.class);
-                        startActivity(intent);
-                        finish();
+                        ActivityOptions options =
+                                ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
+                        doNotDisturb.this.startActivity(intent, options.toBundle());
                     } else {
                         Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
                         startActivity(intent);
@@ -48,8 +50,9 @@ public class doNotDisturb extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(doNotDisturb.this, allertSound.class);
-                startActivity(in);
-                finish();
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
+                doNotDisturb.this.startActivity(in, options.toBundle());
             }
         });
     }

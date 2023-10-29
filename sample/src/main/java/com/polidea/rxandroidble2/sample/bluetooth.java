@@ -5,6 +5,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.ActivityOptions;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
@@ -36,8 +37,9 @@ public class bluetooth extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                   Intent in = new Intent(bluetooth.this, ScanActivity.class);
-                 startActivity(in);
-                finish();
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(bluetooth.this, R.anim.animationint, R.anim.anim);
+                bluetooth.this.startActivity(in, options.toBundle());
                 if(ContextCompat.checkSelfPermission(bluetooth.this, android.Manifest.permission.BLUETOOTH_CONNECT)== PackageManager.PERMISSION_DENIED) {
                     if(Build.VERSION.SDK_INT>31){
                         ActivityCompat.requestPermissions(bluetooth.this,new String[]{Manifest.permission.BLUETOOTH_CONNECT},100);

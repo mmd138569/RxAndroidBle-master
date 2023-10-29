@@ -2,6 +2,7 @@ package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -25,8 +26,9 @@ public class Transmitter extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(Transmitter.this, bluetoothTransmitter.class);
-                startActivity(in);
-                finish();
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(Transmitter.this, R.anim.animationint, R.anim.anim);
+                Transmitter.this.startActivity(in, options.toBundle());
             }
         });
         TextView txt_action =findViewById(R.id.txt_action);

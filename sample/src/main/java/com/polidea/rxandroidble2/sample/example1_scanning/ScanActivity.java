@@ -3,6 +3,7 @@ package com.polidea.rxandroidble2.sample.example1_scanning;
 import android.Manifest;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.app.ActivityOptions;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
@@ -248,6 +249,9 @@ public class ScanActivity extends AppCompatActivity {
         final Intent intent = new Intent(this, ServiceDiscoveryExampleActivity.class);
         intent.putExtra(DeviceActivity.EXTRA_MAC_ADDRESS, macAddress);
         startActivity(intent);
+        /*ActivityOptions options =
+                ActivityOptions.makeCustomAnimation(ScanActivity.this, R.anim.animationint, R.anim.anim);
+        ScanActivity.this.startActivity(intent, options.toBundle());*/
     }
 
     private void onScanFailure(Throwable throwable) {
