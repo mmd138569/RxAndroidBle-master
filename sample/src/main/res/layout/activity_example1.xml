@@ -58,10 +58,12 @@
         android:rotation="180"
         android:layout_gravity="center"
         />
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="150sp"
+        android:layout_height="50dp"
+        android:background="@drawable/bordernum"
         android:id="@+id/scan_toggle_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
         android:text="@string/start_scan"
         android:layout_gravity="center"
         />
