@@ -416,49 +416,54 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         ArrayList<Entry> dataset=new ArrayList<Entry>();
             int j=0;
             dataset.add(new Entry(0,0));
-            if(i<=12) {
+            if(i<=13) {
                 for (j = 0; j < i; j++) {
                     if (yval[j] != 0) {
                         dataset.add(new Entry(j, yval[j]));
                     }
                 }
             }
-            else if(i>12){
-                yval[1]=yval[i-11];
+            else if(i>13){
+                yval[0]=yval[i-(i-1)];
+                dataset.add(new Entry(0, yval[0]));
+
+                yval[1]=yval[i-(i-2)];
                 dataset.add(new Entry(1, yval[1]));
 
-                yval[2]=yval[i-10];
+                yval[2]=yval[i-(i-3)];
                 dataset.add(new Entry(2, yval[2]));
 
-                yval[3]=yval[i-9];
+                yval[3]=yval[i-(i-4)];
                 dataset.add(new Entry(3, yval[3]));
 
-                yval[4]=yval[i-8];
+                yval[4]=yval[i-(i-5)];
                 dataset.add(new Entry(4, yval[4]));
 
-                yval[5]=yval[i-7];
+                yval[5]=yval[i-(i-6)];
                 dataset.add(new Entry(5, yval[5]));
 
-                yval[6]=yval[i-6];
+                yval[6]=yval[i-(i-7)];
                 dataset.add(new Entry(6, yval[6]));
 
-                yval[7]=yval[i-5];
+                yval[7]=yval[i-(i-8)];
                 dataset.add(new Entry(7, yval[7]));
 
-                yval[8]=yval[i-4];
+                yval[8]=yval[i-(i-9)];
                 dataset.add(new Entry(8, yval[8]));
 
-                yval[9]=yval[i-3];
+                yval[9]=yval[i-(i-10)];
                 dataset.add(new Entry(9, yval[9]));
 
-                yval[10]=yval[i-2];
+                yval[10]=yval[i-(i-11)];
                 dataset.add(new Entry(10, yval[10]));
 
-                yval[11]=yval[i-1];
+                yval[11]=yval[i-(i-12)];
                 dataset.add(new Entry(11, yval[11]));
 
-                yval[12]=yval[i];
-                dataset.add(new Entry(12, yval[12]));
+              /*  yval[12]=yval[i-(i-13)];
+                dataset.add(new Entry(12, yval[12]));*/
+
+
             }
         return dataset;
     }
