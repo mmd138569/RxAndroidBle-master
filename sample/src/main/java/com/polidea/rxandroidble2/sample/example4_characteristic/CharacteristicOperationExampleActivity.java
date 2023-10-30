@@ -407,7 +407,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineData.setDrawValues(false);
 
         lineChart.getDescription().setEnabled(false);
-        lineChart.getXAxis().setAxisMaximum(24f);
+        lineChart.getXAxis().setAxisMaximum(12f);
         setupPieChart(str);
         loadPieChartData(str);
     }
@@ -416,12 +416,50 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         ArrayList<Entry> dataset=new ArrayList<Entry>();
             int j=0;
             dataset.add(new Entry(0,0));
-            for(j=0;j<i;j++) {
-                if(yval[j]!=0) {
-                    dataset.add(new Entry(j, yval[j]));
+            if(i<=12) {
+                for (j = 0; j < i; j++) {
+                    if (yval[j] != 0) {
+                        dataset.add(new Entry(j, yval[j]));
+                    }
                 }
             }
+            else if(i>12){
+                yval[1]=yval[i-11];
+                dataset.add(new Entry(1, yval[1]));
 
+                yval[2]=yval[i-10];
+                dataset.add(new Entry(2, yval[2]));
+
+                yval[3]=yval[i-9];
+                dataset.add(new Entry(3, yval[3]));
+
+                yval[4]=yval[i-8];
+                dataset.add(new Entry(4, yval[4]));
+
+                yval[5]=yval[i-7];
+                dataset.add(new Entry(5, yval[5]));
+
+                yval[6]=yval[i-6];
+                dataset.add(new Entry(6, yval[6]));
+
+                yval[7]=yval[i-5];
+                dataset.add(new Entry(7, yval[7]));
+
+                yval[8]=yval[i-4];
+                dataset.add(new Entry(8, yval[8]));
+
+                yval[9]=yval[i-3];
+                dataset.add(new Entry(9, yval[9]));
+
+                yval[10]=yval[i-2];
+                dataset.add(new Entry(10, yval[10]));
+
+                yval[11]=yval[i-1];
+                dataset.add(new Entry(11, yval[11]));
+
+                yval[12]=yval[i];
+                dataset.add(new Entry(12, yval[12]));
+            }
         return dataset;
     }
    /* @OnClick(R.id.write)
