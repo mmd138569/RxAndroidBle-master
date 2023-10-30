@@ -78,7 +78,7 @@
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
         android:text="I UNDERSTANDT"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="#068FFF"
         android:textAllCaps="false"
         android:id="@+id/warningsection" />
     <TextView
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="FULL SAFETY STATEMENT"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="#068FFF"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
         android:padding="5dp"

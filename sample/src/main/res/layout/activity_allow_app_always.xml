@@ -154,7 +154,7 @@
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
         android:text="allow app to always run"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="#068FFF"
         android:textAllCaps="true"
         android:id="@+id/allowAppBtn"
         />
@@ -164,7 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="don't allow"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="#068FFF"
         android:layout_marginBottom="10dp"
         android:padding="5dp"
         android:layout_marginTop="20dp"

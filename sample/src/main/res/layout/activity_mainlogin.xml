@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
 
-            app:passwordToggleTint="#8F9193"
+            app:passwordToggleTint="#61677A"
             >
             <EditText
                 android:layout_width="250dp"

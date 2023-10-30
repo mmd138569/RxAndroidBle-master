@@ -109,7 +109,7 @@
                 android:background="@drawable/bordernum"
                 android:text="continue to app"
                 android:textAllCaps="false"
-                android:textColor="@android:color/holo_blue_dark" />
+                android:textColor="#068FFF" />
 
             <TextView
                 android:layout_width="match_parent"

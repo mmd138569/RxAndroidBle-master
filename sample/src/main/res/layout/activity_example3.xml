@@ -11,9 +11,12 @@
 
     <Button
         android:layout_gravity="center"
+        android:textColor="#068FFF"
         android:id="@+id/connect"
-        android:layout_width="250sp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:background="@drawable/bordernum"
         android:text="Connect &amp; discover services"/>
     <androidx.recyclerview.widget.RecyclerView
