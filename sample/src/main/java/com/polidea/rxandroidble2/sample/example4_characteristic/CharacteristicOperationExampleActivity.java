@@ -153,9 +153,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         },17000);
 
 
-
-
-
 //==================================================
     }
 
@@ -421,13 +418,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             dataset.add(new Entry(0,0));
             for(j=0;j<i;j++) {
                 if(yval[j]!=0) {
-                    a[x] = yval[j];
-                    x++;
+                    dataset.add(new Entry(j, yval[j]));
                 }
             }
-        for(int z=0;z<i;z++) {
-            dataset.add(new Entry((float) (z*0.0833333), a[z]));
-        }
+
         return dataset;
     }
    /* @OnClick(R.id.write)
