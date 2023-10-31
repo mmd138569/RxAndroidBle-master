@@ -79,7 +79,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     Button notifyButton;*/
     private UUID characteristicUuid;
     String  str="0";
-    int i=2,x=0;
+    int i=2,x=13;
     private PieChart pieChart;
 
     float a[] = new float[1000];
@@ -460,10 +460,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 yval[11]=yval[i-(i-12)];
                 dataset.add(new Entry(11, yval[11]));
 
-              /*  yval[12]=yval[i-(i-13)];
-                dataset.add(new Entry(12, yval[12]));*/
-
-
+               yval[12]=yval[i-(i-x)];
+                dataset.add(new Entry(12, yval[12]));
+                x++;
             }
         return dataset;
     }
