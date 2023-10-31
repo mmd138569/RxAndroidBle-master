@@ -423,6 +423,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                     }
                 }
             }
+//================== need for loop ===============
             else if(i>13){
                 yval[0]=yval[i-(i-1)];
                 dataset.add(new Entry(0, yval[0]));
