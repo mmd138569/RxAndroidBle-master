@@ -152,7 +152,14 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             }
         },17000);
 
-
+        lineChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in= new Intent(CharacteristicOperationExampleActivity.this,com.polidea.rxandroidble2.sample.landscapechart.class);
+                startActivity(in);
+                finish();
+            }
+        });
 //==================================================
     }
 
