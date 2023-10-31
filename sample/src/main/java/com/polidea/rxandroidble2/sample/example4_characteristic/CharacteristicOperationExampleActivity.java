@@ -378,6 +378,12 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //need to fix the scale and the color of the chart
         lineChart.setScaleEnabled(false);
         lineChart.getXAxis().setAxisMaximum(24f);
+
+
+
+        //lineChart.getXAxis().setAxisMinimum(0f);
+
+
         lineChart.getAxisLeft().setAxisMaximum(400f);
         lineChart.getAxisRight().setAxisMaximum(400f);
 
