@@ -33,6 +33,8 @@
             android:rotation="90"></com.polidea.rxandroidble2.sample.example4_characteristic.CustomLineChart>
     </LinearLayout>
     <Button
+        android:background="@drawable/bordernum"
+        android:textColor="#068FFF"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
@@ -49,8 +51,12 @@
         android:rotation="90"
         android:id="@+id/btton2"
         android:text="12HR"
+        android:background="@drawable/bordernum"
+        android:textColor="#068FFF"
         />
     <Button
+        android:background="@drawable/bordernum"
+        android:textColor="#068FFF"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_alignParentRight="true"
@@ -60,23 +66,27 @@
         android:text="8HR"
         />
     <Button
+        android:background="@drawable/bordernum"
+        android:textColor="#068FFF"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:rotation="90"
         android:layout_marginBottom="60dp"
-        android:id="@+id/btton4"
-        android:text="3HR"
+        android:id="@+id/btton5"
+        android:text="1HR"
         />
     <Button
+        android:background="@drawable/bordernum"
+        android:textColor="#068FFF"
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:rotation="90"
         android:layout_marginBottom="205dp"
-        android:id="@+id/btton5"
-        android:text="1HR"
+        android:id="@+id/btton4"
+        android:text="3HR"
         />
 </RelativeLayout>
