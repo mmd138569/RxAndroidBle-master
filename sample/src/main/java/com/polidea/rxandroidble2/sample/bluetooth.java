@@ -54,7 +54,7 @@ public class bluetooth extends AppCompatActivity {
                     bluetoothAdapter= BluetoothAdapter.getDefaultAdapter();
                 }
                 if(bluetoothAdapter.isEnabled()){
-                    bluetoothAdapter.disable();
+//                    bluetoothAdapter.disable();
                 }
                 else {
                     bluetoothAdapter.isEnabled();
