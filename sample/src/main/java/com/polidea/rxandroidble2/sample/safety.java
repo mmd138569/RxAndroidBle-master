@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class safety extends AppCompatActivity {
@@ -33,7 +34,17 @@ public class safety extends AppCompatActivity {
             }
         });
         TextView txt_action =findViewById(R.id.txt_action);
+        ImageView txt =findViewById(R.id.txt);
+
         txt_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(safety.this, CGMbasetreatmentDecision4.class);
+                startActivity(in);
+                finish();
+            }
+        });
+        txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(safety.this, CGMbasetreatmentDecision4.class);

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class CGMbasetreatmentDecison3 extends AppCompatActivity {
@@ -37,6 +38,15 @@ public class CGMbasetreatmentDecison3 extends AppCompatActivity {
         });
         txt_action = findViewById(R.id.txt_action);
         txt_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in =new Intent(CGMbasetreatmentDecison3.this,CGMbasetreatmentDecsion2.class);
+                startActivity(in);
+                finish();
+            }
+        });
+       ImageView txt = findViewById(R.id.txt);
+        txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in =new Intent(CGMbasetreatmentDecison3.this,CGMbasetreatmentDecsion2.class);

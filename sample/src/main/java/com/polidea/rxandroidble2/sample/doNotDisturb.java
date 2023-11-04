@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
@@ -53,6 +54,15 @@ public class doNotDisturb extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
                 doNotDisturb.this.startActivity(in, options.toBundle());
+            }
+        });
+        ImageView txt =findViewById(R.id.txt);
+        txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(doNotDisturb.this, allertSound.class);
+                startActivity(in);
+                finish();
             }
         });
     }

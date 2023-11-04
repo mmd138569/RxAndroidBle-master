@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
@@ -56,6 +57,15 @@ public class CGMbasetreatmentDecision4 extends AppCompatActivity {
         });
         btn_action = findViewById(R.id.btn_action);
         btn_action.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in =new Intent(CGMbasetreatmentDecision4.this,CGMbasetreatmentDecison3.class);
+                startActivity(in);
+                finish();
+            }
+        });
+        ImageView txt = findViewById(R.id.txt);
+        txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in =new Intent(CGMbasetreatmentDecision4.this,CGMbasetreatmentDecison3.class);
