@@ -18,7 +18,9 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
 import com.polidea.rxandroidble2.sample.example4_characteristic.CustomLineChart;
+import com.polidea.rxandroidble2.sample.example4_characteristic.DatabaseHelper;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,6 +36,7 @@ public class landscapechart extends AppCompatActivity {
     Button button3 ;
     Button button4;
     Button button5 ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -228,13 +231,47 @@ public class landscapechart extends AppCompatActivity {
         lineChart.getDescription().setEnabled(false);
     }
     private List<Entry> getRandomEntries(int entrySize) {
+        final DatabaseHelper helper1 = new DatabaseHelper(landscapechart.this);
+
+        final ArrayList array_list1 = helper1.getAllCotacts1();
+
         List<Entry> entries = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < entrySize; i++) {
-            entries.add(new Entry((float) (i*0.1), 15 + 5 * random.nextFloat()));
+        array_list1.clear();
+        array_list1.addAll(helper1.getAllCotacts1());
+        if(array_list1.size()>entrySize){
+            for (int i = 0; i < entrySize; i++) {
+                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+            }
+        }
+        else if ((array_list1.size()>144)&&(array_list1.size()<288)) {
+            for (int i = 0; i < 144; i++) {
+                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+            }
+        }
+        else if((array_list1.size()>96)&&(array_list1.size()<144)){
+            for (int i = 0; i < 96; i++) {
+                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+            }
+        }
+
+        else if((array_list1.size()>36)&&(array_list1.size()<96)){
+            for (int i = 0; i < 36; i++) {
+                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+            }
+        }
+
+        else if((array_list1.size()>12)&&(array_list1.size()<36)){
+            for (int i = 0; i < 12; i++) {
+                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+            }
+        }
+        else {
+            for (int i = 0; i < array_list1.size(); i++) {
+                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+            }
         }
         entries.add(new Entry((float) 12, 273));
-
         return entries;
     }
 }
