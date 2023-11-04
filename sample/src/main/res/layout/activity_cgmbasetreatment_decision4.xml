@@ -18,6 +18,8 @@
             android:background="@android:color/darker_gray">
 
             <TextView
+                android:layout_marginLeft="12dp"
+
                 android:id="@+id/btn_action"
                 android:layout_marginTop="10dp"
                 android:paddingTop="10dp"
