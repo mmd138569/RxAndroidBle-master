@@ -398,19 +398,27 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         RightAxis.setDrawAxisLine(false);
         RightAxis.setDrawGridLines(false);
 
+//==============================================================================
 
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        if(yval[i-1]%12==0){
+            lineDataSet.setDrawCircleHole(true);
 
+        }
+        else{
+            lineDataSet.setDrawCircles(true);
+
+        }
+
+//==============================================================================
 
         lineDataSet.setColor(TRANSPARENT);
         lineDataSet.setCircleColor(Color.BLACK);
-        lineDataSet.setDrawCircles(true);
         lineChart.getLegend().setEnabled(false);
         //---------
         //  lineChart.highlightValue(30,20);
         lineChart.invalidate();
 
-        lineDataSet.setDrawCircleHole(true);
         lineDataSet.setLineWidth((float) 0.3);
         lineDataSet.setCircleRadius(2);
         lineDataSet.setCircleHoleRadius(10);
