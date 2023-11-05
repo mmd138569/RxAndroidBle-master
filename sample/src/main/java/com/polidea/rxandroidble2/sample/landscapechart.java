@@ -244,34 +244,34 @@ public class landscapechart extends AppCompatActivity {
         array_list1.addAll(helper1.getAllCotacts1());
         if(array_list1.size()>entrySize){
             for (int i = 0; i < entrySize; i++) {
-                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
-        else if ((array_list1.size()>144)&&(array_list1.size()<288)) {
+        else if ((array_list1.size()>144)&&(array_list1.size()<=288)) {
             for (int i = 0; i < 144; i++) {
-                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
-        else if((array_list1.size()>96)&&(array_list1.size()<144)){
+        else if((array_list1.size()>96)&&(array_list1.size()<=144)){
             for (int i = 0; i < 96; i++) {
-                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
 
-        else if((array_list1.size()>36)&&(array_list1.size()<96)){
+        else if((array_list1.size()>36)&&(array_list1.size()<=96)){
             for (int i = 0; i < 36; i++) {
-                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
 
-        else if((array_list1.size()>12)&&(array_list1.size()<36)){
+        else if((array_list1.size()>12)&&(array_list1.size()<=36)){
             for (int i = 0; i < 12; i++) {
-                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
         else {
             for (int i = 0; i < array_list1.size(); i++) {
-                entries.add(new Entry((float) (i*0.1),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
         entries.add(new Entry((float) 12, 273));
