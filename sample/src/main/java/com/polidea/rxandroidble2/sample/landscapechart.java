@@ -40,6 +40,7 @@ public class landscapechart extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -190,7 +191,6 @@ public class landscapechart extends AppCompatActivity {
             lineChart.getXAxis().setAxisMaximum(1f);
             entrySize=12;}
         //lineChart.setTouchEnabled(true);
-
         lineChart.getAxisLeft().setAxisMaximum(270f);
         lineChart.getAxisRight().setAxisMaximum(270f);
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
@@ -208,8 +208,11 @@ public class landscapechart extends AppCompatActivity {
 
         lineChart.animateX(4000);
 
-        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize), "label");
-        line3.setColor(GRAY);
+        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize), "");
+
+        line3.setColor(Color.TRANSPARENT);
+
+        //line3.setColor(GRAY);
         line3.setCircleColor(Color.BLACK);
         line3.setDrawCircles(true);
         //--------

@@ -3,6 +3,7 @@ package com.polidea.rxandroidble2.sample.example4_characteristic;
 import static android.graphics.Color.GRAY;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
+import static android.graphics.Color.TRANSPARENT;
 
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
@@ -401,7 +402,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
 
 
-        lineDataSet.setColor(GRAY);
+        lineDataSet.setColor(TRANSPARENT);
         lineDataSet.setCircleColor(Color.BLACK);
         lineDataSet.setDrawCircles(true);
         lineChart.getLegend().setEnabled(false);
