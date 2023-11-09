@@ -4,6 +4,7 @@ import static android.graphics.Color.GRAY;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -70,9 +71,9 @@ public class landscapechart extends AppCompatActivity {
                         float rangeHigh = 100f;
                         float rangeLow = -7f;
                         float rangeLow2=103f;
-                        float rangeHigh2=250f;
-                        float rangeLow3=253f;
-                        float rangeHigh3=270f;
+                        float rangeHigh2=350;
+                        float rangeLow3=353;
+                        float rangeHigh3=400;
                         lineChart.setTouchEnabled(true);
                         lineChart.setScaleEnabled(false);
                         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
@@ -118,8 +119,8 @@ public class landscapechart extends AppCompatActivity {
     private void initLineChart(){
         //    lineChart.setTouchEnabled(true);
         lineChart.getXAxis().setAxisMaximum(24f);
-        lineChart.getAxisLeft().setAxisMaximum(270f);
-        lineChart.getAxisRight().setAxisMaximum(270f);
+        lineChart.getAxisLeft().setAxisMaximum(400f);
+        lineChart.getAxisRight().setAxisMaximum(400f);
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
         lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
@@ -191,8 +192,8 @@ public class landscapechart extends AppCompatActivity {
             lineChart.getXAxis().setAxisMaximum(1f);
             entrySize=12;}
         //lineChart.setTouchEnabled(true);
-        lineChart.getAxisLeft().setAxisMaximum(270f);
-        lineChart.getAxisRight().setAxisMaximum(270f);
+        lineChart.getAxisLeft().setAxisMaximum(400f);
+        lineChart.getAxisRight().setAxisMaximum(400f);
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
         lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
@@ -276,5 +277,11 @@ public class landscapechart extends AppCompatActivity {
         }
         entries.add(new Entry((float) 12, 273));
         return entries;
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, CharacteristicOperationExampleActivity.class);
+        startActivity(intent);
     }
 }

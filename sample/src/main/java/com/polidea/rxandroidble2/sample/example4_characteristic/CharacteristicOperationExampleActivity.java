@@ -1,6 +1,5 @@
 package com.polidea.rxandroidble2.sample.example4_characteristic;
 
-import static android.graphics.Color.GRAY;
 import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.TRANSPARENT;
@@ -30,8 +29,6 @@ import com.google.android.material.snackbar.Snackbar;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -45,6 +42,7 @@ import com.polidea.rxandroidble2.sample.DeviceActivity;
 import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
 import com.polidea.rxandroidble2.sample.util.HexString;
+import com.polidea.rxandroidble2.scan.ScanResult;
 
 import java.util.ArrayList;
 import java.util.UUID;
@@ -61,6 +59,7 @@ import io.reactivex.subjects.PublishSubject;
 public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
     ImageView top,butt,twotop,twobutt,left,x2,x1;
+
 
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
     @BindView(R.id.connect)
@@ -84,7 +83,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private PieChart pieChart;
 
     float a[] = new float[1000];
-
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
     private Observable<RxBleConnection> connectionObservable;
     private RxBleDevice bleDevice;
@@ -93,6 +91,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     //TextView name;
     private ListView listView;
     CustomLineChart lineChart;
+
+
+
     public static Intent startActivityIntent(Context context, String peripheralMacAddress, UUID characteristicUuid) {
         Intent intent = new Intent(context, CharacteristicOperationExampleActivity.class);
         intent.putExtra(DeviceActivity.EXTRA_MAC_ADDRESS, peripheralMacAddress);
@@ -106,11 +107,19 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         /*supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 */
-
         setContentView(R.layout.activity_example4);
 
         pieChart = findViewById(R.id.pichart);
+        if(Float.parseFloat(readOutputView.getText().toString())!=0){
+            lineChart = findViewById(R.id.chart);
+            lineChart.setVisibility(View.VISIBLE);
+        }
+        else if(Float.parseFloat(readOutputView.getText().toString())==0){
+            lineChart = findViewById(R.id.chart);
+            lineChart.setVisibility(View.INVISIBLE);
+        }
         lineChart = findViewById(R.id.chart);
+
         ButterKnife.bind(this);
         String macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
         characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
@@ -121,7 +130,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler handler=new Handler();
         Handler hand=new Handler();
         Handler nand =new Handler();
-
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

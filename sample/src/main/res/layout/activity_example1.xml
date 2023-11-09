@@ -58,6 +58,16 @@
         android:rotation="180"
         android:layout_gravity="center"
         />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            />
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="150sp"
         android:layout_height="50dp"
@@ -66,8 +76,9 @@
         android:textColor="#068FFF"
         android:text="@string/start_scan"
         android:layout_gravity="center"
+        android:visibility="visible"
         />
-
+    </RelativeLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/scan_results"
         android:layout_width="match_parent"

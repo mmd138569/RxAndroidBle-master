@@ -163,6 +163,7 @@ public class ScanActivity extends AppCompatActivity {
         if (isScanning()) {
             scanDisposable.dispose();
             a=true;
+
         } else {
             if (rxBleClient.isScanRuntimePermissionGranted()) {
                 scanBleDevices();
@@ -194,8 +195,9 @@ public class ScanActivity extends AppCompatActivity {
                         .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
                         .setCallbackType(ScanSettings.CALLBACK_TYPE_ALL_MATCHES)
                         .build(),
+                //===================================================================
                 new ScanFilter.Builder()
-//                            .setDeviceAddress("B4:99:4C:34:DC:8B")
+                            //.setDeviceAddress("1D:95:D4:C1:4A:49")
                         // add custom filters if needed
                         .build()
         )

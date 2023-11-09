@@ -85,13 +85,14 @@ class ScanResultsAdapter extends RecyclerView.Adapter<ScanResultsAdapter.ViewHol
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ScanResult rxBleScanResult = data.get(position);
-        holder.line1.setText(String.format(
-                Locale.getDefault(),
-                "%s (%s) %s",
-                rxBleScanResult.getBleDevice().getMacAddress(),
-                rxBleScanResult.getScanRecord().getDeviceName(),
-                rxBleScanResult.isConnectable()));
-        holder.line2.setText(String.format(Locale.getDefault(), "RSSI: %d", rxBleScanResult.getRssi()));
+//===================================================
+         holder.line1.setText(String.format(
+                    Locale.getDefault(),
+                    "%s (%s) %s",
+                    rxBleScanResult.getBleDevice().getMacAddress(),
+                    rxBleScanResult.getScanRecord().getDeviceName(),
+                    rxBleScanResult.isConnectable()));
+            holder.line2.setText(String.format(Locale.getDefault(), "RSSI: %d", rxBleScanResult.getRssi()));
     }
 
     @Override
