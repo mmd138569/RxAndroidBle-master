@@ -88,10 +88,11 @@ class ScanResultsAdapter extends RecyclerView.Adapter<ScanResultsAdapter.ViewHol
 //===================================================
          holder.line1.setText(String.format(
                     Locale.getDefault(),
-                    "%s (%s) %s",
-                    rxBleScanResult.getBleDevice().getMacAddress(),
-                    rxBleScanResult.getScanRecord().getDeviceName(),
-                    rxBleScanResult.isConnectable()));
+                    "%s",
+                    //"%s (%s) %s",
+                   // rxBleScanResult.getBleDevice().getMacAddress(),
+                    rxBleScanResult.getScanRecord().getDeviceName()));
+                  //  rxBleScanResult.isConnectable()));
             holder.line2.setText(String.format(Locale.getDefault(), "RSSI: %d", rxBleScanResult.getRssi()));
     }
 

@@ -197,7 +197,7 @@ public class ScanActivity extends AppCompatActivity {
                         .build(),
                 //===================================================================
                 new ScanFilter.Builder()
-                            //.setDeviceAddress("1D:95:D4:C1:4A:49")
+                            .setDeviceAddress("94:E6:86:05:12:76")
                         // add custom filters if needed
                         .build()
         )

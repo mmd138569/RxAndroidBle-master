@@ -73,6 +73,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView writeInput;*/
     @BindView(R.id.read)
     TextView readButton;
+
   /*  @BindView(R.id.write)
     Button writeButton;
     @BindView(R.id.notify)
@@ -110,14 +111,14 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_example4);
 
         pieChart = findViewById(R.id.pichart);
-        if(Float.parseFloat(readOutputView.getText().toString())!=0){
+      /*  if(Float.parseFloat(readOutputView.getText().toString())!=0){
             lineChart = findViewById(R.id.chart);
             lineChart.setVisibility(View.VISIBLE);
         }
         else if(Float.parseFloat(readOutputView.getText().toString())==0){
             lineChart = findViewById(R.id.chart);
             lineChart.setVisibility(View.INVISIBLE);
-        }
+        }*/
         lineChart = findViewById(R.id.chart);
 
         ButterKnife.bind(this);
