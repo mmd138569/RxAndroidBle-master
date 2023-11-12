@@ -9,6 +9,7 @@ import android.bluetooth.BluetoothManager;
 import android.bluetooth.le.BluetoothLeScanner;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -62,7 +63,7 @@ public class ScanActivity extends AppCompatActivity {
     private AnimatorSet animatorSet;
     private ImageView imgloading;
     BluetoothLeScanner btScanner;
-
+    String s;
     TextView scan1;
     TextView scan2;
     BluetoothAdapter bluetoothAdapter;
@@ -190,6 +191,9 @@ public class ScanActivity extends AppCompatActivity {
 //===========================================================================
 
     private void scanBleDevices() {
+        Intent intent=getIntent();
+        String str=intent.getStringExtra("my_mac");
+        s="94:E6:86:"+str;
         scanDisposable = rxBleClient.scanBleDevices(
                 new ScanSettings.Builder()
                         .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)
@@ -197,8 +201,8 @@ public class ScanActivity extends AppCompatActivity {
                         .build(),
                 //===================================================================
                 new ScanFilter.Builder()
-                            .setDeviceAddress("94:E6:86:05:12:76")
-                        // add custom filters if needed
+                            .setDeviceAddress(s)
+                        // add custom filters if needed  94:E6:86 :05:12:76
                         .build()
         )
                 .observeOn(AndroidSchedulers.mainThread())

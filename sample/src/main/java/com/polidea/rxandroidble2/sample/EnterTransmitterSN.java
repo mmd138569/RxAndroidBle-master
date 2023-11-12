@@ -3,7 +3,9 @@ package com.polidea.rxandroidble2.sample;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -27,15 +29,30 @@ public class EnterTransmitterSN extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent in = new Intent(EnterTransmitterSN.this, ScanActivity.class);
+
+                String str1=editText.getText().toString();
+
+                String sa=mystr(str1);
+                in.putExtra("my_mac",sa);
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(EnterTransmitterSN.this, R.anim.animationint, R.anim.anim);
-                EnterTransmitterSN.this.startActivity(in, options.toBundle());
-
-            }
+                EnterTransmitterSN.this.startActivity(in, options.toBundle());            }
            /* String str= editText.getText().toString();
             lastdigits(str);*/
 
         });
+
+    }
+    public String mystr(String str1){
+        String newString="";
+        String insert=":";
+        for(int i=0;i<6;i++){
+           newString+= str1.charAt(i);
+           if(i%2==1&&i!=5){
+               newString+=insert;
+           }
+        }
+        return newString;
     }
   /*  public static void lastdigits(String string){
         string
