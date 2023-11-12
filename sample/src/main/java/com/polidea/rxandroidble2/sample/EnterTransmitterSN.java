@@ -65,15 +65,6 @@ public class EnterTransmitterSN extends AppCompatActivity {
 
         return newString;
     }
-    public String checkstring(String str1){
-        String newString="";
-        int i=0;
-        for( i=0;i<6;i++){
-            newString+= str1.charAt(i);
-           newString.toUpperCase();
-        }
-        return newString;
-    }
   /*  public static void lastdigits(String string){
         string
     }*/
