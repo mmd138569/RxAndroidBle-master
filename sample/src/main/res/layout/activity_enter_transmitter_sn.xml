@@ -46,7 +46,9 @@
 
             />
         <EditText
-
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+            android:inputType="textFilter"
+            android:maxLength="6"
             android:id="@+id/lastdigits"
             android:padding="7dp"
             android:layout_width="match_parent"

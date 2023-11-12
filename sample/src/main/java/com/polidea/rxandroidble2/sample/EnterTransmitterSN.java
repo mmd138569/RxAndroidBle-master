@@ -34,10 +34,12 @@ public class EnterTransmitterSN extends AppCompatActivity {
                 Intent in = new Intent(EnterTransmitterSN.this, ScanActivity.class);
 
                 String str1=editText.getText().toString().trim();
+                str1.replaceAll("\\s","");
+
                 if(str1.matches("")){
-                    Toast.makeText(EnterTransmitterSN.this, "pls Enter something", Toast.LENGTH_SHORT).show();
+
                 }
-                 else
+                 else if(str1.length()==6)
                 {
                     String sa = mystr(str1);
                     in.putExtra("my_mac", sa);
@@ -45,6 +47,7 @@ public class EnterTransmitterSN extends AppCompatActivity {
                             ActivityOptions.makeCustomAnimation(EnterTransmitterSN.this, R.anim.animationint, R.anim.anim);
                     EnterTransmitterSN.this.startActivity(in, options.toBundle());
                 }
+
             }
 
            /* String str= editText.getText().toString();
@@ -58,6 +61,10 @@ public class EnterTransmitterSN extends AppCompatActivity {
         String insert=":";
         str1=str1.replaceAll("\\s+", "");
         for(int i=0;i<6;i++){
+            /*if(str1.charAt(i)=='A'||str1.charAt(i)=='a'||str1.charAt(i)=='b'||
+                    str1.charAt(i)=='B'||str1.charAt(i)=='c'||str1.charAt(i)=='C'||
+                    str1.charAt(i)=='d'||str1.charAt(i)=='D'||str1.charAt(i)=='e'||
+                    str1.charAt(i)=='E'||str1.charAt(i)=='f'||str1.charAt(i)=='F'){*/
            newString+= str1.charAt(i);
            if(i%2==1&&i!=5){
                newString+=insert;
