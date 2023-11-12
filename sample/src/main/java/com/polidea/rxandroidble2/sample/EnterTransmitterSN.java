@@ -12,8 +12,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
+
+import java.util.Locale;
 
 public class EnterTransmitterSN extends AppCompatActivity {
     @Override
@@ -31,12 +34,18 @@ public class EnterTransmitterSN extends AppCompatActivity {
                 Intent in = new Intent(EnterTransmitterSN.this, ScanActivity.class);
 
                 String str1=editText.getText().toString();
+                if(editText.getText()==null){
+                    Toast.makeText(EnterTransmitterSN.this, "pls Enter something", Toast.LENGTH_SHORT).show();
+                }
 
-                String sa=mystr(str1);
-                in.putExtra("my_mac",sa);
-                ActivityOptions options =
-                        ActivityOptions.makeCustomAnimation(EnterTransmitterSN.this, R.anim.animationint, R.anim.anim);
-                EnterTransmitterSN.this.startActivity(in, options.toBundle());            }
+
+                    String sa = mystr(str1);
+                    in.putExtra("my_mac", sa);
+                    ActivityOptions options =
+                            ActivityOptions.makeCustomAnimation(EnterTransmitterSN.this, R.anim.animationint, R.anim.anim);
+                    EnterTransmitterSN.this.startActivity(in, options.toBundle());
+                }
+
            /* String str= editText.getText().toString();
             lastdigits(str);*/
 
@@ -51,6 +60,17 @@ public class EnterTransmitterSN extends AppCompatActivity {
            if(i%2==1&&i!=5){
                newString+=insert;
            }
+        }
+        newString=newString.substring(0,8).toUpperCase() ;
+
+        return newString;
+    }
+    public String checkstring(String str1){
+        String newString="";
+        int i=0;
+        for( i=0;i<6;i++){
+            newString+= str1.charAt(i);
+           newString.toUpperCase();
         }
         return newString;
     }

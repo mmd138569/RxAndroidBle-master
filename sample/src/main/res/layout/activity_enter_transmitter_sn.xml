@@ -46,6 +46,7 @@
 
             />
         <EditText
+
             android:id="@+id/lastdigits"
             android:padding="7dp"
             android:layout_width="match_parent"
