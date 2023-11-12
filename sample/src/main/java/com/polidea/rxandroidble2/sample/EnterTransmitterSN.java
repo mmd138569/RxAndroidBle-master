@@ -33,18 +33,19 @@ public class EnterTransmitterSN extends AppCompatActivity {
             public void onClick(View v) {
                 Intent in = new Intent(EnterTransmitterSN.this, ScanActivity.class);
 
-                String str1=editText.getText().toString();
-                if(editText.getText()==null){
+                String str1=editText.getText().toString().trim();
+                if(str1.matches("")){
                     Toast.makeText(EnterTransmitterSN.this, "pls Enter something", Toast.LENGTH_SHORT).show();
                 }
-
-
+                 else
+                {
                     String sa = mystr(str1);
                     in.putExtra("my_mac", sa);
                     ActivityOptions options =
                             ActivityOptions.makeCustomAnimation(EnterTransmitterSN.this, R.anim.animationint, R.anim.anim);
                     EnterTransmitterSN.this.startActivity(in, options.toBundle());
                 }
+            }
 
            /* String str= editText.getText().toString();
             lastdigits(str);*/
@@ -55,6 +56,7 @@ public class EnterTransmitterSN extends AppCompatActivity {
     public String mystr(String str1){
         String newString="";
         String insert=":";
+        str1=str1.replaceAll("\\s+", "");
         for(int i=0;i<6;i++){
            newString+= str1.charAt(i);
            if(i%2==1&&i!=5){
@@ -62,7 +64,6 @@ public class EnterTransmitterSN extends AppCompatActivity {
            }
         }
         newString=newString.substring(0,8).toUpperCase() ;
-
         return newString;
     }
   /*  public static void lastdigits(String string){
