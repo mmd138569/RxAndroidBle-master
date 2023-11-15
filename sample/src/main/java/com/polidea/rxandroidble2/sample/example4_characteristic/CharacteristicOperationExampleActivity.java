@@ -127,7 +127,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         bleDevice = SampleApplication.getRxBleClient(this).getBleDevice(macAddress);
         connectionObservable = prepareConnectionObservable();
         //noinspection ConstantConditions
-        getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
+        //getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
         Handler handler=new Handler();
         Handler hand=new Handler();
         Handler nand =new Handler();

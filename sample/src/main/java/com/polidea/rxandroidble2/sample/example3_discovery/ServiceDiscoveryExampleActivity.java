@@ -61,7 +61,7 @@ public class ServiceDiscoveryExampleActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
         //noinspection ConstantConditions
-        getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
+        //getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
         bleDevice = SampleApplication.getRxBleClient(this).getBleDevice(macAddress);
         configureResultList();
     }
