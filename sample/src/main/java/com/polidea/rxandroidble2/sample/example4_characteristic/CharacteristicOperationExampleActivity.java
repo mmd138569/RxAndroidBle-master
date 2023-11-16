@@ -264,7 +264,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         listView.setAdapter(arrayAdapter);
 
         if (!readOutputView.getText().toString().isEmpty()) {
-            yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+//===========================================================================================================
+            yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));                    //==
+//===========================================================================================================
               str = readOutputView.getText().toString();
 
             if (helper.insert(/*name.getText()*/ yval[i - 1])) {
