@@ -103,7 +103,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         /*supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -161,7 +161,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
             }
         },17000);
-
+       // thread();
         lineChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,7 +172,41 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         });
 //==================================================
     }
+    /*public static void thread(){
+        Handler handler=new Handler();
+        Handler hand=new Handler();
+        Handler nand =new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
 
+                //connect
+                onConnectToggleClick();
+
+                //refreshing();
+                //test it before add the onReadClick();
+                //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
+
+                handler.postDelayed(this, 10700);
+                Runnable r=new Runnable() {
+                    @Override
+                    public void run() {
+                        onReadClick();
+                    }
+                };            nand.postDelayed(r, 3500);
+
+            }
+        },10700);
+        hand.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                refreshing();
+
+                hand.postDelayed(this, 17000);
+
+            }
+        },17000);
+    }*/
     private Observable<RxBleConnection> prepareConnectionObservable() {
         return bleDevice
                 .establishConnection(false)

@@ -16,6 +16,8 @@ import android.os.IBinder;
 
 import androidx.core.app.NotificationCompat;
 
+import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
+
 public class myservice extends Service {
     int time=0;
 
@@ -30,6 +32,7 @@ public class myservice extends Service {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                CharacteristicOperationExampleActivity.thread();
                 notif("it should be always run ", time);
                 time= time+100;
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
