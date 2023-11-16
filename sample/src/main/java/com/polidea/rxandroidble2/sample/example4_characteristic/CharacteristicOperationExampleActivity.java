@@ -514,7 +514,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             compositeDisposable.add(disposable);
         }
     }*/
-
   /*  @OnClick(R.id.notify)
     public void onNotifyClick() {
 
@@ -682,11 +681,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private boolean hasProperty(BluetoothGattCharacteristic characteristic, int property) {
         return characteristic != null && (characteristic.getProperties() & property) > 0;
     }
-
     /*private byte[] getInputBytes() {
         return HexString.hexToBytes(writeInput.getText().toString());
     }*/
-
     @Override
     protected void onPause() {
         super.onPause();
