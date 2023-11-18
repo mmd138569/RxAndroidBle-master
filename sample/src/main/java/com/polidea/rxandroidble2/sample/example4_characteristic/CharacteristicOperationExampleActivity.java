@@ -4,10 +4,12 @@ import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.TRANSPARENT;
 
+import android.app.ActivityManager;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -41,6 +43,8 @@ import com.polidea.rxandroidble2.RxBleDevice;
 import com.polidea.rxandroidble2.sample.DeviceActivity;
 import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
+import com.polidea.rxandroidble2.sample.landscapechart;
+import com.polidea.rxandroidble2.sample.myservice;
 import com.polidea.rxandroidble2.sample.util.HexString;
 import com.polidea.rxandroidble2.scan.ScanResult;
 
@@ -69,7 +73,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     float yval[] = new float[1000];
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;*/
-   /* @BindView(R.id.write_input)
+/* @BindView(R.id.write_input)
     TextView writeInput;*/
     @BindView(R.id.read)
     TextView readButton;
@@ -131,7 +135,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler handler=new Handler();
         Handler hand=new Handler();
         Handler nand =new Handler();
-        handler.postDelayed(new Runnable() {
+      /*  handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
@@ -160,16 +164,27 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 hand.postDelayed(this, 17000);
 
             }
-        },17000);
+        },17000);*/
+
        // thread();
         lineChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in= new Intent(CharacteristicOperationExampleActivity.this,com.polidea.rxandroidble2.sample.landscapechart.class);
+                Intent in= new Intent(CharacteristicOperationExampleActivity.this, landscapechart.class);
                 startActivity(in);
                 finish();
             }
         });
+        if (!foregroundServiceRunning()) {
+           /* Intent serviceinetnt = new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(serviceinetnt);
+            }*/
+            Intent in= new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(in);
+            }
+        }
 //==================================================
     }
     /*public static void thread(){
@@ -207,6 +222,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             }
         },17000);
     }*/
+
     private Observable<RxBleConnection> prepareConnectionObservable() {
         return bleDevice
                 .establishConnection(false)
@@ -667,7 +683,15 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private void onConnectionFinished() {
         updateUI(null);
     }
-
+    public boolean foregroundServiceRunning(){
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for(ActivityManager.RunningServiceInfo service: activityManager.getRunningServices(Integer.MAX_VALUE)) {
+            if(myservice.class.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
+    }
     private void onReadFailure(Throwable throwable) {
         //noinspection ConstantConditions
         Snackbar.make(findViewById(R.id.main), "Read error: " + throwable, Snackbar.LENGTH_SHORT).show();

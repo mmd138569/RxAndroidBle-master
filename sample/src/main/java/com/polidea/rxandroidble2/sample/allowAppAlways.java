@@ -56,13 +56,13 @@ public class allowAppAlways extends AppCompatActivity {
             }
         });
 
-        if (!foregroundServiceRunning()) {
+       /* if (!foregroundServiceRunning()) {
             Intent serviceinetnt = new Intent(allowAppAlways.this, myservice.class);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 startForegroundService(serviceinetnt);
             }
 
-        }
+        }*/
 
         txt_action =findViewById(R.id.txt_action);
         txt_action.setOnClickListener(new View.OnClickListener() {

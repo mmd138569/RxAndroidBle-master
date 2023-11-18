@@ -25,7 +25,16 @@ public class myservice extends Service {
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-
+        Handler h = new Handler();
+        if(time==0) {
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+                    notification("first time", time);
+                }
+            };
+            h.postDelayed(r, 5000);
+        }
         //onTaskRemoved(intent);
         Handler handler=new Handler();
 
@@ -33,13 +42,13 @@ public class myservice extends Service {
             @Override
             public void run() {
 
-                notif("it should be always run ", time);
+                notification("it should be always run ", time);
                 time= time+100;
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
                 //we write our stuff that want to run here this service is already run at the back ground
-                handler.postDelayed(this, 20000);
+                handler.postDelayed(this, 80000);
             }
-        },20000);
+        },80000);
         return START_STICKY;
     }
     @Override
@@ -59,7 +68,7 @@ public class myservice extends Service {
         startService(restartServiceIntent);
         super.onTaskRemoved(rootIntent);
     }
-    public void notif(String str,int BloodNum){
+    /*public void notif(String str,int BloodNum){
         String chanellID ="this is our id notif";
 
         Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
@@ -94,7 +103,7 @@ public class myservice extends Service {
         // builder.setLargeIcon(bitmap);
         //   builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap).bigLargeIcon(null));
 
-        builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
+      /*  builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
                 .setContentTitle("warning")
                 .setContentText(str+BloodNum)
                 .setLargeIcon(bitmap)
@@ -121,7 +130,76 @@ public class myservice extends Service {
             }
         }
         notificationManager.notify(1001,builder.build());
-    }
+    }*/
+      public void notification(String str,int BloodNum) {
+          String chanellID = "this is our id notify";
+          Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
+          //Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.logo2);
+          int maxHeight = 402, maxWidth = 360; // Maximum width for the bitmap in pixels
+          Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
+         // float aspectRatio = (float) width / height;
+        /*  if (width > maxWidth || height > maxHeight) {
+              // The bitmap is larger than the maximum dimensions, so resize it
+              if (width > height) {
+                  width = maxWidth;
+                  height = (int) (width / aspectRatio);
+              } else {
+                  height = maxHeight;
+                  width = (int) (height * aspectRatio);
+              }*/
+
+          //bitmap2 = chart.lineChart.getChartBitmap();
+         // bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
+/*
+            bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
+
+        }*/
+          //chart.customchart();
+          NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), chanellID);
+          Notification notification = builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
+                  .setContentTitle("warning!")
+                  .setContentText(str + BloodNum)
+                  .setAutoCancel(true)
+                  .setOngoing(true)
+                  .setVibrate(null)
+                  .setSound(null)
+                  .setVisibility(NotificationCompat.VISIBILITY_SECRET)
+                  .setPriority(NotificationCompat.PRIORITY_LOW)
+                  .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap))
+                  .build();
+          builder.setLargeIcon(bitmap);
+          builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap).bigLargeIcon(null));
+          builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
+                  .setContentTitle("warning")
+                  .setContentText(str + BloodNum)
+                  .setLargeIcon(bitmap)
+                  .setAutoCancel(false)
+                  .setOngoing(true)
+                  .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap2).bigLargeIcon(null))
+                  .build();
+          //here
+          Intent intent = new Intent(getApplicationContext(), CharacteristicOperationExampleActivity.class);
+          intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+          intent.putExtra("data", "some value come here");
+          PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
+          builder.setContentIntent(pendingIntent);
+          NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BASE) {
+              NotificationChannel notificationChannel = notificationManager.getNotificationChannel(chanellID);
+              if (notificationChannel == null) {
+                  //here we mute the notification
+                  int importance = NotificationManager.IMPORTANCE_NONE;
+                  notificationChannel = new NotificationChannel(chanellID, "somethings", importance);
+                  notificationChannel.setLightColor(Color.GREEN);
+                  notificationChannel.enableVibration(true);
+                  notificationManager.createNotificationChannel(notificationChannel);
+                  startForeground(1001, notification);
+
+              }
+          }
+          notificationManager.notify(1001, builder.build());
+      }
+
     private void startMyOwnForeground(){
         String NOTIFICATION_CHANNEL_ID = "com.example.simpleapp";
         String channelName = "My Background Service";
