@@ -32,7 +32,7 @@ public class myservice extends Service {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                CharacteristicOperationExampleActivity.thread();
+
                 notif("it should be always run ", time);
                 time= time+100;
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
