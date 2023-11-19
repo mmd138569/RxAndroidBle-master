@@ -20,17 +20,22 @@ import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOp
 
 public class myservice extends Service {
     int time=0;
-
+    int songUrl;
     public myservice() {
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         Handler h = new Handler();
+        if (intent != null && intent.getExtras() != null){
+            songUrl = intent.getIntExtra("YOUR_KEY_SONG_NAME",0);
+        }
         if(time==0) {
             Runnable r = new Runnable() {
                 @Override
                 public void run() {
-                    notification("first time", time);
+
+                    notification("first time", songUrl);
+
                 }
             };
             h.postDelayed(r, 5000);
@@ -42,7 +47,7 @@ public class myservice extends Service {
             @Override
             public void run() {
 
-                notification("it should be always run ", time);
+                notification("it should be always run ", songUrl);
                 time= time+100;
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
                 //we write our stuff that want to run here this service is already run at the back ground

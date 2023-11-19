@@ -316,6 +316,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         if (!readOutputView.getText().toString().isEmpty()) {
 //===========================================================================================================
             yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));                    //==
+            Intent intent  = new Intent(this, myservice.class);
+
+            int songUrl=Integer.parseInt(String.valueOf(readOutputView.getText()));
+            intent.putExtra("YOUR_KEY_SONG_NAME", songUrl);
+            startService(intent);
 //===========================================================================================================
               str = readOutputView.getText().toString();
 
