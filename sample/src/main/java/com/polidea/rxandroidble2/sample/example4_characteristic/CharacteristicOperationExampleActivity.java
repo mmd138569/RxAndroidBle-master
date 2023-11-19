@@ -135,17 +135,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler handler=new Handler();
         Handler hand=new Handler();
         Handler nand =new Handler();
-        if (!foregroundServiceRunning()) {
-           /* Intent serviceinetnt = new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(serviceinetnt);
-            }*/
-            Intent in= new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(in);
-            }
-        }
-        handler.postDelayed(new Runnable() {
+      /*  handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
@@ -174,7 +164,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 hand.postDelayed(this, 17000);
 
             }
-        },17000);
+        },17000);*/
 
        // thread();
         lineChart.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +175,16 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        if (!foregroundServiceRunning()) {
+           /* Intent serviceinetnt = new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(serviceinetnt);
+            }*/
+            Intent in= new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(in);
+            }
+        }
 //==================================================
     }
     /*public static void thread(){
