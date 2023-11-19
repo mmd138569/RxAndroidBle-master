@@ -135,7 +135,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler handler=new Handler();
         Handler hand=new Handler();
         Handler nand =new Handler();
-      /*  handler.postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
@@ -164,7 +164,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 hand.postDelayed(this, 17000);
 
             }
-        },17000);*/
+        },17000);
 
        // thread();
         lineChart.setOnClickListener(new View.OnClickListener() {
