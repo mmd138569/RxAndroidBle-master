@@ -162,7 +162,7 @@ public class myservice extends Service {
             bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
 
         }
-          CharacteristicOperationExampleActivity.customchart();
+         // CharacteristicOperationExampleActivity.customchart();
           NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), chanellID);
           Notification notification = builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
                   .setContentTitle("warning!")

@@ -88,7 +88,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     int i=2,x=13;
     private PieChart pieChart;
 
-    float a[] = new float[1000];
+    boolean a=false;
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
     private Observable<RxBleConnection> connectionObservable;
     private RxBleDevice bleDevice;
@@ -131,61 +131,63 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
         bleDevice = SampleApplication.getRxBleClient(this).getBleDevice(macAddress);
         connectionObservable = prepareConnectionObservable();
-        lineChart.invalidate();
+        if(a==false) {
+            lineChart.invalidate();
 
-        //XAxis xAxis=lineChart.getXAxis();
-        LineDataSet lineDataSet = new LineDataSet(linechart1(), "data set");
-        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
-        iLineDataSets.add(lineDataSet);
-        LineData lineData = new LineData(iLineDataSets);
-        lineChart.setData(lineData);
-        lineChart.invalidate();
-        //lineChart.setBackgroundColor(Color.G);
-        float rangeHigh = 10.5f;
-        float rangeLow = -1f;
-        float rangeLow2 = 11f;
-        float rangeHigh2 = 38f;
-        float rangeLow3 = 38.5f;
-        float rangeHigh3 = 61f;
-        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
-        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
-        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
-        lineChart.getLegend().setEnabled(false);
+            //XAxis xAxis=lineChart.getXAxis();
+            LineDataSet lineDataSet = new LineDataSet(linechart1(), "data set");
+            ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
+            iLineDataSets.add(lineDataSet);
+            LineData lineData = new LineData(iLineDataSets);
+            lineChart.setData(lineData);
+            lineChart.invalidate();
+            //lineChart.setBackgroundColor(Color.G);
+            float rangeHigh = 10.5f;
+            float rangeLow = -1f;
+            float rangeLow2 = 11f;
+            float rangeHigh2 = 38f;
+            float rangeLow3 = 38.5f;
+            float rangeHigh3 = 61f;
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+            lineChart.getLegend().setEnabled(false);
 
 
-        lineChart.setNoDataText("No Data Insert");
-        lineDataSet.setColor(GRAY);
-        lineDataSet.setCircleColors(Color.BLACK);
-        lineDataSet.setDrawCircles(true);
-        lineDataSet.setDrawCircleHole(true);
-        lineDataSet.setLineWidth((float) 0.3);
-        lineDataSet.setCircleRadius(2);
-        lineDataSet.setCircleHoleRadius(10);
-        lineDataSet.setValueTextColor(Color.GRAY);
-        lineDataSet.setDrawValues(false);
-        lineChart.getDescription().setEnabled(false);
-        //lineChart.setDrawGridBackground(true);
-        //lineChart.setDrawBorders(true);
-        //xAxis.isEnabled();
+            lineChart.setNoDataText("No Data Insert");
+            lineDataSet.setColor(GRAY);
+            lineDataSet.setCircleColors(Color.BLACK);
+            lineDataSet.setDrawCircles(true);
+            lineDataSet.setDrawCircleHole(true);
+            lineDataSet.setLineWidth((float) 0.3);
+            lineDataSet.setCircleRadius(2);
+            lineDataSet.setCircleHoleRadius(10);
+            lineDataSet.setValueTextColor(Color.GRAY);
+            lineDataSet.setDrawValues(false);
+            lineChart.getDescription().setEnabled(false);
+            //lineChart.setDrawGridBackground(true);
+            //lineChart.setDrawBorders(true);
+            //xAxis.isEnabled();
 
-        YAxis left = lineChart.getAxisLeft();
-        left.setDrawGridLines(false);
-        left.setDrawAxisLine(false); // no axis line
-        left.setDrawGridLines(false); // no grid lines
-        left.setDrawZeroLine(true);
+            YAxis left = lineChart.getAxisLeft();
+            left.setDrawGridLines(false);
+            left.setDrawAxisLine(false); // no axis line
+            left.setDrawGridLines(false); // no grid lines
+            left.setDrawZeroLine(true);
 
-        YAxis leftAxis = lineChart.getAxisLeft();
+            YAxis leftAxis = lineChart.getAxisLeft();
 
-        lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
-        lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
-        lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal
+            lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
+            lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
+            lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal
 
-        leftAxis.setTextSize(0f);//put it bottom
-        leftAxis.setTextColor(Color.TRANSPARENT);
-        leftAxis.setDrawAxisLine(false);
-        leftAxis.setDrawGridLines(false);
-        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-
+            leftAxis.setTextSize(0f);//put it bottom
+            leftAxis.setTextColor(Color.TRANSPARENT);
+            leftAxis.setDrawAxisLine(false);
+            leftAxis.setDrawGridLines(false);
+            lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+            a=true;
+        }
         //noinspection ConstantConditions
         //getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
         Handler handler=new Handler();
@@ -300,7 +302,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
 
        lineChart.invalidate();
-
        //XAxis xAxis=lineChart.getXAxis();
        LineDataSet lineDataSet = new LineDataSet(linechart1(), "data set");
        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
@@ -355,6 +356,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
 
        lineChart.animateX(4000);
+
    }
     @OnClick(R.id.connect)
     public void onConnectToggleClick() {
