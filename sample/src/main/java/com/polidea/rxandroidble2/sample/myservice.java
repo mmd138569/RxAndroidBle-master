@@ -19,6 +19,9 @@ import androidx.core.app.NotificationCompat;
 import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
 
 public class myservice extends Service {
+    Bitmap bitmap2;
+    int width = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
+    int height = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
     int time=0;
     int songUrl;
     public myservice() {
@@ -142,8 +145,8 @@ public class myservice extends Service {
           //Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.logo2);
           int maxHeight = 402, maxWidth = 360; // Maximum width for the bitmap in pixels
           Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
-         // float aspectRatio = (float) width / height;
-        /*  if (width > maxWidth || height > maxHeight) {
+          float aspectRatio = (float) width / height;
+         if (width > maxWidth || height > maxHeight) {
               // The bitmap is larger than the maximum dimensions, so resize it
               if (width > height) {
                   width = maxWidth;
@@ -151,15 +154,15 @@ public class myservice extends Service {
               } else {
                   height = maxHeight;
                   width = (int) (height * aspectRatio);
-              }*/
+              }
 
-          //bitmap2 = chart.lineChart.getChartBitmap();
-         // bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
-/*
+          bitmap2 = CharacteristicOperationExampleActivity.lineChart.getChartBitmap();
+          //bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
+
             bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
 
-        }*/
-          //chart.customchart();
+        }
+          CharacteristicOperationExampleActivity.customchart();
           NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), chanellID);
           Notification notification = builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
                   .setContentTitle("warning!")
