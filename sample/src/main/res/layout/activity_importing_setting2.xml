@@ -36,7 +36,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="Import Settings"
+                android:text="@string/importset"
                 android:textAllCaps="false"
                 />
         </RelativeLayout>
@@ -52,7 +52,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="NEXT"
+        android:text="@string/next"
         android:textColor="#068FFF"
         android:textAllCaps="true"
         android:id="@+id/bluetoothbtn"
