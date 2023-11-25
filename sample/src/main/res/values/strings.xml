@@ -75,6 +75,11 @@
     <string name="sas">Speaker and screen work</string>
     <string name="sdo">Smart device operating system is Dexcom app compatible </string>
     <string name="dro">Don\'t rely on Dexcom app until you understand hw to use it and your smart device's Bluetooth.</string>
+    <string name="tdv">Treatment Decsions Video</string>
+    <string name="ucm">you can make treatment decisions with your Dexcom G6 when:</string>
+    <string name="ysm">your symptoms match your reading</string>
+    <string name="USA">you see a number AND the arrow</string>
+    <string name="tty">Talk to your healthcare professional about using Dexcom G6 for treatment decisions."</string>
 
 
 

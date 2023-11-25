@@ -36,7 +36,7 @@
                 android:layout_width="300dp"
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
-                android:text="CGM-Baseed Treatment Decisions"
+                android:text="@string/CGM"
                 android:textAllCaps="false"
                 />
         </RelativeLayout>
@@ -57,7 +57,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="15dp"
-            android:text="Treatment Decsions Video"
+            android:text="@string/tdv"
             android:textStyle="bold"
             android:textColor="#040303"
             android:textSize="18dp" />
@@ -67,7 +67,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="15dp"
-            android:text="you can make treatment decisions with your Dexcom G6 when:"
+            android:text="@string/ucm"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -77,7 +77,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="5dp"
-            android:text="your symptoms match your reading"
+            android:text="@string/ysm"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -86,7 +86,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="10dp"
-            android:text="you see a number AND the arrow"
+            android:text="@string/USA"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -95,7 +95,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="10dp"
-            android:text="Talk to your healthcare professional about using Dexcom G6 for treatment decisions."
+            android:text="@string/tty"
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
@@ -109,7 +109,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="I UNDERSTANDT"
+        android:text="@string/iundrstand"
         android:textColor="#068FFF"
         android:textAllCaps="false"
 
@@ -120,7 +120,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FULL SAFETY STATEMENT"
+        android:text="@string/fullsaftey"
         android:textColor="#068FFF"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
