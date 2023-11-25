@@ -141,11 +141,11 @@ public class myservice extends Service {
     }*/
       public void notification(String str,int BloodNum) {
           String chanellID = "this is our id notify";
-          Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
-       //   Bitmap bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
+       //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
+          Bitmap bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
           int maxHeight = 402, maxWidth = 360; // Maximum width for the bitmap in pixels
-          Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
-         // Bitmap bitmap2=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
+         // Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
+          Bitmap bitmap2=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
           float aspectRatio = (float) width / height;
          if (width > maxWidth || height > maxHeight) {
               // The bitmap is larger than the maximum dimensions, so resize it
