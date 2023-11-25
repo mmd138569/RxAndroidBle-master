@@ -36,7 +36,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="Alert Sounds"
+                android:text="@string/as"
                 android:textAllCaps="false" />
         </RelativeLayout>
 
@@ -50,7 +50,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginBottom="15dp"
-            android:text="Setting allows alerts to soundeven when mute or Do Not Disturb are on."
+            android:text="@string/saa"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -60,7 +60,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginBottom="5dp"
-            android:text="These can't be silenced:"
+            android:text="@string/tcb"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -69,7 +69,7 @@
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:layout_marginBottom="5dp"
-            android:text="Urgent Low"
+            android:text="@string/ul"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -78,7 +78,7 @@
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:layout_marginBottom="5dp"
-            android:text="Transmitter Failure"
+            android:text="@string/tf"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -87,7 +87,7 @@
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
             android:layout_marginBottom="5dp"
-            android:text="Sensor Failure"
+            android:text="@string/sf"
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
@@ -101,7 +101,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="NEXT"
+        android:text="@string/next"
         android:textColor="#068FFF"
         android:textAllCaps="true"
         android:id="@+id/NxtBtn" />

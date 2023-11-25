@@ -96,6 +96,13 @@
     <string name="da10">10-da sensor session</string>
     <string name="Etu">Easy-to-use sensor applicator</string>
     <string name="st">Smaller transmitter</string>
+    <string name="as">Alert Sounds</string>
+    <string name="saa">Setting allows alerts to soundeven when mute or Do Not Disturb are on.</string>
+    <string name="tcb">These can\'t be silenced:</string>
+    <string name="ul">Urgent Low</string>
+    <string name="tf">Transmitter Failure</string>
+    <string name="sf">Sensor Failure</string>
+
 
 
 
