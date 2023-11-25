@@ -86,7 +86,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private UUID characteristicUuid;
     String  str="0";
     int i=2,x=13;
-    private PieChart pieChart;
+    public static PieChart pieChart;
 
     boolean a=false;
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
@@ -704,7 +704,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             compositeDisposable.add(disposable);
         }
     }*/
-  private void setupPieChart(String s) {
+  public void setupPieChart(String s) {
       pieChart.setDrawHoleEnabled(true);
       pieChart.setUsePercentValues(true);
       pieChart.setEntryLabelTextSize(40);
@@ -732,7 +732,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         return dataset;
     }
 
-    private void loadPieChartData(String s) {
+    public void loadPieChartData(String s) {
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(0.2f, ""));
 
