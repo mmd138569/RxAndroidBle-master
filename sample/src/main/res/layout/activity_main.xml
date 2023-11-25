@@ -21,7 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="welcome!"
+            android:text="@string/welcome"
             android:layout_gravity="center"
             android:textSize="30dp"
             android:textColor="@android:color/darker_gray"
@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Version 0.0.1"
+        android:text="@string/Version"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"

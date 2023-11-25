@@ -47,4 +47,12 @@
     <string name="error_undocumented_scan_throttle_retry">Try in %d seconds</string>
     <string name="error_bluetooth_cannot_start">Unable to start scanning</string>
     <string name="error_unknown_error">Unknown error</string>
+
+
+
+    <string name="welcome">welcome!</string>
+    <string name="Version">Version 0.0.1</string>
+    <string name="intor1">welcome!use youre product instructions along with this app to help you get start.</string>
+    <string name="intro2">Before getting started, make sure your smart device is connected to the internet</string>
+    <string name="button1">Let\'s Get Started</string>
 </resources>
