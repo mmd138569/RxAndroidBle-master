@@ -80,6 +80,13 @@
     <string name="ysm">your symptoms match your reading</string>
     <string name="USA">you see a number AND the arrow</string>
     <string name="tty">Talk to your healthcare professional about using Dexcom G6 for treatment decisions."</string>
+    <string name="Safety">Safety</string>
+    <string name="iyub">if you using Bluetooth headphones, speakers,etc. check where you hear your alarm/alerts - the smart device or the Bluetooth connected devices(such as headphones and speaker). </string>
+    <string name="dbap">Don\'t bring any portion of dexcom CGM into a roomwith MRI , CT, or diathermy medical equipment.</string>
+    <string name="dttc">Dexcom tests the compatibilty with your smart device operating system to make sure it works.</string>
+    <string name="act">Always check the app compatibility page on dexcon.com before updateing your smart device oprating system</string>
+    <string name="continuetoapp">continue to app</string>
+    <string name="moreinfo">More information</string>
 
 
 

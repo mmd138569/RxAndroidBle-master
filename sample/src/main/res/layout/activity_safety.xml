@@ -39,7 +39,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="Safety"
+                android:text="@string/Safety"
                 android:textAllCaps="false"
                 />
         </RelativeLayout>
@@ -67,7 +67,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="15dp"
 
-                android:text="if you using Bluetooth headphones, speakers,etc. check where you hear your alarm/alerts - the smart device or the Bluetooth connected devices(such as headphones and speaker). "
+                android:text="@string/iyub"
                 android:textColor="#040303"
                 android:textSize="18dp" />
 
@@ -81,7 +81,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="15dp"
-                android:text="Don't bring any portion of dexcom CGM into a roomwith MRI , CT, or diathermy medical equipment."
+                android:text="@string/dbap"
                 android:textColor="#040303"
                 android:textSize="18dp" />
 
@@ -95,7 +95,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="15dp"
-                android:text="Dexcom tests the compatibilty with your smart device operating system to make sure it works."
+                android:text="@string/dttc"
                 android:textColor="#040303"
                 android:textSize="18dp" />
 
@@ -105,7 +105,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="15dp"
-                android:text="Always check the app compatibility page on dexcon.com before updateing your smart device oprating system"
+                android:text="@string/act"
                 android:textColor="#040303"
                 android:textSize="18dp" />
 
@@ -118,7 +118,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/bordernum"
-                android:text="continue to app"
+                android:text="@string/continuetoapp"
                 android:textAllCaps="false"
                 android:textColor="#068FFF" />
 
@@ -129,7 +129,7 @@
                 android:layout_marginRight="50dp"
                 android:layout_marginBottom="20dp"
                 android:gravity="center"
-                android:text="More information"
+                android:text="@string/moreinfo"
                 android:textColor="#068FFF"
                 android:padding="5dp"
                 android:id="@+id/MoreInfo"
