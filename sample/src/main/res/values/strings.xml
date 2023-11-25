@@ -87,6 +87,9 @@
     <string name="act">Always check the app compatibility page on dexcon.com before updateing your smart device oprating system</string>
     <string name="continuetoapp">continue to app</string>
     <string name="moreinfo">More information</string>
+    <string name="importset">Import Setting</string>
+    <string name="yg6">Your G6 app import your current settings.</string>
+    <string name="gtsa">Go to Settings and make sure they\'re correct.</string>
 
 
 

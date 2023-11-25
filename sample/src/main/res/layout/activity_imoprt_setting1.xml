@@ -36,7 +36,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="Import Setting"
+                android:text="@string/importset"
                 android:textAllCaps="false" />
         </RelativeLayout>
 
@@ -47,7 +47,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="15dp"
-            android:text="Your G6 app import your current settings."
+            android:text="@string/yg6"
             android:textColor="#040303"
             android:textSize="18dp" />
 
@@ -57,7 +57,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="10dp"
-            android:text="Go to Settings and make sure they're correct."
+            android:text="@string/gtsa"
             android:textColor="#040303"
             android:textSize="18dp" />
 
@@ -72,7 +72,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="Import settings"
+        android:text="@string/importset"
         android:textColor="#068FFF"
         android:textAllCaps="true"
 
