@@ -37,7 +37,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="CGM-Baseed Treatment Decisions"
+                android:text="@string/CGM"
                 android:textAllCaps="false" />
         </RelativeLayout>
 
@@ -48,7 +48,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="8dp"
-            android:text="Varify all these things are working in your smart device to get reading and alarm /alert:"
+            android:text="@string/vat"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -58,7 +58,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="5dp"
-            android:text="Battery is charged"
+            android:text="@string/bic"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -67,7 +67,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="5dp"
-            android:text="Bluetooth is on"
+            android:text="@string/bio"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -76,7 +76,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="5dp"
-            android:text="Speaker and screen work"
+            android:text="@string/sas"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -85,7 +85,7 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="18dp"
-            android:text="Smart device operating system is Dexcom app compatible "
+            android:text="@string/sdo"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -94,7 +94,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="10dp"
-            android:text="Don't rely on Dexcom app until you understand hw to use it and your smart device's Bluetooth."
+            android:text="@string/dro"
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
@@ -108,7 +108,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="I UNDERSTANDT"
+        android:text="@string/iundrstand"
         android:textColor="#068FFF"
         android:textAllCaps="false"
 
@@ -119,7 +119,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FULL SAFETY STATEMENT"
+        android:text="@string/fullsaftey"
         android:textColor="#068FFF"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"

@@ -69,6 +69,12 @@
     <string name="iundrstand">I UNDERSTANDT</string>
     <string name="fullsaftey">FULL SAFETY STATEMENT</string>
     <string name="cbt">When you have a number and an arrow, you can use your CGM to make treatment desicsions like treating for a low or dosing for a hight.</string>
+    <string name="vat">Varify all these things are working in your smart device to get reading and alarm /alert:</string>
+    <string name="bic">Battery is charged</string>
+    <string name="bio">Bluetooth is on</string>
+    <string name="sas">Speaker and screen work</string>
+    <string name="sdo">Smart device operating system is Dexcom app compatible </string>
+    <string name="dro">Don\'t rely on Dexcom app until you understand hw to use it and your smart device's Bluetooth.</string>
 
 
 
