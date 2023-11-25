@@ -38,7 +38,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="CGM-Baseed Treatment Decisions"
+                android:text="@string/CGM"
                 android:textAllCaps="false" />
         </RelativeLayout>
         <ImageView
@@ -52,7 +52,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="15dp"
-            android:text="Make treatment decisions with your Dexcom G6 when your symptoms match your CGM reading ."
+            android:text="@string/mtd"
             android:textColor="#040303"
             android:textSize="18dp" />
 
@@ -62,7 +62,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="15dp"
-            android:text="Trust your body. if your reading doesn't  matchhow you feel , take a fingerstick before treating."
+            android:text="@string/tyd"
             android:textColor="#040303"
             android:textSize="18dp" />
 
@@ -72,7 +72,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="15dp"
-            android:text="When in doubt, get your meter out."
+            android:text="@string/wid"
             android:textColor="#040303"
             android:textSize="18dp" />
 
@@ -87,7 +87,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="I UNDERSTANDT"
+        android:text="@string/iundrstand"
         android:textColor="#068FFF"
         android:textAllCaps="false"
         android:id="@+id/Iundrstand" />
@@ -96,7 +96,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FULL SAFETY STATEMENT"
+        android:text="@string/fullsaftey"
         android:textColor="#068FFF"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"

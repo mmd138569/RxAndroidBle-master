@@ -62,4 +62,15 @@
     <string name="password">   Password</string>
     <string name="eyeu">Enter your email username</string>
     <string name="ifmuop">i forgot my username or password</string>
+    <string name="CGM">CGM-Baseed Treatment Decisions</string>
+    <string name="mtd">Make treatment decisions with your Dexcom G6 when your symptoms match your CGM reading .</string>
+    <string name="tyd">Trust your body. if your reading doesn\'t  matchhow you feel , take a fingerstick before treating.</string>
+    <string name="wid">When in doubt, get your meter out.</string>
+    <string name="iundrstand">I UNDERSTANDT</string>
+    <string name="fullsaftey">FULL SAFETY STATEMENT</string>
+
+
+
+
+
 </resources>

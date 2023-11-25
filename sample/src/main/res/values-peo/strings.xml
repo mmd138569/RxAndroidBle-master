@@ -61,6 +61,12 @@
     <string name="password">   رمز   </string>
     <string name="eyeu">ایمیل خود را وارد کنید </string>
     <string name="ifmuop">رمز یا ایمیل خود را فراموش کرده ام</string>
+    <string name="CGM">سیستم بهبود تصمیم</string>
+    <string name="mtd">Make treatment decisions with your Dexcom G6 when your symptoms match your CGM reading .</string>
+    <string name="tyd">Trust your body. if your reading doesn\'t  matchhow you feel , take a fingerstick before treating.</string>
+    <string name="wid">When in doubt, get your meter out.</string>
+    <string name="iundrstand">I UNDERSTANDT</string>
+    <string name="fullsaftey">FULL SAFETY STATEMENT</string>
 
 
 
