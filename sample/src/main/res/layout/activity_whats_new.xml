@@ -36,7 +36,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="What's New in G6"
+                android:text="@string/wni"
                 android:textAllCaps="false" />
         </RelativeLayout>
 
@@ -47,7 +47,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="15dp"
-            android:text="Your G6 include new features like:"
+            android:text="@string/yg6i"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -56,7 +56,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="5dp"
-            android:text="10-da sensor session"
+            android:text="@string/da10"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -65,7 +65,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="5dp"
-            android:text="Easy-to-use sensor applicator"
+            android:text="@string/Etu"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -74,7 +74,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="10dp"
-            android:text="Smaller transmitter"
+            android:text="@string/st"
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
@@ -88,7 +88,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="I UNDERSTANDT"
+        android:text="@string/iundrstand"
         android:textColor="#068FFF"
         android:textAllCaps="false"
         android:id="@+id/warningsection" />
@@ -97,7 +97,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FULL SAFETY STATEMENT"
+        android:text="@string/fullsaftey"
         android:textColor="#068FFF"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
