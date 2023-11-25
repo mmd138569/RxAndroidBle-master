@@ -54,5 +54,14 @@
     <string name="intor1">    خوش امدید! دستورالعمل این نرم افزار به شما برای شروع کردن کمک میکند</string>
     <string name="intro2">    قبل از شروع مطمئن شوید که گوشی همرا شما متصل به اینترنت است</string>
     <string name="button1">برای شروع اینجا کلیک کنید</string>
+    <string name="login">ورود</string>
+    <string name="SignUp">ایجاد حساب</string>
+    <string name="userid">ایدی کاربر</string>
+    <string name="Email">    ایمیل   </string>
+    <string name="password">   رمز   </string>
+    <string name="eyeu">ایمیل خود را وارد کنید </string>
+    <string name="ifmuop">رمز یا ایمیل خود را فراموش کرده ام</string>
+
+
 
 </resources>

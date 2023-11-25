@@ -55,4 +55,11 @@
     <string name="intor1">welcome!use youre product instructions along with this app to help you get start.</string>
     <string name="intro2">Before getting started, make sure your smart device is connected to the internet</string>
     <string name="button1">Let\'s Get Started</string>
+    <string name="login">Log in</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="userid">User ID</string>
+    <string name="Email">    Email</string>
+    <string name="password">   Password</string>
+    <string name="eyeu">Enter your email username</string>
+    <string name="ifmuop">i forgot my username or password</string>
 </resources>
