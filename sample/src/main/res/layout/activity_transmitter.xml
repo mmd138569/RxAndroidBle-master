@@ -35,7 +35,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="Transmitter"
+                android:text="@string/trans"
                 android:textAllCaps="false" />
 
         </RelativeLayout>
@@ -47,7 +47,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="30dp"
-            android:text="Your transmitter sends sensor glucose readings to you smart device."
+            android:text="@string/yts"
             android:textColor="#040303"
             android:textSize="18dp" />
         <ImageView
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="The next few screens will walk you through how to connect your transmitter to your smart device."
+            android:text="@string/tnfs"
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
@@ -76,7 +76,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="NEXT"
+        android:text="@string/next"
         android:textColor="#068FFF"
         android:textAllCaps="true"
 

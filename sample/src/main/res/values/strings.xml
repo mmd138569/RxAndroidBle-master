@@ -122,6 +122,9 @@
     <string name="Boi">Battrey optimizing is set up correctly for the app</string>
     <string name="kbo">keep battery optimizing off for the app, so it can running the background.</string>
     <string name="yaa">Your alerts, and information sent to Follower, won\'t be delayed.</string>
+    <string name="trans">Transmitter</string>
+    <string name="yts">Your transmitter sends sensor glucose readings to you smart device.</string>
+    <string name="tnfs">The next few screens will walk you through how to connect your transmitter to your smart device.</string>
 
 
 
