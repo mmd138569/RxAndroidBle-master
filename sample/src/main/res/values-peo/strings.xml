@@ -129,4 +129,7 @@
     <string name="yta">Your transmitter and smart device connect using Bluetooth.</string>
     <string name="boy">Bluetooth on your smart device needs to be on in order for the system to work.</string>
     <string name="learn">learn more</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="bmbo">Bluetooth must be on for your G6 system to work. it pairs your transmitter with your app.</string>
+    <string name="Tt">than tap</string>
 </resources>
