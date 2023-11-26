@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        
+
 
         setContentView(R.layout.activity_main);
         bottom_animation = AnimationUtils.loadAnimation(MainActivity.this, R.animator.animation);
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Runnable r = new Runnable() {
             @Override
             public void run() {
-               // Intent in = new Intent(MainActivity.this, EnterTransmitterSN.class);
-                Intent in =new Intent(MainActivity.this,start.class);
+                Intent in = new Intent(MainActivity.this, EnterTransmitterSN.class);
+               // Intent in =new Intent(MainActivity.this,start.class);
                 startActivity(in);
                 finish();
             }

@@ -8,6 +8,7 @@ import android.Manifest;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -32,19 +33,19 @@ public class start extends AppCompatActivity {
         starting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if()
-                if (ContextCompat.checkSelfPermission(start.this,
-                        Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
-                    if (ActivityCompat.shouldShowRequestPermissionRationale(start.this,
-                            Manifest.permission.ACCESS_FINE_LOCATION)){
-                        ActivityCompat.requestPermissions(start.this,
-                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                    }else{
-                        ActivityCompat.requestPermissions(start.this,
-                                new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                if(Build.VERSION.SDK_INT<= Build.VERSION_CODES.S){
+                    if (ContextCompat.checkSelfPermission(start.this,
+                            Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(start.this,
+                                Manifest.permission.ACCESS_FINE_LOCATION)) {
+                            ActivityCompat.requestPermissions(start.this,
+                                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                        } else {
+                            ActivityCompat.requestPermissions(start.this,
+                                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                        }
                     }
                 }
-
                 Intent in = new Intent(start.this, mainlogin.class);
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(start.this, R.anim.animationint, R.anim.anim);
