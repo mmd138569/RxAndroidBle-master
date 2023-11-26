@@ -47,9 +47,6 @@
     <string name="error_undocumented_scan_throttle_retry">Try in %d seconds</string>
     <string name="error_bluetooth_cannot_start">Unable to start scanning</string>
     <string name="error_unknown_error">Unknown error</string>
-
-
-
     <string name="welcome">welcome!</string>
     <string name="Version">Version 0.0.1</string>
     <string name="intor1">welcome!use youre product instructions along with this app to help you get start.</string>
@@ -74,7 +71,7 @@
     <string name="bio">Bluetooth is on</string>
     <string name="sas">Speaker and screen work</string>
     <string name="sdo">Smart device operating system is Dexcom app compatible </string>
-    <string name="dro">Don\'t rely on Dexcom app until you understand hw to use it and your smart device's Bluetooth.</string>
+    <string name="dro">Don\'t rely on Dexcom app until you understand hw to use it and your smart device\'s Bluetooth.</string>
     <string name="tdv">Treatment Decsions Video</string>
     <string name="ucm">you can make treatment decisions with your Dexcom G6 when:</string>
     <string name="ysm">your symptoms match your reading</string>
@@ -102,6 +99,16 @@
     <string name="ul">Urgent Low</string>
     <string name="tf">Transmitter Failure</string>
     <string name="sf">Sensor Failure</string>
+    <string name="DND">Do Not Disturb</string>
+    <string name="Ac">Allow access</string>
+    <string name="TG6a">The G6 app needs your permisssion to sound when smart device is on the most restrictive Do Not Disturb setting.</string>
+    <string name="tap">Tap</string>
+    <string name="finddex">1. Find Dexcom G6 app</string>
+    <string name="below">below</string>
+    <string name="ADnD">3. Allow Do Not Disturb access</string>
+    <string name="taptb">4. Tap the Back button to return</string>
+
+
 
 
 

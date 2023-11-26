@@ -46,9 +46,7 @@
         <string name="error_undocumented_scan_throttle">Android 7+ does not allow more scans.</string>
         <string name="error_undocumented_scan_throttle_retry">Try in %d seconds</string>
         <string name="error_bluetooth_cannot_start">Unable to start scanning</string>
-        <string name="error_unknown_error">Unknown error</string>
-
-
+    <string name="error_unknown_error">Unknown error</string>
     <string name="welcome">خوش امدید</string>
     <string name="Version">Version 0.0.1</string>
     <string name="intor1">    خوش امدید! دستورالعمل این نرم افزار به شما برای شروع کردن کمک میکند</string>
@@ -101,6 +99,15 @@
     <string name="ul">Urgent Low</string>
     <string name="tf">Transmitter Failure</string>
     <string name="sf">Sensor Failure</string>
+    <string name="DND">Do Not Disturb</string>
+    <string name="Ac">Allow access</string>
+    <string name="TG6a">The G6 app needs your permisssion to sound when smart device is on the most restrictive Do Not Disturb setting.</string>
+    <string name="tap">Tap</string>
+    <string name="below">below</string>
+    <string name="finddex">1. Find Dexcom G6 app</string>
+    <string name="ADnD">3. Allow Do Not Disturb access</string>
+    <string name="taptb">4. Tap the Back button to return</string>
+
 
 
 
