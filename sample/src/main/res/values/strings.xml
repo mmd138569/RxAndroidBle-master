@@ -132,6 +132,8 @@
     <string name="bluetooth">Bluetooth</string>
     <string name="bmbo">Bluetooth must be on for your G6 system to work. it pairs your transmitter with your app.</string>
     <string name="Tt">than tap</string>
+    <string name="entertrans">Enter Transmitter SN</string>
+    <string name="Et6">Enter the 6-digit serial number (SN) associated with your transmitter</string>
 
 
 
