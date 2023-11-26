@@ -35,7 +35,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="Bluetooth/ Transmitter"
+                android:text="@string/btrans"
                 android:textAllCaps="false"
                 />
         </RelativeLayout>
@@ -52,7 +52,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="20dp"
-            android:text="Your transmitter and smart device connect using Bluetooth."
+            android:text="@string/yta"
             android:textColor="#040303"
             android:textSize="18dp" />
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="Bluetooth on your smart device needs to be on in order for the system to work."
+            android:text="@string/boy"
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
@@ -75,7 +75,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="i understand"
+        android:text="@string/iundrstand"
         android:textColor="#068FFF"
         android:textAllCaps="true"
 
@@ -86,7 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="learn more"
+        android:text="@string/learn"
         android:padding="5dp"
         android:textAllCaps="true"
         android:layout_marginBottom="15dp"

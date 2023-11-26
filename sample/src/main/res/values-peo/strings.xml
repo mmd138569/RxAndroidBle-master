@@ -125,4 +125,8 @@
     <string name="trans">Transmitter</string>
     <string name="yts">Your transmitter sends sensor glucose readings to you smart device.</string>
     <string name="tnfs">The next few screens will walk you through how to connect your transmitter to your smart device.</string>
+    <string name="btrans">Bluetooth/ Transmitter</string>
+    <string name="yta">Your transmitter and smart device connect using Bluetooth.</string>
+    <string name="boy">Bluetooth on your smart device needs to be on in order for the system to work.</string>
+    <string name="learn">learn more</string>
 </resources>
