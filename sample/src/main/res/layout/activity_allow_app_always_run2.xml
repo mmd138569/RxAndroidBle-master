@@ -35,7 +35,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="App Is Always Run"
+                android:text="@string/AiA"
                 android:textAllCaps="false" />
         </RelativeLayout>
 
@@ -52,7 +52,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
-            android:text="Battrey optimizing is set up correctly for the app"
+            android:text="@string/Boi"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -62,7 +62,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
-            android:text="keep battrey optimizing offf for the app, so it can runin the background."
+            android:text="@string/kbo"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -72,7 +72,7 @@
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
             android:layout_marginBottom="10dp"
-            android:text="Your alerts, and information sent to Follower, won't be delayed."
+            android:text="@string/yaa"
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
@@ -86,7 +86,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="NEXT"
+        android:text="@string/next"
         android:textColor="#068FFF"
         android:textAllCaps="true"
         android:id="@+id/NextBtn"
