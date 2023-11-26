@@ -40,17 +40,18 @@ public class warning extends AppCompatActivity {
                 ActivityCompat.requestPermissions(warning.this,new String[]{Manifest.permission.POST_NOTIFICATIONS},101);
             }
             else{
-
+                notificationPermissionHelper = new NotificationPermissionHelper(this);
             }
         }
-        notificationPermissionHelper = new NotificationPermissionHelper(this);
+//====================================================================================
 
-        if (!notificationPermissionHelper.isNotificationPermissionGranted()) {
+       /* if (!notificationPermissionHelper.isNotificationPermissionGranted()) {
             if (!notificationPermissionHelper.hasNotificationPermission()) {
                 notificationPermissionHelper.requestNotificationPermission();
             }
-        }
-
+        }*/
+        
+//=====================================================================================
 
  buttonEnableBluetooth.setOnClickListener(new View.OnClickListener() {
         @Override
