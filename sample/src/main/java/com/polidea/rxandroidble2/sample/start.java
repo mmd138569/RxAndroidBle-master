@@ -32,6 +32,7 @@ public class start extends AppCompatActivity {
         starting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if()
                 if (ContextCompat.checkSelfPermission(start.this,
                         Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
                     if (ActivityCompat.shouldShowRequestPermissionRationale(start.this,
@@ -43,7 +44,7 @@ public class start extends AppCompatActivity {
                                 new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                     }
                 }
-                
+
                 Intent in = new Intent(start.this, mainlogin.class);
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(start.this, R.anim.animationint, R.anim.anim);
