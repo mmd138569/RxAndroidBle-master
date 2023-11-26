@@ -35,7 +35,7 @@
                 android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:backgroundTint="@android:color/darker_gray"
-                android:text="Allow App to always Run"
+                android:text="@string/Apt"
                 android:textAllCaps="false" />
         </RelativeLayout>
 
@@ -51,7 +51,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="15dp"
-            android:text="Alerts maybe delayed because battery optimizing is on. This prevets the app from running in the background."
+            android:text="@string/amd"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -60,7 +60,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="15dp"
-            android:text="if you're using Share, information sent to Followers may also be delayed."
+            android:text="@string/iyus"
             android:textColor="#040303"
             android:textSize="18dp" />
         <TextView
@@ -69,7 +69,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="3dp"
-            android:text="To allow to always run:"
+            android:text="@string/Tat"
             android:textColor="#040303"
             android:textSize="18dp" />
         <LinearLayout
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginBottom="3dp"
-                android:text="1.Tap"
+                android:text="@string/firstt"
                 android:textColor="#040303"
                 android:textSize="18dp" />
             <TextView
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
                 android:layout_marginLeft="3dp"
-                android:text="Allow App to Always Run "
+                android:text="@string/Allow"
                 android:textStyle="bold"
                 android:textColor="#040303"
                 android:textSize="18dp" />
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="3dp"
-                android:text="bellow"
+                android:text="@string/below"
                 android:textColor="#040303"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
                 android:layout_marginBottom="3dp"
-                android:text="2.Then, tap"
+                android:text="@string/thentap"
                 android:textColor="#040303"
                 android:textSize="18dp" />
             <TextView
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="3dp"
-                android:text="Allow"
+                android:text="@string/allow"
                 android:textStyle="bold"
                 android:textColor="#040303"
                 android:textSize="18dp" />
@@ -139,7 +139,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginBottom="3dp"
-                android:text="to turn off battrey"
+                android:text="@string/tto"
                 android:textColor="#040303"
                 android:textSize="18dp" />
         </LinearLayout>
@@ -149,7 +149,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:layout_marginBottom="3dp"
-            android:text="optimizing for the G6 app"
+            android:text="@string/oft"
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
@@ -163,7 +163,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
-        android:text="allow app to always run"
+        android:text="@string/Allow"
         android:textColor="#068FFF"
         android:textAllCaps="true"
         android:id="@+id/allowAppBtn"
@@ -173,7 +173,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="don't allow"
+        android:text="@string/da"
         android:textColor="#068FFF"
         android:layout_marginBottom="10dp"
         android:padding="5dp"

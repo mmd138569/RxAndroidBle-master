@@ -107,6 +107,17 @@
     <string name="below">below</string>
     <string name="ADnD">3. Allow Do Not Disturb access</string>
     <string name="taptb">4. Tap the Back button to return</string>
+    <string name="Apt">Allow App to always Run</string>
+    <string name="amd">Alerts maybe delayed because battery optimizing is on. This prevets the app from running in the background.</string>
+    <string name="iyus">if you\'re using Share, information sent to Followers may also be delayed.</string>
+    <string name="Tat">To allow to always run:</string>
+    <string name="firstt">1.Tap</string>
+    <string name="Allow">Allow App to Always Run </string>
+    <string name="thentap">2.Then, tap</string>
+    <string name="allow">Allow</string>
+    <string name="tto">to turn off battrey</string>
+    <string name="oft">optimizing for the G6 app</string>
+    <string name="da">don\'t allow</string>
 
 
 
