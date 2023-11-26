@@ -50,7 +50,7 @@ public class warning extends AppCompatActivity {
                 notificationPermissionHelper.requestNotificationPermission();
             }
         }*/
-        
+
 //=====================================================================================
 
  buttonEnableBluetooth.setOnClickListener(new View.OnClickListener() {
