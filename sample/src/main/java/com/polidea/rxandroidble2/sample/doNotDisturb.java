@@ -34,7 +34,7 @@ public class doNotDisturb extends AppCompatActivity {
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     if (notificationManager.isNotificationPolicyAccessGranted()) {
-                        notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY);
+                        //notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY);
                         Intent intent=new Intent(doNotDisturb.this, allowAppAlways.class);
                         ActivityOptions options =
                                 ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);

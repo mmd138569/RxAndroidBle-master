@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                Intent in = new Intent(MainActivity.this, EnterTransmitterSN.class);
-               // Intent in =new Intent(MainActivity.this,start.class);
+                // Intent in = new Intent(MainActivity.this, EnterTransmitterSN.class);
+                Intent in =new Intent(MainActivity.this,start.class);
                 startActivity(in);
                 finish();
             }
