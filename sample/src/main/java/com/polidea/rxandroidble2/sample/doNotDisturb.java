@@ -24,46 +24,58 @@ public class doNotDisturb extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_do_not_disturb);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Button NextBtn = findViewById(R.id.NextBtn);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            NextBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (notificationManager.isNotificationPolicyAccessGranted()) {
+                            //notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY);
+                            Intent intent = new Intent(doNotDisturb.this, allowAppAlways.class);
+                            ActivityOptions options =
+                                    ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
+                            doNotDisturb.this.startActivity(intent, options.toBundle());
+                        } else {
+                            Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
+                            startActivity(intent);
+                        }
+                    }
+                }
+            });
+
+            TextView txt_action = findViewById(R.id.txt_action);
+            txt_action.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(doNotDisturb.this, allertSound.class);
+                    ActivityOptions options =
+                            ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
+                    doNotDisturb.this.startActivity(in, options.toBundle());
+                }
+            });
+            ImageView txt = findViewById(R.id.txt);
+            txt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent in = new Intent(doNotDisturb.this, allertSound.class);
+                    startActivity(in);
+                    finish();
+                }
+            });
+        }
         NextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (notificationManager.isNotificationPolicyAccessGranted()) {
-                        //notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY);
-                        Intent intent=new Intent(doNotDisturb.this, allowAppAlways.class);
-                        ActivityOptions options =
-                                ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
-                        doNotDisturb.this.startActivity(intent, options.toBundle());
-                    } else {
-                        Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
-                        startActivity(intent);
-                    }
-                }
-            }
-        });
-        TextView txt_action =findViewById(R.id.txt_action);
-        txt_action.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(doNotDisturb.this, allertSound.class);
-                ActivityOptions options =
-                        ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
-                doNotDisturb.this.startActivity(in, options.toBundle());
-            }
-        });
-        ImageView txt =findViewById(R.id.txt);
-        txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(doNotDisturb.this, allertSound.class);
+                Intent in =new Intent(doNotDisturb.this,allowAppAlways.class);
                 startActivity(in);
                 finish();
             }
         });
-    }
+
+        }
 }
