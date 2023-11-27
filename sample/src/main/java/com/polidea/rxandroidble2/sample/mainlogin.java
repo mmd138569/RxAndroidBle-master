@@ -28,7 +28,6 @@ public class mainlogin extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_mainlogin);
 
         setContentView(R.layout.activity_mainlogin);
         Button login=findViewById(R.id.login);
