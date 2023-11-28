@@ -193,17 +193,19 @@ public class myservice extends Service {
           PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
           builder.setContentIntent(pendingIntent);
           NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BASE) {
-              NotificationChannel notificationChannel = notificationManager.getNotificationChannel(chanellID);
-              if (notificationChannel == null) {
-                  //here we mute the notification
-                  int importance = NotificationManager.IMPORTANCE_NONE;
+          NotificationChannel notificationChannel = null;
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+              notificationChannel = notificationManager.getNotificationChannel(chanellID);
+          }
+          if (notificationChannel == null) {
+              //here we mute the notification
+              int importance = NotificationManager.IMPORTANCE_NONE;
+              if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                   notificationChannel = new NotificationChannel(chanellID, "somethings", importance);
                   notificationChannel.setLightColor(Color.GREEN);
                   notificationChannel.enableVibration(true);
                   notificationManager.createNotificationChannel(notificationChannel);
                   startForeground(1001, notification);
-
               }
           }
           notificationManager.notify(1001, builder.build());
@@ -212,12 +214,21 @@ public class myservice extends Service {
     private void startMyOwnForeground(){
         String NOTIFICATION_CHANNEL_ID = "com.example.simpleapp";
         String channelName = "My Background Service";
-        NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
-        chan.setLightColor(Color.BLUE);
-        chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        NotificationChannel chan = null;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            chan.setLightColor(Color.BLUE);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
+        }
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         assert manager != null;
-        manager.createNotificationChannel(chan);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            manager.createNotificationChannel(chan);
+        }
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         Notification notification = notificationBuilder.setOngoing(true)
