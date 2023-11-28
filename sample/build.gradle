@@ -59,9 +59,9 @@ dependencies {
     implementation 'com.google.mlkit:vision-common:17.3.0'
     implementation 'com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0'
 //    implementation 'com.google.firebase:firebase-ml-vision-barcode-model:16.1.2'
-
+    //implementation 'io.github.muddz:styleabletoast:2.4.0'
     //implementation 'androidx.appcompat:appcompat:1.6.1'
-
+   // implementation 'com.sdsmdg.tastytoast:tastytoast:0.1.1'
    // testImplementation 'junit:junit:4.13.2'
    // androidTestImplementation 'androidx.test.ext:junit:1.1.5'
 
