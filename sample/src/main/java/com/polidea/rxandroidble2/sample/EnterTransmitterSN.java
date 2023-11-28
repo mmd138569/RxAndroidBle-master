@@ -28,6 +28,12 @@ public class EnterTransmitterSN extends AppCompatActivity {
         setContentView(R.layout.activity_enter_transmitter_sn);
         Button button=findViewById(R.id.NextBtn);
         EditText editText =findViewById(R.id.lastdigits);
+
+
+        Intent intent = getIntent();
+        String str = intent.getStringExtra("mykey");
+        editText.setText(str);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,12 +60,6 @@ public class EnterTransmitterSN extends AppCompatActivity {
             lastdigits(str);*/
 
         });
-        Intent intent = getIntent();
-        // receive the value by getStringExtra() method and
-        // key must be same which is send by first activity
-        String str = intent.getStringExtra("mykey");
-        // display the string into textView
-        editText.setText(str);
     }
     public String mystr(String str1){
         String newString="";

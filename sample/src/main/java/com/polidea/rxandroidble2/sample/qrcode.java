@@ -18,6 +18,7 @@ import android.content.pm.PackageManager;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Size;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +42,7 @@ public class qrcode extends AppCompatActivity {
     private PreviewView previewView;
     ListenableFuture<ProcessCameraProvider> cameraProviderListenableFuture;
     Button next;
+    String str1;
     private EditText editText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,20 @@ public class qrcode extends AppCompatActivity {
         setContentView(R.layout.activity_qrcode);
         editText=findViewById(R.id.edittxt);
         next=findViewById(R.id.next1);
+        if(str1!=null) {
+         //   Handler h1=new Handler();
+          //  Runnable r=new Runnable() {
+             //   @Override
+             //   public void run() {
+                    Intent intent2 = new Intent(qrcode.this, EnterTransmitterSN.class);
+                    startActivity(intent2);
+                    finish();
+
+        }
+           // };
+          //  h1.postDelayed(r,1000);
+
+        //}
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,17 +155,15 @@ public class qrcode extends AppCompatActivity {
                                     final String getvalue=barcode.getRawValue();
                                     editText.setText(getvalue);
 //========================================================================================================================
-
-                                    Intent intent2=new Intent(qrcode.this,EnterTransmitterSN.class);
-                                    Intent intent1 = new Intent(getApplicationContext(), qrcode.class);
-                                    intent1.putExtra("mykey",getvalue);
-                                    startActivity(intent1);
-                                    startActivity(intent2);
-                                    finish();
-
+                                   /* if(getvalue!=null) {
+                                        Intent intent1 = new Intent(getApplicationContext(), EnterTransmitterSN.class);
+                                        intent1.putExtra("mykey", getvalue);
+                                        startActivity(intent1);
+                                    }*/
 //==========================================================================================================================
                                 } image.close();
                                 mediaimage.close();
+
                             }
                         });
                     }
