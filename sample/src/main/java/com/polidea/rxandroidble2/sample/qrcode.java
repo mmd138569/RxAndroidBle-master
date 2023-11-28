@@ -123,6 +123,7 @@ public class qrcode extends AppCompatActivity {
 
           ImageAnalysis  imageAnalysis = new ImageAnalysis.Builder().setTargetResolution(new Size(1200,720))
                     .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST).build();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             imageAnalysis.setAnalyzer(ContextCompat.getMainExecutor(qrcode.this), new ImageAnalysis.Analyzer() {
                 //@OptIn(markerClass = ExperimentalGetImage.class) @Override
                 public void analyze(@NonNull ImageProxy image) {
@@ -137,12 +138,16 @@ public class qrcode extends AppCompatActivity {
                                 for(Barcode barcode:barcodes){
                                     final String getvalue=barcode.getRawValue();
                                     editText.setText(getvalue);
+//========================================================================================================================
 
-
-                                  /*  Intent intent1 = new Intent(getApplicationContext(), qrcode.class);
+                                    Intent intent2=new Intent(qrcode.this,EnterTransmitterSN.class);
+                                    Intent intent1 = new Intent(getApplicationContext(), qrcode.class);
                                     intent1.putExtra("mykey",getvalue);
                                     startActivity(intent1);
-                                    */
+                                    startActivity(intent2);
+                                    finish();
+
+//==========================================================================================================================
                                 } image.close();
                                 mediaimage.close();
                             }
@@ -150,9 +155,13 @@ public class qrcode extends AppCompatActivity {
                     }
                 }
             });
+        }
 
         Preview preview=new Preview.Builder().build();
-           CameraSelector cameraSelector = new CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build();
+        CameraSelector cameraSelector = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            cameraSelector = new CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build();
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             preview.setSurfaceProvider(previewView.getSurfaceProvider());
