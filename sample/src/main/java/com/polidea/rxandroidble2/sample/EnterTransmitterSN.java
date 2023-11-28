@@ -47,7 +47,12 @@ public class EnterTransmitterSN extends AppCompatActivity {
                             ActivityOptions.makeCustomAnimation(EnterTransmitterSN.this, R.anim.animationint, R.anim.anim);
                     EnterTransmitterSN.this.startActivity(in, options.toBundle());
                 }
-
+                Intent intent = getIntent();
+                // receive the value by getStringExtra() method and
+                // key must be same which is send by first activity
+                String str = intent.getStringExtra("mykey");
+                // display the string into textView
+                editText.setText(str);
             }
 
            /* String str= editText.getText().toString();

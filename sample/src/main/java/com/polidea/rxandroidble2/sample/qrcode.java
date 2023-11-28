@@ -137,6 +137,12 @@ public class qrcode extends AppCompatActivity {
                                 for(Barcode barcode:barcodes){
                                     final String getvalue=barcode.getRawValue();
                                     editText.setText(getvalue);
+
+
+                                  /*  Intent intent1 = new Intent(getApplicationContext(), qrcode.class);
+                                    intent1.putExtra("mykey",getvalue);
+                                    startActivity(intent1);
+                                    */
                                 } image.close();
                                 mediaimage.close();
                             }
