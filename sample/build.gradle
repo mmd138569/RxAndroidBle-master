@@ -42,7 +42,7 @@ configurations.all {
 }
 
 dependencies {
-
+    implementation 'com.github.GrenderG:Toasty:1.5.2'
     implementation project(path: ':rxandroidble')
     implementation rootProject.ext.libs.appcompat
     implementation rootProject.ext.libs.material_design

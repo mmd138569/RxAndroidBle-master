@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
 
+import es.dmoral.toasty.Toasty;
+
 //import es.dmoral.toasty.Toasty;
 
 public class mainlogin extends AppCompatActivity {
@@ -51,13 +53,13 @@ public class mainlogin extends AppCompatActivity {
                     }*/
                 }
                 else if(username.getText().length()!=0 && password.getText().length()==0){
-                   // Toasty.error(mainlogin.this, "please enter the password", Toast.LENGTH_SHORT).show();
+                    Toasty.error(mainlogin.this, "please enter the password", Toast.LENGTH_SHORT).show();
                 }
                 else if(username.getText().length()==0 && password.getText().length()!=0){
-                  //  Toasty.error(mainlogin.this, "please enter the username or Email", Toast.LENGTH_SHORT).show();
+                    Toasty.error(mainlogin.this, "please enter the username or Email", Toast.LENGTH_SHORT).show();
                 }
                 else if(username.getText().length()==0 && password.getText().length()==0){
-                 //   Toasty.error(mainlogin.this, "please enter the username and password", Toast.LENGTH_SHORT).show();
+                    Toasty.error(mainlogin.this, "please enter the username and password", Toast.LENGTH_SHORT).show();
                 }
             }
         });
