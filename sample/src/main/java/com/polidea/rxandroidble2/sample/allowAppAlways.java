@@ -30,11 +30,11 @@ public class allowAppAlways extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Configuration config = getResources().getConfiguration();
-        if(config.smallestScreenWidthDp>320){
+        if(config.smallestScreenWidthDp>700){
             setContentView(R.layout.activity_allow_app_always);
         }
         else {
-
+            setContentView(R.layout.allowappalways_smallphone);
         }
         button =findViewById(R.id.allowAppBtn);
         ignoreBatteryOptimization();
