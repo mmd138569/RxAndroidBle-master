@@ -60,8 +60,8 @@
     <string name="CGM">سیستم بهبود تصمیم</string>
     <string name="mtd">زمانی که علائم شما با خواندن CGM مطابقت دارد، با بهیاراپ خود تصمیمات درمانی بگیرید.</string>
     <string name="tyd">به بدن خود اعتماد کنید اگر خواندن شما با احساس شما مطابقت ندارد، قبل از اقدام قند خون حود را بگیرید.</string>
-    <string name="wid">When in doubt, get your meter out.</string>
-    <string name="iundrstand">I UNDERSTANDT</string>
+    <string name="wid">در صورت شک، کنتور خود را بیرون بیاورید.</string>
+    <string name="iundrstand">متوجهم</string>
     <string name="fullsaftey">FULL SAFETY STATEMENT</string>
     <string name="cbt">When you have a number and an arrow, you can use your CGM to make treatment desicsions like treating for a low or dosing for a hight.</string>
     <string name="vat">Varify all these things are working in your smart device to get reading and alarm /alert:</string>
