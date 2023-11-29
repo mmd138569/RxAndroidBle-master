@@ -6,6 +6,7 @@ import android.app.ActivityManager;
 import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,7 +29,13 @@ public class allowAppAlways extends AppCompatActivity {
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_allow_app_always);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>320){
+            setContentView(R.layout.activity_allow_app_always);
+        }
+        else {
+
+        }
         button =findViewById(R.id.allowAppBtn);
         ignoreBatteryOptimization();
         button.setOnClickListener(new View.OnClickListener() {
