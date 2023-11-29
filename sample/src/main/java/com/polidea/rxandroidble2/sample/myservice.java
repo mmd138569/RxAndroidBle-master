@@ -1,5 +1,6 @@
 package com.polidea.rxandroidble2.sample;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -13,6 +14,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
@@ -40,6 +42,7 @@ public class myservice extends Service {
 
                     notification("first time", songUrl);
 
+
                 }
             };
             h.postDelayed(r, 5000);
@@ -52,6 +55,9 @@ public class myservice extends Service {
             public void run() {
 
                 notification("it should be always run ", songUrl);
+                if(songUrl>250){
+                    startAlert();
+                }
                 time= time+100;
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
                 //we write our stuff that want to run here this service is already run at the back ground
@@ -215,7 +221,19 @@ public class myservice extends Service {
           }
           notificationManager.notify(1001, builder.build());
       }
-
+    public void startAlert () {
+        int i = 200000;
+        //   int i = Integer.parseInt(text.getText().toString());
+        // if((i<50)||(i>300)) {
+        Intent intent = new Intent(myservice.this, MyBroadcastReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                this.getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
+                + (0), pendingIntent);
+        Toast.makeText(this, "Alarm set in now", Toast.LENGTH_LONG).show();
+        //}
+    }
     private void startMyOwnForeground(){
         String NOTIFICATION_CHANNEL_ID = "com.example.simpleapp";
         String channelName = "My Background Service";

@@ -56,7 +56,9 @@ public class warning extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-            Intent in = new Intent(warning.this, start.class);
+           // Intent in = new Intent(warning.this, start.class);
+            Intent in = new Intent(warning.this, Transmitter.class);
+
             ActivityOptions options =
                     ActivityOptions.makeCustomAnimation(warning.this, R.anim.animationint, R.anim.anim);
             warning.this.startActivity(in, options.toBundle());
