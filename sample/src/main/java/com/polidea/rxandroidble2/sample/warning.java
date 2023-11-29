@@ -31,7 +31,6 @@ public class warning extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_warning);
 
         setContentView(R.layout.activity_warning);
         Button buttonEnableBluetooth = findViewById(R.id.warningsection);
