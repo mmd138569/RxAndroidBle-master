@@ -557,7 +557,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.invalidate();
 //need to fix the scale and the color of the chart
         lineChart.setScaleEnabled(false);
-        lineChart.getXAxis().setAxisMaximum(24f);
+        //lineChart.getXAxis().setAxisMaximum(24f);
         //lineChart.getXAxis().setAxisMinimum(0f);
         lineChart.getAxisLeft().setAxisMaximum(400f);
         lineChart.getAxisRight().setAxisMaximum(400f);
@@ -572,6 +572,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         RightAxis.setTextColor(Color.BLACK);
         RightAxis.setDrawAxisLine(true);
         RightAxis.setDrawGridLines(false);
+
 //==============================================================================
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         if(yval[i-1]%12==0){
