@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,8 +25,13 @@ public class CGMbasetreatmentDecison3 extends AppCompatActivity {
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity_cgmbasetreatment_decison3);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>700){
+            setContentView(R.layout.activity_cgmbasetreatment_decison3);
+        }
+        else {
+            setContentView(R.layout.cgmbasetreatmentdecison3_smallphone);
+        }
         CgmBtn = findViewById(R.id.iundrestandBtn);
         CgmBtn.setOnClickListener(new View.OnClickListener() {
             @Override

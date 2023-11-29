@@ -5,6 +5,7 @@ import static android.graphics.Color.GRAY;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -44,8 +45,13 @@ public class landscapechart extends AppCompatActivity {
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity_landscapechart);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>700){
+            setContentView(R.layout.activity_landscapechart);
+        }
+        else {
+            setContentView(R.layout.landscapehart_smallphone);
+        }
 
         button1=  findViewById(R.id.btton1);
         button2=  findViewById(R.id.btton2);

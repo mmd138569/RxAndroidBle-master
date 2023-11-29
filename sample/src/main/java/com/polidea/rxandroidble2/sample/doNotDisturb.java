@@ -6,6 +6,7 @@ import android.app.ActivityOptions;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -25,8 +26,13 @@ public class doNotDisturb extends AppCompatActivity {
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.activity_do_not_disturb);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>700){
+            setContentView(R.layout.activity_do_not_disturb);
+        }
+        else {
+            setContentView(R.layout.donotdisturb_smallphone);
+        }
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Button NextBtn = findViewById(R.id.NextBtn);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {

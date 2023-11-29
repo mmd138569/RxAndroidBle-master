@@ -9,6 +9,7 @@ import android.app.ActivityManager;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -113,7 +114,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         /*supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 */
-        setContentView(R.layout.activity_example4);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>700){
+            setContentView(R.layout.activity_example4);
+        }
+        else {
+            setContentView(R.layout.example4_smallphone);
+        }
 
         pieChart = findViewById(R.id.pichart);
       /*  if(Float.parseFloat(readOutputView.getText().toString())!=0){

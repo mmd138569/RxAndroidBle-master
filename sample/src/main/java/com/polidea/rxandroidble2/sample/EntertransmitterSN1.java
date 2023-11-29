@@ -3,6 +3,7 @@ package com.polidea.rxandroidble2.sample;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,13 @@ public class EntertransmitterSN1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entertransmitter_sn1);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>700){
+            setContentView(R.layout.activity_entertransmitter_sn1);
+        }
+        else {
+            setContentView(R.layout.entertransmitter_sn1_smallphone);
+        }
         Button takephoto=findViewById(R.id.TAKEPHOTO);
         Button entermanually=findViewById(R.id.ENTERMANUALLY);
         takephoto.setOnClickListener(new View.OnClickListener() {

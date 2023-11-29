@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +27,13 @@ public class CGMbasetreatmentDecision4 extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_cgmbasetreatment_decision4);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>700){
+            setContentView(R.layout.activity_cgmbasetreatment_decision4);
+        }
+        else {
+            setContentView(R.layout.cgmbasetreatmentdecision4_forsmallphone);
+        }
         VideoView video =findViewById(R.id.video);
         // Button btnaction=findViewById(R.id.btn_action);
         Button understandbtn= findViewById(R.id.undrastandbtn);
