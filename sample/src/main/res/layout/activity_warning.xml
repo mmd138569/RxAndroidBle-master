@@ -1,137 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".warning"
-android:orientation="vertical">
-
-<LinearLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="@android:color/darker_gray">
-        <ImageView
-            android:id="@+id/txt"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_keyboard_arrow_right_24dp"
-            android:rotation="180"
-            />
-        <TextView
-            android:layout_marginLeft="12dp"
-
-            android:layout_marginTop="10dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="20dp"
-            android:textColor="#040303"
-            android:id="Warning"
-            android:layout_width="105dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:backgroundTint="@android:color/darker_gray"
-            android:text="@string/Safety"
-            android:textAllCaps="false"
-            />
-    </RelativeLayout>
-</LinearLayout>
-
-
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="500dp">
-
+    android:layout_height="match_parent"
+    tools:context=".warning">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/darker_gray">
+
+          <!--  <ImageView
+                android:id="@+id/txt_action"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_24dp"
+                android:rotation="180"
+                />-->
+
+            <TextView
+                android:layout_marginLeft="12dp"
+                android:textColor="#040303"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp"
+                android:id="@+id/btn_action"
+                android:layout_width="105dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="Warning"
+                android:textAllCaps="false" />
+        </RelativeLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
-
             android:text="For Alarm/Alarm work as axpected:"
             android:textColor="#040303"
             android:textSize="18dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
             android:text="Do not use Android Pause feature with the Dexcom app"
             android:textColor="#040303"
             android:textSize="18dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textColor="#040303"
             android:layout_marginBottom="15dp"
             android:text="Set device OS Atumatic Updates setting to OFF"
-            android:textColor="#040303"
             android:textSize="18dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="#040303"
+            android:layout_marginRight="15dp"
             android:layout_marginBottom="15dp"
             android:text="Dexcom app may work as expected if Puase or OS automatic update are ON."
-            android:textColor="#040303"
-            android:textSize="18dp" />A
+            android:textSize="18dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="15dp"
-            android:text="lways manually upate ddevice OS then open Dexom app to verfiy it's working correctly"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:textColor="#040303"
+            android:layout_marginBottom="15dp"
+            android:text="Always manually upate ddevice OS then open Dexom app to verfiy it's working correctly "
             android:textSize="18dp" />
-
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/safetybtn"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="60dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/bordernum"
         android:text="continue to app"
-        android:textAllCaps="false"
-        android:textColor="#068FFF" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:text="@string/moreinfo"
         android:textColor="#068FFF"
+        android:textAllCaps="false"
+
+        android:id="@+id/warningsection"
+        />
+    <TextView
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="More information"
+        android:textColor="#068FFF"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
         android:padding="5dp"
         android:id="@+id/MoreInfo"
         />
-</LinearLayout>
-</LinearLayout>
+</RelativeLayout>
