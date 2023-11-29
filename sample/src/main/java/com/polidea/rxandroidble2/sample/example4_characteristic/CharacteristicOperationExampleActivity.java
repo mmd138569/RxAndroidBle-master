@@ -140,7 +140,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         connectionObservable = prepareConnectionObservable();
         if(a==false) {
             lineChart.invalidate();
-
             //XAxis xAxis=lineChart.getXAxis();
             LineDataSet lineDataSet = new LineDataSet(linechart1(), "data set");
             ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
@@ -159,8 +158,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
             lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
             lineChart.getLegend().setEnabled(false);
-
-
             lineChart.setNoDataText("No Data Insert");
             lineDataSet.setColor(GRAY);
             lineDataSet.setCircleColors(Color.BLACK);
@@ -175,19 +172,15 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             //lineChart.setDrawGridBackground(true);
             //lineChart.setDrawBorders(true);
             //xAxis.isEnabled();
-
             YAxis left = lineChart.getAxisLeft();
             left.setDrawGridLines(false);
             left.setDrawAxisLine(false); // no axis line
             left.setDrawGridLines(false); // no grid lines
             left.setDrawZeroLine(true);
-
             YAxis leftAxis = lineChart.getAxisLeft();
-
             lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
             lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
             lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal
-
             leftAxis.setTextSize(0f);//put it bottom
             leftAxis.setTextColor(Color.TRANSPARENT);
             leftAxis.setDrawAxisLine(false);
@@ -465,7 +458,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         float x=yval[i-1]-yval[i-2];
         float y=yval[i-2]-yval[i-1];
         Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
-
         left.setVisibility(View.INVISIBLE);
         twobutt.setVisibility(View.INVISIBLE);
         twotop.setVisibility(View.INVISIBLE);
@@ -473,7 +465,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         butt.setVisibility(View.INVISIBLE);
         x1.setVisibility(View.INVISIBLE);
         x2.setVisibility(View.INVISIBLE);
-
         if(((x<50)&&(x>=0))||(y<50)&&(y>=0)){
             left.setVisibility(View.VISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
@@ -540,7 +531,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             x2.setVisibility(View.INVISIBLE);
         }
 //================================================
-
 //========================= refresh ===============
         float rangeHigh = 100f;
         float rangeLow = -7f;
@@ -553,14 +543,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
-
-
         array_list.clear();
         array_list.addAll(helper.getAllCotacts());
         arrayAdapter.notifyDataSetChanged();
         listView.invalidateViews();
         listView.refreshDrawableState();
-
         LineDataSet lineDataSet = new LineDataSet(linechart(yval, i), "lable");
         i++;
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
@@ -571,55 +558,44 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //need to fix the scale and the color of the chart
         lineChart.setScaleEnabled(false);
         lineChart.getXAxis().setAxisMaximum(24f);
-
-
-
         //lineChart.getXAxis().setAxisMinimum(0f);
-
-
         lineChart.getAxisLeft().setAxisMaximum(400f);
         lineChart.getAxisRight().setAxisMaximum(400f);
-
         //==================
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
         lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
         YAxis RightAxis = lineChart.getAxisRight();
+        //here we add the right axis with number
+
         RightAxis.setTextSize(0f);//put it bottom
-        RightAxis.setTextColor(Color.TRANSPARENT);
-        RightAxis.setDrawAxisLine(false);
+        RightAxis.setTextColor(Color.BLACK);
+        RightAxis.setDrawAxisLine(true);
         RightAxis.setDrawGridLines(false);
-
 //==============================================================================
-
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         if(yval[i-1]%12==0){
             lineDataSet.setDrawCircleHole(true);
-
         }
         else{
             lineDataSet.setDrawCircles(true);
-
         }
-
 //==============================================================================
-
         lineDataSet.setColor(TRANSPARENT);
         lineDataSet.setCircleColor(Color.BLACK);
         lineChart.getLegend().setEnabled(false);
         //---------
         //  lineChart.highlightValue(30,20);
-        lineChart.invalidate();
-
+       // lineChart.invalidate();
         lineDataSet.setLineWidth((float) 0.3);
         lineDataSet.setCircleRadius(2);
         lineDataSet.setCircleHoleRadius(10);
         lineDataSet.setValueTextColor(Color.GRAY);
         lineChart.setData(lineData);
+        lineChart.getAxisLeft().setEnabled(true);
+        lineChart.getAxisRight().setEnabled(true);
         lineChart.invalidate();
-
         lineData.setDrawValues(false);
-
         lineChart.getDescription().setEnabled(false);
         lineChart.getXAxis().setAxisMaximum(12f);
         setupPieChart(str);
