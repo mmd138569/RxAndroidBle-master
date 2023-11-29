@@ -1,6 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".EntertransmitterSN1">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/darker_gray">
+            <ImageView
+                android:id="@+id/txt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_keyboard_arrow_right_24dp"
+                android:rotation="180"
+                />
+            <TextView
+                android:layout_marginLeft="12dp"
+
+                android:id="@+id/txt_action"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:paddingLeft="20dp"
+                android:textColor="#040303"
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:backgroundTint="@android:color/darker_gray"
+                android:text="@string/bluetooth"
+                android:textAllCaps="false"
+                />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find and enter the 6-digit transmitter SN locate in one of the following places:"
+            android:textColor="#040303"
+            android:textSize="17dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1.Transmitter Box"
+            android:textColor="#040303"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On the label"
+            android:textColor="#040303"
+            android:textSize="17dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="37dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.Uninserted Transmitter"
+            android:textColor="#040303"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On the back"
+            android:textColor="#040303"
+            android:textSize="17dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="37dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+        <TextView
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. G6 Pro Patient Handout"
+            android:textColor="#040303"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="On sticker your healthcare professional puts on your handout"
+            android:textColor="#040303"
+            android:textSize="17dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="37dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/bordernum"
+        android:text="Take PHOTO"
+        android:textColor="#068FFF"
+        android:textAllCaps="true"
+        android:id="@+id/TAKEPHOTO"
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bordernum"
+        android:text="ENTER MANUALLY"
+        android:textColor="#068FFF"
+        android:textAllCaps="true"
+        android:id="@+id/ENTERMANUALLY"
+        />
+</RelativeLayout>

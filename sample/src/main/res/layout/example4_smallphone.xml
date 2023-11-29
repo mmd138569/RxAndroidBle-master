@@ -1,6 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/connect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="1dp"
+            />
+        <TextView
+            android:id="@+id/read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text=""
+            android:textSize="1dp"
+            />
+
+        <TextView
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="1dp"
+            />
+        <TextView
+            android:id="@+id/read_output"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="1dp" />
+    </LinearLayout>
+    <!-- <LinearLayout
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+
+      <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="@string/prefix_hex"
+             android:textSize="14sp"/>
+
+         <TextView
+             android:id="@+id/read_hex_output"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:textSize="14sp"/>
+    </LinearLayout>-->
+    <!-- <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+
+    <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/prefix_hex"
+             android:textSize="14sp" />
+ -->
+    <!--  <EditText
+        android:id="@+id/write_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/write_input"
+        android:inputType="numberDecimal"/>
+</LinearLayout>-->
+    <!--<Button
+        android:id="@+id/write"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/write"/>-->
+    <!--
+    <Button
+        android:id="@+id/notify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/setup_notification"/>
+   -->
+    <!--<androidx.core.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+-->
+    <LinearLayout
+        android:layout_width="345dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundedchart"
+        android:elevation="8px"
+        android:gravity="center"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="5dp"
+                >
+                <ImageView
+                    android:id="@+id/butt"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/l"
+                    android:visibility="invisible" />
+                <ImageView
+                    android:id="@+id/topmid"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/x"
+                    android:visibility="invisible" />
+                <ImageView
+                    android:id="@+id/buttmid"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/x1"
+                    android:visibility="invisible" />
+                <ImageView
+                    android:id="@+id/leFt"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/l2"
+                    android:visibility="invisible" />
+                <ImageView
+                    android:id="@+id/twotop"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/k2"
+                    android:visibility="invisible" />
+                <ImageView
+                    android:id="@+id/twobutt"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/k"
+                    android:visibility="invisible" />
+                <ImageView
+                    android:id="@+id/top"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/l3"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+            <com.github.mikephil.charting.charts.PieChart
+                android:layout_gravity="center"
+                android:id="@+id/pichart"
+                android:layout_width="205dp"
+                android:layout_height="167dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.polidea.rxandroidble2.sample.example4_characteristic.CustomLineChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="268dp"
+        android:layout_gravity="bottom"
+        android:layout_margin="10dp"
+        android:background="@drawable/roundedchart"
+        android:elevation="8px"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="303dp" />
+
+    <ListView
+
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+
+        android:background="@drawable/custom_list_view"
+        android:elevation="20dp" />
+    <!--</androidx.core.widget.NestedScrollView>
+-->
+</LinearLayout>
