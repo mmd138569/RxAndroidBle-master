@@ -211,12 +211,12 @@ public class myservice extends Service {
                   int importance = NotificationManager.IMPORTANCE_NONE;
                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                       notificationChannel = new NotificationChannel(chanellID, "somethings", importance);
-
                   notificationChannel.setLightColor(Color.GREEN);
+                  notificationChannel.setDescription("hi there");
                   notificationChannel.enableVibration(true);
                   notificationManager.createNotificationChannel(notificationChannel); }
-                  startForeground(1001, notification);
-
+                 // startForeground(1001, builder.build());
+                  startForeground(1001,notification);
               }
           }
           notificationManager.notify(1001, builder.build());
