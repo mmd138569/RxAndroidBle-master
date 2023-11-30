@@ -615,7 +615,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             String str=time.toString();
            j= Integer.parseInt(str);*/
 
-            Toast.makeText(this, j, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, j, Toast.LENGTH_SHORT).show();
 //================================
         dataset.add(new Entry(0,0));
             if(i<=13) {
