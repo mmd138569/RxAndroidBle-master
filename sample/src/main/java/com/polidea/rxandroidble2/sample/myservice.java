@@ -239,6 +239,7 @@ public class myservice extends Service {
         String channelName = "My Background Service";
         NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
         chan.setLightColor(Color.BLUE);
+        
         chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         assert manager != null;
