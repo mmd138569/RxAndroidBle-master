@@ -604,18 +604,22 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         loadPieChartData(str);
     }
 //=============================================================
-    
+
         ArrayList<Entry>linechart(float yval[],int i){
         ArrayList<Entry> dataset=new ArrayList<Entry>();
-
-            int j=(int)System.currentTimeMillis();
+        int temp=0;
+        int j=0;
+//=================================
+           /* int j=(int)System.currentTimeMillis();
             Timestamp time =new Timestamp(j);
             String str=time.toString();
-           j= Integer.parseInt(str);
+           j= Integer.parseInt(str);*/
 
-            dataset.add(new Entry(0,0));
+            Toast.makeText(this, j, Toast.LENGTH_SHORT).show();
+//================================
+        dataset.add(new Entry(0,0));
             if(i<=13) {
-                for (j = 0; j < i; j++) {
+                for (temp = 0; temp < i; temp++) {
                     if (yval[j] != 0) {
                         dataset.add(new Entry(j, yval[j]));
                     }
