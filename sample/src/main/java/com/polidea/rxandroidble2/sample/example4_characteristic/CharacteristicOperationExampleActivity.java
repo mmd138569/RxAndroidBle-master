@@ -51,6 +51,7 @@ import com.polidea.rxandroidble2.sample.util.HexString;
 import com.polidea.rxandroidble2.scan.ScanResult;
 
 import java.sql.Timestamp;
+import java.time.OffsetTime;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -87,7 +88,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     Button notifyButton;*/
     private UUID characteristicUuid;
     String  str="0";
-    int i=2,x=13;
+    int i=2,x=13,j=0;
     public static PieChart pieChart;
 
     boolean a=false;
@@ -234,16 +235,23 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 finish();
             }
         });
-        if (!foregroundServiceRunning()) {
-           /* Intent serviceinetnt = new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(serviceinetnt);
-            }*/
-            Intent in= new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(in);
+//=============== this thread is life savier ===========
+        Handler hand1=new Handler();
+        Runnable run=new Runnable() {
+            @Override
+            public void run() {
+                if (!foregroundServiceRunning()) {
+                    Intent in= new Intent(CharacteristicOperationExampleActivity.this, myservice.class);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        startForegroundService(in);
+                    }
+                }
+
             }
-        }
+        };
+        hand1.postDelayed(run,18000);
+//=================================================
+
 //==================================================
     }
     /*public static void thread(){
@@ -599,28 +607,34 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart.invalidate();
         lineData.setDrawValues(false);
         lineChart.getDescription().setEnabled(false);
+//================================================================
+      /*  OffsetTime offset = OffsetTime.now();
+        q1=offset.getHour();
+        q=offset.getMinute();
+        q1=q1*(q/100);*/
         lineChart.getXAxis().setAxisMaximum(12f);
+//================================================================
         setupPieChart(str);
         loadPieChartData(str);
     }
-//=============================================================
 
         ArrayList<Entry>linechart(float yval[],int i){
         ArrayList<Entry> dataset=new ArrayList<Entry>();
-        int temp=0;
-        int j=0;
-//=================================
-           /* int j=(int)System.currentTimeMillis();
-            Timestamp time =new Timestamp(j);
-            String str=time.toString();
-           j= Integer.parseInt(str);*/
 
-            //Toast.makeText(this, j, Toast.LENGTH_SHORT).show();
-//================================
-        dataset.add(new Entry(0,0));
+        int temp =0;
+       /* =(int)System.currentTimeMillis();
+        Timestamp time =new Timestamp(j);
+        String str=time.toString();
+        j= Integer.parseInt(str);*/
+
+           /* OffsetTime offset = OffsetTime.now();
+            offset.getHour();*/
+
+            dataset.add(new Entry(0,0));
             if(i<=13) {
-                for (temp = 0; temp < i; temp++) {
+                for (j = 0; j < i; j++) {
                     if (yval[j] != 0) {
+                        //dataset.add(new Entry(temp, yval[temp]));
                         dataset.add(new Entry(j, yval[j]));
                     }
                 }

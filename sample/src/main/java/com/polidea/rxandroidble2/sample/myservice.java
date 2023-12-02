@@ -6,8 +6,10 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -20,9 +22,11 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
-
 public class myservice extends Service {
     Bitmap bitmap2;
+    double q=0;
+    int f=0;
+    int NOTIFICATION_ID = (int) (System.currentTimeMillis()%10000);
     int width = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
     int height = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
     int time=0;
@@ -31,22 +35,10 @@ public class myservice extends Service {
     }
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        Handler h = new Handler();
         if (intent != null && intent.getExtras() != null){
             songUrl = intent.getIntExtra("YOUR_KEY_SONG_NAME",0);
         }
-        if(time==0) {
-            Runnable r = new Runnable() {
-                @Override
-                public void run() {
 
-                    notification("first time", songUrl);
-
-
-                }
-            };
-            h.postDelayed(r, 5000);
-        }
         //onTaskRemoved(intent);
         Handler handler=new Handler();
 
@@ -69,7 +61,21 @@ public class myservice extends Service {
     @Override
     public void onCreate() {
 
-        //startForeground(0,);
+        Handler h = new Handler();
+        if(time==0) {
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+
+                    notification("first time", songUrl);
+
+
+                }
+            };
+            h.postDelayed(r, 5000);
+        }
+        //notification("oncreate", songUrl);
+
     }
     @Override
     public IBinder onBind(Intent intent) {
@@ -148,6 +154,7 @@ public class myservice extends Service {
     }*/
       @RequiresApi(api = Build.VERSION_CODES.N)
       public void notification(String str, int BloodNum) {
+
           String chanellID = "this is our id notify";
        //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
           Bitmap bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
@@ -176,7 +183,8 @@ public class myservice extends Service {
           Notification notification = builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
                   .setContentTitle("warning!")
                   .setContentText(str + BloodNum)
-                  .setAutoCancel(true)
+                  //remove the notification after clicking on it
+                 // .setAutoCancel(true)
                   .setOngoing(true)
                   .setVibrate(null)
                   .setSound(null)
@@ -190,16 +198,16 @@ public class myservice extends Service {
                   .setContentTitle("warning")
                   .setContentText(str + BloodNum)
                   .setLargeIcon(bitmap)
-                  .setAutoCancel(false)
+                 // .setAutoCancel(false)
                   .setOngoing(true)
                   .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap2).bigLargeIcon(null))
                   .build();
-          //here
-          Intent intent = new Intent(getApplicationContext(), CharacteristicOperationExampleActivity.class);
-          intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-          intent.putExtra("data", "some value come here");
-          PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
-          builder.setContentIntent(pendingIntent);
+          //here if you wanna intent to an activity you should difine the mac address first to forbid the null exception then remove it from comment
+          //Intent intent = new Intent(getApplicationContext(), CharacteristicOperationExampleActivity.class);
+         // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+         // intent.putExtra("data", "some value come here");
+         // PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
+         // builder.setContentIntent(pendingIntent);
           NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BASE) {
               NotificationChannel notificationChannel = null;
@@ -215,11 +223,18 @@ public class myservice extends Service {
                   notificationChannel.setDescription("hi there");
                   notificationChannel.enableVibration(true);
                   notificationManager.createNotificationChannel(notificationChannel); }
-                 // startForeground(1001, builder.build());
-                  startForeground(1001,notification);
-              }
+
+                /*  q=Math.random();
+                  q=q*1001;
+                  f=(int)q;
+                  startForeground(f, builder.build());*/
+                  startForeground(NOTIFICATION_ID,notification);
+
+
+                  }
           }
-          notificationManager.notify(1001, builder.build());
+
+          notificationManager.notify(NOTIFICATION_ID, builder.build());
       }
     public void startAlert () {
         int i = 200000;
@@ -239,7 +254,6 @@ public class myservice extends Service {
         String channelName = "My Background Service";
         NotificationChannel chan = new NotificationChannel(NOTIFICATION_CHANNEL_ID, channelName, NotificationManager.IMPORTANCE_NONE);
         chan.setLightColor(Color.BLUE);
-
         chan.setLockscreenVisibility(Notification.VISIBILITY_PRIVATE);
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         assert manager != null;
@@ -254,4 +268,5 @@ public class myservice extends Service {
                 .build();
         startForeground(2, notification);
     }
+
 }
