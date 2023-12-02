@@ -23,7 +23,7 @@ import android.widget.Button;
 import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
 
 public class warning extends AppCompatActivity {
-    private NotificationPermissionHelper notificationPermissionHelper;
+    public NotificationPermissionHelper notificationPermissionHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
