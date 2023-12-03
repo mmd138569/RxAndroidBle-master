@@ -28,14 +28,17 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.polidea.rxandroidble2.RxBleClient;
 import com.polidea.rxandroidble2.exceptions.BleScanException;
 import com.polidea.rxandroidble2.sample.DeviceActivity;
+import com.polidea.rxandroidble2.sample.EntertransmitterSN1;
 import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
 //import com.polidea.rxandroidble2.sample.example1a_background_scanning.BackgroundScanActivity;
 import com.polidea.rxandroidble2.sample.example3_discovery.ServiceDiscoveryExampleActivity;
+import com.polidea.rxandroidble2.sample.myservice;
 import com.polidea.rxandroidble2.sample.util.ScanExceptionHandler;
 import com.polidea.rxandroidble2.sample.util.ScanPermission;
 import com.polidea.rxandroidble2.scan.ScanFilter;
@@ -56,6 +59,8 @@ public class ScanActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     private RxBleClient rxBleClient;
     BluetoothManager btManager;
+    String songUrl1;
+    String str1;
 
     private Disposable scanDisposable;
     private ScanResultsAdapter resultsAdapter;
@@ -192,8 +197,16 @@ public class ScanActivity extends AppCompatActivity {
 
     private void scanBleDevices() {
         Intent intent=getIntent();
-        String str=intent.getStringExtra("my_mac");
-        s="94:E6:86:"+str;
+
+       if(EntertransmitterSN1.geta()==2) {
+           String str = intent.getStringExtra("my_mac");
+           s = "94:E6:86:" + str;
+       }
+       else {
+           songUrl1 = intent.getStringExtra("kif");
+           s = "94:E6:86:" + songUrl1;
+       }
+        //Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
         scanDisposable = rxBleClient.scanBleDevices(
                 new ScanSettings.Builder()
                         .setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY)

@@ -11,6 +11,7 @@ import android.widget.Button;
 public class EntertransmitterSN1 extends AppCompatActivity {
 
 
+    public static int [] a={0};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +36,16 @@ public class EntertransmitterSN1 extends AppCompatActivity {
         entermanually.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+            seta(a);
                 Intent in1=new Intent(EntertransmitterSN1.this,EnterTransmitterSN.class);
+                in1.putExtra("ki", a[0]);
+
                 startActivity(in1);
                 finish();
             }
         });
     }
+    public static int geta() { return a[0]; }
+
+    public void seta(int []a) { this.a[0] = 2; }
 }

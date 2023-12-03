@@ -32,6 +32,7 @@ import com.google.mlkit.vision.barcode.BarcodeScanner;
 import com.google.mlkit.vision.barcode.BarcodeScanning;
 import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.common.InputImage;
+import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -44,6 +45,7 @@ public class qrcode extends AppCompatActivity {
     Button next;
     String str1;
     private EditText editText;
+    String getvalue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +67,12 @@ public class qrcode extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in =new Intent(qrcode.this,EnterTransmitterSN.class);
-                startActivity(in);
-                finish();
+                if(getvalue!=null) {
+                    Intent intent  = new Intent(getApplicationContext(), ScanActivity.class);
+                    intent.putExtra("kif", getvalue);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
       /*   nxt.setOnClickListener(new View.OnClickListener() {
@@ -150,15 +155,9 @@ public class qrcode extends AppCompatActivity {
                             @Override
                             public void onSuccess(List<Barcode> barcodes) {
                                 for(Barcode barcode:barcodes){
-                                    final String getvalue=barcode.getRawValue();
+                                   getvalue=barcode.getRawValue();
                                     editText.setText(getvalue);
-//========================================================================================================================
-                                    if(getvalue!=null) {
-                                        Intent intent1 = new Intent(getApplicationContext(), EnterTransmitterSN.class);
-                                        intent1.putExtra("mykey", getvalue);
-                                        startActivity(intent1);
-                                    }
-//==========================================================================================================================
+
                                 } image.close();
                                 mediaimage.close();
 
