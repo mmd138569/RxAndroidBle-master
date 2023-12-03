@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -20,9 +21,14 @@ public class safety extends AppCompatActivity {
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>700){
+            setContentView(R.layout.activity_safety);
+        }
+        else {
+            setContentView(R.layout.saftey_smallphone);
+        }
 
-
-        setContentView(R.layout.activity_safety);
         Button safetybtn =findViewById(R.id.safetybtn);
         safetybtn.setOnClickListener(new View.OnClickListener() {
             @Override
