@@ -84,6 +84,7 @@ public class myservice extends Service {
                 }
             };
             h.postDelayed(r, 5000);
+            time=time+100;
         }
         //notification("oncreate", songUrl);
 
@@ -234,15 +235,13 @@ public class myservice extends Service {
                   notificationChannel.setDescription("hi there");
                   notificationChannel.enableVibration(true);
                   notificationManager.createNotificationChannel(notificationChannel); }
-
                 /*  q=Math.random();
                   q=q*1001;
                   f=(int)q;
                   startForeground(f, builder.build());*/
-                  startForeground(NOTIFICATION_ID,notification);
-
-
                   }
+              startForeground(NOTIFICATION_ID,notification);
+
           }
 
           notificationManager.notify(NOTIFICATION_ID, builder.build());
