@@ -50,14 +50,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 />
-
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,13 +64,11 @@
                 android:text="Find and enter the 6-digit transmitter SN locate in one of the following places:"
                 android:textColor="#040303"
                 android:textSize="17dp" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -84,7 +79,6 @@
                 android:textColor="#040303"
                 android:textSize="17dp"
                 android:textStyle="bold" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -93,13 +87,11 @@
                 android:text="On the label"
                 android:textColor="#040303"
                 android:textSize="17dp" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -110,7 +102,6 @@
                 android:textColor="#040303"
                 android:textSize="17dp"
                 android:textStyle="bold" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,13 +110,11 @@
                 android:text="On the back"
                 android:textColor="#040303"
                 android:textSize="17dp" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
                 />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -136,7 +125,6 @@
                 android:textColor="#040303"
                 android:textSize="17dp"
                 android:textStyle="bold" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -145,7 +133,6 @@
                 android:text="On sticker your healthcare professional puts on your handout"
                 android:textColor="#040303"
                 android:textSize="17dp" />
-
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
