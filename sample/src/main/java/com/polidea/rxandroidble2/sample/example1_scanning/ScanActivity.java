@@ -202,7 +202,7 @@ public class ScanActivity extends AppCompatActivity {
            String str = intent.getStringExtra("my_mac");
            s = "94:E6:86:" + str;
        }
-       else {
+       else if(EntertransmitterSN1.geta()==1){
            songUrl1 = intent.getStringExtra("kif");
            s = "94:E6:86:" + songUrl1;
        }

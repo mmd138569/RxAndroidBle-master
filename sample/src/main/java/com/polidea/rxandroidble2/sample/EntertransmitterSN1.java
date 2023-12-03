@@ -12,6 +12,7 @@ public class EntertransmitterSN1 extends AppCompatActivity {
 
 
     public static int [] a={0};
+    int x=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,8 @@ public class EntertransmitterSN1 extends AppCompatActivity {
         takephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                x=1;
+                seta(a,x);
                 Intent in =new Intent(EntertransmitterSN1.this,qrcode.class);
                 startActivity(in);
                 finish();
@@ -36,9 +39,9 @@ public class EntertransmitterSN1 extends AppCompatActivity {
         entermanually.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            seta(a);
+                x=2;
+            seta(a,x);
                 Intent in1=new Intent(EntertransmitterSN1.this,EnterTransmitterSN.class);
-                in1.putExtra("ki", a[0]);
 
                 startActivity(in1);
                 finish();
@@ -47,5 +50,5 @@ public class EntertransmitterSN1 extends AppCompatActivity {
     }
     public static int geta() { return a[0]; }
 
-    public void seta(int []a) { this.a[0] = 2; }
+    public void seta(int []a,int x) { this.a[0] = x; }
 }

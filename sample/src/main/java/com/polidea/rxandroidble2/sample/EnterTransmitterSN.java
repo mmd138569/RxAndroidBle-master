@@ -30,9 +30,6 @@ public class EnterTransmitterSN extends AppCompatActivity {
         EditText editText =findViewById(R.id.lastdigits);
 
 
-        Intent intent = getIntent();
-        String str = intent.getStringExtra("mykey");
-        editText.setText(str);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +49,7 @@ public class EnterTransmitterSN extends AppCompatActivity {
                     ActivityOptions options =
                             ActivityOptions.makeCustomAnimation(EnterTransmitterSN.this, R.anim.animationint, R.anim.anim);
                     EnterTransmitterSN.this.startActivity(in, options.toBundle());
+                    finish();
                 }
 
             }
