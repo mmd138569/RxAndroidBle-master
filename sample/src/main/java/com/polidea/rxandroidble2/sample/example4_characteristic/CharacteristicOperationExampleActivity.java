@@ -714,6 +714,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         }
     }*/
   public void setupPieChart(String s) {
+      pieChart.setBackgroundColor(getResources().getColor(android.R.color.transparent));
       pieChart.setDrawHoleEnabled(true);
       pieChart.setUsePercentValues(true);
       pieChart.setEntryLabelTextSize(40);
