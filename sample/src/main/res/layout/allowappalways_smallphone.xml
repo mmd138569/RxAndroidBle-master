@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".allowAppAlways">
+    tools:context=".allowAppAlways"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -38,7 +39,15 @@
                 android:text="@string/Apt"
                 android:textAllCaps="false" />
         </RelativeLayout>
+    </LinearLayout>
 
+    <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="351dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,15 +103,15 @@
                 android:textStyle="bold"
                 android:textColor="#040303"
                 android:textSize="18dp" />
+
+        </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginLeft="50dp"                android:layout_marginBottom="3dp"
                 android:text="@string/below"
                 android:textColor="#040303"
                 android:textSize="18dp" />
-        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,10 +148,19 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginBottom="3dp"
-                android:text="@string/tto"
+                android:text="@string/tto1"
                 android:textColor="#040303"
                 android:textSize="18dp" />
         </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="3dp"
+                android:text="@string/tto2"
+                android:textColor="#040303"
+                android:textSize="18dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -153,6 +171,7 @@
             android:textColor="#040303"
             android:textSize="18dp" />
     </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="match_parent"
@@ -161,7 +180,7 @@
         android:layout_marginRight="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/bordernum"
         android:text="@string/Allow"
         android:textColor="#068FFF"
@@ -169,6 +188,7 @@
         android:id="@+id/allowAppBtn"
         />
     <TextView
+        android:layout_gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
@@ -177,8 +197,8 @@
         android:textColor="#068FFF"
         android:layout_marginBottom="10dp"
         android:padding="5dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         android:textAllCaps="true"
         android:id="@+id/DontAllow"
         />
-</RelativeLayout>
+</LinearLayout>

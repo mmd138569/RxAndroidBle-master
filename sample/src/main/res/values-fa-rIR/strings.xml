@@ -114,6 +114,8 @@
     <string name="thentap">2.Then, tap</string>
     <string name="allow">Allow</string>
     <string name="tto">to turn off battery</string>
+    <string name="tto1">to turn off </string>
+    <string name="tto2">battrey</string>
     <string name="oft">optimizing for the G6 app</string>
     <string name="da">don\'t allow</string>
     <string name="AiA">App Is Always Run</string>
