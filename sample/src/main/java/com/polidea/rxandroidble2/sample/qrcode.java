@@ -44,13 +44,13 @@ public class qrcode extends AppCompatActivity {
     ListenableFuture<ProcessCameraProvider> cameraProviderListenableFuture;
     Button next;
     String str1;
-    private EditText editText;
+ //   private EditText editText;
     String getvalue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
-        editText=findViewById(R.id.edittxt);
+//        editText=findViewById(R.id.edittxt);
         next=findViewById(R.id.next1);
         if(str1!=null) {
             Handler h1=new Handler();
@@ -156,7 +156,7 @@ public class qrcode extends AppCompatActivity {
                             public void onSuccess(List<Barcode> barcodes) {
                                 for(Barcode barcode:barcodes){
                                    getvalue=barcode.getRawValue();
-                                    editText.setText(getvalue);
+                                 //   editText.setText(getvalue);
 
                                 } image.close();
                                 mediaimage.close();
