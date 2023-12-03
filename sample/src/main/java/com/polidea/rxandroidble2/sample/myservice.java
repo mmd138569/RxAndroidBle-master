@@ -38,7 +38,18 @@ public class myservice extends Service {
         if (intent != null && intent.getExtras() != null){
             songUrl = intent.getIntExtra("YOUR_KEY_SONG_NAME",0);
         }
+        Handler h = new Handler();
+        if(time==0) {
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
 
+                    notification("first time", songUrl);
+
+
+                }
+            };
+        h.postDelayed(r, 5000);}
         //onTaskRemoved(intent);
         Handler handler=new Handler();
 
