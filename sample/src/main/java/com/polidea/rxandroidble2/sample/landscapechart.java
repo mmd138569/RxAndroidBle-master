@@ -38,6 +38,7 @@ public class landscapechart extends AppCompatActivity {
     private CustomLineChart lineChart;
     float time,time1;
     int entrySize = 288;
+    int count=0;
     Button button1;
     Button button2;
     Button button3 ;
@@ -170,11 +171,11 @@ public class landscapechart extends AppCompatActivity {
 
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
 
-
+        count=1;
         lineChart.animateX(4000);
         entrySize = 288;
 
-        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize,time), "");
+        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize,time,count), "");
         line3.setColor(GRAY);
         line3.setCircleColor(Color.BLACK);
         line3.setDrawCircles(true);
@@ -202,26 +203,31 @@ public class landscapechart extends AppCompatActivity {
             //lineChart.getXAxis().setAxisMaximum(24f);
             lineChart.getXAxis().setAxisMaximum(time);
             lineChart.getXAxis().setAxisMinimum(time-1f);
-            entrySize = 288;}
+            entrySize = 288;
+        count=1;}
         else if(num==12){
             //lineChart.getXAxis().setAxisMaximum(12f);
               //lineChart.getXAxis().setAxisMinimum(time);
             lineChart.getXAxis().setAxisMaximum(time);
             lineChart.getXAxis().setAxisMinimum(time-12f);
-            entrySize = 144;}
+            entrySize = 144;
+        count=2;}
         else if(num==8){
             //lineChart.getXAxis().setAxisMaximum(8f);
             lineChart.getXAxis().setAxisMaximum(time);
             lineChart.getXAxis().setAxisMinimum(time-8f);
-            entrySize = 96;}
+            entrySize = 96;
+        count=3;}
         else if(num==3){
             lineChart.getXAxis().setAxisMaximum(time);
             lineChart.getXAxis().setAxisMinimum(time-3f);
-            entrySize = 36;}
+            entrySize = 36;
+        count=4;}
         else if(num==1){
             lineChart.getXAxis().setAxisMaximum(time);
             lineChart.getXAxis().setAxisMinimum(time-1f);
-            entrySize=12;}
+            entrySize=12;
+        count=5;}
         //lineChart.setTouchEnabled(true);
         lineChart.getAxisLeft().setAxisMaximum(400f);
         lineChart.getAxisRight().setAxisMaximum(400f);
@@ -240,7 +246,7 @@ public class landscapechart extends AppCompatActivity {
 
         lineChart.animateX(4000);
 
-        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize,time), "");
+        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize,time,count), "");
 
         line3.setColor(Color.TRANSPARENT);
 
@@ -265,7 +271,7 @@ public class landscapechart extends AppCompatActivity {
         lineChart.invalidate();
         lineChart.getDescription().setEnabled(false);
     }
-    private List<Entry> getRandomEntries(int entrySize, float time) {
+    private List<Entry> getRandomEntries(int entrySize, float time, int count) {
         final DatabaseHelper helper1 = new DatabaseHelper(landscapechart.this);
 
         final ArrayList array_list1 = helper1.getAllCotacts1();
@@ -274,7 +280,7 @@ public class landscapechart extends AppCompatActivity {
         Random random = new Random();
         array_list1.clear();
         array_list1.addAll(helper1.getAllCotacts1());
-        if(array_list1.size()>entrySize){
+       /* if(array_list1.size()>entrySize){
             for (int i = 0; i < entrySize; i++) {
                 entries.add(new Entry((float) (time-24+i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
@@ -301,11 +307,31 @@ public class landscapechart extends AppCompatActivity {
                 entries.add(new Entry((float) (time-3+i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
-        else {
-            for (int i = 0; i < array_list1.size(); i++) {
-                entries.add(new Entry((float) (time-1+i*0.083),Float.parseFloat((String) array_list1.get(i))));
-            }
+        else {*/
+        switch (count) {
+            case 1:
+                for (int i = 0; i < array_list1.size(); i++) {
+                    entries.add(new Entry((float) (time - 24 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                }
+                break;
+            case 2:
+                for (int i = 0; i < array_list1.size(); i++) {
+                    entries.add(new Entry((float) (time - 12 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                }break;
+            case 3:
+                for (int i = 0; i < array_list1.size(); i++) {
+                    entries.add(new Entry((float) (time - 8 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                }break;
+            case 4:
+                for (int i = 0; i < array_list1.size(); i++) {
+                    entries.add(new Entry((float) (time - 3 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                }break;
+            case 5:
+                for (int i = 0; i < array_list1.size(); i++) {
+                    entries.add(new Entry((float) (time - 1 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                }break;
         }
+       // }
         entries.add(new Entry((float) 12, 273));
         return entries;
     }
