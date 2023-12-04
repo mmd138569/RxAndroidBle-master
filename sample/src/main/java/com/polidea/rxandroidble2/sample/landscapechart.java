@@ -4,9 +4,11 @@ import static android.graphics.Color.GRAY;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -14,6 +16,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -24,14 +27,16 @@ import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOp
 import com.polidea.rxandroidble2.sample.example4_characteristic.CustomLineChart;
 import com.polidea.rxandroidble2.sample.example4_characteristic.DatabaseHelper;
 
+import java.time.OffsetTime;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
 public class landscapechart extends AppCompatActivity {
     private CustomLineChart lineChart;
-
+    float time,time1;
     int entrySize = 288;
     Button button1;
     Button button2;
@@ -86,8 +91,20 @@ public class landscapechart extends AppCompatActivity {
                         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#dfdfdf"),rangeLow2,rangeHigh2,""));
                         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#fef5e6"),rangeLow3,rangeHigh3,""));
 
-                        float time=(float)new Date().getTime();
-                        initLineChart();
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            OffsetTime offset1 = OffsetTime.now();
+                             time = offset1.getHour();
+                             time1 = offset1.getMinute();
+                             time=time+time1/100;
+
+                        }
+                        else {
+                            Calendar calendar = Calendar.getInstance();
+                             time = calendar.get(Calendar.HOUR);
+                             time1=calendar.get(Calendar.MINUTE);
+                             time=time+time1/100;
+                        }
+                        initLineChart(time);
                         button1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -122,7 +139,7 @@ public class landscapechart extends AppCompatActivity {
                 });
 
     }
-    private void initLineChart(){
+    private void initLineChart(float time){
         //    lineChart.setTouchEnabled(true);
         lineChart.getXAxis().setAxisMaximum(24f);
         lineChart.getAxisLeft().setAxisMaximum(400f);
@@ -157,7 +174,7 @@ public class landscapechart extends AppCompatActivity {
         lineChart.animateX(4000);
         entrySize = 288;
 
-        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize), "");
+        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize,time), "");
         line3.setColor(GRAY);
         line3.setCircleColor(Color.BLACK);
         line3.setDrawCircles(true);
@@ -182,20 +199,28 @@ public class landscapechart extends AppCompatActivity {
     }
     private void initLineChrt(int num, float time){
         if(num==24){
-            lineChart.getXAxis().setAxisMaximum(24f);
+            //lineChart.getXAxis().setAxisMaximum(24f);
+            lineChart.getXAxis().setAxisMaximum(time);
+            lineChart.getXAxis().setAxisMinimum(time-1f);
             entrySize = 288;}
         else if(num==12){
-            lineChart.getXAxis().setAxisMaximum(12f);
-            //  lineChart.getXAxis().setAxisMinimum(time);
+            //lineChart.getXAxis().setAxisMaximum(12f);
+              //lineChart.getXAxis().setAxisMinimum(time);
+            lineChart.getXAxis().setAxisMaximum(time);
+            lineChart.getXAxis().setAxisMinimum(time-12f);
             entrySize = 144;}
         else if(num==8){
-            lineChart.getXAxis().setAxisMaximum(8f);
+            //lineChart.getXAxis().setAxisMaximum(8f);
+            lineChart.getXAxis().setAxisMaximum(time);
+            lineChart.getXAxis().setAxisMinimum(time-8f);
             entrySize = 96;}
         else if(num==3){
-            lineChart.getXAxis().setAxisMaximum(3f);
+            lineChart.getXAxis().setAxisMaximum(time);
+            lineChart.getXAxis().setAxisMinimum(time-3f);
             entrySize = 36;}
         else if(num==1){
-            lineChart.getXAxis().setAxisMaximum(1f);
+            lineChart.getXAxis().setAxisMaximum(time);
+            lineChart.getXAxis().setAxisMinimum(time-1f);
             entrySize=12;}
         //lineChart.setTouchEnabled(true);
         lineChart.getAxisLeft().setAxisMaximum(400f);
@@ -215,7 +240,7 @@ public class landscapechart extends AppCompatActivity {
 
         lineChart.animateX(4000);
 
-        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize), "");
+        LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize,time), "");
 
         line3.setColor(Color.TRANSPARENT);
 
@@ -240,7 +265,7 @@ public class landscapechart extends AppCompatActivity {
         lineChart.invalidate();
         lineChart.getDescription().setEnabled(false);
     }
-    private List<Entry> getRandomEntries(int entrySize) {
+    private List<Entry> getRandomEntries(int entrySize, float time) {
         final DatabaseHelper helper1 = new DatabaseHelper(landscapechart.this);
 
         final ArrayList array_list1 = helper1.getAllCotacts1();
@@ -251,7 +276,7 @@ public class landscapechart extends AppCompatActivity {
         array_list1.addAll(helper1.getAllCotacts1());
         if(array_list1.size()>entrySize){
             for (int i = 0; i < entrySize; i++) {
-                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (time-24+i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
         else if ((array_list1.size()>144)&&(array_list1.size()<=288)) {
@@ -267,18 +292,18 @@ public class landscapechart extends AppCompatActivity {
 
         else if((array_list1.size()>36)&&(array_list1.size()<=96)){
             for (int i = 0; i < 36; i++) {
-                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (time-8+i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
 
         else if((array_list1.size()>12)&&(array_list1.size()<=36)){
             for (int i = 0; i < 12; i++) {
-                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (time-3+i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
         else {
             for (int i = 0; i < array_list1.size(); i++) {
-                entries.add(new Entry((float) (i*0.083),Float.parseFloat((String) array_list1.get(i))));
+                entries.add(new Entry((float) (time-1+i*0.083),Float.parseFloat((String) array_list1.get(i))));
             }
         }
         entries.add(new Entry((float) 12, 273));
