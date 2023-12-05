@@ -45,7 +45,6 @@ public class landscapechart extends AppCompatActivity {
     Button button3 ;
     Button button4;
     Button button5 ;
-    Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +101,8 @@ public class landscapechart extends AppCompatActivity {
 
                         }
                         else {
-                             time = calendar.get(Calendar.HOUR);
+                            Calendar calendar = Calendar.getInstance();
+                            time = calendar.get(Calendar.HOUR);
                              time1=calendar.get(Calendar.MINUTE);
                              a = calendar.get(Calendar.AM_PM);
                              time=time+time1/100;
