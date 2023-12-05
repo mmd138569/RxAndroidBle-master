@@ -202,7 +202,7 @@ public class landscapechart extends AppCompatActivity {
         if(num==24){
             //lineChart.getXAxis().setAxisMaximum(24f);
             lineChart.getXAxis().setAxisMaximum(time);
-            lineChart.getXAxis().setAxisMinimum(time-1f);
+            lineChart.getXAxis().setAxisMinimum(time-24f);
             entrySize = 288;
         count=1;}
         else if(num==12){
@@ -273,13 +273,18 @@ public class landscapechart extends AppCompatActivity {
     }
     private List<Entry> getRandomEntries(int entrySize, float time, int count) {
         final DatabaseHelper helper1 = new DatabaseHelper(landscapechart.this);
-
         final ArrayList array_list1 = helper1.getAllCotacts1();
+
+
+
 
         List<Entry> entries = new ArrayList<>();
         Random random = new Random();
         array_list1.clear();
         array_list1.addAll(helper1.getAllCotacts1());
+
+        float[] arr =new float[1000];
+        float x=0;
        /* if(array_list1.size()>entrySize){
             for (int i = 0; i < entrySize; i++) {
                 entries.add(new Entry((float) (time-24+i*0.083),Float.parseFloat((String) array_list1.get(i))));
@@ -310,26 +315,98 @@ public class landscapechart extends AppCompatActivity {
         else {*/
         switch (count) {
             case 1:
-                for (int i = 0; i < array_list1.size(); i++) {
-                    entries.add(new Entry((float) (time - 24 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+
+                if(array_list1.size()>=288) {
+                    int j=0;
+
+                    for (int i = array_list1.size() - 288; i < array_list1.size(); i++) {
+                        System.out.println("=======================================");
+                        System.out.println(Float.parseFloat((String) array_list1.get(i)));
+                        System.out.println(i);
+                        x = Float.parseFloat((String) array_list1.get(i));
+                        arr[j] = x;
+                        j++;
+                    }
+                    for (int i = 0; i < arr.length; i++) {
+                        entries.add(new Entry((float) (time - 24 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                    }
                 }
                 break;
             case 2:
-                for (int i = 0; i < array_list1.size(); i++) {
-                    entries.add(new Entry((float) (time - 12 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
-                }break;
+                if(array_list1.size()>=144) {
+                    int j=0;
+
+                    for (int i = array_list1.size() - 144; i < array_list1.size(); i++) {
+                        System.out.println("=======================================");
+                        System.out.println(Float.parseFloat((String) array_list1.get(i)));
+                        System.out.println(i);
+                        x = Float.parseFloat((String) array_list1.get(i));
+                        arr[j] = x;
+                        j++;
+                    }
+                    for (int i = 0; i < arr.length; i++) {
+                        entries.add(new Entry((float) (time - 12 + i * 0.083), arr[i]));
+                    }
+                }
+                break;
             case 3:
-                for (int i = 0; i < array_list1.size(); i++) {
-                    entries.add(new Entry((float) (time - 8 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
-                }break;
+                if(array_list1.size()>=96) {
+                    int j=0;
+
+                    for (int i = array_list1.size() - 96; i < array_list1.size(); i++) {
+                        System.out.println("=======================================");
+                        System.out.println(Float.parseFloat((String) array_list1.get(i)));
+                        System.out.println(i);
+                        x = Float.parseFloat((String) array_list1.get(i));
+                        arr[j] = x;
+                        j++;
+                    }
+                    for (int i = 0; i < arr.length; i++) {
+                        entries.add(new Entry((float) (time - 8 + i * 0.083), arr[i]));
+                    }
+                }
+                break;
             case 4:
-                for (int i = 0; i < array_list1.size(); i++) {
-                    entries.add(new Entry((float) (time - 3 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
-                }break;
+                if(array_list1.size()>=36) {
+                    int j=0;
+
+                    for (int i = array_list1.size() - 36; i < array_list1.size(); i++) {
+                        System.out.println("=======================================");
+                        System.out.println(Float.parseFloat((String) array_list1.get(i)));
+                        System.out.println(i);
+                        x = Float.parseFloat((String) array_list1.get(i));
+                        arr[j] = x;
+                        j++;
+                    }
+                    for (int i = 0; i < arr.length; i++) {
+                        entries.add(new Entry((float) (time - 3 + i * 0.083), arr[i]));
+                    }
+                }
+                break;
             case 5:
-                for (int i = 0; i < array_list1.size(); i++) {
-                    entries.add(new Entry((float) (time - 1 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                int j=0;
+
+                for(int i=array_list1.size()-12;i<array_list1.size();i++){
+                    System.out.println("=======================================");
+                    System.out.println(Float.parseFloat((String) array_list1.get(i)));
+                    System.out.println(i);
+                    x=Float.parseFloat((String) array_list1.get(i));
+                    arr[j]=x;
+                    j++;
+                }
+                for (int i = 0; i < arr.length; i++) {
+                    entries.add(new Entry((float) (time - 1 + i * 0.083),arr[i]));
                 }break;
+               /* if(array_list1.size()<=8) {
+                    for (int i = 0; i < array_list1.size(); i++) {
+                        entries.add(new Entry((float) (time - 1 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                    }
+                }
+                else if(array_list1.size()>=8){
+                    for(int i=array_list1.size()-9;i<array_list1.size();i++){
+                        entries.add(new Entry((float) (time - 1 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
+                    }
+                }*/
         }
        // }
         entries.add(new Entry((float) 12, 273));
