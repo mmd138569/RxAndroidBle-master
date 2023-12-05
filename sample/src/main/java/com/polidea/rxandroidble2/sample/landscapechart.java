@@ -39,11 +39,13 @@ public class landscapechart extends AppCompatActivity {
     float time,time1;
     int entrySize = 288;
     int count=0;
+    int a;
     Button button1;
     Button button2;
     Button button3 ;
     Button button4;
     Button button5 ;
+    Calendar calendar = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,9 +102,9 @@ public class landscapechart extends AppCompatActivity {
 
                         }
                         else {
-                            Calendar calendar = Calendar.getInstance();
                              time = calendar.get(Calendar.HOUR);
                              time1=calendar.get(Calendar.MINUTE);
+                             a = calendar.get(Calendar.AM_PM);
                              time=time+time1/100;
                         }
                         initLineChart(time);
@@ -321,7 +323,8 @@ public class landscapechart extends AppCompatActivity {
                         j++;
                     }
                     for (int i = 0; i < arr.length; i++) {
-                        entries.add(new Entry((float) (time - 12 + i * 0.083), arr[i]));
+
+                            entries.add(new Entry((float) (time - 12 + i * 0.083), arr[i]));
                     }
                 }
                 break;
@@ -368,8 +371,11 @@ public class landscapechart extends AppCompatActivity {
                     j++;
                 }
                 for (int i = 0; i < arr.length; i++) {
-                    entries.add(new Entry((float) (time - 1 + i * 0.083),arr[i]));
-                }break;
+                    entries.add(new Entry((float) (time - 1 + i * 0.083), arr[i]));
+                }
+
+                break;
+
                /* if(array_list1.size()<=8) {
                     for (int i = 0; i < array_list1.size(); i++) {
                         entries.add(new Entry((float) (time - 1 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
