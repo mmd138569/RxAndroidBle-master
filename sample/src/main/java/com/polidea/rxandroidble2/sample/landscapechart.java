@@ -138,7 +138,6 @@ public class landscapechart extends AppCompatActivity {
                         });
                     }
                 });
-
     }
     private void initLineChart(float time){
         //    lineChart.setTouchEnabled(true);
@@ -168,13 +167,10 @@ public class landscapechart extends AppCompatActivity {
        RightAxis.setTextColor(Color.TRANSPARENT);
         RightAxis.setDrawAxisLine(false);
         RightAxis.setDrawGridLines(false);*/
-
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-
         count=1;
         lineChart.animateX(4000);
         entrySize = 288;
-
         LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize,time,count), "");
         line3.setColor(GRAY);
         line3.setCircleColor(Color.BLACK);
@@ -183,7 +179,6 @@ public class landscapechart extends AppCompatActivity {
         //---------
         //  lineChart.highlightValue(30,20);
         lineChart.invalidate();
-
         line3.setDrawCircleHole(true);
         line3.setLineWidth((float) 0.3);
         line3.setCircleRadius(2);
@@ -192,11 +187,8 @@ public class landscapechart extends AppCompatActivity {
         LineData lineData = new LineData(line3);
         lineChart.setData(lineData);
         lineChart.invalidate();
-
         lineData.setDrawValues(false);
-
         lineChart.getDescription().setEnabled(false);
-
     }
     private void initLineChrt(int num, float time){
         if(num==24){
@@ -241,24 +233,15 @@ public class landscapechart extends AppCompatActivity {
         RightAxis.setTextColor(Color.TRANSPARENT);
         RightAxis.setDrawAxisLine(false);
         RightAxis.setDrawGridLines(false);
-
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-
         lineChart.animateX(4000);
-
         LineDataSet line3 = new LineDataSet(getRandomEntries(entrySize,time,count), "");
-
         line3.setColor(Color.TRANSPARENT);
-
         //line3.setColor(GRAY);
         line3.setCircleColor(Color.BLACK);
         line3.setDrawCircles(true);
         //--------
-
-
         lineChart.invalidate();
-
-
         line3.setDrawCircleHole(true);
         line3.setLineWidth((float) 0.3);
         line3.setCircleRadius(2);
@@ -274,10 +257,6 @@ public class landscapechart extends AppCompatActivity {
     private List<Entry> getRandomEntries(int entrySize, float time, int count) {
         final DatabaseHelper helper1 = new DatabaseHelper(landscapechart.this);
         final ArrayList array_list1 = helper1.getAllCotacts1();
-
-
-
-
         List<Entry> entries = new ArrayList<>();
         Random random = new Random();
         array_list1.clear();
@@ -315,10 +294,8 @@ public class landscapechart extends AppCompatActivity {
         else {*/
         switch (count) {
             case 1:
-
                 if(array_list1.size()>=288) {
                     int j=0;
-
                     for (int i = array_list1.size() - 288; i < array_list1.size(); i++) {
                         System.out.println("=======================================");
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
@@ -335,7 +312,6 @@ public class landscapechart extends AppCompatActivity {
             case 2:
                 if(array_list1.size()>=144) {
                     int j=0;
-
                     for (int i = array_list1.size() - 144; i < array_list1.size(); i++) {
                         System.out.println("=======================================");
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
@@ -352,7 +328,6 @@ public class landscapechart extends AppCompatActivity {
             case 3:
                 if(array_list1.size()>=96) {
                     int j=0;
-
                     for (int i = array_list1.size() - 96; i < array_list1.size(); i++) {
                         System.out.println("=======================================");
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
@@ -369,7 +344,6 @@ public class landscapechart extends AppCompatActivity {
             case 4:
                 if(array_list1.size()>=36) {
                     int j=0;
-
                     for (int i = array_list1.size() - 36; i < array_list1.size(); i++) {
                         System.out.println("=======================================");
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
@@ -385,7 +359,6 @@ public class landscapechart extends AppCompatActivity {
                 break;
             case 5:
                 int j=0;
-
                 for(int i=array_list1.size()-12;i<array_list1.size();i++){
                     System.out.println("=======================================");
                     System.out.println(Float.parseFloat((String) array_list1.get(i)));
