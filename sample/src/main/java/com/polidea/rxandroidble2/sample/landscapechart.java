@@ -106,6 +106,12 @@ public class landscapechart extends AppCompatActivity {
                              time1=calendar.get(Calendar.MINUTE);
                              a = calendar.get(Calendar.AM_PM);
                              time=time+time1/100;
+                             if(a==calendar.AM){
+
+                             }
+                             else if(a==calendar.PM) {
+                                 time=time+12;
+                             }
                         }
                         initLineChart(time);
                         button1.setOnClickListener(new View.OnClickListener() {
@@ -264,7 +270,7 @@ public class landscapechart extends AppCompatActivity {
         array_list1.clear();
         array_list1.addAll(helper1.getAllCotacts1());
 
-        float[] arr =new float[1000];
+        ArrayList<Float> arr = new ArrayList<Float>();
         float x=0;
        /* if(array_list1.size()>entrySize){
             for (int i = 0; i < entrySize; i++) {
@@ -303,10 +309,10 @@ public class landscapechart extends AppCompatActivity {
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
                         System.out.println(i);
                         x = Float.parseFloat((String) array_list1.get(i));
-                        arr[j] = x;
+                        arr.add(j,x);
                         j++;
                     }
-                    for (int i = 0; i < arr.length; i++) {
+                    for (int i = 0; i < arr.size(); i++) {
                         entries.add(new Entry((float) (time - 24 + i * 0.083), Float.parseFloat((String) array_list1.get(i))));
                     }
                 }
@@ -319,12 +325,12 @@ public class landscapechart extends AppCompatActivity {
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
                         System.out.println(i);
                         x = Float.parseFloat((String) array_list1.get(i));
-                        arr[j] = x;
+                        arr.add(j,x);
                         j++;
                     }
-                    for (int i = 0; i < arr.length; i++) {
+                    for (int i = 0; i < arr.size(); i++) {
 
-                            entries.add(new Entry((float) (time - 12 + i * 0.083), arr[i]));
+                            entries.add(new Entry((float) (time - 12 + i * 0.083), arr.get(i)));
                     }
                 }
                 break;
@@ -336,11 +342,11 @@ public class landscapechart extends AppCompatActivity {
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
                         System.out.println(i);
                         x = Float.parseFloat((String) array_list1.get(i));
-                        arr[j] = x;
+                        arr.add(j,x);
                         j++;
                     }
-                    for (int i = 0; i < arr.length; i++) {
-                        entries.add(new Entry((float) (time - 8 + i * 0.083), arr[i]));
+                    for (int i = 0; i < arr.size(); i++) {
+                        entries.add(new Entry((float) (time - 8 + i * 0.083), arr.get(i)));
                     }
                 }
                 break;
@@ -352,28 +358,29 @@ public class landscapechart extends AppCompatActivity {
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
                         System.out.println(i);
                         x = Float.parseFloat((String) array_list1.get(i));
-                        arr[j] = x;
+                        arr.add(j,x);
                         j++;
                     }
-                    for (int i = 0; i < arr.length; i++) {
-                        entries.add(new Entry((float) (time - 3 + i * 0.083), arr[i]));
+                    for (int i = 0; i < arr.size(); i++) {
+                        entries.add(new Entry((float) (time - 3 + i * 0.083), arr.get(i)));
                     }
                 }
                 break;
             case 5:
-                int j=0;
-                for(int i=array_list1.size()-12;i<array_list1.size();i++){
-                    System.out.println("=======================================");
-                    System.out.println(Float.parseFloat((String) array_list1.get(i)));
-                    System.out.println(i);
-                    x=Float.parseFloat((String) array_list1.get(i));
-                    arr[j]=x;
-                    j++;
+                if(array_list1.size()>=12) {
+                    int j = 0;
+                    for (int i = array_list1.size() - 12; i < array_list1.size(); i++) {
+                        System.out.println("=======================================");
+                        System.out.println(Float.parseFloat((String) array_list1.get(i)));
+                        System.out.println(i);
+                        x = Float.parseFloat((String) array_list1.get(i));
+                        arr.add(j,x);
+                        j++;
+                    }
+                    for (int i = 0; i < arr.size(); i++) {
+                        entries.add(new Entry((float) (time - 1 + i * 0.083), arr.get(i)));
+                    }
                 }
-                for (int i = 0; i < arr.length; i++) {
-                    entries.add(new Entry((float) (time - 1 + i * 0.083), arr[i]));
-                }
-
                 break;
 
                /* if(array_list1.size()<=8) {
