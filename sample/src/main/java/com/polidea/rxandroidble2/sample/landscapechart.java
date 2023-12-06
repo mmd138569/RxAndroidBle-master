@@ -160,7 +160,7 @@ public class landscapechart extends AppCompatActivity {
         RightAxis.setTextColor(Color.TRANSPARENT);
         RightAxis.setDrawAxisLine(false);
         RightAxis.setDrawGridLines(false);
-
+        lineChart.setDrawGridBackground(false);
         CustomMarkerview mv = new CustomMarkerview (this, R.layout.custommarkerview);
         lineChart.setMarkerView(mv);
        /* Legend legend=lineChart.getLegend();
@@ -205,6 +205,7 @@ public class landscapechart extends AppCompatActivity {
         lineChart.getDescription().setEnabled(false);
     }
     private void initLineChrt(int num, float time){
+
         if(num==24){
             //lineChart.getXAxis().setAxisMaximum(24f);
             lineChart.getXAxis().setAxisMaximum(time);
@@ -244,6 +245,8 @@ public class landscapechart extends AppCompatActivity {
         lineChart.setMarkerView(mv);
         YAxis RightAxis = lineChart.getAxisRight();
         RightAxis.setTextSize(0f);//put it bottom
+       // lineChart.setDrawGridBackground(false);
+
         RightAxis.setTextColor(Color.TRANSPARENT);
         RightAxis.setDrawAxisLine(false);
         RightAxis.setDrawGridLines(false);
