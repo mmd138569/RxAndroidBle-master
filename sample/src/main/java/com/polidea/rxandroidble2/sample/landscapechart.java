@@ -176,6 +176,12 @@ public class landscapechart extends AppCompatActivity {
         RightAxis.setDrawAxisLine(false);
         RightAxis.setDrawGridLines(false);*/
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+//================================================================================
+
+
+        //lineChart.getXAxis().setLabelCount(3,true);
+
+//================================================================================
         count=1;
         lineChart.animateX(4000);
         entrySize = 288;
