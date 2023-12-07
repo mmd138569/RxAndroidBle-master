@@ -23,8 +23,8 @@ class ScanResultsAdapter extends RecyclerView.Adapter<ScanResultsAdapter.ViewHol
 
         @BindView(android.R.id.text1)
         TextView line1;
-       /* @BindView(android.R.id.text2)
-        TextView line2;*/
+        @BindView(android.R.id.text2)
+        TextView line2;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -93,7 +93,7 @@ class ScanResultsAdapter extends RecyclerView.Adapter<ScanResultsAdapter.ViewHol
                    // rxBleScanResult.getBleDevice().getMacAddress(),
                     rxBleScanResult.getScanRecord().getDeviceName()));
                   //  rxBleScanResult.isConnectable()));
-            //holder.line2.setText(String.format(Locale.getDefault(), "RSSI: %d", rxBleScanResult.getRssi()));
+            holder.line2.setText(String.format(Locale.getDefault(), "RSSI: %d", rxBleScanResult.getRssi()));
     }
 
     @Override
