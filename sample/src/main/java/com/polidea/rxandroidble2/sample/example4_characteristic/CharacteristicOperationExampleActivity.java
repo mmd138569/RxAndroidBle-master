@@ -5,6 +5,8 @@ import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.TRANSPARENT;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
@@ -68,6 +70,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
     ImageView top,butt,twotop,twobutt,left,x2,x1;
 
+    private Disposable connectionDisposable1;
 
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
     @BindView(R.id.connect)
@@ -81,7 +84,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView writeInput;*/
     @BindView(R.id.read)
     TextView readButton;
-
+    @BindView(R.id.rssi)
+    TextView rssiView;
   /*  @BindView(R.id.write)
     Button writeButton;
     @BindView(R.id.notify)
@@ -371,6 +375,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public void onConnectToggleClick() {
 
         if (isConnected()) {
+            connectionDisposable1 = bleDevice.establishConnection(false)
+                    .doFinally(this::clearSubscription)
+                    .flatMap(rxBleConnection -> // Set desired interval.
+                            Observable.interval(2, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::updateRssi, this::onConnectionFailure);
+
             triggerDisconnect();
         } else {
             final Disposable connectionDisposable = connectionObservable
@@ -387,12 +398,21 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                             this::onConnectionFinished
                     );
 
-            compositeDisposable.add(connectionDisposable);
-        }
+ }
     }
 //==========================================================================
 //literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second tho
-
+private void updateRssi(int rssiValue) {
+    rssiView.setText(getString(R.string.read_rssi, rssiValue));
+}
+private void clearSubscription() {
+    connectionDisposable1 = null;
+    updateUI();
+}
+    private void updateUI() {
+        final boolean connected = isConnected();
+        connectButton.setText(connected ? R.string.disconnect : R.string.connect);
+    }
     @OnClick(R.id.read)
     public void onReadClick() {
 
