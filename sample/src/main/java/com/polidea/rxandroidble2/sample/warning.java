@@ -12,6 +12,7 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -32,7 +33,13 @@ public class warning extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        setContentView(R.layout.activity_warning);
+        Configuration config = getResources().getConfiguration();
+        if(config.smallestScreenWidthDp>300){
+            setContentView(R.layout.activity_warning);
+        }
+        else {
+            setContentView(R.layout.warning_smallphone);
+        }
         Button buttonEnableBluetooth = findViewById(R.id.warningsection);
         if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.TIRAMISU){
             if(ContextCompat.checkSelfPermission(warning.this, Manifest.permission.POST_NOTIFICATIONS)!= PackageManager.PERMISSION_GRANTED){
