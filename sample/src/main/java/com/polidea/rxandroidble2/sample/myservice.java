@@ -22,6 +22,10 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
+import com.polidea.rxandroidble2.sample.example4_characteristic.DatabaseHelper;
+
+import java.util.ArrayList;
+
 public class myservice extends Service {
     Bitmap bitmap2;
     double q=0;
@@ -37,6 +41,8 @@ public class myservice extends Service {
     public int onStartCommand(Intent intent, int flags, int startId){
         if (intent != null && intent.getExtras() != null){
             songUrl = intent.getIntExtra("YOUR_KEY_SONG_NAME",0);
+            final DatabaseHelper helper = new DatabaseHelper(myservice.this);
+            helper.insert(songUrl);
         }
         Handler h = new Handler();
         if(time==0) {
