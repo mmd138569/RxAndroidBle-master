@@ -407,6 +407,7 @@ private void updateRssi(int rssiValue) {
     rssiView.setText(getString(R.string.read_rssi, rssiValue));
     if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-80){
         Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();
+        findViewById(R.id.signal_strength);
         /**
          HERE WE NEED TO USE ALERT*/
     }
