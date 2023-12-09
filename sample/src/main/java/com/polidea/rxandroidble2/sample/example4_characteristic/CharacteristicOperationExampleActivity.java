@@ -79,8 +79,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView readOutputView;
     float yval[] = new float[1000];
 /*    @BindView(R.id.read_hex_output)
-    TextView readHexOutputView;*/
-/* @BindView(R.id.write_input)
+    TextView readHexOutputView;
+ @BindView(R.id.write_input)
     TextView writeInput;*/
     @BindView(R.id.read)
     TextView readButton;
@@ -375,12 +375,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public void onConnectToggleClick() {
 
         if (isConnected()) {
-            connectionDisposable1 = bleDevice.establishConnection(false)
-                    .doFinally(this::clearSubscription)
-                    .flatMap(rxBleConnection -> // Set desired interval.
-                            Observable.interval(2, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::updateRssi, this::onConnectionFailure);
 
             triggerDisconnect();
         } else {
@@ -399,6 +393,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                     );
 
  }
+        connectionDisposable1 = bleDevice.establishConnection(false)
+                .doFinally(this::clearSubscription)
+                .flatMap(rxBleConnection -> // Set desired interval.
+                        Observable.interval(1, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::updateRssi, this::onConnectionFailure);
+
     }
 //==========================================================================
 //literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second tho
@@ -407,7 +408,7 @@ private void updateRssi(int rssiValue) {
 }
 private void clearSubscription() {
     connectionDisposable1 = null;
-    updateUI();
+    //updateUI();
 }
     private void updateUI() {
         final boolean connected = isConnected();
