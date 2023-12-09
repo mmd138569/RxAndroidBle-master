@@ -42,9 +42,7 @@
         <activity
             android:name=".qrcode"
             android:exported="false" />
-        <activity
-            android:name=".chart"
-            android:exported="false" />
+
         <activity
             android:name=".EnterTransmitterSN"
             android:exported="false" />
