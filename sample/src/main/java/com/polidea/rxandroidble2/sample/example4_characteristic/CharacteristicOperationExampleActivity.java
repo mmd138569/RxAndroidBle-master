@@ -199,13 +199,44 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler handler=new Handler();
         Handler hand=new Handler();
         Handler nand =new Handler();
+        signal_strength1= findViewById(R.id.signal_strength1);
+        signal_strength2= findViewById(R.id.signal_strength2);
+        signal_strength3= findViewById(R.id.signal_strength3);
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 //connect
                 onConnectToggleClick();
+                String a=String.valueOf(rssiView.getText()).replace("RSSI: ","");
+                if(a!="") {
+                    if (Integer.parseInt(a) <= -70) {
+                        // Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();
 
+
+                        signal_strength3.setVisibility(View.INVISIBLE);
+                        signal_strength2.setVisibility(View.INVISIBLE);
+                        signal_strength1.setVisibility(View.VISIBLE);
+
+
+                        /*HERE WE NEED TO USE ALERT*/
+                    } else if (Integer.parseInt(a) <= -40 && Integer.parseInt(a) >= -70) {
+                        //  Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
+
+                        signal_strength3.setVisibility(View.INVISIBLE);
+                        signal_strength2.setVisibility(View.VISIBLE);
+                        signal_strength1.setVisibility(View.INVISIBLE);
+
+                    } else if (Integer.parseInt(a) <= 0 && Integer.parseInt(a) >= -40) {
+                        // Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
+
+                        signal_strength3.setVisibility(View.VISIBLE);
+                        signal_strength2.setVisibility(View.INVISIBLE);
+                        signal_strength1.setVisibility(View.INVISIBLE);
+
+                    }
+                }
                 //refreshing();
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
@@ -396,7 +427,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         connectionDisposable1 = bleDevice.establishConnection(false)
                 .doFinally(this::clearSubscription)
                 .flatMap(rxBleConnection -> // Set desired interval.
-                        Observable.interval(1, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
+                        Observable.interval(10, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::updateRssi, this::onConnectionFailure);
 
@@ -405,37 +436,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second tho
 private void updateRssi(int rssiValue) {
     rssiView.setText(getString(R.string.read_rssi, rssiValue));
-    if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-70){
-       // Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();
 
-        findViewById(R.id.signal_strength1);
-
-        signal_strength3.setVisibility(View.INVISIBLE);
-        signal_strength2.setVisibility(View.INVISIBLE);
-        signal_strength1.setVisibility(View.VISIBLE);
-
-
-        /**
-         HERE WE NEED TO USE ALERT*/
-    }
-    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-40&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-70){
-      //  Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
-        findViewById(R.id.signal_strength2);
-
-        signal_strength3.setVisibility(View.INVISIBLE);
-        signal_strength2.setVisibility(View.VISIBLE);
-        signal_strength1.setVisibility(View.INVISIBLE);
-
-    }
-    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=0&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-40) {
-       // Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
-        findViewById(R.id.signal_strength3);
-
-        signal_strength3.setVisibility(View.VISIBLE);
-        signal_strength2.setVisibility(View.INVISIBLE);
-        signal_strength1.setVisibility(View.INVISIBLE);
-
-    }
     /*else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=0&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-40) {
         Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
         findViewById(R.id.signal_strength4);
