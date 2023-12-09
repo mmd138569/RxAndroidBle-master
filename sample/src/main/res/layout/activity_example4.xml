@@ -13,7 +13,8 @@
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_gravity="center">
     <TextView
         android:id="@+id/connect"
         android:layout_width="wrap_content"
@@ -21,26 +22,34 @@
         android:text=""
         android:textSize="1dp"
         />
+    <RelativeLayout
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        >
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/signal_strength1"
+        android:src="@drawable/rs"
+        android:visibility="invisible"
         />
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:id="@+id/signal_strength2"
+        android:src="@drawable/rs2"
+        android:visibility="invisible"
+
         />
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/signal_strength3"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/rs3"
+        android:visibility="visible"
         />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/signal_strength4"
-        />
+    </RelativeLayout>
     <TextView
         android:id="@+id/read"
         android:layout_width="wrap_content"

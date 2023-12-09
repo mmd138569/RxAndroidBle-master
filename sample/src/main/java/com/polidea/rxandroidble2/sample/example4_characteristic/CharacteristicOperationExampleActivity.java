@@ -405,24 +405,24 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second tho
 private void updateRssi(int rssiValue) {
     rssiView.setText(getString(R.string.read_rssi, rssiValue));
-    if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-80){
+    if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-70){
         Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();
         findViewById(R.id.signal_strength1);
         /**
          HERE WE NEED TO USE ALERT*/
     }
-    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-60&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-80){
+    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-40&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-70){
         Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
         findViewById(R.id.signal_strength2);
     }
-    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-40&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-60) {
+    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=0&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-40) {
         Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
         findViewById(R.id.signal_strength3);
     }
-    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=0&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-40) {
+    /*else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=0&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-40) {
         Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
         findViewById(R.id.signal_strength4);
-    }
+    }*/
 }
 private void clearSubscription() {
     connectionDisposable1 = null;
