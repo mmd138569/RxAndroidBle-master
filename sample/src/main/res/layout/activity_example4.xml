@@ -31,7 +31,7 @@
         />
     <TextView
         android:id="@+id/rssi"
-        android:textSize="60dp"
+        android:textSize=".0001dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="@string/read_rssi"/>
