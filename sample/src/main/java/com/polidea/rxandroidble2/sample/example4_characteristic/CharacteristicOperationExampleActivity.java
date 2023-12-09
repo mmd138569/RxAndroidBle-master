@@ -138,21 +138,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             lineChart.setVisibility(View.INVISIBLE);
         }*/
         lineChart = findViewById(R.id.chart);
-      /*  if(Integer.parseInt(String.valueOf(rssiView.getText()))<=80){
-            Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();*/
-            /**
-            HERE WE NEED TO USE ALERT*/
-      /*  }
-        else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-60&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-80){
-            Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
-        }
-        else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-40&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-60) {
-            Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
 
-        }
-        else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=0&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-40) {
-            Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
-        }*/
         ButterKnife.bind(this);
         String macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
         characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
@@ -419,6 +405,21 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 //literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second tho
 private void updateRssi(int rssiValue) {
     rssiView.setText(getString(R.string.read_rssi, rssiValue));
+    if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-80){
+        Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();
+        /**
+         HERE WE NEED TO USE ALERT*/
+    }
+    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-60&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-80){
+        Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
+    }
+    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=-40&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-60) {
+        Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
+
+    }
+    else if(Integer.parseInt(String.valueOf(rssiView.getText()))<=0&&Integer.parseInt(String.valueOf(rssiView.getText()))>=-40) {
+        Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
+    }
 }
 private void clearSubscription() {
     connectionDisposable1 = null;
