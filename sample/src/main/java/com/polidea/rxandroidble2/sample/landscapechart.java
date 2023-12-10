@@ -277,8 +277,24 @@ public class landscapechart extends AppCompatActivity {
         List<Entry> entries = new ArrayList<>();
         Random random = new Random();
         array_list1.clear();
+ //================================================================
+
+
+
+
+
+
+
         array_list1.addAll(helper1.getAllCotacts1());
 
+
+
+
+
+
+
+
+        //=======================================================
         ArrayList<Float> arr = new ArrayList<Float>();
         float x=0;
        /* if(array_list1.size()>entrySize){
