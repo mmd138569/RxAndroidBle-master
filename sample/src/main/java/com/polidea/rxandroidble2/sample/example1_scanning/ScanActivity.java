@@ -200,11 +200,11 @@ public class ScanActivity extends AppCompatActivity {
 
        if(EntertransmitterSN1.geta()==2) {
            String str = intent.getStringExtra("my_mac");
-           s = "CD:CC:0E:" + str;
+           s = "94:E6:86:" + str;
        }
        else if(EntertransmitterSN1.geta()==1){
            songUrl1 = intent.getStringExtra("kif");
-           s = "CD:CC:0E:" + songUrl1;
+           s = "94:E6:86:" + songUrl1;
        }
         //Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
         scanDisposable = rxBleClient.scanBleDevices(
