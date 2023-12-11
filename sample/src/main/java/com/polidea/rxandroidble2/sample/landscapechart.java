@@ -53,7 +53,7 @@ public class landscapechart extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Configuration config = getResources().getConfiguration();
-        if(config.smallestScreenWidthDp>400){
+        if(config.smallestScreenWidthDp>300){
             setContentView(R.layout.activity_landscapechart);
         }
         else {

@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
                 else {
-                    Intent in = new Intent(MainActivity.this, ScanActivity.class);
+                    Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
                     startActivity(in);
                     finish();
                 }
