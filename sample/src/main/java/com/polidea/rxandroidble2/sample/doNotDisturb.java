@@ -35,14 +35,13 @@ public class doNotDisturb extends AppCompatActivity {
         }
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Button NextBtn = findViewById(R.id.NextBtn);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             NextBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (notificationManager.isNotificationPolicyAccessGranted()) {
-                            //notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY);
-                            Intent intent = new Intent(doNotDisturb.this, allowAppAlways.class);
+                            // notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_PRIORITY);
+                           Intent intent = new Intent(doNotDisturb.this, allowAppAlways.class);
                             ActivityOptions options =
                                     ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
                             doNotDisturb.this.startActivity(intent, options.toBundle());
@@ -73,15 +72,14 @@ public class doNotDisturb extends AppCompatActivity {
                     finish();
                 }
             });
-        }
-        NextBtn.setOnClickListener(new View.OnClickListener() {
+       /* NextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in =new Intent(doNotDisturb.this,allowAppAlways.class);
                 startActivity(in);
                 finish();
             }
-        });
+        });*/
 
         }
 }
