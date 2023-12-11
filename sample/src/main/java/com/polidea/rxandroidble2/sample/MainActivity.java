@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS)!= PackageManager.PERMISSION_GRANTED) {
                     //Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
                     //Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
-                    Intent in = new Intent(MainActivity.this, warning.class);
+                    Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
                     startActivity(in);
                     finish();
                 }
