@@ -62,16 +62,23 @@ public class warning extends AppCompatActivity {
  buttonEnableBluetooth.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if(ContextCompat.checkSelfPermission(warning.this, android.Manifest.permission.BLUETOOTH_CONNECT)== PackageManager.PERMISSION_GRANTED) {
+                Intent in = new Intent(warning.this, ScanActivity.class);
+                // Intent in = new Intent(warning.this, Transmitter.class);
 
-            Intent in = new Intent(warning.this, start.class);
-            // Intent in = new Intent(warning.this, Transmitter.class);
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(warning.this, R.anim.animationint, R.anim.anim);
+                warning.this.startActivity(in, options.toBundle());
+            }
+            else {
+                Intent in = new Intent(warning.this, start.class);
+                // Intent in = new Intent(warning.this, Transmitter.class);
 
-            ActivityOptions options =
-                    ActivityOptions.makeCustomAnimation(warning.this, R.anim.animationint, R.anim.anim);
-            warning.this.startActivity(in, options.toBundle());
-
-        }
- });
+                ActivityOptions options =
+                        ActivityOptions.makeCustomAnimation(warning.this, R.anim.animationint, R.anim.anim);
+                warning.this.startActivity(in, options.toBundle());
+            }
+        }});
     }
 }
 
