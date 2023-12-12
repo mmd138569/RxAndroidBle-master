@@ -6,11 +6,11 @@ apply from: rootProject.file('gradle/gradle-mvn-config.gradle')
 android {
     namespace 'com.polidea.rxandroidble2'
 
-    compileSdkVersion 32
+    compileSdkVersion 34
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 32
+        targetSdkVersion 34
     }
 
     buildTypes {
