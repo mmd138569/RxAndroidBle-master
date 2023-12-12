@@ -136,6 +136,14 @@
             android:name=".example4_characteristic.CharacteristicOperationExampleActivity"
             android:label="@string/title_example4" />
         <activity android:name=".DeviceActivity" />
+        <receiver
+            android:name=".MyBroadcastReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
