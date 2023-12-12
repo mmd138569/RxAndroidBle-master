@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
@@ -40,23 +41,31 @@ public class MainActivity extends AppCompatActivity {
         Runnable r = new Runnable() {
             @Override
             public void run() {
-                if(ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS)!= PackageManager.PERMISSION_GRANTED) {
-                    //Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
-                    //Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
-                    Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
-                    startActivity(in);
-                    finish();
-                }
-                else if(ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.BLUETOOTH_CONNECT)== PackageManager.PERMISSION_DENIED){
-                    Intent in = new Intent(MainActivity.this, bluetooth.class);
-                    startActivity(in);
-                    finish();
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                        //Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
+                        //Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
+                        Intent in = new Intent(MainActivity.this, warning.class);
+                        startActivity(in);
+                        finish();
+                    }
+                        else if(ContextCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.BLUETOOTH_CONNECT)== PackageManager.PERMISSION_DENIED){
+                            Intent in = new Intent(MainActivity.this, bluetooth.class);
+                            startActivity(in);
+                            finish();
+                        }
+                        else {
+                            Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
+                            startActivity(in);
+                            finish();
+                        }
                 }
                 else {
-                    Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
+                    Intent in = new Intent(MainActivity.this, mainlogin.class);
                     startActivity(in);
                     finish();
                 }
+
             }
         };
         h.postDelayed(r, 1500);
