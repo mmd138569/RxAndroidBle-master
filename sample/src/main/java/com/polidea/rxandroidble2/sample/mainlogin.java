@@ -1,10 +1,16 @@
 package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.ActivityOptions;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.PowerManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -25,6 +31,10 @@ public class mainlogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isFirstTime1 = preferences.getBoolean("isFirstTime1", true);
+
         super.onCreate(savedInstanceState);
 
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -40,11 +50,50 @@ public class mainlogin extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                String packageName = getPackageName();
                 if(username.getText().length()!=0 && password.getText().length()!=0 ) {
-                    Intent in = new Intent(mainlogin.this, CGMbasetreatmentDecision.class);
-                    ActivityOptions options =
-                            ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
-                    mainlogin.this.startActivity(in, options.toBundle());
+                    if(isFirstTime1) {
+
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.putBoolean("isFirstTime1", false);
+                        editor.apply();
+
+                        Intent in = new Intent(mainlogin.this, CGMbasetreatmentDecision.class);
+                        ActivityOptions options =
+                                ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
+                        mainlogin.this.startActivity(in, options.toBundle());
+                    }
+                    else if(!isFirstTime1){
+                        if(!notificationManager.isNotificationPolicyAccessGranted()){
+                            Intent in = new Intent(mainlogin.this, doNotDisturb.class);
+                            ActivityOptions options =
+                                    ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
+                            mainlogin.this.startActivity(in, options.toBundle());
+
+                        }
+                        else if(!pm.isIgnoringBatteryOptimizations(packageName)){
+                         Intent in = new Intent(mainlogin.this, allowAppAlways.class);
+                         ActivityOptions options =
+                                 ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
+                         mainlogin.this.startActivity(in, options.toBundle());
+                     }
+                        else if(ContextCompat.checkSelfPermission(mainlogin.this, android.Manifest.permission.BLUETOOTH_CONNECT)== PackageManager.PERMISSION_DENIED) {
+                            Intent in = new Intent(mainlogin.this, bluetooth.class);
+                            ActivityOptions options =
+                                    ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
+                            mainlogin.this.startActivity(in, options.toBundle());
+                        }
+                     else {
+                         Intent in = new Intent(mainlogin.this, EntertransmitterSN1.class);
+                         ActivityOptions options =
+                                 ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
+                         mainlogin.this.startActivity(in, options.toBundle());
+
+                     }
+                    }
                     // if(username.getText()== && password.getText()==) {
                     // Intent in = new Intent(mainLogin.this, );
                     //}
