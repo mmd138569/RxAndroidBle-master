@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="600dp"
         android:id="@+id/cameraprew"
+        android:background="@drawable/qrback"
         />
     <Button
         android:layout_width="match_parent"
