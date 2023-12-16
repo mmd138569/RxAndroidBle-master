@@ -200,7 +200,7 @@ public class ScanActivity extends AppCompatActivity {
 
        if(EntertransmitterSN1.geta()==2) {
            String str = intent.getStringExtra("my_mac");
-           s = "CD:CC:0E:" + str;
+           s = "CD:CC:0E:" + str;//    94:E6:86:
        }
        else if(EntertransmitterSN1.geta()==1){
            songUrl1 = intent.getStringExtra("kif");
