@@ -36,6 +36,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -87,9 +88,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @BindView(R.id.rssi)
     TextView rssiView;
   /*  @BindView(R.id.write)
-    Button writeButton;
+    Button writeButton;*/
     @BindView(R.id.notify)
-    Button notifyButton;*/
+    Button notifyButton;
     private UUID characteristicUuid;
     String  str="0";
     int i=2,x=13,j=0;
@@ -246,6 +247,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
+                        onNotifyClick();
                         onReadClick();
                     }
                 };            nand.postDelayed(r, 3500);
@@ -477,6 +479,18 @@ private void clearSubscription() {
             compositeDisposable.add(disposable);
 
 //=========================================
+        }
+    }
+    @OnClick(R.id.notify)
+    public void onNotifyClick() {
+
+        if (isConnected()) {
+            connectionObservable
+                    .flatMap(rxBleConnection -> rxBleConnection.setupNotification(characteristicUuid))
+                    .doOnNext(notificationObservable -> runOnUiThread(this::notificationHasBeenSetUp))
+                    .flatMap(notificationObservable -> notificationObservable)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::onNotificationReceived, this::onNotificationSetupFailure);
         }
     }
     @OnClick(R.id.refresh)
