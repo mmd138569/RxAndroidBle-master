@@ -952,7 +952,7 @@ private void clearSubscription() {
         connectButton.setText(characteristic != null ? R.string.disconnect : R.string.connect);
         readButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_READ));
         //writeButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_WRITE));
-        //notifyButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_NOTIFY));
+        notifyButton.setEnabled(hasProperty(characteristic, BluetoothGattCharacteristic.PROPERTY_NOTIFY));
     }
 
     private boolean hasProperty(BluetoothGattCharacteristic characteristic, int property) {
