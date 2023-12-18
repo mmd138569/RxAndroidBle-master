@@ -248,7 +248,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         onNotifyClick();
-                        onReadClick();
+                       // onReadClick();
                     }
                 };            nand.postDelayed(r, 3500);
 
@@ -490,7 +490,20 @@ private void clearSubscription() {
                     .doOnNext(notificationObservable -> runOnUiThread(this::notificationHasBeenSetUp))
                     .flatMap(notificationObservable -> notificationObservable)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::onNotificationReceived, this::onNotificationSetupFailure);
+                    .subscribe(bytes -> {
+                        readOutputView.setText(new String(bytes));
+                        //  readHexOutputView.setText(HexString.bytesToHex(bytes));
+                        // writeInput.setText(HexString.bytesToHex(bytes));
+//=======================================
+
+                    /*  try {
+                            FileOutputStream fos = openFileOutput("myfile.txt", Context.MODE_PRIVATE);
+                            fos.write(HexString.bytesToHex(bytes).getBytes());
+                            fos.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }*/
+                    }, this::onReadFailure);
         }
     }
     @OnClick(R.id.refresh)
