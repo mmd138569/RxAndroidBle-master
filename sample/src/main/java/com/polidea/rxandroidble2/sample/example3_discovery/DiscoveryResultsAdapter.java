@@ -30,7 +30,6 @@ class DiscoveryResultsAdapter extends RecyclerView.Adapter<DiscoveryResultsAdapt
         final int type;
         final String description;
         final UUID uuid;
-
         AdapterItem(int type, String description, UUID uuid) {
             this.type = type;
             this.description = description;
@@ -82,15 +81,16 @@ class DiscoveryResultsAdapter extends RecyclerView.Adapter<DiscoveryResultsAdapt
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final int itemViewType = holder.getItemViewType();
         final AdapterItem item = getItem(position);
+       // if(item.uuid.toString()=="Notify") {
+            if (itemViewType == AdapterItem.SERVICE) {
+                holder.line1.setText(String.format("Service: %s", item.description));
+            } else {
+                holder.line1.setText(String.format("Characteristic: %s", item.description));
+            }
 
-        if (itemViewType == AdapterItem.SERVICE) {
-            holder.line1.setText(String.format("Service: %s", item.description));
-        } else {
-            holder.line1.setText(String.format("Characteristic: %s", item.description));
+            holder.line2.setText(item.uuid.toString());
         }
-
-        holder.line2.setText(item.uuid.toString());
-    }
+    //}
 
     @Override
     @NonNull
@@ -114,7 +114,6 @@ class DiscoveryResultsAdapter extends RecyclerView.Adapter<DiscoveryResultsAdapt
             // Add service
             data.add(new AdapterItem(AdapterItem.SERVICE, getServiceType(service), service.getUuid()));
             final List<BluetoothGattCharacteristic> characteristics = service.getCharacteristics();
-
             for (BluetoothGattCharacteristic characteristic : characteristics) {
                 data.add(new AdapterItem(AdapterItem.CHARACTERISTIC, describeProperties(characteristic), characteristic.getUuid()));
             }
