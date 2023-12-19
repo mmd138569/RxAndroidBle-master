@@ -247,8 +247,12 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
-                        onNotifyClick();
-                       // onReadClick();
+                      /*  if() {
+                            onNotifyClick();
+                        }*/
+                        //else if() {
+                             onReadClick();
+                        //}
                     }
                 };            nand.postDelayed(r, 3500);
 
