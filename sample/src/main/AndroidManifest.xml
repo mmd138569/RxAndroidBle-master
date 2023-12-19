@@ -49,7 +49,8 @@
             android:exported="false" />
         <activity
             android:name=".landscapechart"
-            android:exported="false" />
+            android:exported="false"
+           android:screenOrientation="portrait"/>
         <activity
             android:name=".bluetooth"
             android:exported="false" />
@@ -134,7 +135,8 @@
             android:label="@string/title_example3" />
         <activity
             android:name=".example4_characteristic.CharacteristicOperationExampleActivity"
-            android:label="@string/title_example4" />
+            android:label="@string/title_example4"
+            android:screenOrientation="portrait"/>
         <activity android:name=".DeviceActivity" />
       <!--  <receiver
             android:name=".MyBroadcastReceiver"
