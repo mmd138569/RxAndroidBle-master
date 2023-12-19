@@ -178,6 +178,7 @@ public class myservice extends Service {
       public void notification(String str, int BloodNum) {
           if( CharacteristicOperationExampleActivity.getrssi()==0) {
              // f=R.drawable.rs;
+              startAlert();
           }
           else if(CharacteristicOperationExampleActivity.getrssi()==1){
              // f=R.drawable.rs2;
