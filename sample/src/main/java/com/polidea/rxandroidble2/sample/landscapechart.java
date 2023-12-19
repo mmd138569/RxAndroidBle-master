@@ -40,11 +40,8 @@ public class landscapechart extends AppCompatActivity {
     int entrySize = 288;
     int count=0;
     int a;
-    Button button1;
-    Button button2;
-    Button button3 ;
-    Button button4;
-    Button button5 ;
+    Button button1,button2,button3,button4,button5,button11,button21,button31,button41,button51;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +62,13 @@ public class landscapechart extends AppCompatActivity {
         button3=  findViewById(R.id.btton3);
         button4=  findViewById(R.id.btton4);
         button5=  findViewById(R.id.btton5);
+
+        button11=  findViewById(R.id.btton11);
+        button21=  findViewById(R.id.btton21);
+        button31=  findViewById(R.id.btton31);
+        button41=  findViewById(R.id.btton41);
+        button51=  findViewById(R.id.btton51);
+
         lineChart = findViewById(R.id.landchart);
         lineChart.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -117,30 +121,92 @@ public class landscapechart extends AppCompatActivity {
                         button1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                button1.setVisibility(View.VISIBLE);
+
+                                button2.setVisibility(View.VISIBLE);
+                                button3.setVisibility(View.VISIBLE);
+                                button4.setVisibility(View.VISIBLE);
+                                button5.setVisibility(View.VISIBLE);
+
+                                button11.setVisibility(View.INVISIBLE);
+                                button21.setVisibility(View.INVISIBLE);
+                                button31.setVisibility(View.INVISIBLE);
+                                button41.setVisibility(View.INVISIBLE);
+                                button51.setVisibility(View.INVISIBLE);
+
                                 initLineChrt(24,time);
                             }
                         });
                         button2.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                button1.setVisibility(View.INVISIBLE);
+                                button2.setVisibility(View.VISIBLE);
+                                button3.setVisibility(View.VISIBLE);
+                                button4.setVisibility(View.VISIBLE);
+                                button5.setVisibility(View.VISIBLE);
+
+                                button21.setVisibility(View.VISIBLE);
+                                button11.setVisibility(View.INVISIBLE);
+
+                                button31.setVisibility(View.INVISIBLE);
+                                button41.setVisibility(View.INVISIBLE);
+                                button51.setVisibility(View.INVISIBLE);
+
                                 initLineChrt(12,time);
                             }
                         });
                         button3.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                button1.setVisibility(View.INVISIBLE);
+                                button2.setVisibility(View.VISIBLE);
+                                button3.setVisibility(View.VISIBLE);
+                                button4.setVisibility(View.VISIBLE);
+                                button5.setVisibility(View.VISIBLE);
+
+                                button21.setVisibility(View.INVISIBLE);
+                                button11.setVisibility(View.INVISIBLE);
+
+                                button31.setVisibility(View.VISIBLE);
+                                button41.setVisibility(View.INVISIBLE);
+                                button51.setVisibility(View.INVISIBLE);
                                 initLineChrt(8,time);
                             }
                         });
                         button4.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                button1.setVisibility(View.INVISIBLE);
+                                button2.setVisibility(View.VISIBLE);
+                                button3.setVisibility(View.VISIBLE);
+                                button4.setVisibility(View.VISIBLE);
+                                button5.setVisibility(View.VISIBLE);
+
+                                button21.setVisibility(View.INVISIBLE);
+                                button11.setVisibility(View.INVISIBLE);
+
+                                button31.setVisibility(View.INVISIBLE);
+                                button41.setVisibility(View.VISIBLE);
+                                button51.setVisibility(View.INVISIBLE);
                                 initLineChrt(3,time);
                             }
                         });
                         button5.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                button1.setVisibility(View.INVISIBLE);
+                                button2.setVisibility(View.VISIBLE);
+                                button3.setVisibility(View.VISIBLE);
+                                button4.setVisibility(View.VISIBLE);
+                                button5.setVisibility(View.VISIBLE);
+
+                                button21.setVisibility(View.INVISIBLE);
+                                button11.setVisibility(View.INVISIBLE);
+
+                                button31.setVisibility(View.INVISIBLE);
+                                button41.setVisibility(View.INVISIBLE);
+                                button51.setVisibility(View.VISIBLE);
                                 initLineChrt(1,time);
                             }
                         });

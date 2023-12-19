@@ -67,7 +67,7 @@
                 android:layout_height="50dp"
                 android:layout_alignParentRight="true"
                 android:rotation="90"
-
+                android:id="@+id/btton11"
                 android:layout_marginBottom="40dp"
                 android:text="24HR"
                 android:visibility="invisible"
@@ -102,6 +102,8 @@
                 android:layout_marginBottom="40dp"
                 android:text="12HR"
                 android:visibility="invisible"
+                android:id="@+id/btton21"
+
                 />
         </RelativeLayout>
         <RelativeLayout
@@ -133,6 +135,8 @@
                 android:layout_marginBottom="40dp"
                 android:text="8HR"
                 android:visibility="invisible"
+                android:id="@+id/btton31"
+
                 />
         </RelativeLayout>
         <RelativeLayout
@@ -164,6 +168,8 @@
                 android:layout_marginBottom="40dp"
                 android:text="3HR"
                 android:visibility="invisible"
+                android:id="@+id/btton41"
+
                 />
         </RelativeLayout>
         <RelativeLayout
@@ -195,6 +201,8 @@
                 android:layout_marginBottom="40dp"
                 android:text="1HR"
                 android:visibility="invisible"
+                android:id="@+id/btton51"
+
                 />
         </RelativeLayout>
     </LinearLayout>
