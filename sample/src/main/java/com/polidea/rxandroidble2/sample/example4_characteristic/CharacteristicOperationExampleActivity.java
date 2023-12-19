@@ -83,8 +83,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView readHexOutputView;
  @BindView(R.id.write_input)
     TextView writeInput;*/
+    int temp =0;
     @BindView(R.id.read)
     TextView readButton;
+    public static int z=0;
     @BindView(R.id.rssi)
     TextView rssiView;
   /*  @BindView(R.id.write)
@@ -211,11 +213,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //connect
                 onConnectToggleClick();
                 String a=String.valueOf(rssiView.getText()).replace("RSSI: ","");
+
                 if(a!="") {
                     System.out.println("================= if its run it should run the RSSI ==================");
                     if (Integer.parseInt(a) <= -70) {
+                        temp=0;
                         // Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();
-
+                        setrssi(temp);
 
                         signal_strength3.setVisibility(View.INVISIBLE);
                         signal_strength2.setVisibility(View.INVISIBLE);
@@ -225,14 +229,16 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                         /*HERE WE NEED TO USE ALERT*/
                     } else if (Integer.parseInt(a) <= -40 && Integer.parseInt(a) >= -70) {
                         //  Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
-
+                        temp=1;
+                        setrssi(temp);
                         signal_strength3.setVisibility(View.INVISIBLE);
                         signal_strength2.setVisibility(View.VISIBLE);
                         signal_strength1.setVisibility(View.INVISIBLE);
 
                     } else if (Integer.parseInt(a) <= 0 && Integer.parseInt(a) >= -40) {
                         // Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
-
+                        temp=2;
+                        setrssi(temp);
                         signal_strength3.setVisibility(View.VISIBLE);
                         signal_strength2.setVisibility(View.INVISIBLE);
                         signal_strength1.setVisibility(View.INVISIBLE);
@@ -331,7 +337,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             }
         },17000);
     }*/
+    public static int getrssi() { return z; }
 
+    public void setrssi(int x) { this.z = x; }
     private Observable<RxBleConnection> prepareConnectionObservable() {
         return bleDevice
                 .establishConnection(false)

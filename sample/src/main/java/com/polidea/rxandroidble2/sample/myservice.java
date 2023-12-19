@@ -13,9 +13,11 @@ import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
@@ -27,6 +29,8 @@ import com.polidea.rxandroidble2.sample.example4_characteristic.DatabaseHelper;
 import java.util.ArrayList;
 
 public class myservice extends Service {
+    ImageView signalstrength1,signalstrength2,signalstrength3;
+
     Bitmap bitmap2;
     double q=0;
     int f=0;
@@ -172,7 +176,15 @@ public class myservice extends Service {
     }*/
       @RequiresApi(api = Build.VERSION_CODES.N)
       public void notification(String str, int BloodNum) {
-
+          if( CharacteristicOperationExampleActivity.getrssi()==0) {
+             // f=R.drawable.rs;
+          }
+          else if(CharacteristicOperationExampleActivity.getrssi()==1){
+             // f=R.drawable.rs2;
+          }
+          else if (CharacteristicOperationExampleActivity.getrssi()==2){
+            //  f=R.drawable.rs3;
+          }
           String chanellID = "this is our id notify";
        //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
           Bitmap bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
@@ -198,7 +210,7 @@ public class myservice extends Service {
         }
          // CharacteristicOperationExampleActivity.customchart();
           NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), chanellID);
-          Notification notification = builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
+          Notification notification = builder.setSmallIcon(R.drawable.baseline_notifications_active_24)//R.drawable.baseline_notifications_active_24
                   .setContentTitle("warning!")
                   .setContentText(str + BloodNum)
                   //remove the notification after clicking on it
@@ -212,7 +224,7 @@ public class myservice extends Service {
                   .build();
           builder.setLargeIcon(bitmap);
           builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap).bigLargeIcon(null));
-          builder.setSmallIcon(R.drawable.baseline_notifications_active_24)
+          builder.setSmallIcon(R.drawable.baseline_notifications_active_24)//R.drawable.baseline_notifications_active_24
                   .setContentTitle("warning")
                   .setContentText(str + BloodNum)
                   .setLargeIcon(bitmap)
