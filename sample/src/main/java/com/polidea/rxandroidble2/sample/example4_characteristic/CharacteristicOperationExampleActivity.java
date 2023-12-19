@@ -682,7 +682,7 @@ private void clearSubscription() {
 //==============================================================================
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         if(yval[i-1]%12==0){
-            lineDataSet.setDrawCircleHole(true);
+            lineDataSet.setDrawCircleHole(false);
         }
         else{
             lineDataSet.setDrawCircles(true);
