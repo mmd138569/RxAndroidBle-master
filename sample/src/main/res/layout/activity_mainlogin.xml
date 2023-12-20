@@ -52,6 +52,7 @@
             android:textColor="#040303"
             />
         <EditText
+            android:drawableRight="@drawable/letter"
             android:inputType="text"
             android:layout_width="250dp"
             android:layout_height="40dp"
