@@ -175,7 +175,7 @@ public class ScanActivity extends AppCompatActivity {
                  progressbutton.setVisibility(View.VISIBLE);
 
              }
-         };handler.postDelayed(r,1200);
+         };handler.postDelayed(r,400);
         Handler handler2=new Handler();
         Runnable r2=new Runnable() {
             @Override
@@ -184,7 +184,7 @@ public class ScanActivity extends AppCompatActivity {
                 progressbutton.setVisibility(View.INVISIBLE);
 
             }
-        };handler.postDelayed(r2,1500);
+        };handler.postDelayed(r2,1950);
 
         if (isScanning()) {
             scanDisposable.dispose();
