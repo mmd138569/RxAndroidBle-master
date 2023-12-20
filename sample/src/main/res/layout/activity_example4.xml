@@ -105,7 +105,7 @@
              android:text="@string/prefix_hex"
              android:textSize="14sp" />
  -->
-        <!--  <EditText
+    <!--  <EditText
             android:id="@+id/write_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
