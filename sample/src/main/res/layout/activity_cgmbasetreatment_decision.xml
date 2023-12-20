@@ -23,8 +23,8 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_keyboard_arrow_right_24dp"
-                android:rotation="180"
+                android:src="@drawable/left"
+                android:layout_marginLeft="5dp"
                 />
             <TextView
                 android:layout_marginLeft="12dp"
