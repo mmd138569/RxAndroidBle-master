@@ -35,7 +35,7 @@ public class EntertransmitterSN1 extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int screenhight=displayMetrics.heightPixels;
         if(screenhight>=1000){
-            setContentView(R.layout.activity_enter_transmitter_sn);
+            setContentView(R.layout.activity_entertransmitter_sn1);
         }
         else if(screenhight<=1000){
             setContentView(R.layout.entertransmitter_sn1_smallphone);
