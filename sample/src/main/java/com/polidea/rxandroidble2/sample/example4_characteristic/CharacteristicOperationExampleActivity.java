@@ -33,6 +33,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -123,11 +124,20 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         /*supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 */
-        Configuration config = getResources().getConfiguration();
+       /* Configuration config = getResources().getConfiguration();
         if(config.smallestScreenWidthDp>300){
             setContentView(R.layout.activity_example4);
         }
         else {
+            setContentView(R.layout.example4_smallphone);
+        }*/
+        DisplayMetrics displayMetrics=new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenhight=displayMetrics.heightPixels;
+        if(screenhight>=1000){
+            setContentView(R.layout.activity_example4);
+        }
+        else if(screenhight<=1000){
             setContentView(R.layout.example4_smallphone);
         }
 

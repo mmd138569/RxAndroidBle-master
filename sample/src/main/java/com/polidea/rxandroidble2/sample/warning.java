@@ -16,6 +16,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -33,11 +34,20 @@ public class warning extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        Configuration config = getResources().getConfiguration();
+       /* Configuration config = getResources().getConfiguration();
         if(config.smallestScreenWidthDp>300){
             setContentView(R.layout.activity_warning);
         }
         else {
+            setContentView(R.layout.warning_smallphone);
+        }*/
+        DisplayMetrics displayMetrics=new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int screenhight=displayMetrics.heightPixels;
+        if(screenhight>=1000){
+            setContentView(R.layout.activity_warning);
+        }
+        else if(screenhight<=1000){
             setContentView(R.layout.warning_smallphone);
         }
         Button buttonEnableBluetooth = findViewById(R.id.warningsection);
