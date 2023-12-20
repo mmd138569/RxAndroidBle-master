@@ -30,14 +30,14 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/signal_strength1"
-        android:src="@drawable/rs"
+        android:src="@drawable/blutooth1"
         android:visibility="invisible"
         />
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:id="@+id/signal_strength2"
-        android:src="@drawable/rs2"
+        android:src="@drawable/blutooth2"
         android:visibility="invisible"
 
         />
@@ -46,7 +46,7 @@
         android:id="@+id/signal_strength3"
         android:layout_width="50dp"
         android:layout_height="match_parent"
-        android:src="@drawable/rs3"
+        android:src="@drawable/blutooth3"
         android:visibility="invisible"
         />
     </RelativeLayout>
