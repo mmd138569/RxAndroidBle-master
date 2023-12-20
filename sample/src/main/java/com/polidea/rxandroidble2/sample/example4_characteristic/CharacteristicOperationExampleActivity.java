@@ -223,9 +223,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //connect
                 onConnectToggleClick();
                 String a=String.valueOf(rssiView.getText()).replace("RSSI: ","");
-
+                System.out.println("================= if its run it should run the RSSI ==================");
                 if(a!="") {
-                    System.out.println("================= if its run it should run the RSSI ==================");
                     if (Integer.parseInt(a) <= -70) {
                         temp=0;
                         // Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();

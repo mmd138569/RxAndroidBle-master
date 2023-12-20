@@ -113,7 +113,7 @@
             >
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_marginRight="-23dp"
-                android:background="@android:color/transparent"
+                android:background="@drawable/landescapeborder"
                 android:textColor="@android:color/darker_gray"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
