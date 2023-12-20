@@ -21,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -61,7 +62,7 @@ public class ScanActivity extends AppCompatActivity {
     BluetoothManager btManager;
     String songUrl1;
     String str1;
-
+    ImageView progressbutton;
     private Disposable scanDisposable;
     private ScanResultsAdapter resultsAdapter;
     private boolean hasClickedScan;
@@ -90,7 +91,7 @@ public class ScanActivity extends AppCompatActivity {
 //===================== progress bar ================================
 
         imgloading = findViewById(R.id.imgloading);
-
+        progressbutton=findViewById(R.id.progressbtn);
         animatorSet = (AnimatorSet) AnimatorInflater.loadAnimator(ScanActivity.this, R.animator.loadinganime);
         animatorSet.setTarget(imgloading);
         animatorSet.start();
@@ -166,6 +167,25 @@ public class ScanActivity extends AppCompatActivity {
     public void onScanToggleClick() {
          scan1 = findViewById(R.id.Scan1);
          scan2 = findViewById(R.id.Scan2);
+        Handler handler=new Handler();
+         Runnable r=new Runnable() {
+             @Override
+             public void run() {
+                 scanToggleButton.setVisibility(View.INVISIBLE);
+                 progressbutton.setVisibility(View.VISIBLE);
+
+             }
+         };handler.postDelayed(r,1200);
+        Handler handler2=new Handler();
+        Runnable r2=new Runnable() {
+            @Override
+            public void run() {
+                scanToggleButton.setVisibility(View.VISIBLE);
+                progressbutton.setVisibility(View.INVISIBLE);
+
+            }
+        };handler.postDelayed(r2,1500);
+
         if (isScanning()) {
             scanDisposable.dispose();
             a=true;
