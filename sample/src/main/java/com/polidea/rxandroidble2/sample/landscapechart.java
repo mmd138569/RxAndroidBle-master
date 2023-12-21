@@ -131,16 +131,16 @@ public class landscapechart extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 button1.setVisibility(View.VISIBLE);
-                                button2.setVisibility(View.INVISIBLE);
-                                button3.setVisibility(View.INVISIBLE);
-                                button4.setVisibility(View.INVISIBLE);
-                                button5.setVisibility(View.INVISIBLE);
+                                button2.setVisibility(View.VISIBLE);
+                                button3.setVisibility(View.VISIBLE);
+                                button4.setVisibility(View.VISIBLE);
+                                button5.setVisibility(View.VISIBLE);
 
                                 button11.setVisibility(View.INVISIBLE);
-                                button21.setVisibility(View.VISIBLE);
-                                button31.setVisibility(View.VISIBLE);
-                                button41.setVisibility(View.VISIBLE);
-                                button51.setVisibility(View.VISIBLE);
+                                button21.setVisibility(View.INVISIBLE);
+                                button31.setVisibility(View.INVISIBLE);
+                                button41.setVisibility(View.INVISIBLE);
+                                button51.setVisibility(View.INVISIBLE);
 
                                 initLineChrt(24,time);
                             }
@@ -168,12 +168,12 @@ public class landscapechart extends AppCompatActivity {
                             @Override
                             public void onClick(View v) {
                                 button1.setVisibility(View.INVISIBLE);
-                                button2.setVisibility(View.INVISIBLE);
+                                button2.setVisibility(View.VISIBLE);
                                 button3.setVisibility(View.INVISIBLE);
                                 button4.setVisibility(View.VISIBLE);
                                 button5.setVisibility(View.VISIBLE);
 
-                                button21.setVisibility(View.VISIBLE);
+                                button21.setVisibility(View.INVISIBLE);
                                 button11.setVisibility(View.VISIBLE);
 
                                 button31.setVisibility(View.VISIBLE);
@@ -188,11 +188,11 @@ public class landscapechart extends AppCompatActivity {
                                 button1.setVisibility(View.INVISIBLE);
                                 button2.setVisibility(View.VISIBLE);
                                 button3.setVisibility(View.VISIBLE);
-                                button4.setVisibility(View.VISIBLE);
+                                button4.setVisibility(View.INVISIBLE);
                                 button5.setVisibility(View.VISIBLE);
 
                                 button21.setVisibility(View.INVISIBLE);
-                                button11.setVisibility(View.INVISIBLE);
+                                button11.setVisibility(View.VISIBLE);
 
                                 button31.setVisibility(View.INVISIBLE);
                                 button41.setVisibility(View.VISIBLE);
@@ -207,10 +207,10 @@ public class landscapechart extends AppCompatActivity {
                                 button2.setVisibility(View.VISIBLE);
                                 button3.setVisibility(View.VISIBLE);
                                 button4.setVisibility(View.VISIBLE);
-                                button5.setVisibility(View.VISIBLE);
+                                button5.setVisibility(View.INVISIBLE);
 
                                 button21.setVisibility(View.INVISIBLE);
-                                button11.setVisibility(View.INVISIBLE);
+                                button11.setVisibility(View.VISIBLE);
 
                                 button31.setVisibility(View.INVISIBLE);
                                 button41.setVisibility(View.INVISIBLE);
