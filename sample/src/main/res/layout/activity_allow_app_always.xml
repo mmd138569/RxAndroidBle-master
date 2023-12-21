@@ -21,9 +21,11 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/left"
+                android:layout_marginLeft="5dp"
+
                 />
             <TextView
-                android:layout_marginLeft="12dp"
+                android:layout_marginLeft="15dp"
 
                 android:id="@+id/txt_action"
                 android:layout_marginTop="10dp"
