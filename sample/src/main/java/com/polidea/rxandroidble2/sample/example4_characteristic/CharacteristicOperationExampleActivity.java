@@ -546,10 +546,11 @@ private void clearSubscription() {
         final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
                 android.R.layout.simple_list_item_1, array_list);
         listView.setAdapter(arrayAdapter);
-
+        System.out.println(readOutputView+"=======================");
         if (!readOutputView.getText().toString().isEmpty()) {
 //===========================================================================================================
-            yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));                    //==
+            yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+
             Intent intent  = new Intent(this, myservice.class);
 
             int songUrl=Integer.parseInt(String.valueOf(readOutputView.getText()));
