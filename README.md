@@ -8,19 +8,6 @@
   />
 </p>
 
-## Introduction
-
-RxAndroidBle is a powerful painkiller for Android's Bluetooth Low Energy headaches. It is backed by RxJava, implementing complicated APIs as handy reactive observables. The library does for you:
-
- * Fancy asynchronous operations support (read, write, notifications)
- * Threading management in order to meet Android contracts
- * Connection and operation error handling
-
-For support head to [StackOverflow #rxandroidble](http://stackoverflow.com/questions/tagged/rxandroidble?sort=active)
-
-## RxAndroidBLE @ Mobile Central Europe 2016
-[![RxAndroidBLE @ Mobile Central Europe 2016](https://img.youtube.com/vi/0aKfUGCxUDM/0.jpg)](https://www.youtube.com/watch?v=0aKfUGCxUDM)
-
 ## Getting Started
 
 The first step is to include RxAndroidBle into your project.
