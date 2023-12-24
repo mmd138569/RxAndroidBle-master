@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
 */
-                Intent in = new Intent(MainActivity.this, EnterTransmitterSN.class);
+                Intent in = new Intent(MainActivity.this, ScanActivity.class);
                 startActivity(in);
                 finish();
             }
