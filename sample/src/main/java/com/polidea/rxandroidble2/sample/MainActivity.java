@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Handler h = new Handler();
         Runnable r = new Runnable() {
             @Override
-            public void run() {
+            public void run() {/*
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                         //Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
@@ -90,7 +90,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(in);
                     finish();
                 }
-
+*/
+                Intent in = new Intent(MainActivity.this, EnterTransmitterSN.class);
+                startActivity(in);
+                finish();
             }
         };
         h.postDelayed(r, 1500);
