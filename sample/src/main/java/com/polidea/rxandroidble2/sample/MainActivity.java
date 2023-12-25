@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(in);
                     finish();
                 }
+                
 */
                 Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
                 startActivity(in);
