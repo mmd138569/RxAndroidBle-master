@@ -89,7 +89,6 @@ class DiscoveryResultsAdapter extends RecyclerView.Adapter<DiscoveryResultsAdapt
             }
 
             holder.line2.setText(item.uuid.toString());
-            System.out.println(item.uuid.toString()+"======================================");
         }
     //}
 
