@@ -769,7 +769,7 @@ private void clearSubscription() {
                 yval[7]=yval[i-(i-8)];
                 dataset.add(new Entry(7, yval[7]));
 
-                
+
                 yval[8]=yval[i-(i-9)];
                 dataset.add(new Entry(8, yval[8]));
 
