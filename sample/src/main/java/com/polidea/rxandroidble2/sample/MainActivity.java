@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
 
 public class MainActivity extends AppCompatActivity {
-
+// ================================================== THIS IS THE REAL ONE ========================================
     TextView textView;
     ImageView img;
     Animation bottom_animation,top_animation;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         Handler h = new Handler();
         Runnable r = new Runnable() {
             @Override
-            public void run() {/*
+            public void run() {
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
                         //Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
@@ -91,10 +91,10 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
 
-*/
-                Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
+
+         /*       Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
                 startActivity(in);
-                finish();
+                finish();*/
             }
         };
         h.postDelayed(r, 1500);
