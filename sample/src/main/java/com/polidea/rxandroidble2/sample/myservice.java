@@ -68,7 +68,7 @@ public class myservice extends Service {
             public void run() {
 
                 notification("it should be always run ", songUrl);
-                if(songUrl>250){
+                if(songUrl>50){
                     startAlert();
                 }
                 time= time+100;
@@ -176,7 +176,7 @@ public class myservice extends Service {
     }*/
       @RequiresApi(api = Build.VERSION_CODES.N)
       public void notification(String str, int BloodNum) {
-          if( CharacteristicOperationExampleActivity.getrssi()==0) {
+         /* if( CharacteristicOperationExampleActivity.getrssi()==0) {
              // f=R.drawable.rs;
               startAlert();
           }
@@ -185,7 +185,7 @@ public class myservice extends Service {
           }
           else if (CharacteristicOperationExampleActivity.getrssi()==2){
             //  f=R.drawable.rs3;
-          }
+          }*/
           String chanellID = "this is our id notify";
        //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
           Bitmap bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
