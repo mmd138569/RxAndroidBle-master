@@ -85,6 +85,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
  @BindView(R.id.write_input)
     TextView writeInput;*/
     int temp =0;
+    float time, time1;
     @BindView(R.id.read)
     TextView readButton;
     public static int z=0;
@@ -712,11 +713,13 @@ private void clearSubscription() {
         lineData.setDrawValues(false);
         lineChart.getDescription().setEnabled(false);
 //================================================================
-      /*  OffsetTime offset = OffsetTime.now();
-        q1=offset.getHour();
-        q=offset.getMinute();
-        q1=q1*(q/100);*/
-        lineChart.getXAxis().setAxisMaximum(12f);
+        OffsetTime offset1 = OffsetTime.now();
+        time = offset1.getHour();
+        time1 = offset1.getMinute();
+        time=time+time1/100;
+
+        lineChart.getXAxis().setAxisMaximum((float) (time+1));
+        lineChart.getXAxis().setAxisMinimum(time);
 //================================================================
         setupPieChart(str);
         loadPieChartData(str);
@@ -739,51 +742,51 @@ private void clearSubscription() {
                 for (j = 0; j < i; j++) {
                     if (yval[j] != 0) {
                         //dataset.add(new Entry(temp, yval[temp]));
-                        dataset.add(new Entry(j, yval[j]));
+                        dataset.add(new Entry(time+(float)j/13, yval[j]));
                     }
                 }
             }
 //================== need for loop ===============
             else if(i>13){
                 yval[0]=yval[i-(i-1)];
-                dataset.add(new Entry(0, yval[0]));
+                dataset.add(new Entry((float)time+0, yval[0]));
 
                 yval[1]=yval[i-(i-2)];
-                dataset.add(new Entry(1, yval[1]));
+                dataset.add(new Entry( (float) (time+(1.0/12.0)), yval[1]));
 
                 yval[2]=yval[i-(i-3)];
-                dataset.add(new Entry(2, yval[2]));
+                dataset.add(new Entry( (float) (time+(2.0/12.0)), yval[2]));
 
                 yval[3]=yval[i-(i-4)];
-                dataset.add(new Entry(3, yval[3]));
+                dataset.add(new Entry( (float) (time+(3.0/12.0)), yval[3]));
 
                 yval[4]=yval[i-(i-5)];
-                dataset.add(new Entry(4, yval[4]));
+                dataset.add(new Entry( (float) (time+(4.0/12.0)), yval[4]));
 
                 yval[5]=yval[i-(i-6)];
-                dataset.add(new Entry(5, yval[5]));
+                dataset.add(new Entry( (float) (time+(5.0/12.0)), yval[5]));
 
                 yval[6]=yval[i-(i-7)];
-                dataset.add(new Entry(6, yval[6]));
+                dataset.add(new Entry((float) (time+(6.0/12.0)), yval[6]));
 
                 yval[7]=yval[i-(i-8)];
-                dataset.add(new Entry(7, yval[7]));
+                dataset.add(new Entry( (float) (time+(7.0/12.0)), yval[7]));
 
 
                 yval[8]=yval[i-(i-9)];
-                dataset.add(new Entry(8, yval[8]));
+                dataset.add(new Entry( (float) (time+(8.0/12.0)), yval[8]));
 
                 yval[9]=yval[i-(i-10)];
-                dataset.add(new Entry(9, yval[9]));
+                dataset.add(new Entry( (float) (time+(9.0/12.0)), yval[9]));
 
                 yval[10]=yval[i-(i-11)];
-                dataset.add(new Entry(10, yval[10]));
+                dataset.add(new Entry( (float) (time+(10.0/12.0)), yval[10]));
 
                 yval[11]=yval[i-(i-12)];
-                dataset.add(new Entry(11, yval[11]));
+                dataset.add(new Entry((float) (time+(11.0/12.0)), yval[11]));
 
                yval[12]=yval[i-(i-x)];
-                dataset.add(new Entry(12, yval[12]));
+                dataset.add(new Entry( (time+(float)(1)), yval[12]));
                 x++;
             }
         return dataset;
