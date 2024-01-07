@@ -717,7 +717,8 @@ private void clearSubscription() {
         time = offset1.getHour();
         time1 = offset1.getMinute();
         time=time+time1/100;
-
+        XAxis xAxis=lineChart.getXAxis();
+        xAxis.setLabelCount(3,true);
         lineChart.getXAxis().setAxisMaximum((float) (time+1));
         lineChart.getXAxis().setAxisMinimum(time);
 //================================================================
