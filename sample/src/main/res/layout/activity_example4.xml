@@ -136,8 +136,8 @@
     android:gravity="top|center"
     android:layout_gravity="center">
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
         android:gravity="top|center"
         android:layout_marginBottom="40dp"
         android:layout_marginTop="70dp">
@@ -203,7 +203,7 @@
         android:id="@+id/pichart"
         android:layout_width="205dp"
         android:layout_height="167dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="35dp"
         android:layout_marginBottom="15dp" />
     </RelativeLayout>
 </LinearLayout>
