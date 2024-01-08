@@ -7,12 +7,16 @@ import static android.graphics.Color.TRANSPARENT;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +40,7 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.PathInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -527,7 +532,11 @@ private void clearSubscription() {
     }
     @OnClick(R.id.refresh)
     public void refreshing() {
-
+        float centerX = 100;
+        float centerY = 100;
+        float radius = 215;
+        float startAngle = 360f;
+        float sweepAngle = -180f;
         twotop=findViewById(R.id.twotop);
         left=findViewById(R.id.leFt);
         butt=findViewById(R.id.butt);
@@ -579,7 +588,7 @@ private void clearSubscription() {
         butt.setVisibility(View.INVISIBLE);
         x1.setVisibility(View.INVISIBLE);
         x2.setVisibility(View.INVISIBLE);
-        if(((x<50)&&(x>=0))||(y<50)&&(y>=0)){
+       /* if(((x<50)&&(x>=0))||(y<50)&&(y>=0)){
             left.setVisibility(View.VISIBLE);
             twobutt.setVisibility(View.INVISIBLE);
             twotop.setVisibility(View.INVISIBLE);
@@ -643,7 +652,36 @@ private void clearSubscription() {
             butt.setVisibility(View.INVISIBLE);
             x1.setVisibility(View.INVISIBLE);
             x2.setVisibility(View.INVISIBLE);
-        }
+        }*/
+        Handler animstart=new Handler();
+        Runnable runnable=new Runnable() {
+            @Override
+            public void run() {
+                ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 0f);  // Specify the start and end rotation angles
+                rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                rotationAnimator1.setRepeatCount(ValueAnimator.INFINITE);
+                rotationAnimator1.start();
+            }
+        }; animstart.postDelayed(runnable,1900);
+        Handler animstart1=new Handler();
+        Runnable r1=new Runnable() {
+            @Override
+            public void run() {
+                top.setVisibility(View.VISIBLE);
+                Path path = new Path();
+                RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                path.arcTo(oval, startAngle, sweepAngle, true);
+                // Create a PathInterpolator with the circular path
+                PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                // Create an ObjectAnimator to rotate the image along the circular path
+                ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                rotationAnimator.setInterpolator(pathInterpolator);
+                rotationAnimator.setRepeatCount(ValueAnimator.INFINITE); // Repeat the rotation indefinitely
+                rotationAnimator.start();
+            }
+        };animstart1.postDelayed(r1,1900);
+
 //================================================
 //========================= refresh ===============
         float rangeHigh = 100f;
