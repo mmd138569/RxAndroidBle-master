@@ -100,6 +100,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     Button writeButton;*/
     @BindView(R.id.notify)
     Button notifyButton;
+    boolean shoutdown1=false,shoutdown2=false;
     private UUID characteristicUuid;
     String  str="0";
     int i=2,x=13,j=0;
@@ -279,6 +280,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
+                shoutdown2=false;
+                shoutdown1=false;
                 refreshing();
 
                 hand.postDelayed(this, 17000);
@@ -532,9 +535,9 @@ private void clearSubscription() {
     }
     @OnClick(R.id.refresh)
     public void refreshing() {
-        float centerX = 100;
-        float centerY = 100;
-        float radius = 215;
+        float centerX = 410;
+        float centerY = 320;
+        float radius = 285;
         float startAngle = 360f;
         float sweepAngle = -180f;
         twotop=findViewById(R.id.twotop);
@@ -657,28 +660,34 @@ private void clearSubscription() {
         Runnable runnable=new Runnable() {
             @Override
             public void run() {
-                ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 0f);  // Specify the start and end rotation angles
-                rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
-                rotationAnimator1.setRepeatCount(ValueAnimator.INFINITE);
-                rotationAnimator1.start();
+                while (!shoutdown1) {
+                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 0f);  // Specify the start and end rotation angles
+                    rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                    rotationAnimator1.setRepeatCount(0);
+                    rotationAnimator1.start();
+                    shoutdown1=true;
+                }
             }
         }; animstart.postDelayed(runnable,1900);
         Handler animstart1=new Handler();
         Runnable r1=new Runnable() {
             @Override
             public void run() {
-                top.setVisibility(View.VISIBLE);
-                Path path = new Path();
-                RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
-                path.arcTo(oval, startAngle, sweepAngle, true);
-                // Create a PathInterpolator with the circular path
-                PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
-                // Create an ObjectAnimator to rotate the image along the circular path
-                ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
-                rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
-                rotationAnimator.setInterpolator(pathInterpolator);
-                rotationAnimator.setRepeatCount(ValueAnimator.INFINITE); // Repeat the rotation indefinitely
-                rotationAnimator.start();
+                while (!shoutdown2) {
+                    top.setVisibility(View.VISIBLE);
+                    Path path = new Path();
+                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    path.arcTo(oval, startAngle, sweepAngle, true);
+                    // Create a PathInterpolator with the circular path
+                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                    // Create an ObjectAnimator to rotate the image along the circular path
+                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                    rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                    rotationAnimator.setInterpolator(pathInterpolator);
+                    rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
+                    rotationAnimator.start();
+                    shoutdown2=true;
+                }
             }
         };animstart1.postDelayed(r1,1900);
 
