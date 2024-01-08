@@ -691,32 +691,31 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
                 }
-
                 else if ((x<100)&&(x>=50)) {
                     ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 45f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
                 }
-        else if ((y<100)&&(y>=50)) {
+                else if ((y<100)&&(y>=50)) {
                     ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, -45f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
         }
-        else if((y<150)&&(y>=100)){
+                else if((y<150)&&(y>=100)){
                     ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, -90f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
         }
-        else if(y>=150){
+                else if(y>=150){
                     ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(twotop, "rotation", 180f, -90f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
         }
-        else if(x>=150){
+                else if(x>=150){
                     ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(twotop, "rotation", 180f, 90f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
