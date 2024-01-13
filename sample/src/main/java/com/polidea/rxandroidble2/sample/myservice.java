@@ -211,7 +211,7 @@ public class myservice extends Service {
         }
          // CharacteristicOperationExampleActivity.customchart();
           NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), chanellID);
-          Notification notification = builder.setSmallIcon(R.drawable.baseline_notifications_active_24)//R.drawable.baseline_notifications_active_24
+          Notification notification = builder.setSmallIcon(R.drawable.back)//R.drawable.baseline_notifications_active_24
                   .setContentTitle("warning!")
                   .setContentText(str + BloodNum)
                   //remove the notification after clicking on it
@@ -225,7 +225,8 @@ public class myservice extends Service {
                   .build();
           builder.setLargeIcon(bitmap);
           builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap).bigLargeIcon(null));
-          builder.setSmallIcon(R.drawable.baseline_notifications_active_24)//R.drawable.baseline_notifications_active_24
+
+          builder.setSmallIcon(R.drawable.back)//R.drawable.baseline_notifications_active_24
                   .setContentTitle("warning")
                   .setContentText(str + BloodNum)
                   .setLargeIcon(bitmap)

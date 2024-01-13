@@ -40,6 +40,8 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.PathInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -56,6 +58,7 @@ import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
 import com.polidea.rxandroidble2.sample.landscapechart;
 import com.polidea.rxandroidble2.sample.myservice;
+import com.polidea.rxandroidble2.sample.settings;
 import com.polidea.rxandroidble2.sample.util.HexString;
 import com.polidea.rxandroidble2.scan.ScanResult;
 
@@ -128,9 +131,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-*/
+
+
        /* Configuration config = getResources().getConfiguration();
         if(config.smallestScreenWidthDp>300){
             setContentView(R.layout.activity_example4);
@@ -164,6 +168,15 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
         bleDevice = SampleApplication.getRxBleClient(this).getBleDevice(macAddress);
         connectionObservable = prepareConnectionObservable();
+        TextView setting=findViewById(R.id.settings);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in=new Intent(CharacteristicOperationExampleActivity.this, settings.class);
+                startActivity(in);
+                finish();
+            }
+        });
         if(a==false) {
             lineChart.invalidate();
             //XAxis xAxis=lineChart.getXAxis();
@@ -555,6 +568,7 @@ private void clearSubscription() {
         listView = findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
                 android.R.layout.simple_list_item_1, array_list);
+
         listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
         if (!readOutputView.getText().toString().isEmpty()) {
