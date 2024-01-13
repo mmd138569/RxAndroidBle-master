@@ -68,7 +68,7 @@ public class myservice extends Service {
             public void run() {
 
                 notification("it should be always run ", songUrl);
-                if(songUrl>50){
+                if(songUrl>350){
                     startAlert();
                 }
                 time= time+100;
