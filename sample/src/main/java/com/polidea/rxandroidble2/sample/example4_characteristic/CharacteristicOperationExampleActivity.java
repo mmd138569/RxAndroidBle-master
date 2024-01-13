@@ -556,7 +556,7 @@ private void clearSubscription() {
     }
     @OnClick(R.id.refresh)
     public void refreshing() {
-        float centerX = 410;
+        float centerX = 438;
         float centerY = 320;
         float radius = 285;
         float startAngle = 360f;
