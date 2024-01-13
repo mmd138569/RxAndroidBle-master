@@ -79,7 +79,7 @@ import io.reactivex.subjects.PublishSubject;
 public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
     ImageView top,butt,twotop,twobutt,left,x2,x1,signal_strength1,signal_strength2,signal_strength3;
-
+    int ii=0;
     private Disposable connectionDisposable1;
 
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
@@ -87,6 +87,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView connectButton;
     @BindView(R.id.read_output)
     TextView readOutputView;
+    static String macAddress;
     float yval[] = new float[1000];
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;
@@ -97,6 +98,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @BindView(R.id.read)
     TextView readButton;
     public static int z=0;
+    public static String z1;
     @BindView(R.id.rssi)
     TextView rssiView;
   /*  @BindView(R.id.write)
@@ -108,7 +110,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     String  str="0";
     int i=2,x=13,j=0;
     public static PieChart pieChart;
-
+    int aa=0;
     boolean a=false;
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
     private Observable<RxBleConnection> connectionObservable;
@@ -164,19 +166,32 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart = findViewById(R.id.chart);
 
         ButterKnife.bind(this);
-        String macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
-        characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
-        bleDevice = SampleApplication.getRxBleClient(this).getBleDevice(macAddress);
-        connectionObservable = prepareConnectionObservable();
         TextView setting=findViewById(R.id.settings);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in=new Intent(CharacteristicOperationExampleActivity.this, settings.class);
+              /*  Intent in=new Intent(CharacteristicOperationExampleActivity.this, settings.class);
                 startActivity(in);
-                finish();
+                finish();*/
+                Intent intent = new Intent(getApplicationContext(), settings.class);
+                intent.putExtra("mac_add", macAddress);
+                startActivity(intent);
             }
         });
+        lineChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), landscapechart.class);
+                intent.putExtra("mac_add", macAddress);
+                startActivity(intent);
+            }
+        });
+        characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
+        macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
+        bleDevice = SampleApplication.getRxBleClient(this).getBleDevice(macAddress);
+
+        connectionObservable = prepareConnectionObservable();
+
         if(a==false) {
             lineChart.invalidate();
             //XAxis xAxis=lineChart.getXAxis();
@@ -303,14 +318,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         },17000);
 
        // thread();
-        lineChart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in= new Intent(CharacteristicOperationExampleActivity.this, landscapechart.class);
-                startActivity(in);
-                finish();
-            }
-        });
+
 //=============== this thread is life savier ===========
         Handler hand1=new Handler();
         Runnable run=new Runnable() {

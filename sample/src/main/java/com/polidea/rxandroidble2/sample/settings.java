@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
 import com.polidea.rxandroidble2.sample.example4_characteristic.DatabaseHelper;
@@ -27,13 +28,9 @@ public class settings extends AppCompatActivity {
         str= editTe.toString();
         helper.insert(Integer.parseInt(editTe.getText().toString()));
 */
-        calibration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in=new Intent(settings.this, CharacteristicOperationExampleActivity.class);
-                startActivity(in);
-                finish();
-            }
-        });
+        Intent intent = getIntent();
+         intent.getStringExtra("mac_add");
+        //Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+
     }
 }

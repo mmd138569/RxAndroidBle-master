@@ -66,6 +66,9 @@ public class landscapechart extends AppCompatActivity {
         else if(screenhight<=1000){
             setContentView(R.layout.landscapehart_smallphone);
         }
+        Intent intent = getIntent();
+         intent.getStringExtra("mac_add");
+
         button1=  findViewById(R.id.btton1);
         button2=  findViewById(R.id.btton2);
         button3=  findViewById(R.id.btton3);
@@ -497,10 +500,10 @@ public class landscapechart extends AppCompatActivity {
         entries.add(new Entry((float) 12, 0));
         return entries;
     }
-    @Override
+  /*  @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, CharacteristicOperationExampleActivity.class);
         startActivity(intent);
-    }
+    }*/
 }
