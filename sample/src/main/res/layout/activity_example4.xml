@@ -12,20 +12,32 @@
         android:elevation="15px"
         android:background="#FFFF"
         >
-
+        <LinearLayout
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="-25dp"
+                android:layout_width="150dp"
+                android:layout_height="24dp"
+                android:src="@drawable/settings1"
+                />
         <TextView
+            android:paddingTop="5dp"
             android:id="@+id/settings"
-            android:layout_marginTop="10dp"
-            android:paddingTop="10dp"
             android:paddingLeft="20dp"
             android:textStyle="bold"
             android:textColor="#068FFF"
             android:layout_width="150dp"
-            android:layout_height="60dp"
+            android:layout_height="39dp"
             android:layout_alignParentLeft="true"
             android:backgroundTint="@android:color/darker_gray"
             android:text="SETTINGS"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            />
+
+        </LinearLayout>
     </RelativeLayout>
 <LinearLayout
     android:layout_width="wrap_content"
