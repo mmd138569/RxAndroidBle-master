@@ -203,5 +203,18 @@
 
                 />
         </RelativeLayout>
+        <ImageView
+            android:layout_marginRight="-3dp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:rotation="90"
+            android:src="@drawable/xls"
+            android:layout_marginBottom="40dp"
+            android:text="1HR"
+            android:id="@+id/EXL"
+
+            />
     </LinearLayout>
 </RelativeLayout>
