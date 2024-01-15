@@ -604,7 +604,9 @@ private void clearSubscription() {
             intent.putExtra("YOUR_KEY_SONG_NAME", songUrl);
             startService(intent);
 //===========================================================================================================
-              str = readOutputView.getText().toString();
+              str=String.valueOf((int)yval[i-1]);
+
+              //str = readOutputView.getText().toString();
 
             if (helper.insert(/*name.getText()*/ yval[i - 1])) {
 
