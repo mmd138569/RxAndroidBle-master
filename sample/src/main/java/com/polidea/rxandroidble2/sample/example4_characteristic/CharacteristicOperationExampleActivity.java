@@ -53,6 +53,7 @@ import android.widget.Toast;
 import com.jakewharton.rx.ReplayingShare;
 import com.polidea.rxandroidble2.RxBleConnection;
 import com.polidea.rxandroidble2.RxBleDevice;
+import com.polidea.rxandroidble2.sample.DBcalibrate;
 import com.polidea.rxandroidble2.sample.DeviceActivity;
 import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
@@ -569,6 +570,9 @@ private void clearSubscription() {
         x1=findViewById(R.id.topmid);
         x2=findViewById(R.id.buttmid);
 
+        final DBcalibrate dBcalibrate = new DBcalibrate(CharacteristicOperationExampleActivity.this);
+        final ArrayList z = dBcalibrate.getAllCotacts1();
+
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
         final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
@@ -582,6 +586,8 @@ private void clearSubscription() {
         if (!readOutputView.getText().toString().isEmpty()) {
 //===========================================================================================================
             yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+            int a= Integer.valueOf( (String)z.get(1));
+            yval[i-1]=yval[i-1]-a;
             System.out.println("===================="+yval[i-1]);
             Intent intent  = new Intent(this, myservice.class);
 
