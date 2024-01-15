@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="Manifest.permission.BLUETOOTH" />
     <uses-permission android:name="Manifest.permission.ACCESS_FINE_LOCATION" />
@@ -114,6 +115,9 @@
             android:name=".warning"
             android:exported="false" />
         <activity
+            android:name=".settingsview"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -126,8 +130,9 @@
             android:name=".example1_scanning.ScanActivity"
             android:label="@string/title_example1" />
 
-  <receiver android:name="com.polidea.rxandroidble2.sample.MyBroadcastReceiver"/>
-       <!--  <activity
+        <receiver android:name=".MyBroadcastReceiver" />
+        <!--
+  <activity
             android:name="com.polidea.rxandroidble2.sample.example1a_background_scanning.BackgroundScanActivity"
             android:label="@string/title_example1">
         </activity>

@@ -60,6 +60,7 @@ import com.polidea.rxandroidble2.sample.SampleApplication;
 import com.polidea.rxandroidble2.sample.landscapechart;
 import com.polidea.rxandroidble2.sample.myservice;
 import com.polidea.rxandroidble2.sample.settings;
+import com.polidea.rxandroidble2.sample.settingsview;
 import com.polidea.rxandroidble2.sample.util.HexString;
 import com.polidea.rxandroidble2.scan.ScanResult;
 
@@ -174,7 +175,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
               /*  Intent in=new Intent(CharacteristicOperationExampleActivity.this, settings.class);
                 startActivity(in);
                 finish();*/
-                Intent intent = new Intent(getApplicationContext(), settings.class);
+                Intent intent = new Intent(getApplicationContext(), settingsview.class);
                 intent.putExtra("mac_add", macAddress);
                 startActivity(intent);
             }
@@ -555,6 +556,9 @@ private void clearSubscription() {
                     }, this::onReadFailure);
         }
     }
+    public static boolean ternerry(Integer num) {
+        return 0 == (num == null ? 0 : num);
+    }
     @OnClick(R.id.refresh)
     public void refreshing() {
         float centerX = 438;
@@ -586,8 +590,13 @@ private void clearSubscription() {
         if (!readOutputView.getText().toString().isEmpty()) {
 //===========================================================================================================
             yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
-            int a= Integer.valueOf( (String)z.get(1));
-            yval[i-1]=yval[i-1]-a;
+            if(z.size()!=0) {
+                int a = Integer.valueOf((String) z.get(z.size() - 1));
+                ternerry(a);
+                if (a != 0) {
+                    yval[i - 1] = yval[i - 1] - a;
+                }
+            }
             System.out.println("===================="+yval[i-1]);
             Intent intent  = new Intent(this, myservice.class);
 
