@@ -38,6 +38,7 @@ public class myservice extends Service {
     int width = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
     int height = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
     int time=0;
+    int fix_the_DB=0;
     int songUrl;
     public myservice() {
     }
@@ -46,7 +47,11 @@ public class myservice extends Service {
         if (intent != null && intent.getExtras() != null){
             songUrl = intent.getIntExtra("YOUR_KEY_SONG_NAME",0);
             final DatabaseHelper helper = new DatabaseHelper(myservice.this);
-            helper.insert(songUrl);
+
+          /*  if(fix_the_DB%2==0) {
+                helper.insert(songUrl);
+                fix_the_DB=fix_the_DB+1;
+            }*/
         }
         Handler h = new Handler();
         if(time==0) {
