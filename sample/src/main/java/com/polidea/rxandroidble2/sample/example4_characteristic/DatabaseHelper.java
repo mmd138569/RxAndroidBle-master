@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,8 +23,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         try {
-            db.execSQL("CREATE TABLE "+ CONTACTS_TABLE_NAME +"(id INTEGER PRIMARY KEY,salary DECIMAL(4,2),datetime default current_timestamp )");
+            db.execSQL("CREATE TABLE "+ CONTACTS_TABLE_NAME +"(id INTEGER PRIMARY KEY,salary DECIMAL(4,2),datetime string )");
         } catch (SQLiteException e) {
             try {
                 throw new IOException(e);
@@ -42,6 +44,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         //contentValues.put("id", s);
         contentValues.put("salary", s1);
+
+        OffsetDateTime offsetDT = OffsetDateTime.now();
+        String s=offsetDT.toLocalDate()+" "+ String.valueOf(offsetDT.getHour())+":"+String.valueOf(offsetDT.getMinute())+":"+String.valueOf(offsetDT.getSecond());
+
+        contentValues.put("datetime",s);
         //db.replace(CONTACTS_TABLE_NAME, null, contentValues);
         db.insert(CONTACTS_TABLE_NAME, null, contentValues);
         return true;
