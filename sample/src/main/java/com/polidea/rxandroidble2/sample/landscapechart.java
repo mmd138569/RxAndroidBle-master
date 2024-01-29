@@ -16,6 +16,7 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -42,6 +43,7 @@ public class landscapechart extends AppCompatActivity {
     int count=0;
     int a;
     Button button1,button2,button3,button4,button5,button11,button21,button31,button41,button51;
+    ImageView csv;
 
 
     @Override
