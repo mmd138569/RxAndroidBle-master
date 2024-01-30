@@ -65,6 +65,6 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/drop_of_blood"/>
+            android:src="@drawable/drop_of_bloo"/>
     </LinearLayout>
 </RelativeLayout>
