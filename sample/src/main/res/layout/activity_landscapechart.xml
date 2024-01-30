@@ -38,7 +38,7 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="50dp">
+       >
         <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="120dp"
@@ -207,6 +207,17 @@
             android:layout_marginBottom="40dp"
             android:text="1HR"
             android:id="@+id/EXL"
+            />
+        <Spinner
+
+            android:layout_marginRight="-23dp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:rotation="90"
+            android:layout_marginBottom="40dp"
+            android:id="@+id/SP_folder"
             />
     </LinearLayout>
 </RelativeLayout>

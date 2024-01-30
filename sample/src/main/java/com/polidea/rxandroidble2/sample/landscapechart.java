@@ -14,17 +14,22 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.components.XAxis;
@@ -54,9 +59,13 @@ public class landscapechart extends AppCompatActivity {
     float time,time1;
     int entrySize = 288;
     int count=0;
+    Spinner spinner;
+    ArrayList<String>folderlist=new ArrayList<>();
     int a;
     Button button1,button2,button3,button4,button5,button11,button21,button31,button41,button51;
     ImageView csv;
+    String sfolder;
+    Button btn;
     private static final int REQUEST_CODE_PICK_FILE = 1;
     private static final int PERMISSION_REQUEST_CODE = 0;
     @Override
@@ -97,6 +106,41 @@ public class landscapechart extends AppCompatActivity {
         button51=  findViewById(R.id.btton51);
         csv=findViewById(R.id.EXL);
         lineChart = findViewById(R.id.landchart);
+        spinner=findViewById(R.id.SP_folder);
+        folderlist.add("android/data");
+        folderlist.add("folder");
+        spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,folderlist));
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
+                sfolder=folderlist.get(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        csv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Permission already granted, call the exportDataToExcel() function
+
+                // Set the MIME type(s) of the files you want to access
+                String[] mimeTypes = {"application/csv"};
+                intent.setType("*/*"); // Allow all file types
+                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+
+                startActivityForResult(intent, REQUEST_CODE_PICK_FILE);
+                exportDataToExcel(landscapechart.this);
+                String spath= Environment.getExternalStorageDirectory()+"/"+sfolder+"/";
+                Uri uri=Uri.parse(spath);
+                Intent in=new Intent(Intent.ACTION_PICK);
+                in.setDataAndType(uri,"*/*");
+                startActivity(in);
+                System.out.println("==========================================================");
+            }
+        });
         lineChart.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
                     @Override
@@ -234,21 +278,6 @@ public class landscapechart extends AppCompatActivity {
                                 button41.setVisibility(View.INVISIBLE);
                                 button51.setVisibility(View.VISIBLE);
                                 initLineChrt(1,time);
-                            }
-                        });
-                        csv.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                             // Permission already granted, call the exportDataToExcel() function
-
-                                // Set the MIME type(s) of the files you want to access
-                                String[] mimeTypes = {"application/csv"};
-                                intent.setType("*/*"); // Allow all file types
-                                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-
-                                startActivityForResult(intent, REQUEST_CODE_PICK_FILE);
-                                    exportDataToExcel(landscapechart.this);
-                                System.out.println("==========================================================");
                             }
                         });
                     }
