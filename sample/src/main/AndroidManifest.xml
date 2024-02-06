@@ -129,7 +129,7 @@
             android:name=".example1_scanning.ScanActivity"
             android:label="@string/title_example1" />
 
-        <receiver android:name=".MyBroadcastReceiver" />
+        <!--<receiver android:name=".MyBroadcastReceiver" />-->
         <!--
   <activity
             android:name="com.polidea.rxandroidble2.sample.example1a_background_scanning.BackgroundScanActivity"

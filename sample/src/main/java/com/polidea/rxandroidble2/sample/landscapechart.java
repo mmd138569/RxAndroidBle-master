@@ -156,12 +156,12 @@ public class landscapechart extends AppCompatActivity {
 
                         lineChart.setTranslationX(-offset);
                         lineChart.setTranslationY(offset);
-                        float rangeHigh = 100f;
+                        float rangeHigh = 200f;
                         float rangeLow = -7f;
-                        float rangeLow2=103f;
-                        float rangeHigh2=350;
-                        float rangeLow3=353;
-                        float rangeHigh3=400;
+                        float rangeLow2=203f;
+                        float rangeHigh2=450;
+                        float rangeLow3=453;
+                        float rangeHigh3=600;
                         lineChart.setTouchEnabled(true);
                         lineChart.setScaleEnabled(false);
                         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
@@ -345,8 +345,8 @@ public class landscapechart extends AppCompatActivity {
     private void initLineChart(float time){
         //    lineChart.setTouchEnabled(true);
         lineChart.getXAxis().setAxisMaximum(24f);
-        lineChart.getAxisLeft().setAxisMaximum(400f);
-        lineChart.getAxisRight().setAxisMaximum(400f);
+        lineChart.getAxisLeft().setAxisMaximum(600f);
+        lineChart.getAxisRight().setAxisMaximum(600f);
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
         lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
@@ -431,8 +431,8 @@ public class landscapechart extends AppCompatActivity {
             entrySize=12;
         count=5;}
         //lineChart.setTouchEnabled(true);
-        lineChart.getAxisLeft().setAxisMaximum(400f);
-        lineChart.getAxisRight().setAxisMaximum(400f);
+        lineChart.getAxisLeft().setAxisMaximum(600f);
+        lineChart.getAxisRight().setAxisMaximum(600f);
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
         lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
