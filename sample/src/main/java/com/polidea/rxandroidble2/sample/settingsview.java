@@ -19,11 +19,20 @@ public class settingsview extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_settingsview);
         TextView calibrate_activity=findViewById(R.id.calibrations);
+        TextView graph_height=findViewById(R.id.heightgraph);
         calibrate_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent in =new Intent(settingsview.this,settings.class);
                 startActivity(in);
+                finish();
+            }
+        });
+        graph_height.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(settingsview.this,graph_Height.class);
+                startActivity(intent);
                 finish();
             }
         });

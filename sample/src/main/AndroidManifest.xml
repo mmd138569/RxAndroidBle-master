@@ -21,6 +21,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.alarm.permission.SET_ALARM" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <uses-feature android:name="android.hardware.camera.any" />
 
     <application
@@ -29,6 +30,9 @@
         android:icon="@drawable/drop_of_blood"
         android:label="BehyarCGM"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".graph_Height"
+            android:exported="false" />
         <activity
             android:name=".settings"
             android:exported="false" />
@@ -127,9 +131,7 @@
         </activity>
         <activity
             android:name=".example1_scanning.ScanActivity"
-            android:label="@string/title_example1" />
-
-        <!--<receiver android:name=".MyBroadcastReceiver" />-->
+            android:label="@string/title_example1" /> <!-- <receiver android:name=".MyBroadcastReceiver" /> -->
         <!--
   <activity
             android:name="com.polidea.rxandroidble2.sample.example1a_background_scanning.BackgroundScanActivity"
