@@ -40,7 +40,9 @@
         <meta-data
             android:name="com.google.firebase.ml.vision.DEPENDENCIES"
             android:value="qrcode" />
-
+       <!-- <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="ocr" />-->
         <activity
             android:name=".wake"
             android:exported="false" />
