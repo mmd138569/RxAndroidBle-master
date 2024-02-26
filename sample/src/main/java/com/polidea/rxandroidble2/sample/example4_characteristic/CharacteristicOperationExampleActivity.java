@@ -5,6 +5,7 @@ import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.TRANSPARENT;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 import android.animation.ObjectAnimator;
@@ -249,20 +250,34 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler handler=new Handler();
         Handler hand=new Handler();
         Handler nand =new Handler();
+        Handler nand1 =new Handler();
+
         signal_strength1= findViewById(R.id.signal_strength1);
         signal_strength2= findViewById(R.id.signal_strength2);
         signal_strength3= findViewById(R.id.signal_strength3);
+
+        nand1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                 if(!isConnected()) {
+
+                }
+                hand.postDelayed(this, 2500);
+
+            }
+        },2500);
 
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
                 if(!isConnected()) {
                     onConnectToggleClick();
+
                 }
-                hand.postDelayed(this, 500);
+                hand.postDelayed(this, 1000);
 
             }
-        },500);
+        },1000);
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -395,7 +410,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 .compose(ReplayingShare.instance());
     }
 //=============================== connect buttom ==========================
-
    /* Handler h = new Handler();
     Runnable r = new Runnable() {
         @Override
@@ -485,18 +499,17 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                             this::onConnectionFailure,
                             this::onConnectionFinished
                     );
-
- }
-        connectionDisposable1 = bleDevice.establishConnection(false)
-                .doFinally(this::clearSubscription)
-                .flatMap(rxBleConnection -> // Set desired interval.
-                        Observable.interval(1, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::updateRssi, this::onConnectionFailure);
-
+            connectionDisposable1 = bleDevice.establishConnection(true)
+                    .doFinally(this::clearSubscription)
+                    .flatMap(RxBleConnection -> // Set desired interval.
+                            Observable.interval(400, MILLISECONDS)
+                    .flatMapSingle(sequence -> RxBleConnection.readRssi()))
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::updateRssi, this::onConnectionFailure);
+        }
     }
 //==========================================================================
-//literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second tho
+//literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second
 private void updateRssi(int rssiValue) {
     rssiView.setText(getString(R.string.read_rssi, rssiValue));
 
