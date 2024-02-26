@@ -253,12 +253,22 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         signal_strength2= findViewById(R.id.signal_strength2);
         signal_strength3= findViewById(R.id.signal_strength3);
 
+        hand.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(!isConnected()) {
+                    onConnectToggleClick();
+                }
+                hand.postDelayed(this, 500);
+
+            }
+        },500);
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 //connect
-                onConnectToggleClick();
                 String a=String.valueOf(rssiView.getText()).replace("RSSI: ","");
                 System.out.println("================= if its run it should run the RSSI ==================");
                 if(a!="") {
@@ -295,7 +305,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
 
-                handler.postDelayed(this, 10700);
+                handler.postDelayed(this, 5700);
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
@@ -306,7 +316,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 };           nand.postDelayed(r, 3500);
 
             }
-        },10700);
+        },5700);
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -314,10 +324,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 shoutdown1=false;
                 refreshing();
 
-                hand.postDelayed(this, 17000);
+                hand.postDelayed(this, 6000);
 
             }
-        },17000);
+        },6000);
 
        // thread();
 
@@ -480,7 +490,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         connectionDisposable1 = bleDevice.establishConnection(false)
                 .doFinally(this::clearSubscription)
                 .flatMap(rxBleConnection -> // Set desired interval.
-                        Observable.interval(10, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
+                        Observable.interval(1, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::updateRssi, this::onConnectionFailure);
 
