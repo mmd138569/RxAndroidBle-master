@@ -83,7 +83,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
     ImageView top,butt,twotop,twobutt,left,x2,x1,signal_strength1,signal_strength2,signal_strength3;
     int ii=0;
-    private Disposable connectionDisposable1;
+    private Disposable connectionDisposable1,connectionDisposable;
 
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
     @BindView(R.id.connect)
@@ -251,17 +251,23 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler hand=new Handler();
         Handler nand =new Handler();
         Handler nand1 =new Handler();
+        Handler nand2 =new Handler();
+        Handler nand3 =new Handler();
+        Handler nand4 =new Handler();
 
         signal_strength1= findViewById(R.id.signal_strength1);
         signal_strength2= findViewById(R.id.signal_strength2);
         signal_strength3= findViewById(R.id.signal_strength3);
 
-        nand1.postDelayed(new Runnable() {
+        /*nand1.postDelayed(new Runnable() {
             @Override
             public void run() {
-                 if(!isConnected()) {
+                 if(isConnected()) {
+                     connectionDisposable.dispose();
+                     rssi_should_work();
 
-                }
+
+                 }
                 hand.postDelayed(this, 2500);
 
             }
@@ -270,14 +276,48 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if(!isConnected()) {
+                if(isConnected()) {
+                    connectionDisposable1.dispose();
                     onConnectToggleClick();
-
                 }
                 hand.postDelayed(this, 1000);
 
             }
-        },1000);
+        },1000);*/
+        nand1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(!isConnected()) {
+                    onConnectToggleClick();
+                }
+                nand1.postDelayed(this, 500);
+            }
+        },500);
+        nand2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                connectionDisposable.dispose();
+                nand2.postDelayed(this, 3100);
+            }
+        },3100);
+        nand3.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                rssi_should_work();
+
+                nand3.postDelayed(this, 3150);
+            }
+        },3150);
+        nand4.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                connectionDisposable1.dispose();
+
+                nand4.postDelayed(this, 3750);
+            }
+        },3750);
+
+
 
         handler.postDelayed(new Runnable() {
             @Override
@@ -486,7 +526,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
             triggerDisconnect();
         } else {
-            final Disposable connectionDisposable = connectionObservable
+                    connectionDisposable = connectionObservable
                     .flatMapSingle(RxBleConnection::discoverServices)
                     .flatMapSingle(rxBleDeviceServices -> rxBleDeviceServices.getCharacteristic(characteristicUuid))
                     .observeOn(AndroidSchedulers.mainThread())
@@ -499,14 +539,18 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                             this::onConnectionFailure,
                             this::onConnectionFinished
                     );
-            connectionDisposable1 = bleDevice.establishConnection(true)
-                    .doFinally(this::clearSubscription)
-                    .flatMap(RxBleConnection -> // Set desired interval.
-                            Observable.interval(400, MILLISECONDS)
-                    .flatMapSingle(sequence -> RxBleConnection.readRssi()))
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(this::updateRssi, this::onConnectionFailure);
+
+
         }
+    }
+    public void  rssi_should_work(){
+        connectionDisposable1 = bleDevice.establishConnection(true)
+                .doFinally(this::clearSubscription)
+                .flatMap(RxBleConnection -> // Set desired interval.
+                        Observable.interval(400, MILLISECONDS)
+                                .flatMapSingle(sequence -> RxBleConnection.readRssi()))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(this::updateRssi, this::onConnectionFailure);
     }
 //==========================================================================
 //literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second
