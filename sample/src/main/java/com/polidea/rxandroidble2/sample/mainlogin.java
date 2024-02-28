@@ -97,11 +97,17 @@ public class mainlogin extends AppCompatActivity {
 
                          }
                         }
-                        Intent in = new Intent(mainlogin.this, EntertransmitterSN1.class);
+                        // we remove it temperrerley we use it for the latest version
+                        
+                       /* Intent in = new Intent(mainlogin.this, EntertransmitterSN1.class);
+                        ActivityOptions options =
+                                ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
+                        mainlogin.this.startActivity(in, options.toBundle());*/
+
+                        Intent in = new Intent(mainlogin.this, ScanActivity.class);
                         ActivityOptions options =
                                 ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
                         mainlogin.this.startActivity(in, options.toBundle());
-
                     }
                     // if(username.getText()== && password.getText()==) {
                     // Intent in = new Intent(mainLogin.this, );
