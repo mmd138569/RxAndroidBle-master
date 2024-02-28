@@ -54,6 +54,7 @@ import android.widget.Toast;
 import com.jakewharton.rx.ReplayingShare;
 import com.polidea.rxandroidble2.RxBleConnection;
 import com.polidea.rxandroidble2.RxBleDevice;
+import com.polidea.rxandroidble2.sample.DBChart;
 import com.polidea.rxandroidble2.sample.DBcalibrate;
 import com.polidea.rxandroidble2.sample.DeviceActivity;
 import com.polidea.rxandroidble2.sample.R;
@@ -700,18 +701,54 @@ private void clearSubscription() {
         anim(   centerX , centerY , radius , x,y);
 //================================================
 //========================= refresh ===============
-        float rangeHigh = 100f;
-        float rangeLow = -7f;
-        float rangeLow2 = 103f;
-        float rangeHigh2 = 350f;
-        float rangeLow3 = 353f;
-        float rangeHigh3 = 400f;
+        final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
+        final ArrayList mychart = dbChart.getAllCotact1();
+        int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
+
+        if(my_Chart==300){
+            float rangeHigh = 100f;
+            float rangeLow = -7f;
+            float rangeLow2 = 103f;
+            float rangeHigh2 = 250f;
+            float rangeLow3 = 253f;
+            float rangeHigh3 = 300f;
+
+            lineChart.setTouchEnabled(true);
+            lineChart.setScaleEnabled(false);
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+            array_list.clear();
+        }
+        else if(my_Chart==400){
+            float rangeHigh = 300f;
+            float rangeLow = -7f;
+            float rangeLow2 = 303f;
+            float rangeHigh2 = 650f;
+            float rangeLow3 = 653f;
+            float rangeHigh3 = 1000f;
+
+            lineChart.setTouchEnabled(true);
+            lineChart.setScaleEnabled(false);
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+            array_list.clear();
+        }
+        else {
+            float rangeHigh = 100f;
+            float rangeLow = -7f;
+            float rangeLow2 = 103f;
+            float rangeHigh2 = 350f;
+            float rangeLow3 = 353f;
+            float rangeHigh3 = 400f;
+
         lineChart.setTouchEnabled(true);
         lineChart.setScaleEnabled(false);
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
-        array_list.clear();
+        array_list.clear(); }
         array_list.addAll(helper.getAllCotacts());
         arrayAdapter.notifyDataSetChanged();
         listView.invalidateViews();
@@ -727,8 +764,18 @@ private void clearSubscription() {
         lineChart.setScaleEnabled(false);
         //lineChart.getXAxis().setAxisMaximum(24f);
         //lineChart.getXAxis().setAxisMinimum(0f);
-        lineChart.getAxisLeft().setAxisMaximum(400f);
-        lineChart.getAxisRight().setAxisMaximum(400f);
+        if(my_Chart==300) {
+            lineChart.getAxisLeft().setAxisMaximum(300f);
+            lineChart.getAxisRight().setAxisMaximum(300f);
+        }
+        else if(my_Chart==400){
+            lineChart.getAxisLeft().setAxisMaximum(1000f);
+            lineChart.getAxisRight().setAxisMaximum(1000f);
+        }
+        else {
+            lineChart.getAxisLeft().setAxisMaximum(400f);
+            lineChart.getAxisRight().setAxisMaximum(400f);
+        }
         //==================
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
