@@ -107,8 +107,8 @@ public class landscapechart extends AppCompatActivity {
         csv=findViewById(R.id.EXL);
         lineChart = findViewById(R.id.landchart);
         spinner=findViewById(R.id.SP_folder);
-        folderlist.add("android/data");
-        folderlist.add("folder");
+        //folderlist.add("android");
+        folderlist.add("Download");
         spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,folderlist));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -307,9 +307,11 @@ public class landscapechart extends AppCompatActivity {
 
         // Create CSV file
         String csvFileName = "exported_data.csv";
-        String userPath="get user path ";
-        File csvFile = new File(context.getExternalFilesDir(null), csvFileName);
-        Log.d("FilePath", "CSV file saved at: " + csvFile.getAbsolutePath());
+        //String userPath="android/data";
+        File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+        File csvFile = new File(folder, csvFileName);
+       // File  = new File(context.getExternalStoragePublicDirectory, csvFileName);
+        Log.d("FilePath", "=============================================CSV file saved at: " + csvFile.getAbsolutePath());
         try {
             // Initialize CSVWriter
             CSVWriter writer = new CSVWriter(new FileWriter(csvFile));
