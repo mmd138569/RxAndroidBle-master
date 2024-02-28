@@ -2,6 +2,7 @@ package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -31,6 +32,9 @@ public class graph_Height extends AppCompatActivity {
                 if (x != 0) {
                     helper.insert(x);
                     System.out.println(helper.getAllCotact1() + "=============================");
+                    Intent in =new Intent(graph_Height.this,settingsview.class);
+                    startActivity(in);
+                    finish();
                 }
             }
         });
@@ -41,6 +45,9 @@ public class graph_Height extends AppCompatActivity {
                 if (x != 0) {
                     helper.insert(x);
                     System.out.println(helper.getAllCotact1() + "=============================");
+                    Intent in =new Intent(graph_Height.this,settingsview.class);
+                    startActivity(in);
+                    finish();
                 }
             }
         });
