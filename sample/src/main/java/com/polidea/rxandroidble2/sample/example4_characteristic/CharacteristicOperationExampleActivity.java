@@ -726,7 +726,7 @@ private void clearSubscription() {
             float rangeLow2 = 303f;
             float rangeHigh2 = 650f;
             float rangeLow3 = 653f;
-            float rangeHigh3 = 1000f;
+            float rangeHigh3 = 1200f;
 
             lineChart.setTouchEnabled(true);
             lineChart.setScaleEnabled(false);
@@ -769,8 +769,8 @@ private void clearSubscription() {
             lineChart.getAxisRight().setAxisMaximum(300f);
         }
         else if(my_Chart==400){
-            lineChart.getAxisLeft().setAxisMaximum(1000f);
-            lineChart.getAxisRight().setAxisMaximum(1000f);
+            lineChart.getAxisLeft().setAxisMaximum(1200f);
+            lineChart.getAxisRight().setAxisMaximum(1200f);
         }
         else {
             lineChart.getAxisLeft().setAxisMaximum(400f);
