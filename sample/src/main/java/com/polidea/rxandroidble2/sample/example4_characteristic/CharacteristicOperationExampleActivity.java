@@ -291,9 +291,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 if(!isConnected()) {
                     onConnectToggleClick();
                 }
-                nand1.postDelayed(this, 500);
+                nand1.postDelayed(this, 300);
             }
-        },500);
+        },300);
 
        /* nand2.postDelayed(new Runnable() {
             @Override
@@ -362,7 +362,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
 
-                handler.postDelayed(this, 4700);
+                handler.postDelayed(this, 5700);
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
@@ -373,7 +373,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 };           nand.postDelayed(r, 3500);
 
             }
-        },4700);
+        },5700);
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -381,10 +381,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 shoutdown1=false;
                 refreshing();
 
-                hand.postDelayed(this, 6800);
+                hand.postDelayed(this, 6000);
 
             }
-        },6800);
+        },6000);
 
        // thread();
 
