@@ -310,6 +310,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 nand3.postDelayed(this, 3150);
             }
         },3150);*/
+
       /*  nand4.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -324,7 +325,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 //connect
                 String a=String.valueOf(rssiView.getText()).replace("RSSI: ","");
                 System.out.println("================= if its run it should run the RSSI ==================");
@@ -381,10 +381,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 shoutdown1=false;
                 refreshing();
 
-                hand.postDelayed(this, 6000);
+                hand.postDelayed(this, 8000);
 
             }
-        },6000);
+        },8000);
 
        // thread();
 
@@ -704,37 +704,50 @@ private void clearSubscription() {
 //========================= refresh ===============
         final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
         final ArrayList mychart = dbChart.getAllCotact1();
-        int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
+        if(mychart.size()!=0) {
+            int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
 
-        if(my_Chart==300){
-            float rangeHigh = 100f;
-            float rangeLow = -7f;
-            float rangeLow2 = 103f;
-            float rangeHigh2 = 250f;
-            float rangeLow3 = 253f;
-            float rangeHigh3 = 300f;
+            if (my_Chart == 300) {
+                float rangeHigh = 100f;
+                float rangeLow = -7f;
+                float rangeLow2 = 103f;
+                float rangeHigh2 = 250f;
+                float rangeLow3 = 253f;
+                float rangeHigh3 = 300f;
 
-            lineChart.setTouchEnabled(true);
-            lineChart.setScaleEnabled(false);
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
-            array_list.clear();
-        }
-        else if(my_Chart==400){
-            float rangeHigh = 300f;
-            float rangeLow = -7f;
-            float rangeLow2 = 303f;
-            float rangeHigh2 = 650f;
-            float rangeLow3 = 653f;
-            float rangeHigh3 = 1200f;
+                lineChart.setTouchEnabled(true);
+                lineChart.setScaleEnabled(false);
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+                array_list.clear();
+            } else if (my_Chart == 400) {
+                float rangeHigh = 300f;
+                float rangeLow = -7f;
+                float rangeLow2 = 303f;
+                float rangeHigh2 = 650f;
+                float rangeLow3 = 653f;
+                float rangeHigh3 = 1200f;
 
-            lineChart.setTouchEnabled(true);
-            lineChart.setScaleEnabled(false);
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
-            array_list.clear();
+                lineChart.setTouchEnabled(true);
+                lineChart.setScaleEnabled(false);
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+                array_list.clear();
+            }
+            if(my_Chart==300) {
+                lineChart.getAxisLeft().setAxisMaximum(300f);
+                lineChart.getAxisRight().setAxisMaximum(300f);
+            }
+            else if(my_Chart==400){
+                lineChart.getAxisLeft().setAxisMaximum(1200f);
+                lineChart.getAxisRight().setAxisMaximum(1200f);
+            }
+            else {
+                lineChart.getAxisLeft().setAxisMaximum(400f);
+                lineChart.getAxisRight().setAxisMaximum(400f);
+            }
         }
         else {
             float rangeHigh = 100f;
@@ -765,18 +778,7 @@ private void clearSubscription() {
         lineChart.setScaleEnabled(false);
         //lineChart.getXAxis().setAxisMaximum(24f);
         //lineChart.getXAxis().setAxisMinimum(0f);
-        if(my_Chart==300) {
-            lineChart.getAxisLeft().setAxisMaximum(300f);
-            lineChart.getAxisRight().setAxisMaximum(300f);
-        }
-        else if(my_Chart==400){
-            lineChart.getAxisLeft().setAxisMaximum(1200f);
-            lineChart.getAxisRight().setAxisMaximum(1200f);
-        }
-        else {
-            lineChart.getAxisLeft().setAxisMaximum(400f);
-            lineChart.getAxisRight().setAxisMaximum(400f);
-        }
+
         //==================
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
