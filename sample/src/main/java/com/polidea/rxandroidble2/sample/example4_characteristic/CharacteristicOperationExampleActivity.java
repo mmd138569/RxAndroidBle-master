@@ -362,7 +362,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
 
-                handler.postDelayed(this, 5700);
+                handler.postDelayed(this, 4700);
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
@@ -373,7 +373,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 };           nand.postDelayed(r, 3500);
 
             }
-        },5700);
+        },4700);
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -381,10 +381,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 shoutdown1=false;
                 refreshing();
 
-                hand.postDelayed(this, 8000);
+                hand.postDelayed(this, 6800);
 
             }
-        },8000);
+        },6800);
 
        // thread();
 
@@ -656,7 +656,7 @@ private void clearSubscription() {
 
         listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
-        if (!readOutputView.getText().toString().isEmpty()) {
+        if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000") {
 //===========================================================================================================
             yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
             if(z.size()!=0) {
@@ -683,9 +683,10 @@ private void clearSubscription() {
             } else {
                 Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
             }
+            readOutputView.setText("20000");
         } else {
             // name.setError("Enter NAME");
-            readOutputView.setError("Enter Salary");
+            //readOutputView.setError("Enter Salary");
         }
 
 
