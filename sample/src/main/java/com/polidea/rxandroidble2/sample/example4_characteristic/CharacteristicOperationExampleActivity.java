@@ -294,29 +294,30 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 nand1.postDelayed(this, 500);
             }
         },500);
-        nand2.postDelayed(new Runnable() {
+
+       /* nand2.postDelayed(new Runnable() {
             @Override
             public void run() {
                 connectionDisposable.dispose();
                 nand2.postDelayed(this, 3100);
             }
-        },3100);
-        nand3.postDelayed(new Runnable() {
+        },3100);*/
+        /*nand3.postDelayed(new Runnable() {
             @Override
             public void run() {
                 rssi_should_work();
 
                 nand3.postDelayed(this, 3150);
             }
-        },3150);
-        nand4.postDelayed(new Runnable() {
+        },3150);*/
+      /*  nand4.postDelayed(new Runnable() {
             @Override
             public void run() {
-                connectionDisposable1.dispose();
+//                connectionDisposable1.dispose();
 
                 nand4.postDelayed(this, 3750);
             }
-        },3750);
+        },3750);*/
 
 
 
