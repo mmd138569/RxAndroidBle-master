@@ -361,7 +361,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //refreshing();
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
-//last change on git is the way to get all the data 
+//last change on git is the way to get all the data
                 handler.postDelayed(this, 4100);
                 Runnable r=new Runnable() {
                     @Override
