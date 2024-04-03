@@ -362,7 +362,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
 //last change on git is the way to get all the data
-                handler.postDelayed(this, 4100);
+                handler.postDelayed(this, 500);
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
@@ -370,10 +370,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                             // onReadClick();
                         //}
                     }
-                };           nand.postDelayed(r, 3500);
+                };           nand.postDelayed(r, 400);
 
             }
-        },4100);
+        },500);
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -381,10 +381,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 shoutdown1=false;
                 refreshing();
 
-                hand.postDelayed(this, 5000);
+                hand.postDelayed(this, 3000);
 
             }
-        },5000);
+        },3000);
 
        // thread();
 
