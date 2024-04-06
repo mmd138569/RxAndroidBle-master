@@ -625,7 +625,7 @@ private void clearSubscription() {
                             e.printStackTrace();
                         }*/
                     }, this::onReadFailure);
-            
+
         }
     }
     public static boolean ternerry(Integer num) {
