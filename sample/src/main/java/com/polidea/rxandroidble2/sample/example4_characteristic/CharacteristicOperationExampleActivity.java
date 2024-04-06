@@ -362,7 +362,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
 //last change on git is the way to get all the data
-                handler.postDelayed(this, 410);
+                handler.postDelayed(this, 390);
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
@@ -372,10 +372,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                         // onReadClick();
                         //}
                     }
-                };           nand.postDelayed(r, 390);
+                };           nand.postDelayed(r, 370);
 
             }
-        },410);
+        },390);
       /*  hand.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -625,6 +625,7 @@ private void clearSubscription() {
                             e.printStackTrace();
                         }*/
                     }, this::onReadFailure);
+            
         }
     }
     public static boolean ternerry(Integer num) {
