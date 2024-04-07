@@ -57,7 +57,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation "com.google.android.gms:play-services-location:21.1.0"
     implementation 'com.google.mlkit:vision-common:17.3.0'
-    implementation 'com.google.mlkit:barcode-scanning:17.2.0'
+    //implementation 'com.google.mlkit:barcode-scanning:17.2.0'
     implementation 'com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.0'
     implementation 'com.google.android.gms:play-services-code-scanner:16.1.0'
     implementation 'com.google.android.gms:play-services-vision-common:19.1.3'
