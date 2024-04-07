@@ -1,7 +1,6 @@
 package com.polidea.rxandroidble2.sample;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
