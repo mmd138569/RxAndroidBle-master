@@ -5,14 +5,19 @@ import static android.graphics.Color.GREEN;
 import static android.graphics.Color.RED;
 import static android.graphics.Color.TRANSPARENT;
 
+import static java.util.concurrent.TimeUnit.MILLISECONDS;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.ActivityManager;
 import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +41,9 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.PathInterpolator;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -46,11 +54,15 @@ import android.widget.Toast;
 import com.jakewharton.rx.ReplayingShare;
 import com.polidea.rxandroidble2.RxBleConnection;
 import com.polidea.rxandroidble2.RxBleDevice;
+import com.polidea.rxandroidble2.sample.DBChart;
+import com.polidea.rxandroidble2.sample.DBcalibrate;
 import com.polidea.rxandroidble2.sample.DeviceActivity;
 import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
 import com.polidea.rxandroidble2.sample.landscapechart;
 import com.polidea.rxandroidble2.sample.myservice;
+import com.polidea.rxandroidble2.sample.settings;
+import com.polidea.rxandroidble2.sample.settingsview;
 import com.polidea.rxandroidble2.sample.util.HexString;
 import com.polidea.rxandroidble2.scan.ScanResult;
 
@@ -71,34 +83,38 @@ import io.reactivex.subjects.PublishSubject;
 public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
     ImageView top,butt,twotop,twobutt,left,x2,x1,signal_strength1,signal_strength2,signal_strength3;
-
-    private Disposable connectionDisposable1;
+    int ii=0;
+    private Disposable connectionDisposable1,connectionDisposable;
 
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
     @BindView(R.id.connect)
     TextView connectButton;
     @BindView(R.id.read_output)
     TextView readOutputView;
+    static String macAddress;
     float yval[] = new float[1000];
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;
  @BindView(R.id.write_input)
     TextView writeInput;*/
     int temp =0;
+    float time, time1;
     @BindView(R.id.read)
     TextView readButton;
     public static int z=0;
+    public static String z1;
     @BindView(R.id.rssi)
     TextView rssiView;
   /*  @BindView(R.id.write)
     Button writeButton;*/
     @BindView(R.id.notify)
     Button notifyButton;
+    boolean shoutdown1=false,shoutdown2=false;
     private UUID characteristicUuid;
     String  str="0";
     int i=2,x=13,j=0;
     public static PieChart pieChart;
-
+    int aa=0;
     boolean a=false;
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
     private Observable<RxBleConnection> connectionObservable;
@@ -121,9 +137,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-*/
+
+
        /* Configuration config = getResources().getConfiguration();
         if(config.smallestScreenWidthDp>300){
             setContentView(R.layout.activity_example4);
@@ -153,10 +170,32 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         lineChart = findViewById(R.id.chart);
 
         ButterKnife.bind(this);
-        String macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
+        TextView setting=findViewById(R.id.settings);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              /*  Intent in=new Intent(CharacteristicOperationExampleActivity.this, settings.class);
+                startActivity(in);
+                finish();*/
+                Intent intent = new Intent(getApplicationContext(), settingsview.class);
+                intent.putExtra("mac_add", macAddress);
+                startActivity(intent);
+            }
+        });
+        lineChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), landscapechart.class);
+                intent.putExtra("mac_add", macAddress);
+                startActivity(intent);
+            }
+        });
         characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
+        macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
         bleDevice = SampleApplication.getRxBleClient(this).getBleDevice(macAddress);
+
         connectionObservable = prepareConnectionObservable();
+
         if(a==false) {
             lineChart.invalidate();
             //XAxis xAxis=lineChart.getXAxis();
@@ -212,16 +251,81 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler handler=new Handler();
         Handler hand=new Handler();
         Handler nand =new Handler();
+        Handler nand1 =new Handler();
+        Handler nand2 =new Handler();
+        Handler nand3 =new Handler();
+        Handler nand4 =new Handler();
+
         signal_strength1= findViewById(R.id.signal_strength1);
         signal_strength2= findViewById(R.id.signal_strength2);
         signal_strength3= findViewById(R.id.signal_strength3);
 
+        /*nand1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                 if(isConnected()) {
+                     connectionDisposable.dispose();
+                     rssi_should_work();
+
+
+                 }
+                hand.postDelayed(this, 2500);
+
+            }
+        },2500);
+
+        hand.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(isConnected()) {
+                    connectionDisposable1.dispose();
+                    onConnectToggleClick();
+                }
+                hand.postDelayed(this, 1000);
+
+            }
+        },1000);*/
+        nand1.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(!isConnected()) {
+                    onConnectToggleClick();
+                }
+                nand1.postDelayed(this, 300);
+            }
+        },300);
+
+       /* nand2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                connectionDisposable.dispose();
+                nand2.postDelayed(this, 3100);
+            }
+        },3100);*/
+        /*nand3.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                rssi_should_work();
+
+                nand3.postDelayed(this, 3150);
+            }
+        },3150);*/
+
+      /*  nand4.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                connectionDisposable1.dispose();
+
+                nand4.postDelayed(this, 3750);
+            }
+        },3750);*/
+
+
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-
                 //connect
-                onConnectToggleClick();
                 String a=String.valueOf(rssiView.getText()).replace("RSSI: ","");
                 System.out.println("================= if its run it should run the RSSI ==================");
                 if(a!="") {
@@ -257,8 +361,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //refreshing();
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
-
-                handler.postDelayed(this, 10700);
+//last change on git is the way to get all the data
+                handler.postDelayed(this, 500);
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
@@ -266,29 +370,24 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                             // onReadClick();
                         //}
                     }
-                };           nand.postDelayed(r, 3500);
+                };           nand.postDelayed(r, 400);
 
             }
-        },10700);
+        },500);
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
+                shoutdown2=false;
+                shoutdown1=false;
                 refreshing();
 
-                hand.postDelayed(this, 17000);
+                hand.postDelayed(this, 3000);
 
             }
-        },17000);
+        },3000);
 
        // thread();
-        lineChart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in= new Intent(CharacteristicOperationExampleActivity.this, landscapechart.class);
-                startActivity(in);
-                finish();
-            }
-        });
+
 //=============== this thread is life savier ===========
         Handler hand1=new Handler();
         Runnable run=new Runnable() {
@@ -353,7 +452,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 .compose(ReplayingShare.instance());
     }
 //=============================== connect buttom ==========================
-
    /* Handler h = new Handler();
     Runnable r = new Runnable() {
         @Override
@@ -430,7 +528,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
             triggerDisconnect();
         } else {
-            final Disposable connectionDisposable = connectionObservable
+                    connectionDisposable = connectionObservable
                     .flatMapSingle(RxBleConnection::discoverServices)
                     .flatMapSingle(rxBleDeviceServices -> rxBleDeviceServices.getCharacteristic(characteristicUuid))
                     .observeOn(AndroidSchedulers.mainThread())
@@ -444,17 +542,20 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                             this::onConnectionFinished
                     );
 
- }
-        connectionDisposable1 = bleDevice.establishConnection(false)
+
+        }
+    }
+    public void  rssi_should_work(){
+        connectionDisposable1 = bleDevice.establishConnection(true)
                 .doFinally(this::clearSubscription)
-                .flatMap(rxBleConnection -> // Set desired interval.
-                        Observable.interval(10, SECONDS).flatMapSingle(sequence -> rxBleConnection.readRssi()))
+                .flatMap(RxBleConnection -> // Set desired interval.
+                        Observable.interval(400, MILLISECONDS)
+                                .flatMapSingle(sequence -> RxBleConnection.readRssi()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::updateRssi, this::onConnectionFailure);
-
     }
 //==========================================================================
-//literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second tho
+//literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second
 private void updateRssi(int rssiValue) {
     rssiView.setText(getString(R.string.read_rssi, rssiValue));
 
@@ -524,9 +625,16 @@ private void clearSubscription() {
                     }, this::onReadFailure);
         }
     }
+    public static boolean ternerry(Integer num) {
+        return 0 == (num == null ? 0 : num);
+    }
     @OnClick(R.id.refresh)
     public void refreshing() {
-
+        float centerX = 438;
+        float centerY = 320;
+        float radius = 285;
+        float startAngle = 360f;
+        float sweepAngle = -180f;
         twotop=findViewById(R.id.twotop);
         left=findViewById(R.id.leFt);
         butt=findViewById(R.id.butt);
@@ -535,6 +643,9 @@ private void clearSubscription() {
         x1=findViewById(R.id.topmid);
         x2=findViewById(R.id.buttmid);
 
+        final DBcalibrate dBcalibrate = new DBcalibrate(CharacteristicOperationExampleActivity.this);
+        final ArrayList z = dBcalibrate.getAllCotacts1();
+
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
         final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
@@ -542,11 +653,19 @@ private void clearSubscription() {
         listView = findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
                 android.R.layout.simple_list_item_1, array_list);
+
         listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
-        if (!readOutputView.getText().toString().isEmpty()) {
+        if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000") {
 //===========================================================================================================
             yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+            if(z.size()!=0) {
+                int a = Integer.valueOf((String) z.get(z.size() - 1));
+                ternerry(a);
+                if (a != 0) {
+                    yval[i - 1] = yval[i - 1] - a;
+                }
+            }
             System.out.println("===================="+yval[i-1]);
             Intent intent  = new Intent(this, myservice.class);
 
@@ -554,7 +673,9 @@ private void clearSubscription() {
             intent.putExtra("YOUR_KEY_SONG_NAME", songUrl);
             startService(intent);
 //===========================================================================================================
-              str = readOutputView.getText().toString();
+              str=String.valueOf((int)yval[i-1]);
+
+              //str = readOutputView.getText().toString();
 
             if (helper.insert(/*name.getText()*/ yval[i - 1])) {
 
@@ -562,9 +683,10 @@ private void clearSubscription() {
             } else {
                 Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
             }
+            readOutputView.setText("20000");
         } else {
             // name.setError("Enter NAME");
-            readOutputView.setError("Enter Salary");
+            //readOutputView.setError("Enter Salary");
         }
 
 
@@ -578,85 +700,70 @@ private void clearSubscription() {
         butt.setVisibility(View.INVISIBLE);
         x1.setVisibility(View.INVISIBLE);
         x2.setVisibility(View.INVISIBLE);
-        if(((x<50)&&(x>=0))||(y<50)&&(y>=0)){
-            left.setVisibility(View.VISIBLE);
-            twobutt.setVisibility(View.INVISIBLE);
-            twotop.setVisibility(View.INVISIBLE);
-            top.setVisibility(View.INVISIBLE);
-            butt.setVisibility(View.INVISIBLE);
-            x1.setVisibility(View.INVISIBLE);
-            x2.setVisibility(View.INVISIBLE);
-
-        }
-        else if ((x<100)&&(x>=50)) {
-            left.setVisibility(View.INVISIBLE);
-            twobutt.setVisibility(View.INVISIBLE);
-            twotop.setVisibility(View.INVISIBLE);
-            top.setVisibility(View.INVISIBLE);
-            butt.setVisibility(View.INVISIBLE);
-            x1.setVisibility(View.VISIBLE);
-            x2.setVisibility(View.INVISIBLE);
-
-        }
-        else if ((y<100)&&(y>=50)) {
-            left.setVisibility(View.INVISIBLE);
-            twobutt.setVisibility(View.INVISIBLE);
-            twotop.setVisibility(View.INVISIBLE);
-            top.setVisibility(View.INVISIBLE);
-            butt.setVisibility(View.INVISIBLE);
-            x1.setVisibility(View.INVISIBLE);
-            x2.setVisibility(View.VISIBLE);
-        }
-        else if((x<150)&&(x>=100)){
-            left.setVisibility(View.INVISIBLE);
-            twobutt.setVisibility(View.INVISIBLE);
-            twotop.setVisibility(View.INVISIBLE);
-            top.setVisibility(View.VISIBLE);
-            butt.setVisibility(View.INVISIBLE);
-            x1.setVisibility(View.INVISIBLE);
-            x2.setVisibility(View.INVISIBLE);
-        }
-        else if((y<150)&&(y>=100)){
-            left.setVisibility(View.INVISIBLE);
-            twobutt.setVisibility(View.INVISIBLE);
-            twotop.setVisibility(View.INVISIBLE);
-            top.setVisibility(View.INVISIBLE);
-            butt.setVisibility(View.VISIBLE);
-            x1.setVisibility(View.INVISIBLE);
-            x2.setVisibility(View.INVISIBLE);
-        }
-        else if(y>=150){
-            left.setVisibility(View.INVISIBLE);
-            twobutt.setVisibility(View.VISIBLE);
-            twotop.setVisibility(View.INVISIBLE);
-            top.setVisibility(View.INVISIBLE);
-            butt.setVisibility(View.INVISIBLE);
-            x1.setVisibility(View.INVISIBLE);
-            x2.setVisibility(View.INVISIBLE);
-        }
-        else if(x>=150){
-            left.setVisibility(View.INVISIBLE);
-            twobutt.setVisibility(View.INVISIBLE);
-            twotop.setVisibility(View.VISIBLE);
-            top.setVisibility(View.INVISIBLE);
-            butt.setVisibility(View.INVISIBLE);
-            x1.setVisibility(View.INVISIBLE);
-            x2.setVisibility(View.INVISIBLE);
-        }
+        anim(   centerX , centerY , radius , x,y);
 //================================================
 //========================= refresh ===============
-        float rangeHigh = 100f;
-        float rangeLow = -7f;
-        float rangeLow2 = 103f;
-        float rangeHigh2 = 350f;
-        float rangeLow3 = 353f;
-        float rangeHigh3 = 400f;
+        final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
+        final ArrayList mychart = dbChart.getAllCotact1();
+        if(mychart.size()!=0) {
+            int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
+
+            if (my_Chart == 300) {
+                float rangeHigh = 100f;
+                float rangeLow = -7f;
+                float rangeLow2 = 103f;
+                float rangeHigh2 = 250f;
+                float rangeLow3 = 253f;
+                float rangeHigh3 = 300f;
+
+                lineChart.setTouchEnabled(true);
+                lineChart.setScaleEnabled(false);
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+                array_list.clear();
+            } else if (my_Chart == 400) {
+                float rangeHigh = 300f;
+                float rangeLow = -7f;
+                float rangeLow2 = 303f;
+                float rangeHigh2 = 650f;
+                float rangeLow3 = 653f;
+                float rangeHigh3 = 1200f;
+
+                lineChart.setTouchEnabled(true);
+                lineChart.setScaleEnabled(false);
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+                array_list.clear();
+            }
+            if(my_Chart==300) {
+                lineChart.getAxisLeft().setAxisMaximum(300f);
+                lineChart.getAxisRight().setAxisMaximum(300f);
+            }
+            else if(my_Chart==400){
+                lineChart.getAxisLeft().setAxisMaximum(1200f);
+                lineChart.getAxisRight().setAxisMaximum(1200f);
+            }
+            else {
+                lineChart.getAxisLeft().setAxisMaximum(400f);
+                lineChart.getAxisRight().setAxisMaximum(400f);
+            }
+        }
+        else {
+            float rangeHigh = 100f;
+            float rangeLow = -7f;
+            float rangeLow2 = 103f;
+            float rangeHigh2 = 350f;
+            float rangeLow3 = 353f;
+            float rangeHigh3 = 400f;
+
         lineChart.setTouchEnabled(true);
         lineChart.setScaleEnabled(false);
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
         lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
-        array_list.clear();
+        array_list.clear(); }
         array_list.addAll(helper.getAllCotacts());
         arrayAdapter.notifyDataSetChanged();
         listView.invalidateViews();
@@ -672,8 +779,7 @@ private void clearSubscription() {
         lineChart.setScaleEnabled(false);
         //lineChart.getXAxis().setAxisMaximum(24f);
         //lineChart.getXAxis().setAxisMinimum(0f);
-        lineChart.getAxisLeft().setAxisMaximum(400f);
-        lineChart.getAxisRight().setAxisMaximum(400f);
+
         //==================
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
@@ -712,16 +818,174 @@ private void clearSubscription() {
         lineData.setDrawValues(false);
         lineChart.getDescription().setEnabled(false);
 //================================================================
-      /*  OffsetTime offset = OffsetTime.now();
-        q1=offset.getHour();
-        q=offset.getMinute();
-        q1=q1*(q/100);*/
-        lineChart.getXAxis().setAxisMaximum(12f);
+        OffsetTime offset1 = OffsetTime.now();
+        time = offset1.getHour();
+        time1 = offset1.getMinute();
+        time=time+time1/100;
+        XAxis xAxis=lineChart.getXAxis();
+        xAxis.setLabelCount(3,true);
+        lineChart.getXAxis().setAxisMaximum((float) (time+1));
+        lineChart.getXAxis().setAxisMinimum(time);
 //================================================================
         setupPieChart(str);
         loadPieChartData(str);
     }
+public void anim( float centerX , float centerY, float radius,float x, float y){
+    Handler animstart=new Handler();
+    Runnable runnable=new Runnable() {
+        @Override
+        public void run() {
+            while (!shoutdown1) {
+                if(((x<50)&&(x>=0))||(y<50)&&(y>=0)){
+                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 0f);  // Specify the start and end rotation angles
+                    rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                    rotationAnimator1.setRepeatCount(0);
+                    rotationAnimator1.start();
+                }
+                else if((x<150)&&(x>=100)) {
+                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 90f);  // Specify the start and end rotation angles
+                    rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                    rotationAnimator1.setRepeatCount(0);
+                    rotationAnimator1.start();
+                }
+                else if ((x<100)&&(x>=50)) {
+                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 45f);  // Specify the start and end rotation angles
+                    rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                    rotationAnimator1.setRepeatCount(0);
+                    rotationAnimator1.start();
+                }
+                else if ((y<100)&&(y>=50)) {
+                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, -45f);  // Specify the start and end rotation angles
+                    rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                    rotationAnimator1.setRepeatCount(0);
+                    rotationAnimator1.start();
+        }
+                else if((y<150)&&(y>=100)){
+                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, -90f);  // Specify the start and end rotation angles
+                    rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                    rotationAnimator1.setRepeatCount(0);
+                    rotationAnimator1.start();
+        }
+                else if(y>=150){
+                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(twotop, "rotation", 180f, -90f);  // Specify the start and end rotation angles
+                    rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                    rotationAnimator1.setRepeatCount(0);
+                    rotationAnimator1.start();
+        }
+                else if(x>=150){
+                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(twotop, "rotation", 180f, 90f);  // Specify the start and end rotation angles
+                    rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
+                    rotationAnimator1.setRepeatCount(0);
+                    rotationAnimator1.start();
+        }
+                    shoutdown1=true;
+            }
+        }
+    }; animstart.postDelayed(runnable,1900);
+    Handler animstart1=new Handler();
+    Runnable r1=new Runnable() {
+        @Override
+        public void run() {
+            while (!shoutdown2) {
+                top.setVisibility(View.VISIBLE);
+                if(((x<50)&&(x>=0))||(y<50)&&(y>=0)) {
+                    Path path = new Path();
+                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    path.arcTo(oval, 360, -180, true);
+                // Create a PathInterpolator with the circular path
+                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                // Create an ObjectAnimator to rotate the image along the circular path
+                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                    rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                    rotationAnimator.setInterpolator(pathInterpolator);
+                    rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
+                    rotationAnimator.start();
+                }
+                else if((x<150)&&(x>=100)) {//top
 
+                    Path path = new Path();
+                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    path.arcTo(oval, 360, -90, true);
+                    // Create a PathInterpolator with the circular path
+                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                    // Create an ObjectAnimator to rotate the image along the circular path
+                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                    rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                    rotationAnimator.setInterpolator(pathInterpolator);
+                    rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
+                    rotationAnimator.start();
+                }
+                else if ((x<100)&&(x>=50)) {//top mid
+                    Path path = new Path();
+                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    path.arcTo(oval, 360, -135, true);
+                    // Create a PathInterpolator with the circular path
+                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                    // Create an ObjectAnimator to rotate the image along the circular path
+                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                    rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                    rotationAnimator.setInterpolator(pathInterpolator);
+                    rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
+                    rotationAnimator.start();
+        }
+                else if ((y<100)&&(y>=50)) {//botmid
+                    Path path = new Path();
+                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    path.arcTo(oval, 360, -225, true);
+                    // Create a PathInterpolator with the circular path
+                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                    // Create an ObjectAnimator to rotate the image along the circular path
+                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                    rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                    rotationAnimator.setInterpolator(pathInterpolator);
+                    rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
+                    rotationAnimator.start();
+        }
+                else if((y<150)&&(y>=100)){//bot
+                    Path path = new Path();
+                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    path.arcTo(oval, 360, -270, true);
+                    // Create a PathInterpolator with the circular path
+                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                    // Create an ObjectAnimator to rotate the image along the circular path
+                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                    rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                    rotationAnimator.setInterpolator(pathInterpolator);
+                    rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
+                    rotationAnimator.start();
+        }
+                else if(y>=150){
+                    Path path = new Path();
+                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    path.arcTo(oval, 360, -270, true);
+                    // Create a PathInterpolator with the circular path
+                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                    // Create an ObjectAnimator to rotate the image along the circular path
+                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(twotop, "translationX", "translationY", path);
+                    rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                    rotationAnimator.setInterpolator(pathInterpolator);
+                    rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
+                    rotationAnimator.start();
+        }
+                else if(x>=150){
+                    Path path = new Path();
+                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    path.arcTo(oval, 360, -90, true);
+                    // Create a PathInterpolator with the circular path
+                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
+                    // Create an ObjectAnimator to rotate the image along the circular path
+                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(twotop, "translationX", "translationY", path);
+                    rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
+                    rotationAnimator.setInterpolator(pathInterpolator);
+                    rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
+                    rotationAnimator.start();
+        }
+                    shoutdown2=true;
+            }
+        }
+    };animstart1.postDelayed(r1,1900);
+
+}
         ArrayList<Entry>linechart(float yval[],int i){
         ArrayList<Entry> dataset=new ArrayList<Entry>();
 
@@ -739,51 +1003,51 @@ private void clearSubscription() {
                 for (j = 0; j < i; j++) {
                     if (yval[j] != 0) {
                         //dataset.add(new Entry(temp, yval[temp]));
-                        dataset.add(new Entry(j, yval[j]));
+                        dataset.add(new Entry(time+(float)j/13, yval[j]));
                     }
                 }
             }
 //================== need for loop ===============
             else if(i>13){
                 yval[0]=yval[i-(i-1)];
-                dataset.add(new Entry(0, yval[0]));
+                dataset.add(new Entry((float)time+0, yval[0]));
 
                 yval[1]=yval[i-(i-2)];
-                dataset.add(new Entry(1, yval[1]));
+                dataset.add(new Entry( (float) (time+(1.0/12.0)), yval[1]));
 
                 yval[2]=yval[i-(i-3)];
-                dataset.add(new Entry(2, yval[2]));
+                dataset.add(new Entry( (float) (time+(2.0/12.0)), yval[2]));
 
                 yval[3]=yval[i-(i-4)];
-                dataset.add(new Entry(3, yval[3]));
+                dataset.add(new Entry( (float) (time+(3.0/12.0)), yval[3]));
 
                 yval[4]=yval[i-(i-5)];
-                dataset.add(new Entry(4, yval[4]));
+                dataset.add(new Entry( (float) (time+(4.0/12.0)), yval[4]));
 
                 yval[5]=yval[i-(i-6)];
-                dataset.add(new Entry(5, yval[5]));
+                dataset.add(new Entry( (float) (time+(5.0/12.0)), yval[5]));
 
                 yval[6]=yval[i-(i-7)];
-                dataset.add(new Entry(6, yval[6]));
+                dataset.add(new Entry((float) (time+(6.0/12.0)), yval[6]));
 
                 yval[7]=yval[i-(i-8)];
-                dataset.add(new Entry(7, yval[7]));
+                dataset.add(new Entry( (float) (time+(7.0/12.0)), yval[7]));
 
 
                 yval[8]=yval[i-(i-9)];
-                dataset.add(new Entry(8, yval[8]));
+                dataset.add(new Entry( (float) (time+(8.0/12.0)), yval[8]));
 
                 yval[9]=yval[i-(i-10)];
-                dataset.add(new Entry(9, yval[9]));
+                dataset.add(new Entry( (float) (time+(9.0/12.0)), yval[9]));
 
                 yval[10]=yval[i-(i-11)];
-                dataset.add(new Entry(10, yval[10]));
+                dataset.add(new Entry( (float) (time+(10.0/12.0)), yval[10]));
 
                 yval[11]=yval[i-(i-12)];
-                dataset.add(new Entry(11, yval[11]));
+                dataset.add(new Entry((float) (time+(11.0/12.0)), yval[11]));
 
                yval[12]=yval[i-(i-x)];
-                dataset.add(new Entry(12, yval[12]));
+                dataset.add(new Entry( (time+(float)(1)), yval[12]));
                 x++;
             }
         return dataset;
