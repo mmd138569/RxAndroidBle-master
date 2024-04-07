@@ -38,7 +38,6 @@ public class myservice extends Service {
     int width = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
     int height = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
     int time=0;
-    int fix_the_DB=0;
     int songUrl;
     public myservice() {
     }
@@ -47,11 +46,7 @@ public class myservice extends Service {
         if (intent != null && intent.getExtras() != null){
             songUrl = intent.getIntExtra("YOUR_KEY_SONG_NAME",0);
             final DatabaseHelper helper = new DatabaseHelper(myservice.this);
-
-          /*  if(fix_the_DB%2==0) {
-                helper.insert(songUrl);
-                fix_the_DB=fix_the_DB+1;
-            }*/
+            helper.insert(songUrl);
         }
         Handler h = new Handler();
         if(time==0) {
@@ -73,7 +68,7 @@ public class myservice extends Service {
             public void run() {
 
                 notification("it should be always run ", songUrl);
-                if(songUrl>350){
+                if(songUrl>250){
                     startAlert();
                 }
                 time= time+100;
@@ -181,7 +176,7 @@ public class myservice extends Service {
     }*/
       @RequiresApi(api = Build.VERSION_CODES.N)
       public void notification(String str, int BloodNum) {
-         /* if( CharacteristicOperationExampleActivity.getrssi()==0) {
+          if( CharacteristicOperationExampleActivity.getrssi()==0) {
              // f=R.drawable.rs;
               startAlert();
           }
@@ -190,7 +185,7 @@ public class myservice extends Service {
           }
           else if (CharacteristicOperationExampleActivity.getrssi()==2){
             //  f=R.drawable.rs3;
-          }*/
+          }
           String chanellID = "this is our id notify";
        //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
           Bitmap bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
@@ -216,7 +211,7 @@ public class myservice extends Service {
         }
          // CharacteristicOperationExampleActivity.customchart();
           NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), chanellID);
-          Notification notification = builder.setSmallIcon(R.drawable.back)//R.drawable.baseline_notifications_active_24
+          Notification notification = builder.setSmallIcon(R.drawable.baseline_notifications_active_24)//R.drawable.baseline_notifications_active_24
                   .setContentTitle("warning!")
                   .setContentText(str + BloodNum)
                   //remove the notification after clicking on it
@@ -230,8 +225,7 @@ public class myservice extends Service {
                   .build();
           builder.setLargeIcon(bitmap);
           builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap).bigLargeIcon(null));
-
-          builder.setSmallIcon(R.drawable.back)//R.drawable.baseline_notifications_active_24
+          builder.setSmallIcon(R.drawable.baseline_notifications_active_24)//R.drawable.baseline_notifications_active_24
                   .setContentTitle("warning")
                   .setContentText(str + BloodNum)
                   .setLargeIcon(bitmap)

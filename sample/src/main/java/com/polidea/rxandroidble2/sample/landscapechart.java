@@ -3,33 +3,20 @@ package com.polidea.rxandroidble2.sample;
 import static android.graphics.Color.GRAY;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.github.mikephil.charting.components.XAxis;
@@ -37,14 +24,10 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.opencsv.CSVWriter;
 import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
 import com.polidea.rxandroidble2.sample.example4_characteristic.CustomLineChart;
 import com.polidea.rxandroidble2.sample.example4_characteristic.DatabaseHelper;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.OffsetTime;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -52,22 +35,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
-import io.reactivex.annotations.NonNull;
-
 public class landscapechart extends AppCompatActivity {
     private CustomLineChart lineChart;
     float time,time1;
     int entrySize = 288;
     int count=0;
-    Spinner spinner;
-    ArrayList<String>folderlist=new ArrayList<>();
     int a;
     Button button1,button2,button3,button4,button5,button11,button21,button31,button41,button51;
-    ImageView csv;
-    String sfolder;
-    Button btn;
-    private static final int REQUEST_CODE_PICK_FILE = 1;
-    private static final int PERMISSION_REQUEST_CODE = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,9 +66,6 @@ public class landscapechart extends AppCompatActivity {
         else if(screenhight<=1000){
             setContentView(R.layout.landscapehart_smallphone);
         }
-        Intent intent = getIntent();
-         intent.getStringExtra("mac_add");
-
         button1=  findViewById(R.id.btton1);
         button2=  findViewById(R.id.btton2);
         button3=  findViewById(R.id.btton3);
@@ -104,43 +77,8 @@ public class landscapechart extends AppCompatActivity {
         button31=  findViewById(R.id.btton31);
         button41=  findViewById(R.id.btton41);
         button51=  findViewById(R.id.btton51);
-        csv=findViewById(R.id.EXL);
+
         lineChart = findViewById(R.id.landchart);
-        spinner=findViewById(R.id.SP_folder);
-        //folderlist.add("android");
-        folderlist.add("Download");
-        spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,folderlist));
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int i, long id) {
-                sfolder=folderlist.get(i);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-        csv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Permission already granted, call the exportDataToExcel() function
-
-                // Set the MIME type(s) of the files you want to access
-                String[] mimeTypes = {"application/csv"};
-                intent.setType("*/*"); // Allow all file types
-                intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
-
-                startActivityForResult(intent, REQUEST_CODE_PICK_FILE);
-                exportDataToExcel(landscapechart.this);
-                String spath= Environment.getExternalStorageDirectory()+"/"+sfolder+"/";
-                Uri uri=Uri.parse(spath);
-                Intent in=new Intent(Intent.ACTION_PICK);
-                in.setDataAndType(uri,"*/*");
-                startActivity(in);
-                System.out.println("==========================================================");
-            }
-        });
         lineChart.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
                     @Override
@@ -156,12 +94,12 @@ public class landscapechart extends AppCompatActivity {
 
                         lineChart.setTranslationX(-offset);
                         lineChart.setTranslationY(offset);
-                        float rangeHigh = 200f;
+                        float rangeHigh = 100f;
                         float rangeLow = -7f;
-                        float rangeLow2=203f;
-                        float rangeHigh2=450;
-                        float rangeLow3=453;
-                        float rangeHigh3=600;
+                        float rangeLow2=103f;
+                        float rangeHigh2=350;
+                        float rangeLow3=353;
+                        float rangeHigh3=400;
                         lineChart.setTouchEnabled(true);
                         lineChart.setScaleEnabled(false);
                         lineChart.addTargetZone(new CustomLineChart.TargetZone( Color.parseColor("#feebe5"),rangeLow,rangeHigh,""));
@@ -283,72 +221,11 @@ public class landscapechart extends AppCompatActivity {
                     }
                 });
     }
-  /*  @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_REQUEST_CODE) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission granted, call the exportDataToExcel() function
-                exportDataToExcel(this);
-            } else {
-                // Permission denied, handle accordingly (e.g., show a message)
-                Toast.makeText(this, "Write external storage permission denied", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
-    public void exportDataToExcel(Context context) {
-        // Obtain a reference to the SQLite database
-
-        SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase(
-                context.getDatabasePath("database.db"), null);
-
-        // Query the data from the database
-        Cursor cursor = database.rawQuery("SELECT * FROM SalaryDetails", null);
-
-        // Create CSV file
-        String csvFileName = "exported_data.csv";
-        //String userPath="android/data";
-        File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File csvFile = new File(folder, csvFileName);
-       // File  = new File(context.getExternalStoragePublicDirectory, csvFileName);
-        Log.d("FilePath", "=============================================CSV file saved at: " + csvFile.getAbsolutePath());
-        try {
-            // Initialize CSVWriter
-            CSVWriter writer = new CSVWriter(new FileWriter(csvFile));
-
-            // Write column names
-            String[] columnNames = cursor.getColumnNames();
-            writer.writeNext(columnNames);
-
-            // Write data rows
-            while (cursor.moveToNext()) {
-                String[] rowData = new String[columnNames.length];
-                for (int i = 0; i < columnNames.length; i++) {
-                    rowData[i] = cursor.getString(i);
-                }
-                writer.writeNext(rowData);
-            }
-
-            // Close CSVWriter
-            writer.close();
-
-            // Convert CSV to Excel format using LightXLSReader library
-           /* String excelFileName = "exported_data.xls";
-            File excelFile = new File(context.getExternalFilesDir(null), excelFileName);
-            LightXLSReader.convertCsvToXls(csvFile.getAbsolutePath(), excelFile.getAbsolutePath());*/
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Close cursor and database
-        cursor.close();
-        database.close();
-    }
     private void initLineChart(float time){
         //    lineChart.setTouchEnabled(true);
         lineChart.getXAxis().setAxisMaximum(24f);
-        lineChart.getAxisLeft().setAxisMaximum(600f);
-        lineChart.getAxisRight().setAxisMaximum(600f);
+        lineChart.getAxisLeft().setAxisMaximum(400f);
+        lineChart.getAxisRight().setAxisMaximum(400f);
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
         lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
@@ -433,8 +310,8 @@ public class landscapechart extends AppCompatActivity {
             entrySize=12;
         count=5;}
         //lineChart.setTouchEnabled(true);
-        lineChart.getAxisLeft().setAxisMaximum(600f);
-        lineChart.getAxisRight().setAxisMaximum(600f);
+        lineChart.getAxisLeft().setAxisMaximum(400f);
+        lineChart.getAxisRight().setAxisMaximum(400f);
         lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
         lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
         lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
@@ -527,9 +404,9 @@ public class landscapechart extends AppCompatActivity {
                 if(array_list1.size()>=288) {
                     int j=0;
                     for (int i = array_list1.size() - 288; i < array_list1.size(); i++) {
-                       /* System.out.println("=======================================");
+                        System.out.println("=======================================");
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
-                        System.out.println(i);*/
+                        System.out.println(i);
                         x = Float.parseFloat((String) array_list1.get(i));
                         arr.add(j,x);
                         j++;
@@ -543,9 +420,9 @@ public class landscapechart extends AppCompatActivity {
                 if(array_list1.size()>=144) {
                     int j=0;
                     for (int i = array_list1.size() - 144; i < array_list1.size(); i++) {
-                       /* System.out.println("=======================================");
+                        System.out.println("=======================================");
                         System.out.println(Float.parseFloat((String) array_list1.get(i)));
-                        System.out.println(i);*/
+                        System.out.println(i);
                         x = Float.parseFloat((String) array_list1.get(i));
                         arr.add(j,x);
                         j++;
@@ -620,10 +497,10 @@ public class landscapechart extends AppCompatActivity {
         entries.add(new Entry((float) 12, 0));
         return entries;
     }
-  /*  @Override
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(this, CharacteristicOperationExampleActivity.class);
         startActivity(intent);
-    }*/
+    }
 }

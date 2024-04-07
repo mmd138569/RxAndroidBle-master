@@ -38,12 +38,14 @@
         android:orientation="vertical"
         android:gravity="center"
         android:layout_alignParentRight="true"
-       >
+        android:layout_marginBottom="50dp"
+        >
         <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="120dp"
             android:gravity="bottom"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="60dp"
+            >
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginRight="-23dp"
         android:background="@drawable/landescapeborder"
@@ -74,7 +76,8 @@
         <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="120dp"
-            android:gravity="bottom">
+            android:gravity="bottom"
+            >
     <androidx.appcompat.widget.AppCompatButton
         android:layout_marginRight="-23dp"
         android:background="@drawable/landescapesecbttn"
@@ -104,7 +107,8 @@
         <RelativeLayout
             android:layout_width="100dp"
             android:layout_height="120dp"
-            android:gravity="bottom">
+            android:gravity="bottom"
+            >
             <androidx.appcompat.widget.AppCompatButton
                 android:layout_marginRight="-23dp"
                 android:background="@drawable/landescapesecbttn"
@@ -130,6 +134,7 @@
                 android:text="8HR"
                 android:visibility="invisible"
                 android:id="@+id/btton31"
+
                 />
         </RelativeLayout>
         <RelativeLayout
@@ -162,6 +167,7 @@
                 android:text="3HR"
                 android:visibility="invisible"
                 android:id="@+id/btton41"
+
                 />
         </RelativeLayout>
         <RelativeLayout
@@ -194,30 +200,8 @@
                 android:text="1HR"
                 android:visibility="invisible"
                 android:id="@+id/btton51"
+
                 />
         </RelativeLayout>
-        <ImageView
-            android:layout_marginRight="-3dp"
-            android:textColor="@android:color/darker_gray"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:rotation="90"
-            android:src="@drawable/xls"
-            android:layout_marginBottom="40dp"
-            android:text="1HR"
-            android:id="@+id/EXL"
-            />
-        <Spinner
-
-            android:layout_marginRight="-23dp"
-            android:textColor="@android:color/darker_gray"
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:rotation="90"
-            android:layout_marginBottom="40dp"
-            android:id="@+id/SP_folder"
-            />
     </LinearLayout>
 </RelativeLayout>

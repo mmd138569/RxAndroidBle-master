@@ -20,7 +20,7 @@ import android.widget.TextView;
 import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
 
 public class MainActivity extends AppCompatActivity {
-// ================================================== THIS IS THE REAL ONE ========================================
+
     TextView textView;
     ImageView img;
     Animation bottom_animation,top_animation;
@@ -92,7 +92,9 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-
+              /*  Intent in = new Intent(MainActivity.this, EntertransmitterSN1.class);
+                startActivity(in);
+                finish();*/
             }
         };
         h.postDelayed(r, 1500);

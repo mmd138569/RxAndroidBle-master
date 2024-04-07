@@ -36,7 +36,7 @@ public class bluetooth extends AppCompatActivity {
         NextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                  Intent in = new Intent(bluetooth.this, ScanActivity.class);
+                  Intent in = new Intent(bluetooth.this, EntertransmitterSN1.class);
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(bluetooth.this, R.anim.animationint, R.anim.anim);
                 bluetooth.this.startActivity(in, options.toBundle());
