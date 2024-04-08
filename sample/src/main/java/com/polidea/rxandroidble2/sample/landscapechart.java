@@ -37,7 +37,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.opencsv.CSVWriter;
+//import com.opencsv.CSVWriter;
 import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
 import com.polidea.rxandroidble2.sample.example4_characteristic.CustomLineChart;
 import com.polidea.rxandroidble2.sample.example4_characteristic.DatabaseHelper;
@@ -310,11 +310,11 @@ public class landscapechart extends AppCompatActivity {
         //String userPath="android/data";
         File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         File csvFile = new File(folder, csvFileName);
-       // File  = new File(context.getExternalStoragePublicDirectory, csvFileName);
+        // File  = new File(context.getExternalStoragePublicDirectory, csvFileName);
         Log.d("FilePath", "=============================================CSV file saved at: " + csvFile.getAbsolutePath());
-        try {
-            // Initialize CSVWriter
-            CSVWriter writer = new CSVWriter(new FileWriter(csvFile));
+        //try {
+        // Initialize CSVWriter
+       /*     CSVWriter writer = new CSVWriter(new FileWriter(csvFile));
 
             // Write column names
             String[] columnNames = cursor.getColumnNames();
@@ -331,15 +331,15 @@ public class landscapechart extends AppCompatActivity {
 
             // Close CSVWriter
             writer.close();
-
-            // Convert CSV to Excel format using LightXLSReader library
+*/
+        // Convert CSV to Excel format using LightXLSReader library
            /* String excelFileName = "exported_data.xls";
             File excelFile = new File(context.getExternalFilesDir(null), excelFileName);
             LightXLSReader.convertCsvToXls(csvFile.getAbsolutePath(), excelFile.getAbsolutePath());*/
-        } catch (IOException e) {
+      /*  } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
         // Close cursor and database
         cursor.close();
         database.close();
