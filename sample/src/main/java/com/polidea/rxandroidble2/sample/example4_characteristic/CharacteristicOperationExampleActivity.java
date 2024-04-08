@@ -383,10 +383,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 shoutdown1=false;
                 refreshing();
 
-                hand.postDelayed(this, 8000);
+                hand.postDelayed(this, 4900);
 
             }
-        },8000);
+        },4900);
 
        // thread();
 
