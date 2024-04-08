@@ -291,9 +291,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 if(!isConnected()) {
                     onConnectToggleClick();
                 }
-                nand1.postDelayed(this, 300);
+                nand1.postDelayed(this, 500);
             }
-        },300);
+        },500);
 
        /* nand2.postDelayed(new Runnable() {
             @Override
