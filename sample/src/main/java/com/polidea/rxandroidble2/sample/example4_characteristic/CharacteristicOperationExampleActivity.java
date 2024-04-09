@@ -451,13 +451,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 .compose(ReplayingShare.instance());
     }
 //=============================== connect buttom ==========================
-   /* Handler h = new Handler();
-    Runnable r = new Runnable() {
-        @Override
-        public void run() {
-        }
-    };
-            h.postDelayed(r, 1500);*/
    public static void customchart() {
        //  lineChart.init();
 
