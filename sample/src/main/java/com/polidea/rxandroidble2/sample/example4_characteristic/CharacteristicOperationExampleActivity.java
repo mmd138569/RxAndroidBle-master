@@ -321,7 +321,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         },3750);*/
 
 
-
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -362,21 +361,19 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
 //last change on git is the way to get all the data
-                handler.postDelayed(this, 390);
+                handler.postDelayed(this, 340);
                 Runnable r=new Runnable() {
                     @Override
                     public void run() {
                             onNotifyClick();
-
-
-                        // onReadClick();
-                        //}
+                        shoutdown2=false;
+                        shoutdown1=false;
                     }
-                };           nand.postDelayed(r, 370);
+                };           nand.postDelayed(r, 340);
 
             }
-        },390);
-        hand.postDelayed(new Runnable() {
+        },340);
+    /*    hand.postDelayed(new Runnable() {
             @Override
             public void run() {
                 shoutdown2=false;
@@ -389,7 +386,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         },4900);
 
        // thread();
-
+*/
 //=============== this thread is life savier ===========
         Handler hand1=new Handler();
         Runnable run=new Runnable() {
@@ -523,12 +520,14 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
        lineChart.animateX(4000);
 
    }
+   }
     @OnClick(R.id.connect)
     public void onConnectToggleClick() {
 
         if (isConnected()) {
 
             triggerDisconnect();
+
         } else {
                     connectionDisposable = connectionObservable
                     .flatMapSingle(RxBleConnection::discoverServices)
@@ -612,7 +611,13 @@ private void clearSubscription() {
                     .flatMap(notificationObservable -> notificationObservable)
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(bytes -> {
-                        readOutputView.setText(new String(bytes));
+                        if(bytes!=null) {
+                            String a = new String(bytes);
+                            if (a != null) {
+                                readOutputView.setText(new String(bytes));
+                                refreshing();
+                            }
+                        }
                         //  readHexOutputView.setText(HexString.bytesToHex(bytes));
                         // writeInput.setText(HexString.bytesToHex(bytes));
 //=======================================
