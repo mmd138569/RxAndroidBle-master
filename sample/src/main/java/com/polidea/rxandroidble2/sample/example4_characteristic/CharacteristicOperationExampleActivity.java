@@ -520,7 +520,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
        lineChart.animateX(4000);
 
    }
-   }
+   //}
     @OnClick(R.id.connect)
     public void onConnectToggleClick() {
 
