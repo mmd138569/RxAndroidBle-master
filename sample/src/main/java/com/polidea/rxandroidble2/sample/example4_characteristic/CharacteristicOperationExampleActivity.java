@@ -83,7 +83,6 @@ import io.reactivex.subjects.PublishSubject;
 public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
     ImageView top,butt,twotop,twobutt,left,x2,x1,signal_strength1,signal_strength2,signal_strength3;
-    int ii=0;
     private Disposable connectionDisposable1,connectionDisposable;
 
     public static final String EXTRA_CHARACTERISTIC_UUID = "extra_uuid";
