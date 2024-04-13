@@ -360,6 +360,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
 //last change on git is the way to get all the data
+                //============
                 handler.postDelayed(this, 340);
                 Runnable r=new Runnable() {
                     @Override
@@ -625,11 +626,17 @@ private void clearSubscription() {
 
         }
     }
+
     public static boolean ternerry(Integer num) {
         return 0 == (num == null ? 0 : num);
     }
     @OnClick(R.id.refresh)
+
+
     public void refreshing() {
+        System.out.println( " Current Thread is : @@@@@@@@@@@@@@@@@@@@@@"+ Thread.currentThread().getName());
+
+
         float centerX = 438;
         float centerY = 320;
         float radius = 285;
