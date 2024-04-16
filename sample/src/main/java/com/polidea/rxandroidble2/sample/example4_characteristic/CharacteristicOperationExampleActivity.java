@@ -66,6 +66,8 @@ import com.polidea.rxandroidble2.sample.settingsview;
 import com.polidea.rxandroidble2.sample.util.HexString;
 import com.polidea.rxandroidble2.scan.ScanResult;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.time.OffsetTime;
 import java.util.ArrayList;
@@ -388,7 +390,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
        // thread();
 
-//=============== this thread is life savier ===========
+//=============== this is important ===========
         Handler hand1=new Handler();
         Runnable run=new Runnable() {
             @Override
@@ -653,7 +655,6 @@ private void clearSubscription() {
         listView = findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
                 android.R.layout.simple_list_item_1, array_list);
-
         listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
         if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000") {
@@ -830,6 +831,7 @@ private void clearSubscription() {
         setupPieChart(str);
         loadPieChartData(str);
     }
+
 public void anim( float centerX , float centerY, float radius,float x, float y){
     Handler animstart=new Handler();
     Runnable runnable=new Runnable() {
