@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import com.polidea.rxandroidble2.sample.example1_scanning.ScanActivity;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 // ================================================== THIS IS THE REAL ONE ========================================
     TextView textView;

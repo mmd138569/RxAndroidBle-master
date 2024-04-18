@@ -37,7 +37,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.opencsv.CSVWriter;
+//import com.opencsv.CSVWriter;
 import com.polidea.rxandroidble2.sample.example4_characteristic.CharacteristicOperationExampleActivity;
 import com.polidea.rxandroidble2.sample.example4_characteristic.CustomLineChart;
 import com.polidea.rxandroidble2.sample.example4_characteristic.DatabaseHelper;
@@ -314,19 +314,21 @@ public class landscapechart extends AppCompatActivity {
         Log.d("FilePath", "=============================================CSV file saved at: " + csvFile.getAbsolutePath());
         try {
             // Initialize CSVWriter
-            CSVWriter writer = new CSVWriter(new FileWriter(csvFile));
+           // CSVWriter writer = new CSVWriter(new FileWriter(csvFile));
+            FileWriter writer = new FileWriter(csvFile);
 
             // Write column names
             String[] columnNames = cursor.getColumnNames();
-            writer.writeNext(columnNames);
+            //writer.writeNext(columnNames);
 
             // Write data rows
             while (cursor.moveToNext()) {
-                String[] rowData = new String[columnNames.length];
+                String[] rowData = new String[3];
                 for (int i = 0; i < columnNames.length; i++) {
                     rowData[i] = cursor.getString(i);
+                    writer.append(rowData[i]);
                 }
-                writer.writeNext(rowData);
+                writer.append("\n");
             }
 
             // Close CSVWriter
