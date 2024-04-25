@@ -94,7 +94,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     @BindView(R.id.read_output)
     TextView readOutputView;
     static String macAddress;
-    float yval[] = new float[1000];
+    float yval[] = new float[21];
 /*    @BindView(R.id.read_hex_output)
     TextView readHexOutputView;
  @BindView(R.id.write_input)
@@ -663,15 +663,15 @@ private void clearSubscription() {
         //System.out.println(readOutputView+"=======================");
         if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000") {
 //===========================================================================================================
-            yval[i - 1] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+            yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()));
             if(z.size()!=0) {
                 int a = Integer.valueOf((String) z.get(z.size() - 1));
                 ternerry(a);
                 if (a != 0) {
-                    yval[i - 1] = yval[i - 1] - a;
+                    yval[20] = yval[20] - a;
                 }
             }
-            System.out.println("===================="+yval[i-1]);
+            System.out.println("===================="+yval[20]);
             Intent intent  = new Intent(this, myservice.class);
 
             int songUrl=Integer.parseInt(String.valueOf(readOutputView.getText()));
@@ -681,11 +681,11 @@ private void clearSubscription() {
            data_oomad=true;
            data_oomad2=true;
            data_oomad3=true;
-              str=String.valueOf((int)yval[i-1]);
+              str=String.valueOf((int)yval[20]);
 
               //str = readOutputView.getText().toString();
 
-            if (helper.insert(/*name.getText()*/ yval[i - 1])) {
+            if (helper.insert(/*name.getText()*/ yval[20])) {
 
                 Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
             } else {
@@ -698,8 +698,8 @@ private void clearSubscription() {
         }
 
 
-        float x=yval[i-1]-yval[i-2];
-        float y=yval[i-2]-yval[i-1];
+        float x=yval[20]-yval[19];
+        float y=yval[19]-yval[20];
         Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
         left.setVisibility(View.INVISIBLE);
         twobutt.setVisibility(View.INVISIBLE);
@@ -779,7 +779,7 @@ private void clearSubscription() {
         arrayAdapter.notifyDataSetChanged();
         listView.invalidateViews();
         listView.refreshDrawableState();
-        LineDataSet lineDataSet = new LineDataSet(linechart(yval, i), "lable");
+        LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
         i++;
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(lineDataSet);
@@ -805,7 +805,7 @@ private void clearSubscription() {
 
 //==============================================================================
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        if(yval[i-1]%12==0){
+        if(yval[20]%12==0){
             lineDataSet.setDrawCircleHole(false);
         }
         else{
@@ -1001,7 +1001,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
     };animstart1.postDelayed(r1,1900);
 
 }
-        ArrayList<Entry>linechart(float yval[],int i){
+        ArrayList<Entry>linechart(float yvals[],int i,int lastone){
         ArrayList<Entry> dataset=new ArrayList<Entry>();
 
         int temp =0;
@@ -1016,53 +1016,53 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
             dataset.add(new Entry(0,0));
             if(i<=13) {
                 for (j = 0; j < i; j++) {
-                    if (yval[j] != 0) {
+                    if (yvals[j] != 0) {
                         //dataset.add(new Entry(temp, yval[temp]));
-                        dataset.add(new Entry(time+(float)j/13, yval[j]));
+                        dataset.add(new Entry(time+(float)j/13, yvals[j]));
                     }
                 }
             }
 //================== need for loop ===============
             else if(i>13){
-                yval[0]=yval[i-(i-1)];
-                dataset.add(new Entry((float)time+0, yval[0]));
+                yvals[0]=yvals[1];
+                dataset.add(new Entry((float)time+0, yvals[0]));
 
-                yval[1]=yval[i-(i-2)];
-                dataset.add(new Entry( (float) (time+(1.0/12.0)), yval[1]));
+                yvals[1]=yvals[2];
+                dataset.add(new Entry( (float) (time+(1.0/12.0)), yvals[1]));
 
-                yval[2]=yval[i-(i-3)];
-                dataset.add(new Entry( (float) (time+(2.0/12.0)), yval[2]));
+                yvals[2]=yvals[3];
+                dataset.add(new Entry( (float) (time+(2.0/12.0)), yvals[2]));
 
-                yval[3]=yval[i-(i-4)];
-                dataset.add(new Entry( (float) (time+(3.0/12.0)), yval[3]));
+                yvals[3]=yvals[4];
+                dataset.add(new Entry( (float) (time+(3.0/12.0)), yvals[3]));
 
-                yval[4]=yval[i-(i-5)];
-                dataset.add(new Entry( (float) (time+(4.0/12.0)), yval[4]));
+                yvals[4]=yvals[5];
+                dataset.add(new Entry( (float) (time+(4.0/12.0)), yvals[4]));
 
-                yval[5]=yval[i-(i-6)];
-                dataset.add(new Entry( (float) (time+(5.0/12.0)), yval[5]));
+                yvals[5]=yvals[6];
+                dataset.add(new Entry( (float) (time+(5.0/12.0)), yvals[5]));
 
-                yval[6]=yval[i-(i-7)];
-                dataset.add(new Entry((float) (time+(6.0/12.0)), yval[6]));
+                yvals[6]=yvals[7];
+                dataset.add(new Entry((float) (time+(6.0/12.0)), yvals[6]));
 
-                yval[7]=yval[i-(i-8)];
-                dataset.add(new Entry( (float) (time+(7.0/12.0)), yval[7]));
+                yvals[7]=yvals[8];
+                dataset.add(new Entry( (float) (time+(7.0/12.0)), yvals[7]));
 
 
-                yval[8]=yval[i-(i-9)];
-                dataset.add(new Entry( (float) (time+(8.0/12.0)), yval[8]));
+                yvals[8]=yvals[9];
+                dataset.add(new Entry( (float) (time+(8.0/12.0)), yvals[8]));
 
-                yval[9]=yval[i-(i-10)];
-                dataset.add(new Entry( (float) (time+(9.0/12.0)), yval[9]));
+                yvals[9]=yvals[10];
+                dataset.add(new Entry( (float) (time+(9.0/12.0)), yvals[9]));
 
-                yval[10]=yval[i-(i-11)];
-                dataset.add(new Entry( (float) (time+(10.0/12.0)), yval[10]));
+                yvals[10]=yvals[11];
+                dataset.add(new Entry( (float) (time+(10.0/12.0)), yvals[10]));
 
-                yval[11]=yval[i-(i-12)];
-                dataset.add(new Entry((float) (time+(11.0/12.0)), yval[11]));
+                yvals[11]=yvals[12];
+                dataset.add(new Entry((float) (time+(11.0/12.0)), yvals[11]));
 
-               yval[12]=yval[i-(i-x)];
-                dataset.add(new Entry( (time+(float)(1)), yval[12]));
+               yvals[12]=lastone;
+                dataset.add(new Entry( (time+(float)(1)), yvals[12]));
                 x++;
             }
         return dataset;
