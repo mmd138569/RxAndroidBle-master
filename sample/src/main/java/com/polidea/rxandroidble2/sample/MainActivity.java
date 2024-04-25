@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                     else if(!isFirstTime){
-                        Intent in = new Intent(MainActivity.this, mainlogin.class);
+                        Intent in = new Intent(MainActivity.this, ScanActivity.class);
                         startActivity(in);
                         finish();
                     }

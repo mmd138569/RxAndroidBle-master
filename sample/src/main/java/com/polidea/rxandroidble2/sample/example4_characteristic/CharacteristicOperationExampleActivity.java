@@ -125,6 +125,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     //TextView save, refresh;
     //TextView name;
     private ListView listView;
+    public boolean data_oomad=false;
+    public boolean data_oomad2=false;
+    public boolean data_oomad3=false;
+
     public static CustomLineChart lineChart;
 
 
@@ -324,7 +328,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
 
 
-        handler.postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable() {  //in baraye ... ast
             @Override
             public void run() {
                 //connect
@@ -674,6 +678,9 @@ private void clearSubscription() {
             intent.putExtra("YOUR_KEY_SONG_NAME", songUrl);
             startService(intent);
 //===========================================================================================================
+           data_oomad=true;
+           data_oomad2=true;
+           data_oomad3=true;
               str=String.valueOf((int)yval[i-1]);
 
               //str = readOutputView.getText().toString();
@@ -701,7 +708,10 @@ private void clearSubscription() {
         butt.setVisibility(View.INVISIBLE);
         x1.setVisibility(View.INVISIBLE);
         x2.setVisibility(View.INVISIBLE);
+ //====================================================================
+        if(data_oomad==true){
         anim(   centerX , centerY , radius , x,y);
+        data_oomad=false;}
 //================================================
 //========================= refresh ===============
         final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
@@ -829,7 +839,10 @@ private void clearSubscription() {
         lineChart.getXAxis().setAxisMinimum(time);
 //================================================================
         setupPieChart(str);
-        loadPieChartData(str);
+        if(data_oomad2==true) {
+            loadPieChartData(str);
+            data_oomad2=false;
+        }
     }
 
 public void anim( float centerX , float centerY, float radius,float x, float y){
