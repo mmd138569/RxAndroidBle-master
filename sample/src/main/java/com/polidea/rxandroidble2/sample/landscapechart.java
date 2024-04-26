@@ -303,7 +303,8 @@ public class landscapechart extends AppCompatActivity {
                 context.getDatabasePath("database.db"), null);
 
         // Query the data from the database
-        Cursor cursor = database.rawQuery("SELECT * FROM SalaryDetails", null);
+        Cursor cursor = database.rawQuery("SELECT salary FROM SalaryDetails", null);
+        Cursor cursor2 = database.rawQuery("SELECT datetime FROM SalaryDetails", null);
 
         // Create CSV file
         String csvFileName = "exported_data.csv";
@@ -319,18 +320,36 @@ public class landscapechart extends AppCompatActivity {
 
             // Write column names
             String[] columnNames = cursor.getColumnNames();
+            String[] columnNames2 = cursor2.getColumnNames();
             //writer.writeNext(columnNames);
 
             // Write data rows
-            while (cursor.moveToNext()) {
+            while (cursor.moveToNext()&&cursor2.moveToNext()) {
                 String[] rowData = new String[3];
+                String[] rowData1 = new String[3];
                 for (int i = 0; i < columnNames.length; i++) {
                     rowData[i] = cursor.getString(i);
+                    rowData1[i] = cursor2.getString(i);
+                    writer.append(rowData1[i]);
+                    writer.append("  ");
                     writer.append(rowData[i]);
+
                 }
+                //System.out.println(rowData[columnNames.length-2]+"++++++++++++++++++++++++++++++++++");
                 writer.append("\n");
             }
+           // String[] columnNames2 = cursor2.getColumnNames();
 
+          /*  while (cursor2.moveToNext()) {
+                String[] rowData = new String[3];
+                for (int i = 0; i < columnNames2.length; i++) {
+
+                    writer.append(rowData[i]);
+
+                }
+                //System.out.println(rowData[columnNames.length-2]+"++++++++++++++++++++++++++++++++++");
+                writer.append("\n");
+            }*/
             // Close CSVWriter
             writer.close();
 
