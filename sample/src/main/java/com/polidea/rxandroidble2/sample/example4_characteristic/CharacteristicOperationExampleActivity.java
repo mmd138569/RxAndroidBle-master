@@ -329,7 +329,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
 
 
-        handler.postDelayed(new Runnable() {  //in baraye ... ast
+        handler.postDelayed(new Runnable() {  
             @Override
             public void run() {
                 //connect
