@@ -281,7 +281,7 @@ public class myservice extends Service {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
                 + (0), pendingIntent);
-        Toast.makeText(this, "Alarm set in now", Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Alarm set in now", Toast.LENGTH_LONG).show();
         //}
     }
     private void startMyOwnForeground(){

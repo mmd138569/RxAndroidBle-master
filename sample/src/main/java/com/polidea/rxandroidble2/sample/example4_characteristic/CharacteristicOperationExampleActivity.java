@@ -80,6 +80,7 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
 
 public class CharacteristicOperationExampleActivity extends AppCompatActivity {
@@ -614,7 +615,7 @@ private void clearSubscription() {
                     .flatMap(rxBleConnection -> rxBleConnection.setupNotification(characteristicUuid))
                     .doOnNext(notificationObservable -> runOnUiThread(this::notificationHasBeenSetUp))
                     .flatMap(notificationObservable -> notificationObservable)
-                    .observeOn(AndroidSchedulers.mainThread())
+                    .observeOn(Schedulers.io())
                     .subscribe(bytes -> {
                         readOutputView.setText(new String(bytes));
                         //  readHexOutputView.setText(HexString.bytesToHex(bytes));
@@ -687,9 +688,9 @@ private void clearSubscription() {
 
             if (helper.insert(/*name.getText()*/ yval[20])) {
 
-                Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+                //Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
+                //Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
             }
             readOutputView.setText("20000");
         } else {
@@ -700,7 +701,7 @@ private void clearSubscription() {
 
         float x=yval[20]-yval[19];
         float y=yval[19]-yval[20];
-        Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
         left.setVisibility(View.INVISIBLE);
         twobutt.setVisibility(View.INVISIBLE);
         twotop.setVisibility(View.INVISIBLE);

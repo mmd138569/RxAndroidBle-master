@@ -20,7 +20,7 @@ public void onReceive(Context context, Intent intent) {
         media=MediaPlayer.create(context, R.raw.alert);
         media.start();
 
-        Toast.makeText(context, "Alarm....", Toast.LENGTH_LONG).show();
+        //Toast.makeText(context, "Alarm....", Toast.LENGTH_LONG).show();
         Handler h = new Handler();
         Runnable runnable=new Runnable() {
                 @Override
