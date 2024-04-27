@@ -125,6 +125,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     //TextView save, refresh;
     //TextView name;
+    RectF oval=null;
     private ListView listView;
     public boolean data_oomad=false;
     public boolean data_oomad2=false;
@@ -329,7 +330,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
 
 
-        handler.postDelayed(new Runnable() {  
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 //connect
@@ -906,7 +907,9 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
                 top.setVisibility(View.VISIBLE);
                 if(((x<50)&&(x>=0))||(y<50)&&(y>=0)) {
                     Path path = new Path();
-                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    if(oval==null) {
+                        oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    }
                     path.arcTo(oval, 360, -180, true);
                 // Create a PathInterpolator with the circular path
                     PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
@@ -920,7 +923,9 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
                 else if((x<150)&&(x>=100)) {//top
 
                     Path path = new Path();
-                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    if(oval==null) {
+                        oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    }
                     path.arcTo(oval, 360, -90, true);
                     // Create a PathInterpolator with the circular path
                     PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
@@ -933,7 +938,9 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
                 }
                 else if ((x<100)&&(x>=50)) {//top mid
                     Path path = new Path();
-                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    if(oval==null) {
+                        oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    }
                     path.arcTo(oval, 360, -135, true);
                     // Create a PathInterpolator with the circular path
                     PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
@@ -946,7 +953,9 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         }
                 else if ((y<100)&&(y>=50)) {//botmid
                     Path path = new Path();
-                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    if(oval==null) {
+                        oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    }
                     path.arcTo(oval, 360, -225, true);
                     // Create a PathInterpolator with the circular path
                     PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
@@ -959,7 +968,9 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         }
                 else if((y<150)&&(y>=100)){//bot
                     Path path = new Path();
-                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    if(oval==null) {
+                        oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    }
                     path.arcTo(oval, 360, -270, true);
                     // Create a PathInterpolator with the circular path
                     PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
@@ -972,7 +983,9 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         }
                 else if(y>=150){
                     Path path = new Path();
-                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    if(oval==null) {
+                        oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    }
                     path.arcTo(oval, 360, -270, true);
                     // Create a PathInterpolator with the circular path
                     PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
@@ -985,7 +998,9 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         }
                 else if(x>=150){
                     Path path = new Path();
-                    RectF oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    if(oval==null) {
+                        oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
+                    }
                     path.arcTo(oval, 360, -90, true);
                     // Create a PathInterpolator with the circular path
                     PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
