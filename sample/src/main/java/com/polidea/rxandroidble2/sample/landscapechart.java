@@ -132,13 +132,13 @@ public class landscapechart extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
 
                 startActivityForResult(intent, REQUEST_CODE_PICK_FILE);
-                exportDataToExcel(landscapechart.this);
-                String spath= Environment.getExternalStorageDirectory()+"/"+sfolder+"/";
+                    exportDataToExcel(landscapechart.this);
+                    String spath = Environment.getExternalStorageDirectory() + "/" + sfolder + "/";
                 Uri uri=Uri.parse(spath);
                 Intent in=new Intent(Intent.ACTION_PICK);
                 in.setDataAndType(uri,"*/*");
                 startActivity(in);
-                System.out.println("==========================================================");
+                System.out.println("==========================================================");//}
             }
         });
         lineChart.getViewTreeObserver().addOnGlobalLayoutListener(
@@ -309,36 +309,41 @@ public class landscapechart extends AppCompatActivity {
         // Create CSV file
         String csvFileName = "exported_data.csv";
         //String userPath="android/data";
-        File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-        File csvFile = new File(folder, csvFileName);
-       // File  = new File(context.getExternalStoragePublicDirectory, csvFileName);
-        Log.d("FilePath", "=============================================CSV file saved at: " + csvFile.getAbsolutePath());
-        try {
-            // Initialize CSVWriter
-           // CSVWriter writer = new CSVWriter(new FileWriter(csvFile));
-            FileWriter writer = new FileWriter(csvFile);
+        if(checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(landscapechart.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 102);
+        }
+        else {
+            File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+            File csvFile = new File(folder, csvFileName);
 
-            // Write column names
-            String[] columnNames = cursor.getColumnNames();
-            String[] columnNames2 = cursor2.getColumnNames();
-            //writer.writeNext(columnNames);
+            // File  = new File(context.getExternalStoragePublicDirectory, csvFileName);
+            Log.d("FilePath", "=============================================CSV file saved at: " + csvFile.getAbsolutePath());
+            try {
+                // Initialize CSVWriter
+                // CSVWriter writer = new CSVWriter(new FileWriter(csvFile));
+                FileWriter writer = new FileWriter(csvFile);
 
-            // Write data rows
-            while (cursor.moveToNext()&&cursor2.moveToNext()) {
-                String[] rowData = new String[3];
-                String[] rowData1 = new String[3];
-                for (int i = 0; i < columnNames.length; i++) {
-                    rowData[i] = cursor.getString(i);
-                    rowData1[i] = cursor2.getString(i);
-                    writer.append(rowData1[i]);
-                    writer.append("  ");
-                    writer.append(rowData[i]);
+                // Write column names
+                String[] columnNames = cursor.getColumnNames();
+                String[] columnNames2 = cursor2.getColumnNames();
+                //writer.writeNext(columnNames);
 
+                // Write data rows
+                while (cursor.moveToNext() && cursor2.moveToNext()) {
+                    String[] rowData = new String[3];
+                    String[] rowData1 = new String[3];
+                    for (int i = 0; i < columnNames.length; i++) {
+                        rowData[i] = cursor.getString(i);
+                        rowData1[i] = cursor2.getString(i);
+                        writer.append(rowData1[i]);
+                        writer.append("  ");
+                        writer.append(rowData[i]);
+
+                    }
+                    //System.out.println(rowData[columnNames.length-2]+"++++++++++++++++++++++++++++++++++");
+                    writer.append("\n");
                 }
-                //System.out.println(rowData[columnNames.length-2]+"++++++++++++++++++++++++++++++++++");
-                writer.append("\n");
-            }
-           // String[] columnNames2 = cursor2.getColumnNames();
+                // String[] columnNames2 = cursor2.getColumnNames();
 
           /*  while (cursor2.moveToNext()) {
                 String[] rowData = new String[3];
@@ -350,17 +355,17 @@ public class landscapechart extends AppCompatActivity {
                 //System.out.println(rowData[columnNames.length-2]+"++++++++++++++++++++++++++++++++++");
                 writer.append("\n");
             }*/
-            // Close CSVWriter
-            writer.close();
+                // Close CSVWriter
+                writer.close();
 
-            // Convert CSV to Excel format using LightXLSReader library
+                // Convert CSV to Excel format using LightXLSReader library
            /* String excelFileName = "exported_data.xls";
             File excelFile = new File(context.getExternalFilesDir(null), excelFileName);
             LightXLSReader.convertCsvToXls(csvFile.getAbsolutePath(), excelFile.getAbsolutePath());*/
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-
         // Close cursor and database
         cursor.close();
         database.close();

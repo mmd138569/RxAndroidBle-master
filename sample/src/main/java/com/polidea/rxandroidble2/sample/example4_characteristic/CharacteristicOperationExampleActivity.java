@@ -1160,7 +1160,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         if(Integer.valueOf(s)<=120) {
             PieDataSet dataSet = new PieDataSet(entries, "");
             dataSet.setColors(GREEN);
-            int a=Integer.valueOf(s);
+            //int a=Integer.valueOf(s);
             PieData data = new PieData(dataSet);
             data.setDrawValues(false);
             data.setValueFormatter(new PercentFormatter(pieChart));
@@ -1178,7 +1178,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         }
         else if ((Integer.valueOf(s)>120) &&(Integer.valueOf(s)<180) ){
             PieDataSet dataSet = new PieDataSet(entries, "");
-            int a=Integer.valueOf(s);
+            //int a=Integer.valueOf(s);
             dataSet.setColors(Color.rgb(255, 165, 0));
             PieData data = new PieData(dataSet);
             data.setDrawValues(false);
@@ -1197,7 +1197,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         }
         else if(Integer.valueOf(s)>180){
             PieDataSet dataSet = new PieDataSet(entries, "");
-            int a=Integer.valueOf(s);
+            //int a=Integer.valueOf(s);
             dataSet.setColors(RED);
             PieData data = new PieData(dataSet);
             data.setDrawValues(false);

@@ -18,7 +18,8 @@ public class CustomLineChart extends LineChart {
     protected Paint mYAxisSafeZonePaint;
     protected TextPaint textPaint;
     private List<TargetZone> mTargetZones;
-
+    //float[] pts=null;
+    float[] pts = new float[4];
     public CustomLineChart(Context context) {
         super(context);
     }
@@ -44,9 +45,14 @@ public class CustomLineChart extends LineChart {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
         for (TargetZone targetZone : mTargetZones) {
             // prepare coordinates
-            float[] pts = new float[4];
+            /*if(pts==null) {
+                pts = new float[4];
+            }*/
+
+
             pts[1] = targetZone.lowerLimit;
             pts[3] = targetZone.upperLimit;
             mLeftAxisTransformer.pointValuesToPixel(pts);
@@ -59,8 +65,9 @@ public class CustomLineChart extends LineChart {
             textPaint.setTextSize(30);
             canvas.drawText(targetZone.text,getCenter().x,pts[1] + 50,textPaint);
         }
-        super.onDraw(canvas);
+
     }
+
 
     public void addTargetZone(TargetZone targetZone){
         mTargetZones.add(targetZone);
