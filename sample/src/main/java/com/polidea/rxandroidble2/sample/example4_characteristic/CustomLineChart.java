@@ -45,7 +45,6 @@ public class CustomLineChart extends LineChart {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
         for (TargetZone targetZone : mTargetZones) {
             // prepare coordinates
             /*if(pts==null) {
@@ -65,7 +64,8 @@ public class CustomLineChart extends LineChart {
             textPaint.setTextSize(30);
             canvas.drawText(targetZone.text,getCenter().x,pts[1] + 50,textPaint);
         }
-
+        super.onDraw(canvas);
+        //clearTargetZones();
     }
 
 

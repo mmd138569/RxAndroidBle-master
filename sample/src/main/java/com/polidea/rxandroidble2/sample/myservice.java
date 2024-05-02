@@ -196,7 +196,7 @@ public class myservice extends Service {
           Bitmap bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
           int maxHeight = 402, maxWidth = 360; // Maximum width for the bitmap in pixels
          // Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
-          Bitmap bitmap2=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
+          // bitmap2=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
           float aspectRatio = (float) width / height;
          if (width > maxWidth || height > maxHeight) {
               // The bitmap is larger than the maximum dimensions, so resize it
@@ -228,8 +228,12 @@ public class myservice extends Service {
                   .setPriority(NotificationCompat.PRIORITY_LOW)
                   .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap))
                   .build();
+
+
+
           builder.setLargeIcon(bitmap);
           builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap).bigLargeIcon(null));
+
 
           builder.setSmallIcon(R.drawable.back)//R.drawable.baseline_notifications_active_24
                   .setContentTitle("warning")
@@ -239,6 +243,11 @@ public class myservice extends Service {
                   .setOngoing(true)
                   .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap2).bigLargeIcon(null))
                   .build();
+
+         /* if(bitmap2!=null) {
+              bitmap2.recycle();
+              bitmap2 = null;
+          }*/
           //here if you wanna intent to an activity you should difine the mac address first to forbid the null exception then remove it from comment
           //Intent intent = new Intent(getApplicationContext(), CharacteristicOperationExampleActivity.class);
          // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

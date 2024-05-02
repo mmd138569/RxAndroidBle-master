@@ -130,7 +130,45 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public boolean data_oomad=false;
     public boolean data_oomad2=false;
     public boolean data_oomad3=false;
+    float rangeHigh = 10.5f;
+    float rangeLow = -1f;
+    float rangeLow2 = 11f;
+    float rangeHigh2 = 38f;
+    float rangeLow3 = 38.5f;
+    float rangeHigh3 = 61f;
+    float rangeHigh1 = 100f;
+    float rangeLow1 = -7f;
+    float rangeLow21 = 103f;
+    float rangeHigh21= 350f;
+    float rangeLow31 = 353f;
+    float rangeHigh31 = 400f;
 
+    float rangeHigh41 = 300f;
+    float rangeLow41 = -7f;
+    float rangeLow42 = 303f;
+    float rangeHigh42 = 650f;
+    float rangeLow43 = 653f;
+    float rangeHigh43 = 1200f;
+    float rangeHigh00 = 100f;
+    float rangeLow00 = -7f;
+    float rangeLow02 = 103f;
+    float rangeHigh02 = 250f;
+    float rangeLow03 = 253f;
+    float rangeHigh03 = 300f;
+    public CustomLineChart.TargetZone target00= new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow00, rangeHigh00, "");
+    public CustomLineChart.TargetZone target10=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow02, rangeHigh02, "");
+    public CustomLineChart.TargetZone target20=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow03, rangeHigh03, "");
+    public CustomLineChart.TargetZone target0=new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, "");
+    public CustomLineChart.TargetZone target1=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, "");
+    public CustomLineChart.TargetZone target2=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, "");
+
+    public CustomLineChart.TargetZone target01=new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow1, rangeHigh1, "");
+    public CustomLineChart.TargetZone target11=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow21, rangeHigh21, "");
+    public CustomLineChart.TargetZone target21=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow31, rangeHigh31, "");
+
+    public CustomLineChart.TargetZone target03=new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow41, rangeHigh41, "");
+    public CustomLineChart.TargetZone target13=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow42, rangeHigh42, "");
+    public CustomLineChart.TargetZone target23=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow43, rangeHigh43, "");
     public static CustomLineChart lineChart;
 
 
@@ -214,15 +252,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             lineChart.setData(lineData);
             lineChart.invalidate();
             //lineChart.setBackgroundColor(Color.G);
-            float rangeHigh = 10.5f;
-            float rangeLow = -1f;
-            float rangeLow2 = 11f;
-            float rangeHigh2 = 38f;
-            float rangeLow3 = 38.5f;
-            float rangeHigh3 = 61f;
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
-            lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+
+
+            lineChart.addTargetZone(target0);
+            lineChart.addTargetZone(target1);
+            lineChart.addTargetZone(target2);
             lineChart.getLegend().setEnabled(false);
             lineChart.setNoDataText("No Data Insert");
             lineDataSet.setColor(GRAY);
@@ -722,32 +756,21 @@ private void clearSubscription() {
             int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
 
             if (my_Chart == 300) {
-                float rangeHigh = 100f;
-                float rangeLow = -7f;
-                float rangeLow2 = 103f;
-                float rangeHigh2 = 250f;
-                float rangeLow3 = 253f;
-                float rangeHigh3 = 300f;
 
                 lineChart.setTouchEnabled(true);
                 lineChart.setScaleEnabled(false);
-                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
-                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
-                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+                lineChart.addTargetZone(target00);
+                lineChart.addTargetZone(target10);
+                lineChart.addTargetZone(target20);
                 array_list.clear();
             } else if (my_Chart == 400) {
-                float rangeHigh = 300f;
-                float rangeLow = -7f;
-                float rangeLow2 = 303f;
-                float rangeHigh2 = 650f;
-                float rangeLow3 = 653f;
-                float rangeHigh3 = 1200f;
+
 
                 lineChart.setTouchEnabled(true);
                 lineChart.setScaleEnabled(false);
-                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
-                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
-                lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+                lineChart.addTargetZone(target03);
+                lineChart.addTargetZone(target13);
+                lineChart.addTargetZone(target23);
                 array_list.clear();
             }
             if(my_Chart==300) {
@@ -764,18 +787,13 @@ private void clearSubscription() {
             }
         }
         else {
-            float rangeHigh = 100f;
-            float rangeLow = -7f;
-            float rangeLow2 = 103f;
-            float rangeHigh2 = 350f;
-            float rangeLow3 = 353f;
-            float rangeHigh3 = 400f;
+
 
         lineChart.setTouchEnabled(true);
         lineChart.setScaleEnabled(false);
-        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
-        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
-        lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+        lineChart.addTargetZone(target01);
+        lineChart.addTargetZone(target11);
+        lineChart.addTargetZone(target21);
         array_list.clear(); }
         array_list.addAll(helper.getAllCotacts());
         arrayAdapter.notifyDataSetChanged();
