@@ -337,7 +337,7 @@ public class landscapechart extends AppCompatActivity {
                             rowData[i] = cursor.getString(i);
                             rowData1[i] = cursor2.getString(i);
                             writer.append(rowData1[i]);
-                            writer.append("  ");
+                            writer.append(",");
                             writer.append(rowData[i]);
 
                         }
@@ -392,7 +392,7 @@ public class landscapechart extends AppCompatActivity {
                             rowData[i] = cursor.getString(i);
                             rowData1[i] = cursor2.getString(i);
                             writer.append(rowData1[i]);
-                            writer.append("  ");
+                            writer.append(",");
                             writer.append(rowData[i]);
 
                         }
