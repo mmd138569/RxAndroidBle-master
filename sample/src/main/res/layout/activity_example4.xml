@@ -166,7 +166,7 @@
         android:layout_height="290dp"
         android:gravity="top|center"
         android:layout_marginBottom="40dp"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="90dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -216,6 +216,7 @@
                 android:visibility="invisible"
                 android:rotation="-90"
                 />
+
             <ImageView
                 android:id="@+id/top"
                 android:layout_width="70dp"
@@ -224,7 +225,13 @@
                 android:visibility="invisible"
                 android:rotation="90"/>
         </RelativeLayout>
-
+        <TextView
+            android:id="@+id/time"
+            android:layout_marginTop="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            />
         <com.github.mikephil.charting.charts.PieChart
         android:layout_gravity="center"
         android:id="@+id/pichart"
@@ -243,13 +250,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/roundedchart"
         android:elevation="8px"
         tools:layout_editor_absoluteX="3dp"
         tools:layout_editor_absoluteY="303dp" />
 
-    <ListView
+   <!-- <ListView
         android:layout_alignParentBottom="true"
         android:id="@+id/listView"
         android:layout_width="match_parent"
@@ -259,7 +266,7 @@
         android:layout_marginRight="10dp"
 
         android:background="@drawable/custom_list_view"
-        android:elevation="20dp"></ListView>
+        android:elevation="20dp"></ListView>-->
     <!--</androidx.core.widget.NestedScrollView>
 -->
 </RelativeLayout>

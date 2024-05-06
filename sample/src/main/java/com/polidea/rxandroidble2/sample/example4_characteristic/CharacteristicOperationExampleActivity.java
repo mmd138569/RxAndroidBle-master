@@ -23,6 +23,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.github.mikephil.charting.animation.Easing;
+import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -69,6 +70,7 @@ import com.polidea.rxandroidble2.scan.ScanResult;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
+import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -102,6 +104,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     TextView writeInput;*/
     int temp =0;
     float time, time1;
+    TextView T;
     @BindView(R.id.read)
     TextView readButton;
     public static int z=0;
@@ -126,7 +129,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     //TextView save, refresh;
     //TextView name;
     RectF oval=null;
-    private ListView listView;
+   // private ListView listView;
     public boolean data_oomad=false;
     public boolean data_oomad2=false;
     public boolean data_oomad3=false;
@@ -155,7 +158,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     float rangeHigh02 = 250f;
     float rangeLow03 = 253f;
     float rangeHigh03 = 300f;
-    public CustomLineChart.TargetZone target00= new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow00, rangeHigh00, "");
+    /*public CustomLineChart.TargetZone target00= new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow00, rangeHigh00, "");
     public CustomLineChart.TargetZone target10=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow02, rangeHigh02, "");
     public CustomLineChart.TargetZone target20=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow03, rangeHigh03, "");
     public CustomLineChart.TargetZone target0=new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, "");
@@ -169,7 +172,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public CustomLineChart.TargetZone target03=new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow41, rangeHigh41, "");
     public CustomLineChart.TargetZone target13=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow42, rangeHigh42, "");
     public CustomLineChart.TargetZone target23=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow43, rangeHigh43, "");
-    public static CustomLineChart lineChart;
+    */
+    public static LineChart lineChart;
+
 
 
 
@@ -254,9 +259,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             //lineChart.setBackgroundColor(Color.G);
 
 
-            lineChart.addTargetZone(target0);
-            lineChart.addTargetZone(target1);
-            lineChart.addTargetZone(target2);
+            //lineChart.addTargetZone(target0);
+            //lineChart.addTargetZone(target1);
+            //lineChart.addTargetZone(target2);
             lineChart.getLegend().setEnabled(false);
             lineChart.setNoDataText("No Data Insert");
             lineDataSet.setColor(GRAY);
@@ -333,9 +338,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 if(!isConnected()) {
                     onConnectToggleClick();
                 }
-                nand1.postDelayed(this, 300);
+                nand1.postDelayed(this, 200);
             }
-        },300);
+        },200);
 
        /* nand2.postDelayed(new Runnable() {
             @Override
@@ -409,7 +414,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                             onNotifyClick();
-                            // onReadClick();
                         //}
                     }
                 };           nand.postDelayed(r, 400);
@@ -521,9 +525,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
        float rangeHigh2 = 38f;
        float rangeLow3 = 38.5f;
        float rangeHigh3 = 61f;
-       lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
-       lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
-       lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
+       //lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow, rangeHigh, ""));
+       //lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow2, rangeHigh2, ""));
+       //lineChart.addTargetZone(new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow3, rangeHigh3, ""));
        lineChart.getLegend().setEnabled(false);
 
 
@@ -648,7 +652,7 @@ private void clearSubscription() {
         if (isConnected()) {
             connectionObservable
                     .flatMap(rxBleConnection -> rxBleConnection.setupNotification(characteristicUuid))
-                    .doOnNext(notificationObservable -> runOnUiThread(this::notificationHasBeenSetUp))
+                    //.doOnNext(notificationObservable -> runOnUiThread(this::notificationHasBeenSetUp))
                     .flatMap(notificationObservable -> notificationObservable)
                     .observeOn(Schedulers.io())
                     .subscribe(bytes -> {
@@ -692,13 +696,17 @@ private void clearSubscription() {
         final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
         readOutputView = findViewById(R.id.read_output);
-        listView = findViewById(R.id.listView);
+        //listView = findViewById(R.id.listView);
         final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
                 android.R.layout.simple_list_item_1, array_list);
-        listView.setAdapter(arrayAdapter);
+        //listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
         if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000") {
+            OffsetDateTime offsetDT = OffsetDateTime.now();
+            String s=offsetDT.toLocalDate()+" "+ String.valueOf(offsetDT.getHour())+":"+String.valueOf(offsetDT.getMinute())+":"+String.valueOf(offsetDT.getSecond());
 //===========================================================================================================
+            T=findViewById(R.id.time);
+            T.setText(s);
             yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()));
             if(z.size()!=0) {
                 int a = Integer.valueOf((String) z.get(z.size() - 1));
@@ -759,18 +767,18 @@ private void clearSubscription() {
 
                 lineChart.setTouchEnabled(true);
                 lineChart.setScaleEnabled(false);
-                lineChart.addTargetZone(target00);
-                lineChart.addTargetZone(target10);
-                lineChart.addTargetZone(target20);
+                //lineChart.addTargetZone(target00);
+                //lineChart.addTargetZone(target10);
+                //lineChart.addTargetZone(target20);
                 array_list.clear();
             } else if (my_Chart == 400) {
 
 
                 lineChart.setTouchEnabled(true);
                 lineChart.setScaleEnabled(false);
-                lineChart.addTargetZone(target03);
-                lineChart.addTargetZone(target13);
-                lineChart.addTargetZone(target23);
+                //lineChart.addTargetZone(target03);
+                //lineChart.addTargetZone(target13);
+                //lineChart.addTargetZone(target23);
                 array_list.clear();
             }
             if(my_Chart==300) {
@@ -791,14 +799,14 @@ private void clearSubscription() {
 
         lineChart.setTouchEnabled(true);
         lineChart.setScaleEnabled(false);
-        lineChart.addTargetZone(target01);
-        lineChart.addTargetZone(target11);
-        lineChart.addTargetZone(target21);
+        //lineChart.addTargetZone(target01);
+        //lineChart.addTargetZone(target11);
+        //lineChart.addTargetZone(target21);
         array_list.clear(); }
         array_list.addAll(helper.getAllCotacts());
         arrayAdapter.notifyDataSetChanged();
-        listView.invalidateViews();
-        listView.refreshDrawableState();
+        //listView.invalidateViews();
+        //listView.refreshDrawableState();
         LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
         i++;
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
