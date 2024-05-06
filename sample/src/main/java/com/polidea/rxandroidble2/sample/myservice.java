@@ -193,7 +193,7 @@ public class myservice extends Service {
           }*/
           String chanellID = "this is our id notify";
        //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
-           bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
+           SetWeakRef_bitmap0(CharacteristicOperationExampleActivity.pieChart.getChartBitmap());
           int maxHeight = 402, maxWidth = 360; // Maximum width for the bitmap in pixels
          // Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
           // bitmap2=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
@@ -225,19 +225,19 @@ public class myservice extends Service {
                   .setSound(null)
                   .setVisibility(NotificationCompat.VISIBILITY_SECRET)
                   .setPriority(NotificationCompat.PRIORITY_LOW)
-                  .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap))
+                  .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(GetweakRef_bitmap0()))
                   .build();
 
 
 
-          builder.setLargeIcon(bitmap);
-          builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap).bigLargeIcon(null));
+          builder.setLargeIcon(GetweakRef_bitmap0());
+          builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(GetweakRef_bitmap0()).bigLargeIcon(null));
 
 
           builder.setSmallIcon(R.drawable.back)//R.drawable.baseline_notifications_active_24
                   .setContentTitle("warning")
                   .setContentText(str + BloodNum)
-                  .setLargeIcon(bitmap)
+                  .setLargeIcon(GetweakRef_bitmap0())
                  // .setAutoCancel(false)
                   .setOngoing(true)
                   .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(GetWeakRef_bitmap()).bigLargeIcon(null))
