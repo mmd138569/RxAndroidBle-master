@@ -639,7 +639,7 @@ private void clearSubscription() {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }*/
-                    }, this::onReadFailure);
+                    });
 
             compositeDisposable.add(disposable);
 
@@ -697,8 +697,8 @@ private void clearSubscription() {
         //name = findViewById(R.id.name);
         readOutputView = findViewById(R.id.read_output);
         //listView = findViewById(R.id.listView);
-        final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
-                android.R.layout.simple_list_item_1, array_list);
+        //final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
+          //      android.R.layout.simple_list_item_1, array_list);
         //listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
         if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000") {
@@ -804,7 +804,7 @@ private void clearSubscription() {
         //lineChart.addTargetZone(target21);
         array_list.clear(); }
         array_list.addAll(helper.getAllCotacts());
-        arrayAdapter.notifyDataSetChanged();
+       // arrayAdapter.notifyDataSetChanged();
         //listView.invalidateViews();
         //listView.refreshDrawableState();
         LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");

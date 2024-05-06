@@ -31,7 +31,7 @@ import java.util.ArrayList;
 public class myservice extends Service {
     ImageView signalstrength1,signalstrength2,signalstrength3;
 
-    Bitmap bitmap2;
+    Bitmap bitmap2,bitmap=null;
     double q=0;
     int f=0;
     int NOTIFICATION_ID = (int) (System.currentTimeMillis()%10000);
@@ -193,7 +193,7 @@ public class myservice extends Service {
           }*/
           String chanellID = "this is our id notify";
        //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
-          Bitmap bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
+           bitmap=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
           int maxHeight = 402, maxWidth = 360; // Maximum width for the bitmap in pixels
          // Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
           // bitmap2=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();
@@ -208,10 +208,9 @@ public class myservice extends Service {
                   width = (int) (height * aspectRatio);
               }
 
-          bitmap2 = CharacteristicOperationExampleActivity.lineChart.getChartBitmap();
+          SetWeakRef_bitmap(CharacteristicOperationExampleActivity.lineChart.getChartBitmap());
           //bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
-
-            bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
+            SetWeakRef_bitmap( Bitmap.createScaledBitmap(GetWeakRef_bitmap(), width, height, true));
 
         }
          // CharacteristicOperationExampleActivity.customchart();
@@ -241,14 +240,14 @@ public class myservice extends Service {
                   .setLargeIcon(bitmap)
                  // .setAutoCancel(false)
                   .setOngoing(true)
-                  .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(bitmap2).bigLargeIcon(null))
+                  .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(GetWeakRef_bitmap()).bigLargeIcon(null))
                   .build();
 
          /* if(bitmap2!=null) {
               bitmap2.recycle();
               bitmap2 = null;
           }*/
-          //here if you wanna intent to an activity you should difine the mac address first to forbid the null exception then remove it from comment
+          //here if you wanna intent to an activity you should define the mac address first to forbid the null exception then remove it from comment
           //Intent intent = new Intent(getApplicationContext(), CharacteristicOperationExampleActivity.class);
          // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
          // intent.putExtra("data", "some value come here");
@@ -280,6 +279,10 @@ public class myservice extends Service {
 
           notificationManager.notify(NOTIFICATION_ID, builder.build());
       }
+    public Bitmap GetWeakRef_bitmap() { return bitmap2; }
+    public void SetWeakRef_bitmap(Bitmap x) { this.bitmap2 = x; }
+    public Bitmap GetweakRef_bitmap0(){return  bitmap;}
+    public void SetWeakRef_bitmap0(Bitmap x){this.bitmap=x;}
     public void startAlert () {
         int i = 200000;
         //   int i = Integer.parseInt(text.getText().toString());
