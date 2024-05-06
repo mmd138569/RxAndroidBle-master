@@ -505,7 +505,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         }
     };
             h.postDelayed(r, 1500);*/
-   public static void customchart() {
+ /*  public  void customchart() {
        //  lineChart.init();
 
 
@@ -566,7 +566,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
        lineChart.animateX(4000);
 
-   }
+   }*/
     @OnClick(R.id.connect)
     public void onConnectToggleClick() {
 
