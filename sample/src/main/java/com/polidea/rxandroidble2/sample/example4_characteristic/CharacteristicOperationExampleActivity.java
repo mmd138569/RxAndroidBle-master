@@ -118,6 +118,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     boolean shoutdown1=false,shoutdown2=false;
     private UUID characteristicUuid;
     String  str="0";
+    PieDataSet dataSet=null;
+    PieData data=null;
     int i=2,x=13,j=0;
     public static PieChart pieChart;
     int aa=0;
@@ -299,9 +301,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler hand=new Handler();
         Handler nand =new Handler();
         Handler nand1 =new Handler();
-        Handler nand2 =new Handler();
-        Handler nand3 =new Handler();
-        Handler nand4 =new Handler();
 
         signal_strength1= findViewById(R.id.signal_strength1);
         signal_strength2= findViewById(R.id.signal_strength2);
@@ -338,9 +337,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 if(!isConnected()) {
                     onConnectToggleClick();
                 }
-                nand1.postDelayed(this, 200);
+                nand1.postDelayed(this, 300);
             }
-        },200);
+        },600);
 
        /* nand2.postDelayed(new Runnable() {
             @Override
@@ -671,7 +670,7 @@ private void clearSubscription() {
                     }, this::onReadFailure);
         }
     }
-    public static boolean ternerry(Integer num) {
+    public  boolean ternerry(Integer num) {
         return 0 == (num == null ? 0 : num);
     }
     @OnClick(R.id.refresh)
@@ -679,8 +678,6 @@ private void clearSubscription() {
         float centerX = 438;
         float centerY = 320;
         float radius = 285;
-        float startAngle = 360f;
-        float sweepAngle = -180f;
         twotop=findViewById(R.id.twotop);
         left=findViewById(R.id.leFt);
         butt=findViewById(R.id.butt);
@@ -691,7 +688,7 @@ private void clearSubscription() {
 
         final DBcalibrate dBcalibrate = new DBcalibrate(CharacteristicOperationExampleActivity.this);
         final ArrayList z = dBcalibrate.getAllCotacts1();
-
+        dBcalibrate.close();
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
         final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
@@ -760,6 +757,7 @@ private void clearSubscription() {
 //========================= refresh ===============
         final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
         final ArrayList mychart = dbChart.getAllCotact1();
+        dbChart.close();
         if(mychart.size()!=0) {
             int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
 
@@ -804,6 +802,7 @@ private void clearSubscription() {
         //lineChart.addTargetZone(target21);
         array_list.clear(); }
         array_list.addAll(helper.getAllCotacts());
+        helper.close();
        // arrayAdapter.notifyDataSetChanged();
         //listView.invalidateViews();
         //listView.refreshDrawableState();
@@ -1159,12 +1158,6 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
     static private ArrayList<Entry> linechart1() {
         ArrayList<Entry> dataset = new ArrayList<Entry>();
         dataset.add(new Entry(1, 4));
-        dataset.add(new Entry(13, 24));
-        dataset.add(new Entry(21, 41));
-        dataset.add(new Entry(17, 56));
-        dataset.add(new Entry(22, 7));
-        dataset.add(new Entry(12, 4));
-        dataset.add(new Entry(53, 44));
         return dataset;
     }
 
@@ -1184,10 +1177,10 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
 
 
         if(Integer.valueOf(s)<=120) {
-            PieDataSet dataSet = new PieDataSet(entries, "");
+             dataSet = new PieDataSet(entries, "");
             dataSet.setColors(GREEN);
             //int a=Integer.valueOf(s);
-            PieData data = new PieData(dataSet);
+             data = new PieData(dataSet);
             data.setDrawValues(false);
             data.setValueFormatter(new PercentFormatter(pieChart));
             pieChart.setData(data);
@@ -1203,10 +1196,10 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
             pieChart.animateY(1400, Easing.EaseInOutQuad);
         }
         else if ((Integer.valueOf(s)>120) &&(Integer.valueOf(s)<180) ){
-            PieDataSet dataSet = new PieDataSet(entries, "");
+             dataSet = new PieDataSet(entries, "");
             //int a=Integer.valueOf(s);
             dataSet.setColors(Color.rgb(255, 165, 0));
-            PieData data = new PieData(dataSet);
+             data = new PieData(dataSet);
             data.setDrawValues(false);
             data.setValueFormatter(new PercentFormatter(pieChart));
             pieChart.setData(data);
@@ -1222,10 +1215,10 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
             pieChart.animateY(1400, Easing.EaseInOutQuad);
         }
         else if(Integer.valueOf(s)>180){
-            PieDataSet dataSet = new PieDataSet(entries, "");
+             dataSet = new PieDataSet(entries, "");
             //int a=Integer.valueOf(s);
             dataSet.setColors(RED);
-            PieData data = new PieData(dataSet);
+             data = new PieData(dataSet);
             data.setDrawValues(false);
             data.setValueFormatter(new PercentFormatter(pieChart));
             pieChart.setData(data);

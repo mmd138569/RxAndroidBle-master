@@ -33,6 +33,7 @@ public class settings extends AppCompatActivity {
 
          final DBcalibrate helper = new DBcalibrate(settings.this);
         final ArrayList array_list = helper.getAllCotacts1();
+        helper.close();
         /*String str = helper.getcalibriation();
         str= editTe.toString();
         helper.insert(Integer.parseInt(editTe.getText().toString()));
@@ -46,7 +47,7 @@ public class settings extends AppCompatActivity {
               int x=Integer.parseInt(editTe.getText().toString());
               if(x!=0){
                   helper.insert(x);
-                  System.out.println(helper.getAllCotacts1()+"=============================");
+                  //System.out.println(helper.getAllCotacts1()+"=============================");
               }
           }
       });

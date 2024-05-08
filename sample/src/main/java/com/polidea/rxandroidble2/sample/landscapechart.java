@@ -553,6 +553,7 @@ public class landscapechart extends AppCompatActivity {
     private List<Entry> getRandomEntries(int entrySize, float time, int count) {
         final DatabaseHelper helper1 = new DatabaseHelper(landscapechart.this);
         final ArrayList array_list1 = helper1.getAllCotacts1();
+        helper1.close();
         List<Entry> entries = new ArrayList<>();
         Random random = new Random();
         array_list1.clear();
@@ -565,7 +566,7 @@ public class landscapechart extends AppCompatActivity {
 
 
         array_list1.addAll(helper1.getAllCotacts1());
-
+        helper1.close();
 
 
 

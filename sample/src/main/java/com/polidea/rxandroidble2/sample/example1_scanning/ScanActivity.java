@@ -39,7 +39,6 @@ import com.polidea.rxandroidble2.sample.R;
 import com.polidea.rxandroidble2.sample.SampleApplication;
 //import com.polidea.rxandroidble2.sample.example1a_background_scanning.BackgroundScanActivity;
 import com.polidea.rxandroidble2.sample.example3_discovery.ServiceDiscoveryExampleActivity;
-import com.polidea.rxandroidble2.sample.myservice;
 import com.polidea.rxandroidble2.sample.util.ScanExceptionHandler;
 import com.polidea.rxandroidble2.sample.util.ScanPermission;
 import com.polidea.rxandroidble2.scan.ScanFilter;

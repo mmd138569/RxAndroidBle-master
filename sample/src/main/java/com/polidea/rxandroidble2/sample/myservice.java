@@ -46,7 +46,7 @@ public class myservice extends Service {
     public int onStartCommand(Intent intent, int flags, int startId){
         if (intent != null && intent.getExtras() != null){
             songUrl = intent.getIntExtra("YOUR_KEY_SONG_NAME",0);
-            final DatabaseHelper helper = new DatabaseHelper(myservice.this);
+            //final DatabaseHelper helper = new DatabaseHelper(myservice.this);
 
           /*  if(fix_the_DB%2==0) {
                 helper.insert(songUrl);
@@ -193,7 +193,9 @@ public class myservice extends Service {
           }*/
           String chanellID = "this is our id notify";
        //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
-           SetWeakRef_bitmap0(CharacteristicOperationExampleActivity.pieChart.getChartBitmap());
+          if(width>0&&height>0) {
+              SetWeakRef_bitmap0(CharacteristicOperationExampleActivity.pieChart.getChartBitmap());
+          }
           int maxHeight = 402, maxWidth = 360; // Maximum width for the bitmap in pixels
          // Bitmap bitmap2= BitmapFactory.decodeResource(getResources(),R.drawable.splashlogo);
           // bitmap2=CharacteristicOperationExampleActivity.pieChart.getChartBitmap();

@@ -25,13 +25,14 @@ public class graph_Height extends AppCompatActivity {
 
         final DBChart helper = new DBChart(graph_Height.this);
         final ArrayList array_list = helper.getAllCotact1();
+        helper.close();
         radioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int x = Integer.parseInt("300");
                 if (x != 0) {
                     helper.insert(x);
-                    System.out.println(helper.getAllCotact1() + "=============================");
+                    //System.out.println(helper.getAllCotact1() + "=============================");
                     Intent in =new Intent(graph_Height.this,settingsview.class);
                     startActivity(in);
                     finish();
@@ -44,7 +45,7 @@ public class graph_Height extends AppCompatActivity {
                 int x = Integer.parseInt("400");
                 if (x != 0) {
                     helper.insert(x);
-                    System.out.println(helper.getAllCotact1() + "=============================");
+                    //System.out.println(helper.getAllCotact1() + "=============================");
                     Intent in =new Intent(graph_Height.this,settingsview.class);
                     startActivity(in);
                     finish();
