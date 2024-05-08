@@ -103,12 +103,12 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
  @BindView(R.id.write_input)
     TextView writeInput;*/
     int temp =0;
-    float time, time1;
+    //float time, time1;
     TextView T;
     @BindView(R.id.read)
     TextView readButton;
     public static int z=0;
-    public static String z1;
+    //public static String z1;
     @BindView(R.id.rssi)
     TextView rssiView;
   /*  @BindView(R.id.write)
@@ -130,12 +130,12 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     //TextView save, refresh;
     //TextView name;
-    RectF oval=null;
+    //RectF oval=null;
    // private ListView listView;
     public boolean data_oomad=false;
     public boolean data_oomad2=false;
     public boolean data_oomad3=false;
-    float rangeHigh = 10.5f;
+   /* float rangeHigh = 10.5f;
     float rangeLow = -1f;
     float rangeLow2 = 11f;
     float rangeHigh2 = 38f;
@@ -159,7 +159,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     float rangeLow02 = 103f;
     float rangeHigh02 = 250f;
     float rangeLow03 = 253f;
-    float rangeHigh03 = 300f;
+    float rangeHigh03 = 300f;*/
     /*public CustomLineChart.TargetZone target00= new CustomLineChart.TargetZone(Color.parseColor("#feebe5"), rangeLow00, rangeHigh00, "");
     public CustomLineChart.TargetZone target10=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow02, rangeHigh02, "");
     public CustomLineChart.TargetZone target20=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow03, rangeHigh03, "");
@@ -175,7 +175,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public CustomLineChart.TargetZone target13=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow42, rangeHigh42, "");
     public CustomLineChart.TargetZone target23=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow43, rangeHigh43, "");
     */
-    public static LineChart lineChart;
+    //public static LineChart lineChart;
 
 
 
@@ -220,7 +220,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             lineChart = findViewById(R.id.chart);
             lineChart.setVisibility(View.INVISIBLE);
         }*/
-        lineChart = findViewById(R.id.chart);
+        //lineChart = findViewById(R.id.chart);
 
         ButterKnife.bind(this);
         TextView setting=findViewById(R.id.settings);
@@ -235,7 +235,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        lineChart.setOnClickListener(new View.OnClickListener() {
+        pieChart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), landscapechart.class);
@@ -243,28 +243,36 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        /*lineChart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), landscapechart.class);
+                intent.putExtra("mac_add", macAddress);
+                startActivity(intent);
+            }
+        });*/
         characteristicUuid = (UUID) getIntent().getSerializableExtra(EXTRA_CHARACTERISTIC_UUID);
         macAddress = getIntent().getStringExtra(DeviceActivity.EXTRA_MAC_ADDRESS);
         bleDevice = SampleApplication.getRxBleClient(this).getBleDevice(macAddress);
 
         connectionObservable = prepareConnectionObservable();
 
-        if(a==false) {
-            lineChart.invalidate();
+       // if(a==false) {
+           // lineChart.invalidate();
             //XAxis xAxis=lineChart.getXAxis();
-            LineDataSet lineDataSet = new LineDataSet(linechart1(), "data set");
+           /* LineDataSet lineDataSet = new LineDataSet(linechart1(), "data set");
             ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
             iLineDataSets.add(lineDataSet);
             LineData lineData = new LineData(iLineDataSets);
             lineChart.setData(lineData);
-            lineChart.invalidate();
+            lineChart.invalidate();*/
             //lineChart.setBackgroundColor(Color.G);
 
 
             //lineChart.addTargetZone(target0);
             //lineChart.addTargetZone(target1);
             //lineChart.addTargetZone(target2);
-            lineChart.getLegend().setEnabled(false);
+           /* lineChart.getLegend().setEnabled(false);
             lineChart.setNoDataText("No Data Insert");
             lineDataSet.setColor(GRAY);
             lineDataSet.setCircleColors(Color.BLACK);
@@ -292,9 +300,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             leftAxis.setTextColor(Color.TRANSPARENT);
             leftAxis.setDrawAxisLine(false);
             leftAxis.setDrawGridLines(false);
-            lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-            a=true;
-        }
+            lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);*/
+        //    a=true;
+      //  }
         //noinspection ConstantConditions
         //getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
         Handler handler=new Handler();
@@ -302,9 +310,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         Handler nand =new Handler();
         Handler nand1 =new Handler();
 
-        signal_strength1= findViewById(R.id.signal_strength1);
+       /* signal_strength1= findViewById(R.id.signal_strength1);
         signal_strength2= findViewById(R.id.signal_strength2);
-        signal_strength3= findViewById(R.id.signal_strength3);
+        signal_strength3= findViewById(R.id.signal_strength3);*/
 
         /*nand1.postDelayed(new Runnable() {
             @Override
@@ -372,38 +380,38 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             @Override
             public void run() {
                 //connect
-                String a=String.valueOf(rssiView.getText()).replace("RSSI: ","");
-                System.out.println("================= if its run it should run the RSSI ==================");
-                if(a!="") {
-                    if (Integer.parseInt(a) <= -70) {
-                        temp=0;
+           //     String a=String.valueOf(rssiView.getText()).replace("RSSI: ","");
+              //  System.out.println("================= if its run it should run the RSSI ==================");
+          //      if(a!="") {
+              //      if (Integer.parseInt(a) <= -70) {
+                 //       temp=0;
                         // Toast.makeText(this,  rssiView.getText(), Toast.LENGTH_SHORT).show();
-                        setrssi(temp);
+                        //setrssi(temp);
 
-                        signal_strength3.setVisibility(View.INVISIBLE);
+                       /* signal_strength3.setVisibility(View.INVISIBLE);
                         signal_strength2.setVisibility(View.INVISIBLE);
                         signal_strength1.setVisibility(View.VISIBLE);
-
+*/
 
                         /*HERE WE NEED TO USE ALERT*/
-                    } else if (Integer.parseInt(a) <= -40 && Integer.parseInt(a) >= -70) {
+              //      } else if (Integer.parseInt(a) <= -40 && Integer.parseInt(a) >= -70) {
                         //  Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
-                        temp=1;
-                        setrssi(temp);
-                        signal_strength3.setVisibility(View.INVISIBLE);
+                   //     temp=1;
+                       // setrssi(temp);
+                        /*signal_strength3.setVisibility(View.INVISIBLE);
                         signal_strength2.setVisibility(View.VISIBLE);
-                        signal_strength1.setVisibility(View.INVISIBLE);
+                        signal_strength1.setVisibility(View.INVISIBLE);*/
 
-                    } else if (Integer.parseInt(a) <= 0 && Integer.parseInt(a) >= -40) {
+                 //   } else if (Integer.parseInt(a) <= 0 && Integer.parseInt(a) >= -40) {
                         // Toast.makeText(this, String.valueOf(rssiView.getText()), Toast.LENGTH_SHORT).show();
-                        temp=2;
-                        setrssi(temp);
-                        signal_strength3.setVisibility(View.VISIBLE);
+                       // temp=2;
+                       // setrssi(temp);
+                        /*signal_strength3.setVisibility(View.VISIBLE);
                         signal_strength2.setVisibility(View.INVISIBLE);
-                        signal_strength1.setVisibility(View.INVISIBLE);
+                        signal_strength1.setVisibility(View.INVISIBLE);*/
 
-                    }
-                }
+                   // }
+                //}
                 //refreshing();
                 //test it before add the onReadClick();
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
@@ -422,8 +430,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
-                shoutdown2=false;
-                shoutdown1=false;
+                //shoutdown2=false;
+                //shoutdown1=false;
                 refreshing();
 
                 hand.postDelayed(this, 3000);
@@ -434,7 +442,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
        // thread();
 
 //=============== this is important ===========
-        Handler hand1=new Handler();
+        /*Handler hand1=new Handler();
         Runnable run=new Runnable() {
             @Override
             public void run() {
@@ -447,7 +455,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
             }
         };
-        hand1.postDelayed(run,18000);
+        hand1.postDelayed(run,18000);*/
 //=================================================
 
 //==================================================
@@ -487,9 +495,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             }
         },17000);
     }*/
-    public static int getrssi() { return z; }
+    //public static int getrssi() { return z; }
 
-    public void setrssi(int x) { this.z = x; }
+   // public void setrssi(int x) { this.z = x; }
     private Observable<RxBleConnection> prepareConnectionObservable() {
         return bleDevice
                 .establishConnection(false)
@@ -586,11 +594,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                             this::onConnectionFailure,
                             this::onConnectionFinished
                     );
-
-
+            compositeDisposable.add(connectionDisposable);
         }
     }
-    public void  rssi_should_work(){
+   /* public void  rssi_should_work(){
         connectionDisposable1 = bleDevice.establishConnection(true)
                 .doFinally(this::clearSubscription)
                 .flatMap(RxBleConnection -> // Set desired interval.
@@ -598,7 +605,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                                 .flatMapSingle(sequence -> RxBleConnection.readRssi()))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(this::updateRssi, this::onConnectionFailure);
-    }
+    }*/
 //==========================================================================
 //literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second
 private void updateRssi(int rssiValue) {
@@ -649,7 +656,7 @@ private void clearSubscription() {
     public void onNotifyClick() {
 
         if (isConnected()) {
-            connectionObservable
+            final Disposable disposable = connectionObservable
                     .flatMap(rxBleConnection -> rxBleConnection.setupNotification(characteristicUuid))
                     //.doOnNext(notificationObservable -> runOnUiThread(this::notificationHasBeenSetUp))
                     .flatMap(notificationObservable -> notificationObservable)
@@ -668,29 +675,30 @@ private void clearSubscription() {
                             e.printStackTrace();
                         }*/
                     }, this::onReadFailure);
+            compositeDisposable.add(disposable);
         }
     }
-    public  boolean ternerry(Integer num) {
+    /*public  boolean ternerry(Integer num) {
         return 0 == (num == null ? 0 : num);
-    }
+    }*/
     @OnClick(R.id.refresh)
     public void refreshing() {
-        float centerX = 438;
+        /*float centerX = 438;
         float centerY = 320;
-        float radius = 285;
-        twotop=findViewById(R.id.twotop);
+        float radius = 285;*/
+       /* twotop=findViewById(R.id.twotop);
         left=findViewById(R.id.leFt);
         butt=findViewById(R.id.butt);
         twobutt=findViewById(R.id.twobutt);
         top=findViewById(R.id.top);
         x1=findViewById(R.id.topmid);
-        x2=findViewById(R.id.buttmid);
+        x2=findViewById(R.id.buttmid);*/
 
-        final DBcalibrate dBcalibrate = new DBcalibrate(CharacteristicOperationExampleActivity.this);
-        final ArrayList z = dBcalibrate.getAllCotacts1();
-        dBcalibrate.close();
+        //final DBcalibrate dBcalibrate = new DBcalibrate(CharacteristicOperationExampleActivity.this);
+        //final ArrayList z = dBcalibrate.getAllCotacts1();
+       // dBcalibrate.close();
         final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
-        final ArrayList array_list = helper.getAllCotacts();
+        //final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
         readOutputView = findViewById(R.id.read_output);
         //listView = findViewById(R.id.listView);
@@ -705,19 +713,19 @@ private void clearSubscription() {
             T=findViewById(R.id.time);
             T.setText(s);
             yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()));
-            if(z.size()!=0) {
+          /*  if(z.size()!=0) {
                 int a = Integer.valueOf((String) z.get(z.size() - 1));
                 ternerry(a);
                 if (a != 0) {
                     yval[20] = yval[20] - a;
                 }
-            }
-            System.out.println("===================="+yval[20]);
-            Intent intent  = new Intent(this, myservice.class);
+            }*/
+            //System.out.println("===================="+yval[20]);
+           /* Intent intent  = new Intent(this, myservice.class);
 
             int songUrl=Integer.parseInt(String.valueOf(readOutputView.getText()));
             intent.putExtra("YOUR_KEY_SONG_NAME", songUrl);
-            startService(intent);
+            startService(intent);*/
 //===========================================================================================================
            data_oomad=true;
            data_oomad2=true;
@@ -739,32 +747,32 @@ private void clearSubscription() {
         }
 
 
-        float x=yval[20]-yval[19];
-        float y=yval[19]-yval[20];
+        //float x=yval[20]-yval[19];
+       // float y=yval[19]-yval[20];
         //Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
-        left.setVisibility(View.INVISIBLE);
+       /* left.setVisibility(View.INVISIBLE);
         twobutt.setVisibility(View.INVISIBLE);
         twotop.setVisibility(View.INVISIBLE);
         top.setVisibility(View.INVISIBLE);
         butt.setVisibility(View.INVISIBLE);
         x1.setVisibility(View.INVISIBLE);
-        x2.setVisibility(View.INVISIBLE);
+        x2.setVisibility(View.INVISIBLE);*/
  //====================================================================
         if(data_oomad==true){
-        anim(   centerX , centerY , radius , x,y);
+        //anim(   centerX , centerY , radius , x,y);
         data_oomad=false;}
 //================================================
 //========================= refresh ===============
-        final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
+        /*final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
         final ArrayList mychart = dbChart.getAllCotact1();
-        dbChart.close();
-        if(mychart.size()!=0) {
+        dbChart.close();*/
+        /*if(mychart.size()!=0) {
             int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
 
             if (my_Chart == 300) {
 
-                lineChart.setTouchEnabled(true);
-                lineChart.setScaleEnabled(false);
+               // lineChart.setTouchEnabled(true);
+                //lineChart.setScaleEnabled(false);
                 //lineChart.addTargetZone(target00);
                 //lineChart.addTargetZone(target10);
                 //lineChart.addTargetZone(target20);
@@ -772,8 +780,8 @@ private void clearSubscription() {
             } else if (my_Chart == 400) {
 
 
-                lineChart.setTouchEnabled(true);
-                lineChart.setScaleEnabled(false);
+               // lineChart.setTouchEnabled(true);
+                //lineChart.setScaleEnabled(false);
                 //lineChart.addTargetZone(target03);
                 //lineChart.addTargetZone(target13);
                 //lineChart.addTargetZone(target23);
@@ -806,10 +814,10 @@ private void clearSubscription() {
        // arrayAdapter.notifyDataSetChanged();
         //listView.invalidateViews();
         //listView.refreshDrawableState();
-        LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
+        //LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
         i++;
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
-        iLineDataSets.add(lineDataSet);
+       // iLineDataSets.add(lineDataSet);
         LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
@@ -863,16 +871,17 @@ private void clearSubscription() {
         XAxis xAxis=lineChart.getXAxis();
         xAxis.setLabelCount(3,true);
         lineChart.getXAxis().setAxisMaximum((float) (time+1));
-        lineChart.getXAxis().setAxisMinimum(time);
+        lineChart.getXAxis().setAxisMinimum(time);*/
 //================================================================
         setupPieChart(str);
         if(data_oomad2==true) {
             loadPieChartData(str);
             data_oomad2=false;
         }
+        helper.close();
     }
 
-public void anim( float centerX , float centerY, float radius,float x, float y){
+/*public void anim( float centerX , float centerY, float radius,float x, float y){
     Handler animstart=new Handler();
     Runnable runnable=new Runnable() {
         @Override
@@ -1041,11 +1050,11 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         }
     };animstart1.postDelayed(r1,1900);
 
-}
-        ArrayList<Entry>linechart(float yvals[],int i,int lastone){
-        ArrayList<Entry> dataset=new ArrayList<Entry>();
+}*/
+      //  ArrayList<Entry>linechart(float yvals[],int i,int lastone){
+        //ArrayList<Entry> dataset=new ArrayList<Entry>();
 
-        int temp =0;
+        //int temp =0;
        /* =(int)System.currentTimeMillis();
         Timestamp time =new Timestamp(j);
         String str=time.toString();
@@ -1054,7 +1063,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
            /* OffsetTime offset = OffsetTime.now();
             offset.getHour();*/
 
-            dataset.add(new Entry(0,0));
+          /*  dataset.add(new Entry(0,0));
             if(i<=13) {
                 for (j = 0; j < i; j++) {
                     if (yvals[j] != 0) {
@@ -1107,7 +1116,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
                 x++;
             }
         return dataset;
-    }
+    }*/
    /* @OnClick(R.id.write)
     public void onWriteClick() {
 
@@ -1155,11 +1164,11 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
       l.setDrawInside(false);
       l.setEnabled(true);
   }
-    static private ArrayList<Entry> linechart1() {
+   /* static private ArrayList<Entry> linechart1() {
         ArrayList<Entry> dataset = new ArrayList<Entry>();
         dataset.add(new Entry(1, 4));
         return dataset;
-    }
+    }*/
 
     public void loadPieChartData(String s) {
         ArrayList<PieEntry> entries = new ArrayList<>();
@@ -1176,7 +1185,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
         }*/
 
 
-        if(Integer.valueOf(s)<=120) {
+        if(Integer.valueOf(s)<=220) {
              dataSet = new PieDataSet(entries, "");
             dataSet.setColors(GREEN);
             //int a=Integer.valueOf(s);
@@ -1195,7 +1204,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
             pieChart.setDrawRoundedSlices(true);
             pieChart.animateY(1400, Easing.EaseInOutQuad);
         }
-        else if ((Integer.valueOf(s)>120) &&(Integer.valueOf(s)<180) ){
+        else if ((Integer.valueOf(s)>220) &&(Integer.valueOf(s)<480) ){
              dataSet = new PieDataSet(entries, "");
             //int a=Integer.valueOf(s);
             dataSet.setColors(Color.rgb(255, 165, 0));
@@ -1214,7 +1223,7 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
             pieChart.setDrawRoundedSlices(true);
             pieChart.animateY(1400, Easing.EaseInOutQuad);
         }
-        else if(Integer.valueOf(s)>180){
+        else if(Integer.valueOf(s)>480){
              dataSet = new PieDataSet(entries, "");
             //int a=Integer.valueOf(s);
             dataSet.setColors(RED);
@@ -1240,14 +1249,15 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
 
     private void onConnectionFailure(Throwable throwable) {
         //noinspection ConstantConditions
-        Snackbar.make(findViewById(R.id.main), "Connection error: " + throwable, Snackbar.LENGTH_SHORT).show();
+        //Snackbar.make(findViewById(R.id.main), "Connection error: " + throwable, Snackbar.LENGTH_SHORT).show();
+        System.out.println("Connection error: "+throwable);
         updateUI(null);
     }
 
     private void onConnectionFinished() {
         updateUI(null);
     }
-    public boolean foregroundServiceRunning(){
+   /* public boolean foregroundServiceRunning(){
         ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for(ActivityManager.RunningServiceInfo service: activityManager.getRunningServices(Integer.MAX_VALUE)) {
             if(myservice.class.getName().equals(service.service.getClassName())) {
@@ -1255,10 +1265,11 @@ public void anim( float centerX , float centerY, float radius,float x, float y){
             }
         }
         return false;
-    }
+    }*/
     private void onReadFailure(Throwable throwable) {
         //noinspection ConstantConditions
-        Snackbar.make(findViewById(R.id.main), "Read error: " + throwable, Snackbar.LENGTH_SHORT).show();
+       // Snackbar.make(findViewById(R.id.main), "Read error: " + throwable, Snackbar.LENGTH_SHORT).show();
+        System.out.println("Read error:"+throwable);
     }
 
     private void onWriteSuccess() {
