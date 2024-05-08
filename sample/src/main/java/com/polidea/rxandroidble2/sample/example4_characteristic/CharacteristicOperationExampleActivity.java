@@ -73,6 +73,7 @@ import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
+import java.util.TimerTask;
 import java.util.UUID;
 
 import butterknife.BindView;
@@ -84,7 +85,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.PublishSubject;
-
+import java.util.Timer;
 public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
     ImageView top,butt,twotop,twobutt,left,x2,x1,signal_strength1,signal_strength2,signal_strength3;
@@ -192,6 +193,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+
+
 
 
        /* Configuration config = getResources().getConfiguration();
@@ -348,6 +353,29 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 nand1.postDelayed(this, 300);
             }
         },600);
+
+     /*   timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(!isConnected()) {
+                    onConnectToggleClick();
+
+                }
+                System.out.println("Timer Runned...");
+                System.out.println("..............");
+            }
+        },1000);*/
+      /*  Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(!isConnected()) {
+                    onConnectToggleClick();
+                                }
+                System.out.println("Timer Runned...");
+                //System.out.println("..............");
+            }
+        },300,300);*/
 
        /* nand2.postDelayed(new Runnable() {
             @Override
@@ -581,7 +609,11 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
             triggerDisconnect();
         } else {
-                    connectionDisposable = connectionObservable
+
+            if (connectionDisposable != null && !connectionDisposable.isDisposed()) {
+                connectionDisposable.dispose();
+            }
+            connectionDisposable = connectionObservable
                     .flatMapSingle(RxBleConnection::discoverServices)
                     .flatMapSingle(rxBleDeviceServices -> rxBleDeviceServices.getCharacteristic(characteristicUuid))
                     .observeOn(AndroidSchedulers.mainThread())
@@ -656,6 +688,7 @@ private void clearSubscription() {
     public void onNotifyClick() {
 
         if (isConnected()) {
+
             final Disposable disposable = connectionObservable
                     .flatMap(rxBleConnection -> rxBleConnection.setupNotification(characteristicUuid))
                     //.doOnNext(notificationObservable -> runOnUiThread(this::notificationHasBeenSetUp))
@@ -676,6 +709,9 @@ private void clearSubscription() {
                         }*/
                     }, this::onReadFailure);
             compositeDisposable.add(disposable);
+            if (disposable != null && !connectionDisposable.isDisposed()) {
+                connectionDisposable.dispose();
+            }
         }
     }
     /*public  boolean ternerry(Integer num) {
