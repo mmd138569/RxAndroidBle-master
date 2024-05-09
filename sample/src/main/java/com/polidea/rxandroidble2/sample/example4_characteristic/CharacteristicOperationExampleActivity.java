@@ -135,6 +135,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
    // private ListView listView;
     public boolean data_oomad=false;
     public boolean data_oomad2=false;
+    StringBuilder sb=new StringBuilder();
+    final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
     public boolean data_oomad3=false;
    /* float rangeHigh = 10.5f;
     float rangeLow = -1f;
@@ -606,13 +608,13 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public void onConnectToggleClick() {
 
         if (isConnected()) {
-
             triggerDisconnect();
-        } else {
-
             if (connectionDisposable != null && !connectionDisposable.isDisposed()) {
                 connectionDisposable.dispose();
             }
+        } if(!isConnected()) {
+
+
             connectionDisposable = connectionObservable
                     .flatMapSingle(RxBleConnection::discoverServices)
                     .flatMapSingle(rxBleDeviceServices -> rxBleDeviceServices.getCharacteristic(characteristicUuid))
@@ -695,7 +697,11 @@ private void clearSubscription() {
                     .flatMap(notificationObservable -> notificationObservable)
                     .observeOn(Schedulers.io())
                     .subscribe(bytes -> {
-                        readOutputView.setText(new String(bytes));
+                        sb.setLength(0); // reset the StringBuilder
+                        for (final byte b : bytes) {
+                            sb.append((char) b);
+                        }
+                        readOutputView.setText(sb.toString());
                         //  readHexOutputView.setText(HexString.bytesToHex(bytes));
                         // writeInput.setText(HexString.bytesToHex(bytes));
 //=======================================
@@ -733,7 +739,7 @@ private void clearSubscription() {
         //final DBcalibrate dBcalibrate = new DBcalibrate(CharacteristicOperationExampleActivity.this);
         //final ArrayList z = dBcalibrate.getAllCotacts1();
        // dBcalibrate.close();
-        final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
+
         //final ArrayList array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
         readOutputView = findViewById(R.id.read_output);
