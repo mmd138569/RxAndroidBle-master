@@ -187,7 +187,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public CustomLineChart.TargetZone target23=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow43, rangeHigh43, "");
     */
     public static CustomLineChart lineChart;
-    ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
 
 
 
@@ -707,7 +706,7 @@ private void clearSubscription() {
                     .observeOn(Schedulers.io())
                     .subscribe(bytes -> {
                         sb.setLength(0); // reset the StringBuilder
-                        for (final byte b : bytes) {
+                        for ( byte b : bytes) {
                             sb.append((char) b);
                         }
                         readOutputView.setText(sb.toString());
@@ -732,6 +731,118 @@ private void clearSubscription() {
     /*public  boolean ternerry(Integer num) {
         return 0 == (num == null ? 0 : num);
     }*/
+    public void customlinechart(){
+        mychart = dbChart.getAllCotact1();
+        dbChart.close();
+        if(mychart.size()!=0) {
+            int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
+
+            if (my_Chart == 300) {
+
+                // lineChart.setTouchEnabled(true);
+                //lineChart.setScaleEnabled(false);
+                //lineChart.addTargetZone(target00);
+                //lineChart.addTargetZone(target10);
+                //lineChart.addTargetZone(target20);
+                mychart.clear();
+                array_list.clear();
+            } else if (my_Chart == 400) {
+
+
+                // lineChart.setTouchEnabled(true);
+                //lineChart.setScaleEnabled(false);
+                //lineChart.addTargetZone(target03);
+                //lineChart.addTargetZone(target13);
+                //lineChart.addTargetZone(target23);
+                mychart.clear();
+                array_list.clear();
+            }
+            if(my_Chart==300) {
+                lineChart.getAxisLeft().setAxisMaximum(300f);
+                lineChart.getAxisRight().setAxisMaximum(300f);
+            }
+            else if(my_Chart==400){
+                lineChart.getAxisLeft().setAxisMaximum(1200f);
+                lineChart.getAxisRight().setAxisMaximum(1200f);
+            }
+            else {
+                lineChart.getAxisLeft().setAxisMaximum(400f);
+                lineChart.getAxisRight().setAxisMaximum(400f);
+            }
+        }
+        else {
+
+            lineChart.setTouchEnabled(true);
+            lineChart.setScaleEnabled(false);
+            //lineChart.addTargetZone(target01);
+            //lineChart.addTargetZone(target11);
+            //lineChart.addTargetZone(target21);
+            array_list.clear(); }
+        //array_list.addAll(helper.getAllCotacts());
+        helper.close();
+        // arrayAdapter.notifyDataSetChanged();
+        //listView.invalidateViews();
+        //listView.refreshDrawableState();
+        LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
+        i++;
+        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
+        iLineDataSets.add(lineDataSet);
+        LineData lineData = new LineData(iLineDataSets);
+        lineChart.setData(lineData);
+        lineChart.invalidate();
+//need to fix the scale and the color of the chart
+        lineChart.setScaleEnabled(false);
+        //lineChart.getXAxis().setAxisMaximum(24f);
+        //lineChart.getXAxis().setAxisMinimum(0f);
+
+        //==================
+        lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
+        lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
+        lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
+        YAxis RightAxis = lineChart.getAxisRight();
+        //here we add the right axis with number
+
+        RightAxis.setTextSize(0f);//put it bottom
+        RightAxis.setTextColor(Color.BLACK);
+        RightAxis.setDrawAxisLine(true);
+        RightAxis.setDrawGridLines(false);
+
+//==============================================================================
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        if(yval[20]%12==0){
+            lineDataSet.setDrawCircleHole(false);
+        }
+        else{
+            lineDataSet.setDrawCircles(true);
+        }
+//==============================================================================
+        lineDataSet.setColor(TRANSPARENT);
+        lineDataSet.setCircleColor(Color.BLACK);
+        lineChart.getLegend().setEnabled(false);
+        //---------
+        //  lineChart.highlightValue(30,20);
+        // lineChart.invalidate();
+        lineDataSet.setLineWidth((float) 0.3);
+        lineDataSet.setCircleRadius(2);
+        lineDataSet.setCircleHoleRadius(10);
+        lineDataSet.setValueTextColor(Color.GRAY);
+        lineChart.setData(lineData);
+        lineChart.getAxisLeft().setEnabled(true);
+        lineChart.getAxisRight().setEnabled(true);
+        lineChart.invalidate();
+        lineData.setDrawValues(false);
+        lineChart.getDescription().setEnabled(false);
+//================================================================
+        OffsetTime offset1 = OffsetTime.now();
+        time = offset1.getHour();
+        time1 = offset1.getMinute();
+        time=time+time1/100;
+        XAxis xAxis=lineChart.getXAxis();
+        xAxis.setLabelCount(3,true);
+        lineChart.getXAxis().setAxisMaximum((float) (time+1));
+        lineChart.getXAxis().setAxisMinimum(time);
+//================================================================
+    }
     @OnClick(R.id.refresh)
     public void refreshing() {
 
@@ -794,8 +905,11 @@ private void clearSubscription() {
             // name.setError("Enter NAME");
             //readOutputView.setError("Enter Salary");
         }
+        if(data_oomad3==true) {
 
-
+            customlinechart();
+            data_oomad3=false;
+        }
         //float x=yval[20]-yval[19];
        // float y=yval[19]-yval[20];
         //Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
@@ -812,115 +926,6 @@ private void clearSubscription() {
         data_oomad=false;}
 //================================================
 //========================= refresh ===============
-          mychart = dbChart.getAllCotact1();
-        dbChart.close();
-        if(mychart.size()!=0) {
-            int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
-
-            if (my_Chart == 300) {
-
-               // lineChart.setTouchEnabled(true);
-                //lineChart.setScaleEnabled(false);
-                //lineChart.addTargetZone(target00);
-                //lineChart.addTargetZone(target10);
-                //lineChart.addTargetZone(target20);
-                mychart.clear();
-                array_list.clear();
-            } else if (my_Chart == 400) {
-
-
-               // lineChart.setTouchEnabled(true);
-                //lineChart.setScaleEnabled(false);
-                //lineChart.addTargetZone(target03);
-                //lineChart.addTargetZone(target13);
-                //lineChart.addTargetZone(target23);
-                mychart.clear();
-                array_list.clear();
-            }
-            if(my_Chart==300) {
-                lineChart.getAxisLeft().setAxisMaximum(300f);
-                lineChart.getAxisRight().setAxisMaximum(300f);
-            }
-            else if(my_Chart==400){
-                lineChart.getAxisLeft().setAxisMaximum(1200f);
-                lineChart.getAxisRight().setAxisMaximum(1200f);
-            }
-            else {
-                lineChart.getAxisLeft().setAxisMaximum(400f);
-                lineChart.getAxisRight().setAxisMaximum(400f);
-            }
-        }
-        else {
-
-        lineChart.setTouchEnabled(true);
-        lineChart.setScaleEnabled(false);
-        //lineChart.addTargetZone(target01);
-        //lineChart.addTargetZone(target11);
-        //lineChart.addTargetZone(target21);
-        array_list.clear(); }
-        //array_list.addAll(helper.getAllCotacts());
-        helper.close();
-       // arrayAdapter.notifyDataSetChanged();
-        //listView.invalidateViews();
-        //listView.refreshDrawableState();
-        LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
-        i++;
-        iLineDataSets.add(lineDataSet);
-        LineData lineData = new LineData(iLineDataSets);
-        lineChart.setData(lineData);
-        lineChart.invalidate();
-//need to fix the scale and the color of the chart
-        lineChart.setScaleEnabled(false);
-        //lineChart.getXAxis().setAxisMaximum(24f);
-        //lineChart.getXAxis().setAxisMinimum(0f);
-
-        //==================
-        lineChart.getXAxis().setDrawGridLines(false);//disable vertical line
-        lineChart.getAxisLeft().setDrawGridLines(false);//disiable horizental
-        lineChart.getAxisRight().setDrawGridLines(false);//disable horizantal'
-        YAxis RightAxis = lineChart.getAxisRight();
-        //here we add the right axis with number
-
-        RightAxis.setTextSize(0f);//put it bottom
-        RightAxis.setTextColor(Color.BLACK);
-        RightAxis.setDrawAxisLine(true);
-        RightAxis.setDrawGridLines(false);
-
-//==============================================================================
-        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
-        if(yval[20]%12==0){
-            lineDataSet.setDrawCircleHole(false);
-        }
-        else{
-            lineDataSet.setDrawCircles(true);
-        }
-//==============================================================================
-        lineDataSet.setColor(TRANSPARENT);
-        lineDataSet.setCircleColor(Color.BLACK);
-        lineChart.getLegend().setEnabled(false);
-        //---------
-        //  lineChart.highlightValue(30,20);
-       // lineChart.invalidate();
-        lineDataSet.setLineWidth((float) 0.3);
-        lineDataSet.setCircleRadius(2);
-        lineDataSet.setCircleHoleRadius(10);
-        lineDataSet.setValueTextColor(Color.GRAY);
-        lineChart.setData(lineData);
-        lineChart.getAxisLeft().setEnabled(true);
-        lineChart.getAxisRight().setEnabled(true);
-        lineChart.invalidate();
-        lineData.setDrawValues(false);
-        lineChart.getDescription().setEnabled(false);
-//================================================================
-        OffsetTime offset1 = OffsetTime.now();
-        time = offset1.getHour();
-        time1 = offset1.getMinute();
-        time=time+time1/100;
-        XAxis xAxis=lineChart.getXAxis();
-        xAxis.setLabelCount(3,true);
-        lineChart.getXAxis().setAxisMaximum((float) (time+1));
-        lineChart.getXAxis().setAxisMinimum(time);
-//================================================================
         setupPieChart(str);
         if(data_oomad2==true) {
             loadPieChartData(str);
