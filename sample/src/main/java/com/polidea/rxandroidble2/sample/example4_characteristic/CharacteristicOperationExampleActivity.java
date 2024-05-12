@@ -732,6 +732,9 @@ private void clearSubscription() {
         return 0 == (num == null ? 0 : num);
     }*/
     public void customlinechart(){
+
+        lineChart.setData(null);
+        lineChart.invalidate();
         mychart = dbChart.getAllCotact1();
         dbChart.close();
         if(mychart.size()!=0) {
@@ -745,7 +748,9 @@ private void clearSubscription() {
                 //lineChart.addTargetZone(target10);
                 //lineChart.addTargetZone(target20);
                 mychart.clear();
+                mychart=null;
                 array_list.clear();
+                array_list=null;
             } else if (my_Chart == 400) {
 
 
@@ -755,7 +760,9 @@ private void clearSubscription() {
                 //lineChart.addTargetZone(target13);
                 //lineChart.addTargetZone(target23);
                 mychart.clear();
+                mychart=null;
                 array_list.clear();
+                array_list=null;
             }
             if(my_Chart==300) {
                 lineChart.getAxisLeft().setAxisMaximum(300f);
@@ -777,7 +784,9 @@ private void clearSubscription() {
             //lineChart.addTargetZone(target01);
             //lineChart.addTargetZone(target11);
             //lineChart.addTargetZone(target21);
-            array_list.clear(); }
+            array_list.clear();
+            array_list=null;
+        }
         //array_list.addAll(helper.getAllCotacts());
         helper.close();
         // arrayAdapter.notifyDataSetChanged();
@@ -826,6 +835,7 @@ private void clearSubscription() {
         lineDataSet.setCircleRadius(2);
         lineDataSet.setCircleHoleRadius(10);
         lineDataSet.setValueTextColor(Color.GRAY);
+
         lineChart.setData(lineData);
         lineChart.getAxisLeft().setEnabled(true);
         lineChart.getAxisRight().setEnabled(true);
@@ -931,6 +941,7 @@ private void clearSubscription() {
             loadPieChartData(str);
             data_oomad2=false;
         }
+        array_list=null;
         helper.close();
     }
 
