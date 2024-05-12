@@ -104,12 +104,12 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
  @BindView(R.id.write_input)
     TextView writeInput;*/
     int temp =0;
-    //float time, time1;
+    float time, time1;
     TextView T;
     @BindView(R.id.read)
     TextView readButton;
     public static int z=0;
-    //public static String z1;
+    public static String z1;
     @BindView(R.id.rssi)
     TextView rssiView;
   /*  @BindView(R.id.write)
@@ -133,12 +133,20 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     //TextView name;
     //RectF oval=null;
    // private ListView listView;
+    float centerX = 438;
+    float centerY = 320;
+    float radius = 285;
+    ArrayList<Entry> dataset=new ArrayList<Entry>();
+
     public boolean data_oomad=false;
     public boolean data_oomad2=false;
+    final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
+    ArrayList array_list;
     StringBuilder sb=new StringBuilder();
     final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
     public boolean data_oomad3=false;
-   /* float rangeHigh = 10.5f;
+    ArrayList mychart;
+    /* float rangeHigh = 10.5f;
     float rangeLow = -1f;
     float rangeLow2 = 11f;
     float rangeHigh2 = 38f;
@@ -178,7 +186,8 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public CustomLineChart.TargetZone target13=new CustomLineChart.TargetZone(Color.parseColor("#dfdfdf"), rangeLow42, rangeHigh42, "");
     public CustomLineChart.TargetZone target23=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow43, rangeHigh43, "");
     */
-    //public static LineChart lineChart;
+    public static CustomLineChart lineChart;
+    ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
 
 
 
@@ -227,7 +236,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             lineChart = findViewById(R.id.chart);
             lineChart.setVisibility(View.INVISIBLE);
         }*/
-        //lineChart = findViewById(R.id.chart);
+        lineChart = findViewById(R.id.chart);
 
         ButterKnife.bind(this);
         TextView setting=findViewById(R.id.settings);
@@ -264,22 +273,22 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
         connectionObservable = prepareConnectionObservable();
 
-       // if(a==false) {
-           // lineChart.invalidate();
+        if(a==false) {
+            lineChart.invalidate();
             //XAxis xAxis=lineChart.getXAxis();
-           /* LineDataSet lineDataSet = new LineDataSet(linechart1(), "data set");
+            LineDataSet lineDataSet = new LineDataSet(linechart1(), "data set");
             ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
             iLineDataSets.add(lineDataSet);
             LineData lineData = new LineData(iLineDataSets);
             lineChart.setData(lineData);
-            lineChart.invalidate();*/
+            lineChart.invalidate();
             //lineChart.setBackgroundColor(Color.G);
 
 
             //lineChart.addTargetZone(target0);
             //lineChart.addTargetZone(target1);
             //lineChart.addTargetZone(target2);
-           /* lineChart.getLegend().setEnabled(false);
+            lineChart.getLegend().setEnabled(false);
             lineChart.setNoDataText("No Data Insert");
             lineDataSet.setColor(GRAY);
             lineDataSet.setCircleColors(Color.BLACK);
@@ -307,9 +316,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
             leftAxis.setTextColor(Color.TRANSPARENT);
             leftAxis.setDrawAxisLine(false);
             leftAxis.setDrawGridLines(false);
-            lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);*/
-        //    a=true;
-      //  }
+            lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+            a=true;
+        }
         //noinspection ConstantConditions
         //getSupportActionBar().setSubtitle(getString(R.string.mac_address, macAddress));
         Handler handler=new Handler();
@@ -725,22 +734,20 @@ private void clearSubscription() {
     }*/
     @OnClick(R.id.refresh)
     public void refreshing() {
-        /*float centerX = 438;
-        float centerY = 320;
-        float radius = 285;*/
-       /* twotop=findViewById(R.id.twotop);
+
+        twotop=findViewById(R.id.twotop);
         left=findViewById(R.id.leFt);
         butt=findViewById(R.id.butt);
         twobutt=findViewById(R.id.twobutt);
         top=findViewById(R.id.top);
         x1=findViewById(R.id.topmid);
-        x2=findViewById(R.id.buttmid);*/
+        x2=findViewById(R.id.buttmid);
 
         //final DBcalibrate dBcalibrate = new DBcalibrate(CharacteristicOperationExampleActivity.this);
         //final ArrayList z = dBcalibrate.getAllCotacts1();
        // dBcalibrate.close();
 
-        //final ArrayList array_list = helper.getAllCotacts();
+          array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
         readOutputView = findViewById(R.id.read_output);
         //listView = findViewById(R.id.listView);
@@ -805,10 +812,9 @@ private void clearSubscription() {
         data_oomad=false;}
 //================================================
 //========================= refresh ===============
-        /*final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
-        final ArrayList mychart = dbChart.getAllCotact1();
-        dbChart.close();*/
-        /*if(mychart.size()!=0) {
+          mychart = dbChart.getAllCotact1();
+        dbChart.close();
+        if(mychart.size()!=0) {
             int my_Chart = Integer.valueOf((String) mychart.get(mychart.size() - 1));
 
             if (my_Chart == 300) {
@@ -818,6 +824,7 @@ private void clearSubscription() {
                 //lineChart.addTargetZone(target00);
                 //lineChart.addTargetZone(target10);
                 //lineChart.addTargetZone(target20);
+                mychart.clear();
                 array_list.clear();
             } else if (my_Chart == 400) {
 
@@ -827,6 +834,7 @@ private void clearSubscription() {
                 //lineChart.addTargetZone(target03);
                 //lineChart.addTargetZone(target13);
                 //lineChart.addTargetZone(target23);
+                mychart.clear();
                 array_list.clear();
             }
             if(my_Chart==300) {
@@ -844,22 +852,20 @@ private void clearSubscription() {
         }
         else {
 
-
         lineChart.setTouchEnabled(true);
         lineChart.setScaleEnabled(false);
         //lineChart.addTargetZone(target01);
         //lineChart.addTargetZone(target11);
         //lineChart.addTargetZone(target21);
         array_list.clear(); }
-        array_list.addAll(helper.getAllCotacts());
+        //array_list.addAll(helper.getAllCotacts());
         helper.close();
        // arrayAdapter.notifyDataSetChanged();
         //listView.invalidateViews();
         //listView.refreshDrawableState();
-        //LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
+        LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
         i++;
-        ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
-       // iLineDataSets.add(lineDataSet);
+        iLineDataSets.add(lineDataSet);
         LineData lineData = new LineData(iLineDataSets);
         lineChart.setData(lineData);
         lineChart.invalidate();
@@ -913,7 +919,7 @@ private void clearSubscription() {
         XAxis xAxis=lineChart.getXAxis();
         xAxis.setLabelCount(3,true);
         lineChart.getXAxis().setAxisMaximum((float) (time+1));
-        lineChart.getXAxis().setAxisMinimum(time);*/
+        lineChart.getXAxis().setAxisMinimum(time);
 //================================================================
         setupPieChart(str);
         if(data_oomad2==true) {
@@ -1093,10 +1099,9 @@ private void clearSubscription() {
     };animstart1.postDelayed(r1,1900);
 
 }*/
-      //  ArrayList<Entry>linechart(float yvals[],int i,int lastone){
-        //ArrayList<Entry> dataset=new ArrayList<Entry>();
-
-        //int temp =0;
+        ArrayList<Entry>linechart(float yvals[],int i,int lastone){
+            dataset.clear();
+        int temp =0;
        /* =(int)System.currentTimeMillis();
         Timestamp time =new Timestamp(j);
         String str=time.toString();
@@ -1105,7 +1110,7 @@ private void clearSubscription() {
            /* OffsetTime offset = OffsetTime.now();
             offset.getHour();*/
 
-          /*  dataset.add(new Entry(0,0));
+            dataset.add(new Entry(0,0));
             if(i<=13) {
                 for (j = 0; j < i; j++) {
                     if (yvals[j] != 0) {
@@ -1158,7 +1163,7 @@ private void clearSubscription() {
                 x++;
             }
         return dataset;
-    }*/
+    }
    /* @OnClick(R.id.write)
     public void onWriteClick() {
 
@@ -1206,12 +1211,11 @@ private void clearSubscription() {
       l.setDrawInside(false);
       l.setEnabled(true);
   }
-   /* static private ArrayList<Entry> linechart1() {
+    static private ArrayList<Entry> linechart1() {
         ArrayList<Entry> dataset = new ArrayList<Entry>();
         dataset.add(new Entry(1, 4));
         return dataset;
-    }*/
-
+    }
     public void loadPieChartData(String s) {
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(0.2f, ""));
