@@ -136,8 +136,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     float centerX = 438;
     float centerY = 320;
     float radius = 285;
+    String s;
     ArrayList<Entry> dataset=new ArrayList<Entry>();
-
+    OffsetDateTime offsetDT;
     public boolean data_oomad=false;
     public boolean data_oomad2=false;
     final DBChart dbChart = new DBChart(CharacteristicOperationExampleActivity.this);
@@ -819,10 +820,10 @@ private void clearSubscription() {
 //==============================================================================
         lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
         if(yval[20]%12==0){
-            lineDataSet.setDrawCircleHole(false);
+            //lineDataSet.setDrawCircleHole(false);
         }
         else{
-            lineDataSet.setDrawCircles(true);
+            //lineDataSet.setDrawCircles(true);
         }
 //==============================================================================
         lineDataSet.setColor(TRANSPARENT);
@@ -877,8 +878,8 @@ private void clearSubscription() {
         //listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
         if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000") {
-            OffsetDateTime offsetDT = OffsetDateTime.now();
-            String s=offsetDT.toLocalDate()+" "+ String.valueOf(offsetDT.getHour())+":"+String.valueOf(offsetDT.getMinute())+":"+String.valueOf(offsetDT.getSecond());
+             offsetDT = OffsetDateTime.now();
+             s=offsetDT.toLocalDate()+" "+ String.valueOf(offsetDT.getHour())+":"+String.valueOf(offsetDT.getMinute())+":"+String.valueOf(offsetDT.getSecond());
 //===========================================================================================================
             T=findViewById(R.id.time);
             T.setText(s);
