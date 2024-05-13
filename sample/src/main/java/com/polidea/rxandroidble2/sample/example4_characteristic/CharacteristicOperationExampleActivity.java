@@ -126,6 +126,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     int aa=0;
     boolean a=false;
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
+    LineDataSet lineDataSet;
     private Observable<RxBleConnection> connectionObservable;
     private RxBleDevice bleDevice;
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -749,9 +750,7 @@ private void clearSubscription() {
                 //lineChart.addTargetZone(target10);
                 //lineChart.addTargetZone(target20);
                 mychart.clear();
-                mychart=null;
                 array_list.clear();
-                array_list=null;
             } else if (my_Chart == 400) {
 
 
@@ -761,9 +760,7 @@ private void clearSubscription() {
                 //lineChart.addTargetZone(target13);
                 //lineChart.addTargetZone(target23);
                 mychart.clear();
-                mychart=null;
                 array_list.clear();
-                array_list=null;
             }
             if(my_Chart==300) {
                 lineChart.getAxisLeft().setAxisMaximum(300f);
@@ -785,19 +782,25 @@ private void clearSubscription() {
             //lineChart.addTargetZone(target01);
             //lineChart.addTargetZone(target11);
             //lineChart.addTargetZone(target21);
-            array_list.clear();
-            array_list=null;
+            //array_list.clear();
+            //array_list=null;
         }
         //array_list.addAll(helper.getAllCotacts());
         helper.close();
         // arrayAdapter.notifyDataSetChanged();
         //listView.invalidateViews();
         //listView.refreshDrawableState();
-        LineDataSet lineDataSet = new LineDataSet(linechart(yval, i,(int)yval[20]), "lable");
+        if(lineDataSet==null) {
+            lineDataSet = new LineDataSet(linechart(yval, i, (int) yval[20]), "lable");
+        }
+        else if(lineDataSet!=null){
+            lineDataSet.setValues(linechart(yval, i,(int)yval[20]));
+        }
         i++;
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(lineDataSet);
         LineData lineData = new LineData(iLineDataSets);
+        //lineDataSet.clear();
         lineChart.setData(lineData);
         lineChart.invalidate();
 //need to fix the scale and the color of the chart
@@ -853,6 +856,7 @@ private void clearSubscription() {
         lineChart.getXAxis().setAxisMaximum((float) (time+1));
         lineChart.getXAxis().setAxisMinimum(time);
 //================================================================
+        //iLineDataSets.clear();
     }
     @OnClick(R.id.refresh)
     public void refreshing() {
@@ -869,7 +873,7 @@ private void clearSubscription() {
         //final ArrayList z = dBcalibrate.getAllCotacts1();
        // dBcalibrate.close();
 
-          array_list = helper.getAllCotacts();
+         // array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
         readOutputView = findViewById(R.id.read_output);
         //listView = findViewById(R.id.listView);
