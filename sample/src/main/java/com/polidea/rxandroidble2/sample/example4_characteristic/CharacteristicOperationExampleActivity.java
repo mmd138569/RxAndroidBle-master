@@ -715,7 +715,7 @@ private void clearSubscription() {
                         //  readHexOutputView.setText(HexString.bytesToHex(bytes));
                         // writeInput.setText(HexString.bytesToHex(bytes));
 //=======================================
-
+                        sb=null;
                     /*  try {
                             FileOutputStream fos = openFileOutput("myfile.txt", Context.MODE_PRIVATE);
                             fos.write(HexString.bytesToHex(bytes).getBytes());
