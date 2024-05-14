@@ -781,7 +781,6 @@ private void clearSubscription() {
             //lineChart.addTargetZone(target01);
             //lineChart.addTargetZone(target11);
             //lineChart.addTargetZone(target21);
-            //array_list.clear();
             //array_list=null;
         }
         //array_list.addAll(helper.getAllCotacts());
@@ -799,7 +798,6 @@ private void clearSubscription() {
         ArrayList<ILineDataSet> iLineDataSets = new ArrayList<>();
         iLineDataSets.add(lineDataSet);
         LineData lineData = new LineData(iLineDataSets);
-        //lineDataSet.clear();
         lineChart.setData(lineData);
         lineChart.invalidate();
 //need to fix the scale and the color of the chart
