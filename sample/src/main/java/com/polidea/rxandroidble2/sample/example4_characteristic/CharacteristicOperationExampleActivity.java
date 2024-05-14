@@ -123,7 +123,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     PieData data=null;
     int i=2,x=13,j=0;
     public static PieChart pieChart;
-    int aa=0;
     boolean a=false;
     private PublishSubject<Boolean> disconnectTriggerSubject = PublishSubject.create();
     LineDataSet lineDataSet;
@@ -132,7 +131,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     //TextView save, refresh;
     //TextView name;
-    //RectF oval=null;
+    RectF oval=null;
+    ObjectAnimator rotationAnimator1;
+    float y,xx;
    // private ListView listView;
     float centerX = 438;
     float centerY = 320;
@@ -147,6 +148,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     StringBuilder sb=new StringBuilder();
     final DatabaseHelper helper = new DatabaseHelper(CharacteristicOperationExampleActivity.this);
     public boolean data_oomad3=false;
+    float temp1=0;
     ArrayList mychart;
     /* float rangeHigh = 10.5f;
     float rangeLow = -1f;
@@ -189,10 +191,10 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
     public CustomLineChart.TargetZone target23=new CustomLineChart.TargetZone(Color.parseColor("#fef5e6"), rangeLow43, rangeHigh43, "");
     */
     public static CustomLineChart lineChart;
+    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
 
-
-
-
+    Path path;
+    ObjectAnimator rotationAnimator;
     public static Intent startActivityIntent(Context context, String peripheralMacAddress, UUID characteristicUuid) {
         Intent intent = new Intent(context, CharacteristicOperationExampleActivity.class);
         intent.putExtra(DeviceActivity.EXTRA_MAC_ADDRESS, peripheralMacAddress);
@@ -470,8 +472,9 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
         hand.postDelayed(new Runnable() {
             @Override
             public void run() {
-                //shoutdown2=false;
-                //shoutdown1=false;
+                shoutdown2=false;
+                shoutdown1=false;
+
                 refreshing();
 
                 hand.postDelayed(this, 3000);
@@ -885,6 +888,12 @@ private void clearSubscription() {
             T=findViewById(R.id.time);
             T.setText(s);
             yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+            if(temp1==0) {
+                 temp1 = yval[20];
+            }
+            else if(temp1!=0){
+                yval[19]=temp1;
+                temp1=0;            }
           /*  if(z.size()!=0) {
                 int a = Integer.valueOf((String) z.get(z.size() - 1));
                 ternerry(a);
@@ -922,8 +931,8 @@ private void clearSubscription() {
             customlinechart();
             data_oomad3=false;
         }
-        //float x=yval[20]-yval[19];
-       // float y=yval[19]-yval[20];
+        xx=yval[20]-yval[19];
+         y=yval[19]-yval[20];
         //Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
        /* left.setVisibility(View.INVISIBLE);
         twobutt.setVisibility(View.INVISIBLE);
@@ -934,7 +943,7 @@ private void clearSubscription() {
         x2.setVisibility(View.INVISIBLE);*/
  //====================================================================
         if(data_oomad==true){
-        //anim(   centerX , centerY , radius , x,y);
+        anim(   centerX , centerY , radius , xx,y);
         data_oomad=false;}
 //================================================
 //========================= refresh ===============
@@ -947,54 +956,55 @@ private void clearSubscription() {
         helper.close();
     }
 
-/*public void anim( float centerX , float centerY, float radius,float x, float y){
+public void anim( float centerX , float centerY, float radius,float xx, float y){
     Handler animstart=new Handler();
     Runnable runnable=new Runnable() {
         @Override
         public void run() {
             while (!shoutdown1) {
-                if(((x<50)&&(x>=0))||(y<50)&&(y>=0)){
-                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 0f);  // Specify the start and end rotation angles
+                if(((xx<50)&&(xx>=0))||(y<50)&&(y>=0)){
+                    rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 0f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
                 }
-                else if((x<150)&&(x>=100)) {
-                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 90f);  // Specify the start and end rotation angles
+                else if((xx<150)&&(xx>=100)) {
+                     rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 90f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
                 }
-                else if ((x<100)&&(x>=50)) {
-                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 45f);  // Specify the start and end rotation angles
+                else if ((x<100)&&(xx>=50)) {
+                     rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, 45f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
                 }
                 else if ((y<100)&&(y>=50)) {
-                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, -45f);  // Specify the start and end rotation angles
+                     rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, -45f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
         }
                 else if((y<150)&&(y>=100)){
-                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, -90f);  // Specify the start and end rotation angles
+                     rotationAnimator1 = ObjectAnimator.ofFloat(top, "rotation", 180f, -90f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
         }
                 else if(y>=150){
-                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(twotop, "rotation", 180f, -90f);  // Specify the start and end rotation angles
+                     rotationAnimator1 = ObjectAnimator.ofFloat(twotop, "rotation", 180f, -90f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
         }
-                else if(x>=150){
-                    ObjectAnimator rotationAnimator1 = ObjectAnimator.ofFloat(twotop, "rotation", 180f, 90f);  // Specify the start and end rotation angles
+                else if(xx>=150){
+                     rotationAnimator1 = ObjectAnimator.ofFloat(twotop, "rotation", 180f, 90f);  // Specify the start and end rotation angles
                     rotationAnimator1.setDuration(2000);  // Set the duration of the rotation animation in milliseconds
                     rotationAnimator1.setRepeatCount(0);
                     rotationAnimator1.start();
         }
+                rotationAnimator1=null;
                     shoutdown1=true;
             }
         }
@@ -1005,118 +1015,112 @@ private void clearSubscription() {
         public void run() {
             while (!shoutdown2) {
                 top.setVisibility(View.VISIBLE);
-                if(((x<50)&&(x>=0))||(y<50)&&(y>=0)) {
-                    Path path = new Path();
+                if(((xx<50)&&(xx>=0))||(y<50)&&(y>=0)) {
+                     path = new Path();
                     if(oval==null) {
                         oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
                     }
                     path.arcTo(oval, 360, -180, true);
                 // Create a PathInterpolator with the circular path
-                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
                 // Create an ObjectAnimator to rotate the image along the circular path
-                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                     rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
                     rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
                     rotationAnimator.setInterpolator(pathInterpolator);
                     rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
                     rotationAnimator.start();
                 }
-                else if((x<150)&&(x>=100)) {//top
-
-                    Path path = new Path();
+                else if((xx<150)&&(xx>=100)) {//top
+                     path = new Path();
                     if(oval==null) {
                         oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
                     }
                     path.arcTo(oval, 360, -90, true);
                     // Create a PathInterpolator with the circular path
-                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
                     // Create an ObjectAnimator to rotate the image along the circular path
-                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                     rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
                     rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
                     rotationAnimator.setInterpolator(pathInterpolator);
                     rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
                     rotationAnimator.start();
                 }
-                else if ((x<100)&&(x>=50)) {//top mid
-                    Path path = new Path();
+                else if ((xx<100)&&(xx>=50)) {//top mid
+                     path = new Path();
                     if(oval==null) {
                         oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
                     }
                     path.arcTo(oval, 360, -135, true);
                     // Create a PathInterpolator with the circular path
-                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
                     // Create an ObjectAnimator to rotate the image along the circular path
-                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                     rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
                     rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
                     rotationAnimator.setInterpolator(pathInterpolator);
                     rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
                     rotationAnimator.start();
         }
                 else if ((y<100)&&(y>=50)) {//botmid
-                    Path path = new Path();
+                     path = new Path();
                     if(oval==null) {
                         oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
                     }
                     path.arcTo(oval, 360, -225, true);
                     // Create a PathInterpolator with the circular path
-                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
                     // Create an ObjectAnimator to rotate the image along the circular path
-                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                     rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
                     rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
                     rotationAnimator.setInterpolator(pathInterpolator);
                     rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
                     rotationAnimator.start();
         }
                 else if((y<150)&&(y>=100)){//bot
-                    Path path = new Path();
+                     path = new Path();
                     if(oval==null) {
                         oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
                     }
                     path.arcTo(oval, 360, -270, true);
                     // Create a PathInterpolator with the circular path
-                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
                     // Create an ObjectAnimator to rotate the image along the circular path
-                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
+                     rotationAnimator = ObjectAnimator.ofFloat(top, "translationX", "translationY", path);
                     rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
                     rotationAnimator.setInterpolator(pathInterpolator);
                     rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
                     rotationAnimator.start();
         }
                 else if(y>=150){
-                    Path path = new Path();
+                     path = new Path();
                     if(oval==null) {
                         oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
                     }
                     path.arcTo(oval, 360, -270, true);
                     // Create a PathInterpolator with the circular path
-                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
                     // Create an ObjectAnimator to rotate the image along the circular path
-                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(twotop, "translationX", "translationY", path);
+                     rotationAnimator = ObjectAnimator.ofFloat(twotop, "translationX", "translationY", path);
                     rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
                     rotationAnimator.setInterpolator(pathInterpolator);
                     rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
                     rotationAnimator.start();
         }
-                else if(x>=150){
-                    Path path = new Path();
+                else if(xx>=150){
+                     path = new Path();
                     if(oval==null) {
                         oval = new RectF(centerX - radius, centerY - radius, centerX + radius, centerY + radius);
                     }
                     path.arcTo(oval, 360, -90, true);
                     // Create a PathInterpolator with the circular path
-                    PathInterpolator pathInterpolator = new PathInterpolator(0.25f, 0.1f, 0.25f, 1f);
                     // Create an ObjectAnimator to rotate the image along the circular path
-                    ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(twotop, "translationX", "translationY", path);
+                     rotationAnimator = ObjectAnimator.ofFloat(twotop, "translationX", "translationY", path);
                     rotationAnimator.setDuration(2000); // Set the desired duration for the rotation
                     rotationAnimator.setInterpolator(pathInterpolator);
                     rotationAnimator.setRepeatCount(0); // Repeat the rotation indefinitely
                     rotationAnimator.start();
         }
+                path=null;
                     shoutdown2=true;
             }
         }
+
     };animstart1.postDelayed(r1,1900);
 
-}*/
+}
         ArrayList<Entry>linechart(float yvals[],int i,int lastone){
             dataset.clear();
         int temp =0;
@@ -1235,6 +1239,7 @@ private void clearSubscription() {
         return dataset;
     }
     public void loadPieChartData(String s) {
+      //optimize memory
         ArrayList<PieEntry> entries = new ArrayList<>();
         entries.add(new PieEntry(0.2f, ""));
 
