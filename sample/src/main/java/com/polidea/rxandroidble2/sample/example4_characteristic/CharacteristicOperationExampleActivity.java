@@ -881,7 +881,7 @@ private void clearSubscription() {
           //      android.R.layout.simple_list_item_1, array_list);
         //listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
-        if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000") {
+        if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000"&&4>=readOutputView.getText().toString().length()) {
              offsetDT = OffsetDateTime.now();
              s=offsetDT.toLocalDate()+" "+ String.valueOf(offsetDT.getHour())+":"+String.valueOf(offsetDT.getMinute())+":"+String.valueOf(offsetDT.getSecond());
 //===========================================================================================================
