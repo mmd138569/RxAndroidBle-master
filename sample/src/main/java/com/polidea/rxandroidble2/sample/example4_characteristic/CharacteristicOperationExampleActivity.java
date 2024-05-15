@@ -485,7 +485,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
        // thread();
 
 //=============== this is important ===========
-        /*Handler hand1=new Handler();
+        Handler hand1=new Handler();
         Runnable run=new Runnable() {
             @Override
             public void run() {
@@ -498,7 +498,7 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
 
             }
         };
-        hand1.postDelayed(run,18000);*/
+        hand1.postDelayed(run,18000);
 //=================================================
 
 //==================================================
@@ -654,7 +654,6 @@ public class CharacteristicOperationExampleActivity extends AppCompatActivity {
                 .subscribe(this::updateRssi, this::onConnectionFailure);
     }*/
 //==========================================================================
-//literly i think the read method called after 4 or 5 second so we need theard for 4 or 5 second
 private void updateRssi(int rssiValue) {
     rssiView.setText(getString(R.string.read_rssi, rssiValue));
 
@@ -1326,7 +1325,7 @@ public void anim( float centerX , float centerY, float radius,float xx, float y)
     private void onConnectionFinished() {
         updateUI(null);
     }
-   /* public boolean foregroundServiceRunning(){
+    public boolean foregroundServiceRunning(){
         ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for(ActivityManager.RunningServiceInfo service: activityManager.getRunningServices(Integer.MAX_VALUE)) {
             if(myservice.class.getName().equals(service.service.getClassName())) {
@@ -1334,7 +1333,7 @@ public void anim( float centerX , float centerY, float radius,float xx, float y)
             }
         }
         return false;
-    }*/
+    }
     private void onReadFailure(Throwable throwable) {
         //noinspection ConstantConditions
        // Snackbar.make(findViewById(R.id.main), "Read error: " + throwable, Snackbar.LENGTH_SHORT).show();

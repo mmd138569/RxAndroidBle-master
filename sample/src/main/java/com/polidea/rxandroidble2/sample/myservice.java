@@ -35,8 +35,8 @@ public class myservice extends Service {
     double q=0;
     int f=0;
     int NOTIFICATION_ID = (int) (System.currentTimeMillis()%10000);
-   // int width = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
-    //int height = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
+    int width = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
+    int height = CharacteristicOperationExampleActivity.lineChart.getChartBitmap().getWidth();
     int time=0;
     int fix_the_DB=0;
     int songUrl;
@@ -74,7 +74,7 @@ public class myservice extends Service {
 
                 notification("it should be always run ", songUrl);
                 if(songUrl>350){
-                    //startAlert();
+                    startAlert();
                 }
                 time= time+100;
                 //  Toast.makeText(getApplicationContext(),"This is a Service running in Background", Toast.LENGTH_SHORT).show();
@@ -193,7 +193,7 @@ public class myservice extends Service {
           }*/
           String chanellID = "this is our id notify";
        //   Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.splashlogo);
-          /*if(width>0&&height>0) {
+          if(width>0&&height>0) {
               SetWeakRef_bitmap0(CharacteristicOperationExampleActivity.pieChart.getChartBitmap());
           }
           int maxHeight = 402, maxWidth = 360; // Maximum width for the bitmap in pixels
@@ -213,13 +213,13 @@ public class myservice extends Service {
           SetWeakRef_bitmap(CharacteristicOperationExampleActivity.lineChart.getChartBitmap());
           //bitmap2 = Bitmap.createScaledBitmap(bitmap2, width, height, true);
             SetWeakRef_bitmap( Bitmap.createScaledBitmap(GetWeakRef_bitmap(), width, height, true));
-*/
+
         }
          // CharacteristicOperationExampleActivity.customchart();
-         // NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), chanellID);
-         // Notification notification = builder.setSmallIcon(R.drawable.back)//R.drawable.baseline_notifications_active_24
-                /*  .setContentTitle("warning!")
-                 // .setContentText(str + BloodNum)
+          NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), chanellID);
+          Notification notification = builder.setSmallIcon(R.drawable.back)//R.drawable.baseline_notifications_active_24
+                  .setContentTitle("warning!")
+                  .setContentText(str + BloodNum)
                   //remove the notification after clicking on it
                  // .setAutoCancel(true)
                   .setOngoing(true)
@@ -229,9 +229,9 @@ public class myservice extends Service {
                   .setPriority(NotificationCompat.PRIORITY_LOW)
                   .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(GetweakRef_bitmap0()))
                   .build();
-*/
 
-/*
+
+
           builder.setLargeIcon(GetweakRef_bitmap0());
           builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(GetweakRef_bitmap0()).bigLargeIcon(null));
 
@@ -243,7 +243,7 @@ public class myservice extends Service {
                  // .setAutoCancel(false)
                   .setOngoing(true)
                   .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(GetWeakRef_bitmap()).bigLargeIcon(null))
-                  .build();*/
+                  .build();
 
          /* if(bitmap2!=null) {
               bitmap2.recycle();
@@ -255,33 +255,33 @@ public class myservice extends Service {
          // intent.putExtra("data", "some value come here");
          // PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_MUTABLE);
          // builder.setContentIntent(pendingIntent);
-         /* NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+          NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.BASE) {
               NotificationChannel notificationChannel = null;
               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                  //notificationChannel = notificationManager.getNotificationChannel(chanellID);
+                  notificationChannel = notificationManager.getNotificationChannel(chanellID);
               }
               if (notificationChannel == null) {
                   //here we mute the notification
                   int importance = NotificationManager.IMPORTANCE_NONE;
                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                      //notificationChannel = new NotificationChannel(chanellID, "somethings", importance);
+                      notificationChannel = new NotificationChannel(chanellID, "somethings", importance);
                   notificationChannel.setLightColor(Color.GREEN);
                   notificationChannel.setDescription("hi there");
                   notificationChannel.enableVibration(true);
-                  notificationManager.createNotificationChannel(notificationChannel);*/ }
+                  notificationManager.createNotificationChannel(notificationChannel); }
                 /*  q=Math.random();
                   q=q*1001;
                   f=(int)q;
                   startForeground(f, builder.build());*/
-                //  }
-              //startForeground(NOTIFICATION_ID,notification);
+                  }
+              startForeground(NOTIFICATION_ID,notification);
 
-       //   }
+          }
 
-          //notificationManager.notify(NOTIFICATION_ID, builder.build());
-     // }
-  /*  public Bitmap GetWeakRef_bitmap() { return bitmap2; }
+          notificationManager.notify(NOTIFICATION_ID, builder.build());
+      }
+    public Bitmap GetWeakRef_bitmap() { return bitmap2; }
     public void SetWeakRef_bitmap(Bitmap x) { this.bitmap2 = x; }
     public Bitmap GetweakRef_bitmap0(){return  bitmap;}
     public void SetWeakRef_bitmap0(Bitmap x){this.bitmap=x;}
@@ -316,6 +316,6 @@ public class myservice extends Service {
                 .setCategory(Notification.CATEGORY_SERVICE)
                 .build();
         startForeground(2, notification);
-    }*/
+    }
 
-//}
+}
