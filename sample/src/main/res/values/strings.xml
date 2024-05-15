@@ -68,7 +68,7 @@
     <string name="bio">Bluetooth is on</string>
     <string name="sas">Speaker and screen work</string>
     <string name="sdo">Smart device operating system is BehyarCGM app compatible </string>
-    <string name="dro">Don\'t rely on BehyarCGM app until you understand hw to use it and your smart device\'s Bluetooth.</string>
+    <string name="dro">Don\'t rely on BehyarCGM app until you understand how to use it and your smart device\'s Bluetooth.</string>
     <string name="tdv">Treatment Decisions Video</string>
     <string name="ucm">you can make treatment decisions with your BehyarCGM when:</string>
     <string name="ysm">your symptoms match your reading</string>
