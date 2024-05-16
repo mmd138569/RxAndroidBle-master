@@ -70,6 +70,7 @@ public class CGMbasetreatmentDecision4 extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(CGMbasetreatmentDecision4.this, R.anim.animationint, R.anim.anim);
                 CGMbasetreatmentDecision4.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
         btn_action = findViewById(R.id.btn_action);

@@ -50,6 +50,7 @@ public class start extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(start.this, R.anim.animationint, R.anim.anim);
                 start.this.startActivity(in, options.toBundle());
+                finish();
 
 
             }

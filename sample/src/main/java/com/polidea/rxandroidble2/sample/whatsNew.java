@@ -31,6 +31,7 @@ public class whatsNew extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(whatsNew.this, R.anim.animationint, R.anim.anim);
                 whatsNew.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
         TextView txt_action =findViewById(R.id.txt_action);

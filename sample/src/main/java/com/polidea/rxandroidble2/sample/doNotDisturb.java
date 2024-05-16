@@ -58,6 +58,7 @@ public class doNotDisturb extends AppCompatActivity {
                         } else {
                             Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
                             startActivity(intent);
+                            finish();
                         }
                     }
                 }
@@ -71,6 +72,7 @@ public class doNotDisturb extends AppCompatActivity {
                     ActivityOptions options =
                             ActivityOptions.makeCustomAnimation(doNotDisturb.this, R.anim.animationint, R.anim.anim);
                     doNotDisturb.this.startActivity(in, options.toBundle());
+                    finish();
                 }
             });
             ImageView txt = findViewById(R.id.txt);

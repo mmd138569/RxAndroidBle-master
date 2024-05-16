@@ -67,6 +67,7 @@ public class mainlogin extends AppCompatActivity {
                         ActivityOptions options =
                                 ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
                         mainlogin.this.startActivity(in, options.toBundle());
+                        finish();
                     }
                     else if(!isFirstTime1){
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -75,6 +76,7 @@ public class mainlogin extends AppCompatActivity {
                                 ActivityOptions options =
                                         ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
                                 mainlogin.this.startActivity(in, options.toBundle());
+                                finish();
 
                             }
                             else if(!pm.isIgnoringBatteryOptimizations(packageName)){
@@ -82,18 +84,23 @@ public class mainlogin extends AppCompatActivity {
                              ActivityOptions options =
                                      ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
                              mainlogin.this.startActivity(in, options.toBundle());
-                         }
+                                finish();
+
+                            }
                             else if(ContextCompat.checkSelfPermission(mainlogin.this, Manifest.permission.BLUETOOTH_CONNECT)== PackageManager.PERMISSION_DENIED) {
                                 Intent in = new Intent(mainlogin.this, bluetooth.class);
                                 ActivityOptions options =
                                         ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
                                 mainlogin.this.startActivity(in, options.toBundle());
+                                finish();
+
                             }
                          else {
                              Intent in = new Intent(mainlogin.this, EntertransmitterSN1.class);
                              ActivityOptions options =
                                      ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
                              mainlogin.this.startActivity(in, options.toBundle());
+                                finish();
 
                          }
                         }
@@ -108,6 +115,8 @@ public class mainlogin extends AppCompatActivity {
                         ActivityOptions options =
                                 ActivityOptions.makeCustomAnimation(mainlogin.this, R.anim.animationint, R.anim.anim);
                         mainlogin.this.startActivity(in, options.toBundle());
+                        finish();
+
                     }
                     // if(username.getText()== && password.getText()==) {
                     // Intent in = new Intent(mainLogin.this, );

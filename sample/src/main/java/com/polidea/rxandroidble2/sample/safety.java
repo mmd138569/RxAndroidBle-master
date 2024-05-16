@@ -46,6 +46,7 @@ public class safety extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(safety.this, R.anim.animationint, R.anim.anim);
                 safety.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
         TextView txt_action =findViewById(R.id.txt_action);

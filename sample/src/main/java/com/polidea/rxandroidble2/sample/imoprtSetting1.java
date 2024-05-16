@@ -30,6 +30,7 @@ public class imoprtSetting1 extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(imoprtSetting1.this, R.anim.animationint, R.anim.anim);
                 imoprtSetting1.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
         TextView txt_action =findViewById(R.id.txt_action);

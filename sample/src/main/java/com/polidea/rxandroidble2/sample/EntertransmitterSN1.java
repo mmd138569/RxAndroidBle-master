@@ -49,6 +49,7 @@ public class EntertransmitterSN1 extends AppCompatActivity {
                 seta(a,x);
                 Intent in =new Intent(EntertransmitterSN1.this,qrcode.class);
                 startActivity(in);
+                finish();
             }
         });
         entermanually.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +60,7 @@ public class EntertransmitterSN1 extends AppCompatActivity {
                 Intent in1=new Intent(EntertransmitterSN1.this,EnterTransmitterSN.class);
 
                 startActivity(in1);
+                finish();
             }
         });
     }

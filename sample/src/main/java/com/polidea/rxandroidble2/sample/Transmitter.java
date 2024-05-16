@@ -31,6 +31,7 @@ public class Transmitter extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(Transmitter.this, R.anim.animationint, R.anim.anim);
                 Transmitter.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
         TextView txt_action =findViewById(R.id.txt_action);

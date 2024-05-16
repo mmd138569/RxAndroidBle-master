@@ -79,6 +79,7 @@ public class warning extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(warning.this, R.anim.animationint, R.anim.anim);
                 warning.this.startActivity(in, options.toBundle());
+                finish();
             }
             else {
                 Intent in = new Intent(warning.this, start.class);
@@ -87,6 +88,7 @@ public class warning extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(warning.this, R.anim.animationint, R.anim.anim);
                 warning.this.startActivity(in, options.toBundle());
+                finish();
             }
         }});
     }

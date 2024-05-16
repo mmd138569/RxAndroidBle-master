@@ -33,6 +33,7 @@ public class CGMbasetreatmentDecsion2 extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(CGMbasetreatmentDecsion2.this, R.anim.animationint, R.anim.anim);
                 CGMbasetreatmentDecsion2.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
         txt_action = findViewById(R.id.txt_action);

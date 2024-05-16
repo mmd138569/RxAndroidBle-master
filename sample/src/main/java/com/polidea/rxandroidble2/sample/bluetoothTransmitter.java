@@ -28,6 +28,7 @@ public class bluetoothTransmitter extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(bluetoothTransmitter.this, R.anim.animationint, R.anim.anim);
                 bluetoothTransmitter.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
     }

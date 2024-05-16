@@ -50,6 +50,7 @@ public class CGMbasetreatmentDecison3 extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(CGMbasetreatmentDecison3.this, R.anim.animationint, R.anim.anim);
                 CGMbasetreatmentDecison3.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
         txt_action = findViewById(R.id.txt_action);

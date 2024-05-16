@@ -32,6 +32,7 @@ public class importingSetting2 extends AppCompatActivity {
                 ActivityOptions options =
                         ActivityOptions.makeCustomAnimation(importingSetting2.this, R.anim.animationint, R.anim.anim);
                 importingSetting2.this.startActivity(in, options.toBundle());
+                finish();
             }
         });
         TextView txt_action =findViewById(R.id.txt_action);
