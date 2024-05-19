@@ -860,39 +860,40 @@ private void clearSubscription() {
     @OnClick(R.id.refresh)
     public void refreshing() {
 
-        twotop=findViewById(R.id.twotop);
-        left=findViewById(R.id.leFt);
-        butt=findViewById(R.id.butt);
-        twobutt=findViewById(R.id.twobutt);
-        top=findViewById(R.id.top);
-        x1=findViewById(R.id.topmid);
-        x2=findViewById(R.id.buttmid);
+        twotop = findViewById(R.id.twotop);
+        left = findViewById(R.id.leFt);
+        butt = findViewById(R.id.butt);
+        twobutt = findViewById(R.id.twobutt);
+        top = findViewById(R.id.top);
+        x1 = findViewById(R.id.topmid);
+        x2 = findViewById(R.id.buttmid);
 
         //final DBcalibrate dBcalibrate = new DBcalibrate(CharacteristicOperationExampleActivity.this);
         //final ArrayList z = dBcalibrate.getAllCotacts1();
-       // dBcalibrate.close();
+        // dBcalibrate.close();
 
-         // array_list = helper.getAllCotacts();
+        // array_list = helper.getAllCotacts();
         //name = findViewById(R.id.name);
         readOutputView = findViewById(R.id.read_output);
         //listView = findViewById(R.id.listView);
         //final ArrayAdapter arrayAdapter = new ArrayAdapter(CharacteristicOperationExampleActivity.this,
-          //      android.R.layout.simple_list_item_1, array_list);
+        //      android.R.layout.simple_list_item_1, array_list);
         //listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
-        if (!readOutputView.getText().toString().isEmpty()&&readOutputView.getText().toString()!="20000"&& Integer.parseInt(readOutputView.getText().toString())<3300) {
-             offsetDT = OffsetDateTime.now();
-             s=offsetDT.toLocalDate()+" "+ String.valueOf(offsetDT.getHour())+":"+String.valueOf(offsetDT.getMinute())+":"+String.valueOf(offsetDT.getSecond());
+        if (!readOutputView.getText().toString().isEmpty() && readOutputView.getText().toString().replace(",", "") != "20000" && Integer.parseInt(readOutputView.getText().toString().replace(",", "")) < 3300) {
+            if (readOutputView.getText().toString().length() - readOutputView.getText().toString().replace(",", "").length() == 1) {
+                offsetDT = OffsetDateTime.now();
+                s = offsetDT.toLocalDate() + " " + String.valueOf(offsetDT.getHour()) + ":" + String.valueOf(offsetDT.getMinute()) + ":" + String.valueOf(offsetDT.getSecond());
 //===========================================================================================================
-            T=findViewById(R.id.time);
-            T.setText(s);
-            yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()));
-            if(temp1==0) {
-                 temp1 = yval[20];
-            }
-            else if(temp1!=0){
-                yval[19]=temp1;
-                temp1=0;            }
+                T = findViewById(R.id.time);
+                T.setText(s);
+                yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+                if (temp1 == 0) {
+                    temp1 = yval[20];
+                } else if (temp1 != 0) {
+                    yval[19] = temp1;
+                    temp1 = 0;
+                }
           /*  if(z.size()!=0) {
                 int a = Integer.valueOf((String) z.get(z.size() - 1));
                 ternerry(a);
@@ -900,39 +901,39 @@ private void clearSubscription() {
                     yval[20] = yval[20] - a;
                 }
             }*/
-            //System.out.println("===================="+yval[20]);
+                //System.out.println("===================="+yval[20]);
            /* Intent intent  = new Intent(this, myservice.class);
 
             int songUrl=Integer.parseInt(String.valueOf(readOutputView.getText()));
             intent.putExtra("YOUR_KEY_SONG_NAME", songUrl);
             startService(intent);*/
 //===========================================================================================================
-           data_oomad=true;
-           data_oomad2=true;
-           data_oomad3=true;
-              str=String.valueOf((int)yval[20]);
+                data_oomad = true;
+                data_oomad2 = true;
+                data_oomad3 = true;
+                str = String.valueOf((int) yval[20]);
 
-              //str = readOutputView.getText().toString();
+                //str = readOutputView.getText().toString();
 
-            if (helper.insert(/*name.getText()*/ yval[20])) {
+                if (helper.insert(/*name.getText()*/ yval[20])) {
 
-                //Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+                } else {
+                    //Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
+                }
+                readOutputView.setText("20000");
             } else {
-                //Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
+                // name.setError("Enter NAME");
+                //readOutputView.setError("Enter Salary");
             }
-            readOutputView.setText("20000");
-        } else {
-            // name.setError("Enter NAME");
-            //readOutputView.setError("Enter Salary");
-        }
-        if(data_oomad3==true) {
+            if (data_oomad3 == true) {
 
-            customlinechart();
-            data_oomad3=false;
-        }
-        xx=yval[20]-yval[19];
-         y=yval[19]-yval[20];
-        //Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
+                customlinechart();
+                data_oomad3 = false;
+            }
+            xx = yval[20] - yval[19];
+            y = yval[19] - yval[20];
+            //Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
        /* left.setVisibility(View.INVISIBLE);
         twobutt.setVisibility(View.INVISIBLE);
         twotop.setVisibility(View.INVISIBLE);
@@ -940,19 +941,21 @@ private void clearSubscription() {
         butt.setVisibility(View.INVISIBLE);
         x1.setVisibility(View.INVISIBLE);
         x2.setVisibility(View.INVISIBLE);*/
- //====================================================================
-        if(data_oomad==true){
-        anim(   centerX , centerY , radius , xx,y);
-        data_oomad=false;}
+            //====================================================================
+            if (data_oomad == true) {
+                anim(centerX, centerY, radius, xx, y);
+                data_oomad = false;
+            }
 //================================================
 //========================= refresh ===============
-        setupPieChart(str);
-        if(data_oomad2==true) {
-            loadPieChartData(str);
-            data_oomad2=false;
+            setupPieChart(str);
+            if (data_oomad2 == true) {
+                loadPieChartData(str);
+                data_oomad2 = false;
+            }
+            array_list = null;
+            helper.close();
         }
-        array_list=null;
-        helper.close();
     }
 
 public void anim( float centerX , float centerY, float radius,float xx, float y){
