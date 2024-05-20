@@ -887,7 +887,7 @@ private void clearSubscription() {
 //===========================================================================================================
                 T = findViewById(R.id.time);
                 T.setText(s);
-                yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()));
+                yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()).replace(",",""));
                 if (temp1 == 0) {
                     temp1 = yval[20];
                 } else if (temp1 != 0) {
