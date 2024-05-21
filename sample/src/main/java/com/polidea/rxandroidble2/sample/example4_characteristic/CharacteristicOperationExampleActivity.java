@@ -881,14 +881,14 @@ private void clearSubscription() {
         //      android.R.layout.simple_list_item_1, array_list);
         //listView.setAdapter(arrayAdapter);
         //System.out.println(readOutputView+"=======================");
-        if (!readOutputView.getText().toString().isEmpty() && readOutputView.getText().toString().replace(",","") != "20000"/*&&Integer.parseInt(readOutputView.getText().toString())<=3300*/) {
-            if (readOutputView.getText().toString().length() - readOutputView.getText().toString().replace(",", "").length() == 1) {
+        if (!readOutputView.getText().toString().isEmpty() && readOutputView.getText().toString().replaceAll(",","") != "20000"/*&&Integer.parseInt(readOutputView.getText().toString())<=3300*/) {
+            if (readOutputView.getText().toString().length() - readOutputView.getText().toString().replaceAll(",", "").length() <= 1) {
                 offsetDT = OffsetDateTime.now();
                 s = offsetDT.toLocalDate() + " " + String.valueOf(offsetDT.getHour()) + ":" + String.valueOf(offsetDT.getMinute()) + ":" + String.valueOf(offsetDT.getSecond());
 //===========================================================================================================
                 T = findViewById(R.id.time);
                 T.setText(s);
-                yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()).replace(",",""));
+                yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()).replaceAll(",", ""));
                 if (temp1 == 0) {
                     temp1 = yval[20];
                 } else if (temp1 != 0) {
@@ -923,18 +923,15 @@ private void clearSubscription() {
                     //Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
                 }
                 readOutputView.setText("20000");
-            } else {
-                // name.setError("Enter NAME");
-                //readOutputView.setError("Enter Salary");
-            }
-            if (data_oomad3 == true) {
 
-                customlinechart();
-                data_oomad3 = false;
-            }
-            xx = yval[20] - yval[19];
-            y = yval[19] - yval[20];
-            //Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
+                if (data_oomad3 == true) {
+
+                    customlinechart();
+                    data_oomad3 = false;
+                }
+                xx = yval[20] - yval[19];
+                y = yval[19] - yval[20];
+                //Toast.makeText(this, String.valueOf(x), Toast.LENGTH_SHORT).show();
        /* left.setVisibility(View.INVISIBLE);
         twobutt.setVisibility(View.INVISIBLE);
         twotop.setVisibility(View.INVISIBLE);
@@ -942,20 +939,21 @@ private void clearSubscription() {
         butt.setVisibility(View.INVISIBLE);
         x1.setVisibility(View.INVISIBLE);
         x2.setVisibility(View.INVISIBLE);*/
-            //====================================================================
-            if (data_oomad == true) {
-                anim(centerX, centerY, radius, xx, y);
-                data_oomad = false;
-            }
+                //====================================================================
+                if (data_oomad == true) {
+                    anim(centerX, centerY, radius, xx, y);
+                    data_oomad = false;
+                }
 //================================================
 //========================= refresh ===============
-            setupPieChart(str);
-            if (data_oomad2 == true) {
-                loadPieChartData(str);
-                data_oomad2 = false;
+                setupPieChart(str);
+                if (data_oomad2 == true) {
+                    loadPieChartData(str);
+                    data_oomad2 = false;
+                }
+                array_list = null;
+                helper.close();
             }
-            array_list = null;
-            helper.close();
         }
     }
 
