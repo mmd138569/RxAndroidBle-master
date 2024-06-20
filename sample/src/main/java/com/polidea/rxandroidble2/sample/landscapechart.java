@@ -309,11 +309,10 @@ public class landscapechart extends AppCompatActivity {
         // Create CSV file
         String csvFileName = "exported_data.csv";
         //String userPath="android/data";
-        if(Build.VERSION.SDK_INT<=Build.VERSION_CODES.P) {
+        if(Build.VERSION_CODES.P<=Build.VERSION.SDK_INT&& Build.VERSION_CODES.TIRAMISU>Build.VERSION.SDK_INT) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(landscapechart.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 102);
             }
-            else {
                 File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
                 File csvFile = new File(folder, csvFileName);
 
@@ -366,7 +365,6 @@ public class landscapechart extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
         }
         else if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.TIRAMISU){
                 File folder = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
