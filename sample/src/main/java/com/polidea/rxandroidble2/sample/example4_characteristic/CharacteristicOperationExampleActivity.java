@@ -73,6 +73,7 @@ import java.sql.Timestamp;
 import java.time.OffsetDateTime;
 import java.time.OffsetTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.TimerTask;
 import java.util.UUID;
 
@@ -858,6 +859,28 @@ private void clearSubscription() {
 //================================================================
         //iLineDataSets.clear();
     }
+    private static final int[] TABLE = new int[256];
+
+    static {
+        for (int i = 0; i < 256; i++) {
+            int crc = i;
+            for (int j = 0; j < 8; j++) {
+                if ((crc & 1) != 0) {
+                    crc = (crc >>> 1) ^ 0xA001; // 0xA001 is the reverse of polynomial 0x8005
+                } else {
+                    crc = crc >>> 1;
+                }
+            }
+            TABLE[i] = crc;
+        }
+    }
+    public static int computeCRC16(byte[] bytes) {
+        int crc = 0xFFFF;
+        for (byte b : bytes) {
+            crc = (crc >>> 8) ^ TABLE[(crc ^ b) & 0xFF];
+        }
+        return crc;
+    }
     @OnClick(R.id.refresh)
     public void refreshing() {
 
@@ -888,13 +911,28 @@ private void clearSubscription() {
 //===========================================================================================================
                 T = findViewById(R.id.time);
                 T.setText(s);
-                yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()).replaceAll(",", ""));
+               //yval[20] = Float.parseFloat(String.valueOf(readOutputView.getText()).replaceAll(",", ""));
+
+
+                String a= String.valueOf(readOutputView.getText()).replaceAll(";","");
+               String[] arrays = a.split(",");
+               System.out.println(arrays[0]);
+                System.out.println(arrays[1]);
+               byte[] input1= arrays[0].getBytes();
+               System.out.println(input1);
+                if(computeCRC16(input1)==Integer.parseInt(arrays[1])){
+                   yval[20]= Float.parseFloat(arrays[0]);
+                }
                 if (temp1 == 0) {
                     temp1 = yval[20];
                 } else if (temp1 != 0) {
                     yval[19] = temp1;
                     temp1 = 0;
                 }
+
+
+
+
           /*  if(z.size()!=0) {
                 int a = Integer.valueOf((String) z.get(z.size() - 1));
                 ternerry(a);
