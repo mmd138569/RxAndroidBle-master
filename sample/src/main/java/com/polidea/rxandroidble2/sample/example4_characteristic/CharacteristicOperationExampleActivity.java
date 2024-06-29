@@ -919,7 +919,6 @@ private void clearSubscription() {
                System.out.println(arrays[0]);
                 System.out.println(arrays[1]);
                byte[] input1= arrays[0].getBytes();
-               System.out.println(input1);
                 if(computeCRC16(input1)==Integer.parseInt(arrays[1])){
                    yval[20]= Float.parseFloat(arrays[0]);
                 }
