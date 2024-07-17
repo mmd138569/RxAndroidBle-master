@@ -952,11 +952,11 @@ private void clearSubscription() {
                 str = String.valueOf((int) yval[20]);
 
                 //str = readOutputView.getText().toString();
-
-                if (helper.insert(/*name.getText()*/ yval[20])) {
-
-                    //Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
-                } else {
+                if(computeCRC16(input1)==Integer.parseInt(arrays[1])) {
+                   helper.insert(/*name.getText()*/ yval[20]);
+                   //Toast.makeText(CharacteristicOperationExampleActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+                }
+                else {
                     //Toast.makeText(CharacteristicOperationExampleActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
                 }
                 readOutputView.setText("20000");
